@@ -1,6 +1,6 @@
 'use strict';
 
-awesome.requireCSS('components/headers/awesome-header.css');
+awesome.requireCSS('components/header/awesome-header.css');
 
 (
     function(){
