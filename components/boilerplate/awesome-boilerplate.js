@@ -2,31 +2,38 @@
 
 util.requireCSS('components/boilerplate/awesome-boilerplate.css');
 
-var proto = Object.create(HTMLElement.prototype);
-proto.createdCallback = render;
-proto.attributeChangedCallback = updateAttributes;
-proto.defaults={
-    something:'boilerplate'
-}
+(
+    function(){
+        const defaults={
+            something:'Boilerplate'
+        }
 
-document.registerElement(
-    'awesome-boilerplate',
-    {
-        prototype: proto
+        class Component extends HTMLElement{
+            createdCallback(){
+                util.mergeDataset(this,defaults);
+
+                this.innerHTML=`
+                    <p>${this.dataset.something}</p>
+                    ${this.innerHTML}
+                `;
+            }
+
+            attachedCallback(){
+
+            }
+
+            detachedCallback(){
+
+            }
+
+            attributeChangedCallback(key,oldValue,newValue){
+
+            }
+        }
+
+        document.registerElement(
+            'awesome-boilerplate',
+            Component
+        );
     }
-);
-
-function updateAttributes(key,oldValue,newValue){
-
-}
-
-function render(){
-    util.mergeDataset(this,proto);
-
-    this.innerHTML=`
-        <p>
-            ${this.dataset.something}
-        </p>
-        ${this.innerHTML}
-    `;
-}
+)();

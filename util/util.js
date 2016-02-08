@@ -26,14 +26,20 @@ util.requireCSS=function(path){
     document.head.appendChild(css);
 }
 
-util.mergeDataset=function(el,proto){
-    const data=Object.assign(
-        proto.defaults,//merge passed values with defaults
-        el.dataset //passed values via HTML data-*
+util.mergeDataset=function(el,defaults){
+    const data={};
+    Object.assign(
+        data,
+        defaults
     );
 
     Object.assign(
-        el.dataset,//merge everything to dataset
+        data,
+        el.dataset
+    );
+
+    Object.assign(
+        el.dataset,
         data
     );
 }

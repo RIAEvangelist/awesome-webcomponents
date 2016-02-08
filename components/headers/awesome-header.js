@@ -2,24 +2,37 @@
 
 util.requireCSS('components/headers/awesome-header.css');
 
-var proto = Object.create(HTMLElement.prototype);
-proto.createdCallback = render;
-proto.attributeChangedCallback = render;
-proto.defaults={
-    title:''
-}
+(
+    function(){
+        const defaults={
+            title:''
+        }
 
-document.registerElement(
-    'awesome-header',
-    {
-        prototype: proto
+        class Component extends HTMLElement{
+            createdCallback(){
+                util.mergeDataset(this,defaults);
+
+                this.innerHTML=`
+                    <header>${this.dataset.title}</header>
+                `;
+            }
+
+            attachedCallback(){
+
+            }
+
+            detachedCallback(){
+
+            }
+
+            attributeChangedCallback(key,oldValue,newValue){
+                this.createdCallback();
+            }
+        }
+
+        document.registerElement(
+            'awesome-header',
+            Component
+        );
     }
-);
-
-function render(){
-    util.mergeDataset(this,proto);
-
-    this.innerHTML=`
-        <header>${this.dataset.title}</header>
-    `;
-}
+)();
