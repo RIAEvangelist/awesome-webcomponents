@@ -1,6 +1,6 @@
 'use strict';
 
-util.requireCSS('components/headers/awesome-header.css');
+awesome.requireCSS('components/headers/awesome-header.css');
 
 (
     function(){
@@ -10,7 +10,7 @@ util.requireCSS('components/headers/awesome-header.css');
 
         class Component extends HTMLElement{
             createdCallback(){
-                util.mergeDataset(this,defaults);
+                awesome.mergeDataset(this,defaults);
 
                 this.innerHTML=`
                     <header>${this.dataset.title}</header>

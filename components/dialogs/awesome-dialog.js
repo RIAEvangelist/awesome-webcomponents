@@ -1,7 +1,7 @@
 'use strict';
 
-util.requireCSS('components/dialogs/awesome-dialog.css');
-util.requireScript('components/headers/awesome-header.js');
+awesome.requireCSS('components/dialogs/awesome-dialog.css');
+awesome.requireScript('components/headers/awesome-header.js');
 
 (
     function(){
@@ -11,7 +11,7 @@ util.requireScript('components/headers/awesome-header.js');
 
         class Component extends HTMLElement{
             createdCallback(){
-                util.mergeDataset(this,defaults);
+                awesome.mergeDataset(this,defaults);
 
                 this.innerHTML=`
                     <awesome-header data-title='${this.dataset.title}'></awesome-header>

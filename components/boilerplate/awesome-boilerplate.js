@@ -1,6 +1,6 @@
 'use strict';
 
-util.requireCSS('components/boilerplate/awesome-boilerplate.css');
+awesome.requireCSS('components/boilerplate/awesome-boilerplate.css');
 
 (
     function(){
@@ -10,7 +10,7 @@ util.requireCSS('components/boilerplate/awesome-boilerplate.css');
 
         class Component extends HTMLElement{
             createdCallback(){
-                util.mergeDataset(this,defaults);
+                awesome.mergeDataset(this,defaults);
 
                 this.innerHTML=`
                     <p>${this.dataset.something}</p>

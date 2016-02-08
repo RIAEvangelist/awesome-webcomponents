@@ -1,0 +1,29 @@
+{
+  "name": "awesome-webcomponents",
+  "version": "0.0.0",
+  "description": "awesome native js web components",
+  "main": "awesome.js",
+  "dependencies": {
+    "event-pubsub": "^1.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RIAEvangelist/awesome-webcomponents.git"
+  },
+  "keywords": [
+    "awesome",
+    "web",
+    "components",
+    "webcomponents"
+  ],
+  "author": "",
+  "license": "DBAD",
+  "bugs": {
+    "url": "https://github.com/RIAEvangelist/awesome-webcomponents/issues"
+  },
+  "homepage": "https://github.com/RIAEvangelist/awesome-webcomponents#readme"
+}

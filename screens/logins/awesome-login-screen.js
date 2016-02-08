@@ -1,7 +1,7 @@
 'use strict';
 
-util.requireCSS('screens/logins/awesome-login-screen.css');
-util.requireScript('components/dialogs/awesome-dialog.js');
+awesome.requireCSS('screens/logins/awesome-login-screen.css');
+awesome.requireScript('components/dialogs/awesome-dialog.js');
 
 (
     function(){
@@ -22,7 +22,7 @@ util.requireScript('components/dialogs/awesome-dialog.js');
 
         class Component extends HTMLElement{
             createdCallback(){
-                util.mergeDataset(this,defaults);
+                awesome.mergeDataset(this,defaults);
 
                 this.innerHTML=`
                     <awesome-dialog data-title='${this.dataset.title}'>
