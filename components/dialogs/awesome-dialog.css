@@ -1,0 +1,15 @@
+awesome-dialog{
+    display:block;
+    position:absolute;
+    width:30em;
+    height:20em;
+    top:calc(50% - 10em);
+    left:calc(50% - 15em);
+    border-radius:.5em;
+    box-shadow:0 0 .5em rgba(0,0,0,.75);
+    overflow:auto;
+}
+
+awesome-dialog .content{
+    margin:.25em;
+}

@@ -1,0 +1,7 @@
+awesome-header{
+    display:block;
+    height:2em;
+    padding:.5em;
+    background:rgb(200,200,200);
+    width:calc(100% - 1em);
+}

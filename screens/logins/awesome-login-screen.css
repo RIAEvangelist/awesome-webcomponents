@@ -1,0 +1,10 @@
+awesome-login-screen{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+awesome-login-screen input {
+    width:98%;
+    margin:.5em 1%;
+}

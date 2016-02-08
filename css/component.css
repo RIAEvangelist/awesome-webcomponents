@@ -1,0 +1,22 @@
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+}
+
+body *{
+    position:relative;
+}
+
+button,
+input[type='text'],
+input:not([type]){
+    width:18em;
+    padding:.3em;
+    border-radius:.5em;
+    border:none;
+    box-shadow:inset 0 0 .5em rgba(0,0,0,.75);
+    font-size:1.6em;
+}
