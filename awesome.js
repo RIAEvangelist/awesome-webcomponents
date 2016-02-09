@@ -180,9 +180,15 @@ class Awesome{
         }
 
         function updateAttributesFromData(el,key){
+            if(key.indexOf('data-')!==0){
+                return el;
+            }
+
             el[
                 key.replace('data-')
             ]=el[key];
+
+            return el;
         }
 
         function uniqueEntries(data){
