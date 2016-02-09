@@ -7,18 +7,27 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
     function(){
         const defaults={
             icon:'',
-            title:''
+            title:'',
+            header:true
         }
 
         class Component extends HTMLElement{
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
 
+                let header='';
+
+                if(this.dataset.header==='true'){
+                    header=`
+                        <awesome-header
+                            data-icon='${this.dataset.icon}'
+                            data-title='${this.dataset.title}'
+                        ></awesome-header>
+                    `;
+                }
+
                 this.innerHTML=`
-                    <awesome-header
-                        data-icon='${this.dataset.icon}'
-                        data-title='${this.dataset.title}'
-                    ></awesome-header>
+                    ${header}
                     <div class='content'>
                         ${this.innerHTML}
                     </div>
@@ -34,7 +43,7 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                
+
             }
         }
 
