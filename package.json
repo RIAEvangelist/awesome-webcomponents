@@ -1,6 +1,6 @@
 {
   "name": "awesome-webcomponents",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "awesome native js web components",
   "main": "awesome.js",
   "dependencies": {
@@ -22,9 +22,12 @@
     "webcomponents"
   ],
   "author": "",
-  "license": "DBAD",
+  "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
     "url": "https://github.com/RIAEvangelist/awesome-webcomponents/issues"
   },
-  "homepage": "https://github.com/RIAEvangelist/awesome-webcomponents#readme"
+  "homepage": "https://github.com/RIAEvangelist/awesome-webcomponents#readme",
+  "directories": {
+    "example": "examples"
+  }
 }
