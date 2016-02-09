@@ -61,6 +61,11 @@ class Awesome{
                     enumerable:true,
                     writable:false,
                     value:mergeDataset
+                },
+                updateAttributesFromData:{
+                    enumerable:true,
+                    writable:false,
+                    value:updateAttributesFromData
                 }
             }
         );
@@ -172,6 +177,12 @@ class Awesome{
                 el.dataset,
                 data
             );
+        }
+
+        function updateAttributesFromData(el,key){
+            el[
+                key.replace('data-')
+            ]=el[key];
         }
 
         function uniqueEntries(data){
