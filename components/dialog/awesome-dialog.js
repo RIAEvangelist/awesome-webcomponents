@@ -1,7 +1,7 @@
 'use strict';
 
-awesome.requireCSS('components/dialog/awesome-dialog.css');
-awesome.requireScript('components/header/awesome-header.js');
+awesome.requireCSS(`${awesome.path}components/dialog/awesome-dialog.css`);
+awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
 
 (
     function(){

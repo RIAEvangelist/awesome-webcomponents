@@ -1,11 +1,11 @@
 'use strict';
 
-awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
+awesome.requireCSS(`${awesome.path}components/list/awesome-list.css`);
 
 (
     function(){
         const defaults={
-            title:''
+            something:'Boilerplate'
         }
 
         class Component extends HTMLElement{
@@ -13,10 +13,9 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
                 awesome.mergeDataset(this,defaults);
 
                 this.innerHTML=`
-                    <header>${this.dataset.title}</header>
+                    <p>${this.dataset.something}</p>
+                    ${this.innerHTML}
                 `;
-
-                this.classList.add('panel-heading');
             }
 
             attachedCallback(){
@@ -28,12 +27,12 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
+
             }
         }
 
         document.registerElement(
-            'awesome-header',
+            'awesome-boilerplate',
             Component
         );
     }

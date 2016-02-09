@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script>
+            'use strict';
+            const AWESOME_PATH='../';
+        </script>
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
+        </script>
+    </head>
+    <body>
+        <awesome-dialog
+            data-title='Dialog Example'
+        >
+            <p>
+                This is an example of a dialog.
+            </p>
+        </awesome-dialog>
+    </body>
+</html>

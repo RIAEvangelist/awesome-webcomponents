@@ -10,7 +10,7 @@ class Awesome{
                 path:{
                     enumerable:true,
                     writable:false,
-                    value:''
+                    value:AWESOME_PATH||''
                 },
                 constants:{
                     enumerable:true,
