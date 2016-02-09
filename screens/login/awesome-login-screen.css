@@ -8,16 +8,41 @@ awesome-login-screen awesome-dialog{
     height:auto;
 }
 
-awesome-login-screen input {
-    width:98%;
-    margin:.5em 1%;
+awesome-login-screen input[type='text'],
+awesome-login-screen input:not([type]){
+    width:calc(100% - 1em);
+    margin:.5em;
 }
 
 awesome-login-screen .button-wrapper {
     text-align:center;
-    margin: .2em 0;
+    margin: .3em 0;
 }
 
 awesome-login-screen button {
     width:5em;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+    awesome-login-screen input[type='text'],
+    awesome-login-screen input:not([type]){
+        text-align:center;
+    }
+
+    awesome-login-screen awesome-dialog{
+        height:100%;
+    }
+
+    awesome-login-screen .button-wrapper {
+        margin: 1em 0;
+    }
+
+    awesome-login-screen button {
+        width:50%;
+        padding:1em;
+    }
 }

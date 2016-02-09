@@ -10,7 +10,12 @@ class Awesome{
                 path:{
                     enumerable:true,
                     writable:false,
-                    value:AWESOME_PATH||''
+                    value:document.head.querySelector(
+                        '[src$="/awesome.js"]'
+                    ).src.replace(
+                        /awesome\.js$/,
+                        ''
+                    )
                 },
                 constants:{
                     enumerable:true,

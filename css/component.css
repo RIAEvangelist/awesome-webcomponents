@@ -15,6 +15,7 @@ body *{
 input[type='text'],
 input:not([type]){
     width:18em;
+    max-width:calc(100% - .6em);
     padding:.3em;
     border-radius:.3em;
     border:none;
