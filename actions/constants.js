@@ -1,6 +1,6 @@
 'use strict';
 
-awesome.constants.actions={
+awesome.constants.action={
     //base reset
     RESET_STORES:'app.reset.all.stores',
 

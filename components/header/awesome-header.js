@@ -15,6 +15,8 @@ awesome.requireCSS('components/header/awesome-header.css');
                 this.innerHTML=`
                     <header>${this.dataset.title}</header>
                 `;
+
+                this.classList.add('panel-heading');
             }
 
             attachedCallback(){

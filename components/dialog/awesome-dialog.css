@@ -7,6 +7,7 @@ awesome-dialog{
     left:calc(50% - 15em);
     border-radius:.5em;
     box-shadow:0 0 .5em rgba(0,0,0,.75);
+    background:rgb(250,250,250);
     overflow:auto;
 }
 

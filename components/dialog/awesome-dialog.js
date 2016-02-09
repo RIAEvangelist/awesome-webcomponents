@@ -13,6 +13,11 @@ awesome.requireScript('components/header/awesome-header.js');
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
 
+                this.classList.add(
+                    'panel',
+                    'panel-default'
+                );
+
                 this.innerHTML=`
                     <awesome-header data-title='${this.dataset.title}'></awesome-header>
                     <div class='content'>

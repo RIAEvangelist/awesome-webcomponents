@@ -1,6 +1,6 @@
 'use strict';
 
-awesome.requireCSS('components/boilerplate/awesome-boilerplate.css');
+awesome.requireCSS(`${awesome.path}components/boilerplate/awesome-boilerplate.css`);
 
 (
     function(){

@@ -1,0 +1,23 @@
+awesome-login-screen{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+awesome-login-screen awesome-dialog{
+    height:auto;
+}
+
+awesome-login-screen input {
+    width:98%;
+    margin:.5em 1%;
+}
+
+awesome-login-screen .button-wrapper {
+    text-align:center;
+    margin: .2em 0;
+}
+
+awesome-login-screen button {
+    width:5em;
+}

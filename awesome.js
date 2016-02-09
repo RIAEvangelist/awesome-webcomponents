@@ -1,4 +1,6 @@
 'use strict';
+window.on=window.addEventListener;
+window.off=window.removeEventListener;
 
 class Awesome{
     constructor(){
@@ -8,9 +10,29 @@ class Awesome{
                 path:{
                     enumerable:true,
                     writable:false,
-                    value:'';
+                    value:''
                 },
                 constants:{
+                    enumerable:true,
+                    writable:false,
+                    value:{}
+                },
+                dispatchers:{
+                    enumerable:true,
+                    writable:false,
+                    value:{}
+                },
+                stores:{
+                    enumerable:true,
+                    writable:false,
+                    value:{}
+                },
+                actions:{
+                    enumerable:true,
+                    writable:false,
+                    value:{}
+                },
+                validators:{
                     enumerable:true,
                     writable:false,
                     value:{}
@@ -41,17 +63,17 @@ class Awesome{
         Object.defineProperties(
             this.constants,
             {
-                actions:{
+                action:{
                     enumerable:true,
                     get:getActionConstants,
                     set:setActionConstants
                 },
-                stores:{
+                store:{
                     enumerable:true,
                     get:getStoreConstants,
                     set:setStoreConstants
                 },
-                components:{
+                component:{
                     enumerable:true,
                     get:getComponentConstants,
                     set:setComponentConstants
@@ -69,7 +91,7 @@ class Awesome{
 
         function setActionConstants(constants){
             Object.assign(actions,constants);
-            util.uniqueEntries(actions);
+            uniqueEntries(actions);
             return actions;
         }
 
@@ -79,7 +101,7 @@ class Awesome{
 
         function setStoreConstants(constants){
             Object.assign(stores,constants);
-            util.uniqueEntries(stores);
+            uniqueEntries(stores);
             return stores;
         }
 
@@ -89,7 +111,7 @@ class Awesome{
 
         function setComponentConstants(constants){
             Object.assign(components,constants);
-            util.uniqueEntries(components);
+            uniqueEntries(components);
             return components;
         }
 
@@ -100,8 +122,20 @@ class Awesome{
                 return false;
             }
             script.src=path;
+            script.onload=scriptLoaded.bind(path);
             document.head.appendChild(script);
             return true;
+        }
+
+        function scriptLoaded(){
+            const e=new CustomEvent(
+                'awesome-script-loaded',
+                {
+                    detail:this
+                }
+            );
+
+            window.dispatchEvent(e);
         }
 
         function requireCSS(path){
@@ -183,3 +217,23 @@ class Awesome{
 }
 
 const awesome=new Awesome;
+
+//bootstrap css
+awesome.requireCSS(`${awesome.path}css/component.css`);
+
+//general libraries
+awesome.requireScript(`${awesome.path}node_modules/event-pubsub/event-pubsub-browser.js`);
+awesome.requireScript(`${awesome.path}node_modules/js-message/js-message-vanilla.js`);
+
+//dispatchers
+awesome.requireScript(`${awesome.path}dispatchers/store.js`);
+awesome.requireScript(`${awesome.path}dispatchers/action.js`);
+awesome.requireScript(`${awesome.path}dispatchers/component.js`);
+
+//constants
+awesome.requireScript(`${awesome.path}stores/constants.js`);
+awesome.requireScript(`${awesome.path}actions/constants.js`);
+awesome.requireScript(`${awesome.path}components/constants.js`);
+
+//awesome classes
+awesome.requireScript(`${awesome.path}stores/store.js`);

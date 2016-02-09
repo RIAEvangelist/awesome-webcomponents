@@ -1,8 +1,6 @@
 'use strict';
 
-const unique=require('../lib/utils/uniqueEntries.js');
-
-const eventNames={
+awesome.constants.store={
     //global reset
     RESET:'global.store.reset',
 
@@ -30,7 +28,3 @@ const eventNames={
     ROUTER_HISTORY_NAVIGATE:'router.history.navigate',
     ROUTER_SCREEN_LIST:'router.got.screens',
 };
-
-unique(eventNames);
-
-module.exports=eventNames;

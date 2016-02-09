@@ -1,7 +1,11 @@
 awesome-header{
     display:block;
     height:2em;
-    padding:.5em;
-    background:rgb(200,200,200);
-    width:calc(100% - 1em);
+    padding:.5em 0;
+    background:rgb(230,230,230);
+}
+
+awesome-header header{
+    font-size: 1.5em;
+    margin:0 .5em;
 }
