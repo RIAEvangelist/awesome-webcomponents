@@ -5,6 +5,7 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
 (
     function(){
         const defaults={
+            icon:'',
             title:''
         }
 
@@ -12,11 +13,23 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
 
-                this.innerHTML=`
-                    <header>${this.dataset.title}</header>
-                `;
+                let icon='';
+                if(this.dataset.icon){
+                    icon=`
+                        <img
+                            class='icon'
+                            src=${this.dataset.icon}
+                        />
+                    `;
+                }
 
-                this.classList.add('panel-heading');
+                this.innerHTML=`
+                    <header>
+                        ${icon}
+                        ${this.dataset.title}
+                        ${this.innerHTML}
+                    </header>
+                `;
             }
 
             attachedCallback(){
@@ -28,7 +41,7 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
+                
             }
         }
 

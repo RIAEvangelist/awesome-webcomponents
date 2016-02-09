@@ -27,7 +27,7 @@ awesome.requireCSS(`${awesome.path}components/boilerplate/awesome-boilerplate.cs
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-
+                
             }
         }
 

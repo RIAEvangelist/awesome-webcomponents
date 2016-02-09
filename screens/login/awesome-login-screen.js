@@ -90,7 +90,10 @@ awesome.requireScript(`${awesome.path}validators/username.js`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-
+                if(key==='class'){
+                    return false;
+                }
+                this.querySelector(`#${this.dataset.passwordID}`).value='';
             }
 
             update(state){
@@ -98,8 +101,7 @@ awesome.requireScript(`${awesome.path}validators/username.js`);
                     return;
                 }
 
-                const password=this.querySelector(`#${this.dataset.passwordID}`);
-                password.value='';
+                this.querySelector(`#${this.dataset.passwordID}`).value='';
             }
 
             change(e){

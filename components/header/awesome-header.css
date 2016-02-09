@@ -10,6 +10,10 @@ awesome-header header{
     margin:0 .5em;
 }
 
+awesome-header .icon{
+    height:100%;
+}
+
 /*******************************\
 Small desktop windows and mobile
 \*******************************/

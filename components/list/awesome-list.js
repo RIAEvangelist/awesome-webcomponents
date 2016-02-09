@@ -27,7 +27,10 @@ awesome.requireCSS(`${awesome.path}components/list/awesome-list.css`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-
+                if(key==='class'){
+                    return false;
+                }
+                this.createdCallback();
             }
         }
 
