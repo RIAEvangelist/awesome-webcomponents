@@ -185,7 +185,7 @@ class Awesome{
             }
 
             el[
-                key.replace('data-')
+                key.replace('data-','')
             ]=el[key];
 
             return el;
@@ -243,7 +243,7 @@ const awesome=new Awesome;
 //bootstrap css
 awesome.requireCSS(`${awesome.path}css/component.css`);
 
-//general libraries
+//node modules
 awesome.requireScript(`${awesome.path}node_modules/event-pubsub/event-pubsub-browser.js`);
 awesome.requireScript(`${awesome.path}node_modules/js-message/js-message-vanilla.js`);
 

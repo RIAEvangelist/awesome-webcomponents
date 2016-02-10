@@ -4,8 +4,8 @@
   "description": "awesome native js web components",
   "main": "awesome.js",
   "dependencies": {
-    "event-pubsub": "^1.0.3",
-    "js-message": "^1.0.5"
+    "event-pubsub": "*",
+    "js-message": "*"
   },
   "devDependencies": {},
   "scripts": {
