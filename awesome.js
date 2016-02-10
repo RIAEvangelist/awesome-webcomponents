@@ -179,14 +179,14 @@ class Awesome{
             );
         }
 
-        function updateAttributesFromData(el,key){
+        function updateAttributesFromData(el,key,value){
             if(key.indexOf('data-')!==0){
                 return el;
             }
 
             el[
                 key.replace('data-','')
-            ]=el[key];
+            ]=value;
 
             return el;
         }
