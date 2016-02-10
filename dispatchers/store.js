@@ -1,6 +1,6 @@
 'use strict';
 
-awesome.requireScript(`${awesome.path}node_modules/event-pubsub/event-pubsub-browser.js`);
+awesome.requireScript(`${awesome.path}bower_components/event-pubsub/event-pubsub-browser.js`);
 
 (
     function(){

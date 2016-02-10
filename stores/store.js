@@ -2,8 +2,8 @@
 
 awesome.requireScript(`${awesome.path}dispatchers/store.js`);
 awesome.requireScript(`${awesome.path}stores/constants.js`);
-awesome.requireScript(`${awesome.path}node_modules/event-pubsub/event-pubsub-browser.js`);
-awesome.requireScript(`${awesome.path}node_modules/js-message/js-message-vanilla.js`);
+awesome.requireScript(`${awesome.path}bower_components/event-pubsub/event-pubsub-browser.js`);
+awesome.requireScript(`${awesome.path}bower_components/js-message/js-message-vanilla.js`);
 
 
 (
