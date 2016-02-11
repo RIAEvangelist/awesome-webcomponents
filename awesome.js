@@ -4,20 +4,6 @@ window.off=window.removeEventListener;
 
 class Awesome{
     constructor(){
-        function findBower(){
-            let bower='bower_components/';
-
-            const nestedAwesome=document.head.querySelector(
-                `[src$="${bower}awesome-webcomponents/awesome.js"]`
-            );
-
-            if(!nestedAwesome){
-                return `./${bower}`;
-            }
-
-            return nestedAwesome.src.split('awesome-webcomponents/')[0];
-        }
-
         Object.defineProperties(
             this,
             {
@@ -30,11 +16,6 @@ class Awesome{
                         /awesome\.js$/,
                         ''
                     )
-                },
-                bower:{
-                    enumerable:true,
-                    writable:false,
-                    value:findBower()
                 },
                 constants:{
                     enumerable:true,
@@ -86,6 +67,16 @@ class Awesome{
                     writable:false,
                     value:updateAttributesFromData
                 }
+            }
+        );
+
+        Object.defineProperty(
+            this,
+            'bower',
+            {
+                enumerable:true,
+                writable:false,
+                value:this.path.split('awesome-webcomponents/')[0]
             }
         );
 
