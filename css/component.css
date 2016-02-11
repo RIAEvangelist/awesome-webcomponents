@@ -15,6 +15,7 @@ body *{
 
 input:not([type='checkbox']),
 input:not([type='submit']),
+input:not([type='range']),
 input:not([type='button']){
     width:18em;
     max-width:calc(100% - .6em);
