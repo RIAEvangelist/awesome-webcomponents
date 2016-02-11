@@ -1,12 +1,19 @@
 awesome-list{
     display:block;
     height: 100%;
-    overflow: auto;
     margin:0;
     padding:0;
+    overflow: hidden;
     border-radius: .4em;
     background:rgb(230,230,230);
     box-shadow: inset 0 0 .2em rgba(0, 0, 0,.5);
+}
+
+awesome-list > ul{
+    height:100%;
+    margin:0;
+    padding:0;
+    overflow: auto;
 }
 
 awesome-list li{
