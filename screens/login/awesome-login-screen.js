@@ -77,15 +77,12 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                         </form>
                     </awesome-dialog>
                 `;
+            }
 
+            attachedCallback(){
                 state.on(
                     'change',
                     this.update.bind(this)
-                );
-
-                this.addEventListener(
-                    'change',
-                    this.change
                 );
 
                 this.addEventListener(
@@ -94,17 +91,24 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 );
             }
 
-            attachedCallback(){
-
-            }
-
             detachedCallback(){
+                state.off(
+                    'change',
+                    this.update
+                );
 
+                this.removeEventListener(
+                    'submit',
+                    this.submit
+                );
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                this.querySelector(`#${this.dataset.username_id}`).value='';
-                this.querySelector(`#${this.dataset.password_id}`).value='';
+                this.reset();
+            }
+
+            reset(){
+                this.createdCallback();
             }
 
             update(){
@@ -114,10 +118,6 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
                 this.querySelector(`#${this.dataset.username_id}`).value='';
                 this.querySelector(`#${this.dataset.password_id}`).value='';
-            }
-
-            change(e){
-
             }
 
             submit(e){
