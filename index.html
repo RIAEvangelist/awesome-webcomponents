@@ -7,6 +7,7 @@
         <script type='application/javascript'>
             awesome.requireScript(`${awesome.path}components/list/awesome-list.js`);
             awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+            awesome.requireScript(`${awesome.path}components/range/awesome-range.js`);
         </script>
     </head>
     <body>
@@ -25,12 +26,22 @@
             <li>
                 <a href='examples/awesome-list.html'>awesome-list</a>
             </li>
+            <li>
+                <a href='examples/awesome-range.html'>awesome-range</a>
+                <awesome-range
+                    data-min = 0
+                    data-max = 2
+                    data-value = 0
+                    data-step = 1
+                ></awesome-range>
+            </li>
 
             <!-- screens -->
             <awesome-header data-title='Screens'></awesome-header>
             <li>
                 <a href='examples/awesome-login-screen.html'>awesome-login-screen</a>
             </li>
+
 
         </awesome-list>
     </body>
