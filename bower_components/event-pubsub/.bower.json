@@ -9,7 +9,6 @@
     "commit": "dba35dba956ba2e574871aca740f825f5df27b1a"
   },
   "_source": "git://github.com/RIAEvangelist/event-pubsub.git",
-  "_target": "^1.0.3",
-  "_originalSource": "event-pubsub",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "event-pubsub"
 }

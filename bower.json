@@ -24,7 +24,7 @@
     "**/.*"
   ],
   "dependencies": {
-    "js-message": "^1.0.5",
-    "event-pubsub": "^1.0.3"
+    "js-message": "latest",
+    "event-pubsub": "latest"
   }
 }
