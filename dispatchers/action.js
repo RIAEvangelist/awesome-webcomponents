@@ -7,8 +7,8 @@ awesome.requireScript(`${awesome.path}dispatchers/store.js`);
         const events=new pubsub;
         let store=null;
 
-        function init(){
-            if(e.detail!==`${awesome.path}dispatchers/store.js`){
+        function init(e){
+            if(e && e.detail!==`${awesome.path}dispatchers/store.js`){
                 return;
             }
 

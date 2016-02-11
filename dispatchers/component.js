@@ -7,8 +7,8 @@ awesome.requireScript(`${awesome.path}dispatchers/action.js`);
     function(){
         let action=null;
 
-        function init(){
-            if(e.detail!==`${awesome.path}dispatchers/action.js`){
+        function init(e){
+            if(e && e.detail!==`${awesome.path}dispatchers/action.js`){
                 return;
             }
 
@@ -17,7 +17,7 @@ awesome.requireScript(`${awesome.path}dispatchers/action.js`);
                 init
             );
 
-            action=awesome.dispatchers.store.events;
+            action=awesome.dispatchers.action.events;
 
             Object.defineProperty(
                 awesome.dispatchers,
@@ -38,7 +38,7 @@ awesome.requireScript(`${awesome.path}dispatchers/action.js`);
                         trigger:{
                             enumarable:false,
                             writable:false,
-                            value:action.trigger(action)
+                            value:action.trigger.bind(action)
                         }
                     }
                 );

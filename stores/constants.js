@@ -4,10 +4,6 @@ awesome.constants.store={
     //global reset
     RESET:'global.store.reset',
 
-    //login
-    NEW_LOGIN_ERROR:'login.error.new',
-    NEW_LOGIN_RESPONSE:'login.response.recieved',
-
     //global errors
     GLOBAL_ERROR_NEW:'GlobalError.new',
     GLOBAL_ERROR_EXPIRED:'GlobalError.expired',
@@ -20,8 +16,10 @@ awesome.constants.store={
     READ_DROPPED_FILE:'read.dropped.file',
 
     //login
-    NEW_LOGIN_ERROR:'login.error.new',
-    NEW_LOGIN_RESPONSE:'login.response.recieved',
+    LOGIN_ERROR:'login.error',
+    LOGOUT_ERROR:'logout.error',
+    LOGIN_SUCCESS:'login.success',
+    LOGOUT_SUCCESS:'logout.success',
 
     //router
     ROUTER_SCREEN_CHANGE:'router.screen.changed',

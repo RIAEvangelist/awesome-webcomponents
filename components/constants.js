@@ -1,10 +1,6 @@
 'use strict';
 
-awesome.constants.components={
-    //login related
-    LOGIN_USERNAME:'login.username',
-    LOGIN_ATTEMPT:'login.attempt',
-
+awesome.constants.component={
     //Drag and drop related
     DRAG_DROP_ENTER:'dragdrop.enter',
     DRAG_DROP_OVER:'dragdrop.over',

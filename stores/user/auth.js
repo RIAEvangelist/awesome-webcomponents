@@ -1,7 +1,5 @@
 'use strict';
 
-awesome.requireScript(`${awesome.path}stores/constants.js`);
-
 (
     function(){
 
@@ -32,27 +30,46 @@ awesome.requireScript(`${awesome.path}stores/constants.js`);
                 \*******************************/
 
                 dispatcher.on(
-                    constants.NEW_LOGIN_ERROR,
+                    constants.LOGIN_ERROR,
                     loginError
                 );
 
                 dispatcher.on(
-                    constants.NEW_LOGIN_RESPONSE,
-                    loginResponse
+                    constants.LOGOUT_ERROR,
+                    loginError
                 );
 
-                function loginResponse(message){
-                    console.log(message.JSON);
+                dispatcher.on(
+                    constants.LOGOUT_SUCCESS,
+                    loginError
+                );
+
+                dispatcher.on(
+                    constants.LOGIN_SUCCESS,
+                    loginSuccess
+                );
+
+                function loginSuccess(data){
                     store.state={
                         authenticated:true,
-                        token:message.data.token
+                        token:data.token,
+                        username:data.username
                     };
                 }
 
-                function loginError(message){
+                function logoutSuccess(data){
+                    store.resetState();
+                }
+
+                function logoutError(data){
+                    store.resetState();
+                }
+
+                function loginError(data){
                     store.state={
                         failedAttempts:store.state.failedAttempts++,
-                        authenticated:false
+                        authenticated:false,
+                        token:''
                     };
                 }
             }

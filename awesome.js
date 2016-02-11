@@ -32,11 +32,6 @@ class Awesome{
                     writable:false,
                     value:{}
                 },
-                actions:{
-                    enumerable:true,
-                    writable:false,
-                    value:{}
-                },
                 requireScript:{
                     enumerable:true,
                     writable:false,
@@ -253,15 +248,15 @@ awesome.requireCSS(`${awesome.path}css/component.css`);
 awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
 awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
 
-//dispatchers
-awesome.requireScript(`${awesome.path}dispatchers/store.js`);
-awesome.requireScript(`${awesome.path}dispatchers/action.js`);
-awesome.requireScript(`${awesome.path}dispatchers/component.js`);
-
 //constants
 awesome.requireScript(`${awesome.path}stores/constants.js`);
 awesome.requireScript(`${awesome.path}actions/constants.js`);
 awesome.requireScript(`${awesome.path}components/constants.js`);
+
+//dispatchers
+awesome.requireScript(`${awesome.path}dispatchers/store.js`);
+awesome.requireScript(`${awesome.path}dispatchers/action.js`);
+awesome.requireScript(`${awesome.path}dispatchers/component.js`);
 
 //awesome classes
 awesome.requireScript(`${awesome.path}stores/store.js`);

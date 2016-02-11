@@ -17,7 +17,7 @@ awesome.constants.action={
     GENERIC_DRAG_DROP_FILE:'generic.drag.drop.file',
 
     //login
-    LOGIN_ERROR:'login.error',
+    LOGOUT_REQUEST:'logout.request',
     LOGIN_REQUEST:'login.request',
 
     //router

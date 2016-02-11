@@ -58,8 +58,6 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                 );
 
                 function expose(instance,name){
-                    console.log(instance,name,awesome.stores);
-
                     Object.defineProperties(
                         instance,
                         {

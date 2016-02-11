@@ -48,3 +48,7 @@ input:disabled{
 input:invalid{
     background:rgb(255,255,200);
 }
+
+input:valid{
+    background:rgb(200,255,200);
+}
