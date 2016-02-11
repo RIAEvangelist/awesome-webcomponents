@@ -71,7 +71,10 @@ class Awesome{
             {
                 enumerable:true,
                 writable:false,
-                value:this.path.split('awesome-webcomponents/')[0]
+                value:(document.location.pathname.indexOf('/awesome-webcomponents/') !== 0)?
+                    this.path.split('awesome-webcomponents/')[0]
+                        :
+                    '/awesome-webcomponents/bower_components/'
             }
         );
 
