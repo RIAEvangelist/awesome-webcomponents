@@ -1,12 +1,35 @@
 'use strict';
-
 awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
 awesome.requireScript(`${awesome.path}dispatchers/store.js`);
 
 (
     function(){
         const events=new pubsub;
-        const store=awesome.dispatchers.store.events;
+        let store=null;
+
+        function init(){
+            if(e.detail!==`${awesome.path}dispatchers/store.js`){
+                return;
+            }
+
+            window.off(
+                'awesome-script-loaded',
+                init
+            );
+
+            store=awesome.dispatchers.store.events;
+
+            Object.defineProperty(
+                awesome.dispatchers,
+                'action',
+                {
+                    enumerable:true,
+                    writable:false,
+                    value:new Dispatcher
+                }
+            );
+        }
+
 
         class Dispatcher{
             constructor(){
@@ -38,14 +61,14 @@ awesome.requireScript(`${awesome.path}dispatchers/store.js`);
             }
         }
 
-        Object.defineProperty(
-            awesome.dispatchers,
-            'action',
-            {
-                enumerable:true,
-                writable:false,
-                value:new Dispatcher
-            }
-        );
+        if(!awesome.dispatchers.store){
+            window.on(
+                'awesome-script-loaded',
+                init
+            )
+            return;
+        }
+
+        init();
     }
 )();

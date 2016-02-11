@@ -12,7 +12,7 @@ awesome.requireScript(`${awesome.path}stores/user/auth.js`);
         const dispatcher=awesome.dispatchers.component;
         const defaults={
             title:'Login',
-            action:null,
+            login_type:null,
 
             username_id:'awesome-login-screen-username',
             username_placeholder:'username',
@@ -25,6 +25,15 @@ awesome.requireScript(`${awesome.path}stores/user/auth.js`);
         };
 
         function init(){
+            if(e.detail!==`${awesome.path}stores/user/auth.js`){
+                return;
+            }
+
+            window.off(
+                'awesome-script-loaded',
+                init
+            );
+
             state=awesome.stores.auth.state;
 
             document.registerElement(
@@ -103,7 +112,7 @@ awesome.requireScript(`${awesome.path}stores/user/auth.js`);
             }
 
             change(e){
-                
+
             }
 
             submit(e){
@@ -127,12 +136,7 @@ awesome.requireScript(`${awesome.path}stores/user/auth.js`);
         if(!awesome.stores.auth){
             window.on(
                 'awesome-script-loaded',
-                function loadedScript(e){
-                    if(e.detail!==`${awesome.path}stores/user/auth.js`){
-                        return;
-                    }
-                    init();
-                }
+                init
             )
             return;
         }
