@@ -37,11 +37,6 @@ class Awesome{
                     writable:false,
                     value:{}
                 },
-                validators:{
-                    enumerable:true,
-                    writable:false,
-                    value:{}
-                },
                 requireScript:{
                     enumerable:true,
                     writable:false,

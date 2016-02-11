@@ -9,4 +9,7 @@ awesome.constants.components={
     DRAG_DROP_ENTER:'dragdrop.enter',
     DRAG_DROP_OVER:'dragdrop.over',
     DRAG_DROP_LEAVE:'dragdrop.leave',
+
+    //validators
+    VALIDATE_USERNAME:'[a-z0-9\@\.]{3,20}'
 };

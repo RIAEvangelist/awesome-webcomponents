@@ -3,7 +3,6 @@
 awesome.requireCSS(`${awesome.path}screens/login/awesome-login-screen.css`);
 awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 awesome.requireScript(`${awesome.path}stores/user/auth.js`);
-awesome.requireScript(`${awesome.path}validators/username.js`);
 
 (
     function(){
@@ -15,13 +14,14 @@ awesome.requireScript(`${awesome.path}validators/username.js`);
             title:'Login',
             action:null,
 
-            usernameID:'awesome-login-screen-username',
-            usernamePlaceholder:'username',
+            username_id:'awesome-login-screen-username',
+            username_placeholder:'username',
+            username_pattern: awesome.constants.components.VALIDATE_USERNAME,
 
-            passwordID:'awesome-login-screen-password',
-            passwordPlaceholder:'password',
+            password_id:'awesome-login-screen-password',
+            password_placeholder:'password',
 
-            submitButtonText:'Login'
+            submit_button_text:'Login'
         };
 
         function init(){
@@ -44,21 +44,22 @@ awesome.requireScript(`${awesome.path}validators/username.js`);
                     <awesome-dialog data-title='${this.dataset.title}'>
                         <form>
                             <input
-                                id='${this.dataset.usernameID}'
+                                id='${this.dataset.username_id}'
                                 value=''
                                 required='true'
+                                pattern='${this.dataset.username_pattern}'
                                 class=''
-                                placeholder='${this.dataset.usernamePlaceholder}'
+                                placeholder='${this.dataset.username_placeholder}'
                             />
                             <input
-                                id='${this.dataset.passwordID}'
+                                id='${this.dataset.password_id}'
                                 value=''
                                 required='true'
-                                placeholder='${this.dataset.passwordPlaceholder}'
+                                placeholder='${this.dataset.password_placeholder}'
                             />
                             <div class='button-wrapper'>
                                 <button>
-                                    ${this.dataset.submitButtonText}
+                                    ${this.dataset.submit_button_text}
                                 </button>
                             </div>
                         </form>
@@ -90,10 +91,7 @@ awesome.requireScript(`${awesome.path}validators/username.js`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                if(key==='class'){
-                    return false;
-                }
-                this.querySelector(`#${this.dataset.passwordID}`).value='';
+                this.querySelector(`#${this.dataset.password_id}`).value='';
             }
 
             update(state){
@@ -101,28 +99,18 @@ awesome.requireScript(`${awesome.path}validators/username.js`);
                     return;
                 }
 
-                this.querySelector(`#${this.dataset.passwordID}`).value='';
+                this.querySelector(`#${this.dataset.password_id}`).value='';
             }
 
             change(e){
-                console.log(this);
-                const username=this.querySelector(`#${this.dataset.usernameID}`);
-                const password=this.querySelector(`#${this.dataset.passwordID}`);
-
-                username.classList.remove('invalid');
-                password.classList.remove('invalid');
+                this.checkValidity();
             }
 
             submit(e){
                 e.preventDefault();
                 e.stopPropagation();
-                console.log(e)
-                const username=this.querySelector(`#${this.dataset.usernameID}`);
-                const password=this.querySelector(`#${this.dataset.passwordID}`);
-                if (!awesome.validators.username(username.value)) {
-                    username.classList.add('invalid');
-                    return;
-                }
+                const username=this.querySelector(`#${this.dataset.username_id}`);
+                const password=this.querySelector(`#${this.dataset.password_id}`);
 
                 const message = new Message;
                 message.type = constants.LOGIN_ATTEMPT;

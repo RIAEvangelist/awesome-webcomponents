@@ -34,7 +34,7 @@ button{
     cursor:pointer;
 }
 
-input[type='text'].invalid,
-input:not([type]).invalid{
-    background:rgb(255,200,200);
+input[type='text']:invalid,
+input:not([type]):invalid{
+    background:rgb(255,255,200);
 }
