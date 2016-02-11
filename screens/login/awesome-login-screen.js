@@ -96,19 +96,11 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                     'change',
                     this.update
                 );
-
-                this.removeEventListener(
-                    'submit',
-                    this.submit
-                );
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                this.reset();
-            }
-
-            reset(){
-                this.createdCallback();
+                this.querySelector(`#${this.dataset.username_id}`).value='';
+                this.querySelector(`#${this.dataset.password_id}`).value='';
             }
 
             update(){
