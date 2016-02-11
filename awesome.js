@@ -135,6 +135,9 @@ class Awesome{
                 return false;
             }
             script.src=path;
+            script.async=false;
+            script.defer=true;
+            script.type='text/javascript';
             script.onload=scriptLoaded.bind(path);
             document.head.appendChild(script);
             return true;
