@@ -15,7 +15,7 @@ class Awesome{
                 return `./${bower}`;
             }
 
-            return nestedAwesome.src.split(bower)[0];
+            return nestedAwesome.src.split('awesome-webcomponents/')[0];
         }
 
         Object.defineProperties(
