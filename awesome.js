@@ -5,20 +5,17 @@ window.off=window.removeEventListener;
 class Awesome{
     constructor(){
         function findBower(){
-            let bower='/bower_components/';
+            let bower='bower_components/';
 
             const nestedAwesome=document.head.querySelector(
-                `[src$="${bower}awesome.js"]`
+                `[src$="${bower}awesome-webcomponents/awesome.js"]`
             );
 
             if(!nestedAwesome){
-                return `.${bower}`;
+                return `./${bower}`;
             }
 
-            return nestedAwesome.src.replace(
-                /awesome\.js$/,
-                ''
-            );
+            return nestedAwesome.src.split(bower)[0];
         }
 
         Object.defineProperties(
