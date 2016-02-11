@@ -10,6 +10,7 @@ body{
 
 body *{
     position:relative;
+    outline:none;
 }
 
 input:not([type='checkbox']),
