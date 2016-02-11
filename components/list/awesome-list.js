@@ -4,17 +4,15 @@ awesome.requireCSS(`${awesome.path}components/list/awesome-list.css`);
 
 (
     function(){
-        const defaults={
-            something:'Boilerplate'
-        }
-
+        const defaults={}
         class Component extends HTMLElement{
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
 
                 this.innerHTML=`
-                    <p>${this.dataset.something}</p>
-                    ${this.innerHTML}
+                    <ul>
+                        ${this.innerHTML}
+                    </ul>
                 `;
             }
 
@@ -27,15 +25,12 @@ awesome.requireCSS(`${awesome.path}components/list/awesome-list.css`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                if(key==='class'){
-                    return false;
-                }
-                this.createdCallback();
+
             }
         }
 
         document.registerElement(
-            'awesome-boilerplate',
+            'awesome-list',
             Component
         );
     }
