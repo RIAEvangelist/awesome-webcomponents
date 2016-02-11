@@ -13,13 +13,25 @@
         <awesome-header
             data-title='awesome styled native input element'>
         </awesome-header>
-        <hr />
         <input placeholder='Normal Input Placeholder'></input>
         <input
-            placeholder='Normal Input Placeholder'
-            value='Normal Input Value'
+            placeholder='Disabled Input Placeholder'
+            disabled='true'
         ></input>
-        <hr/>
+
+        <input
+            placeholder='Disabled Input Value'
+            value='Disabled Input Value'
+            disabled='true'
+        ></input>
+        <awesome-header
+            data-title='Valid and invalid examples'>
+        </awesome-header>
+        <input
+            placeholder='Valid Input Placeholder'
+            required='true'
+            value='Valid Input Value'
+        ></input>
         <input
             placeholder='Invalid Input Placeholder'
             required='true'
@@ -67,15 +79,45 @@
             type='url'
             pattern='^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
         ></input>
-        <hr/>
+        <awesome-header
+            data-title='other awesome styled native input elements'>
+        </awesome-header>
         <input
-            placeholder='Disabled Input Placeholder'
-            disabled='true'
+            placeholder='date mm/dd/yyyy'
+            type='date'
         ></input>
         <input
-            placeholder='Disabled Input Value'
-            value='Disabled Input Value'
-            disabled='true'
+            placeholder='color #000000'
+            value='#000000'
+            pattern='#[a-f0-9]{6}'
+            type='color'
+        ></input>
+        <input
+            placeholder='datetime-local'
+            type='datetime-local'
+        ></input>
+        <input
+            placeholder='month'
+            type='month'
+        ></input>
+        <input
+            placeholder='week'
+            type='week'
+        ></input>
+        <input
+            placeholder='time'
+            type='time'
+        ></input>
+        <input
+            placeholder='telephone number'
+            type='tel'
+        ></input>
+        <input
+            placeholder='search'
+            type='search'
+        ></input>
+        <input
+            type='file'
         ></input>
     </body>
 </html>

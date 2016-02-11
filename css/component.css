@@ -13,10 +13,19 @@ body *{
     outline:none;
 }
 
-input:not([type='checkbox']),
-input:not([type='submit']),
-input:not([type='range']),
-input:not([type='button']){
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='url'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='file'],
+input[type='month'],
+input[type='search'],
+input[type='tel'],
+input[type='time'],
+input[type='week'],
+input:not([type]){
     width:18em;
     max-width:calc(100% - .6em);
     padding:.3em;
@@ -28,8 +37,16 @@ input:not([type='button']){
     color:rgb(0,0,0);
 }
 
+input[type='color']{
+    height: 3em;
+    border: none;
+    background: rgb(255,255,255);
+    box-shadow: inset 0 0 .4em rgba(0,0,0,.5);
+}
+
 button,
 input[type='submit'],
+input[typoe='reset'],
 input[type='button']{
     padding:.5em;
     border-radius:.3em;
@@ -51,6 +68,6 @@ input:not([type='range']):invalid{
     background:rgb(255,255,200);
 }
 
-input:not([type='range']):valid{
+input:required:not([type='range']):valid{
     background:rgb(200,255,200);
 }

@@ -59,6 +59,8 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                                 id='${this.dataset.username_id}'
                                 value=''
                                 required='true'
+                                minlength=6
+                                maxlength=20
                                 pattern='${this.dataset.username_pattern}'
                                 class=''
                                 placeholder='${this.dataset.username_placeholder}'
