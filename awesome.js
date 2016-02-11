@@ -4,6 +4,23 @@ window.off=window.removeEventListener;
 
 class Awesome{
     constructor(){
+        function findBower(){
+            let bower='/bower_components/';
+
+            const nestedAwesome=document.head.querySelector(
+                `[src$="${bower}awesome.js"]`
+            );
+
+            if(!nestedAwesome){
+                return `.${bower}`;
+            }
+
+            return nestedAwesome.src.replace(
+                /awesome\.js$/,
+                ''
+            );
+        }
+
         Object.defineProperties(
             this,
             {
@@ -16,6 +33,11 @@ class Awesome{
                         /awesome\.js$/,
                         ''
                     )
+                },
+                bower:{
+                    enumerable:true,
+                    writable:false,
+                    value:findBower()
                 },
                 constants:{
                     enumerable:true,
@@ -231,8 +253,6 @@ class Awesome{
                 duplicateCheckArray.push(entry);
             }
 
-            duplicateCheckArray=duplicateKeyArray=keys=null;
-
             return true;
         };
     }
@@ -244,8 +264,8 @@ const awesome=new Awesome;
 awesome.requireCSS(`${awesome.path}css/component.css`);
 
 //node modules
-awesome.requireScript(`${awesome.path}bower_components/event-pubsub/event-pubsub-browser.js`);
-awesome.requireScript(`${awesome.path}bower_components/js-message/js-message-vanilla.js`);
+awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
+awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
 
 //dispatchers
 awesome.requireScript(`${awesome.path}dispatchers/store.js`);
