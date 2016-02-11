@@ -103,7 +103,7 @@ awesome.requireScript(`${awesome.path}stores/user/auth.js`);
             }
 
             change(e){
-                this.checkValidity();
+                
             }
 
             submit(e){
