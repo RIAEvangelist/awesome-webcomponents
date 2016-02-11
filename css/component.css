@@ -47,10 +47,10 @@ input:disabled{
     box-shadow:inset 0 0 .1em rgba(0,0,0,.5);
 }
 
-input:invalid{
+input:not([type='range']):invalid{
     background:rgb(255,255,200);
 }
 
-input:valid{
+input:not([type='range']):valid{
     background:rgb(200,255,200);
 }
