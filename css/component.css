@@ -49,7 +49,6 @@ button,
 input[type='submit'],
 input[type='reset'],
 input[type='button']{
-    font-size: 1em
     padding:.5em;
     border-radius:.3em;
     border:none;

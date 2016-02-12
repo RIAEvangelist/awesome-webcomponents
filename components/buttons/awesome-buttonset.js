@@ -59,10 +59,20 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
             }
 
             update(e){
-                this.querySelector('.active').classList.remove('active');
-                e.target.classList.add('active');
+                const active=this.querySelector('.active');
 
-                this.value=e.target.dataset.index;
+                if(active){
+                    active.classList.remove('active');
+                    this.value='';
+                }
+
+                if(
+                    active!==e.target
+                    || !active
+                ){
+                    this.value=e.target.dataset.index;
+                    e.target.classList.add('active');
+                }
 
                 const change = new Event(
                     'change',
