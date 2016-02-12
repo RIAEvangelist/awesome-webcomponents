@@ -21,7 +21,9 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
 
                 for(let i=0; i<count; i++){
                     buttons.push(
-                        `<button>${
+                        `<button
+                            data-index='${i}'
+                        >${
                             this.dataset[
                                 `b${i}`
                             ]
@@ -35,13 +37,16 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
             }
 
             attachedCallback(){
-                if(this.dataset.index===''){
+                this.value=this.dataset.index;
+                if(this.value===''){
                     return;
                 }
-                this.querySelectorAll('button')[this.dataset.index].classList.add('active');
+
+                this.querySelector(`[data-index='${this.value}']`).classList.add('active');
+
                 this.addEventListener(
                     'click',
-                    this.selectButton
+                    this.update
                 );
             }
 
@@ -53,9 +58,21 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
 
             }
 
-            selectButton(e){
+            update(e){
                 this.querySelector('.active').classList.remove('active');
                 e.target.classList.add('active');
+
+                this.value=e.target.dataset.index;
+
+                const change = new Event(
+                    'change',
+                    {
+                        'bubbles':true,
+                        'cancelable':false
+                    }
+                );
+
+                this.dispatchEvent(change);
             }
         }
 

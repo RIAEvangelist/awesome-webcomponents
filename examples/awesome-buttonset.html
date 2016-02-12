@@ -13,6 +13,35 @@
         <awesome-header
             data-title='awesome-buttonset'>
         </awesome-header>
+
+        <br />
+        <p>
+            The awesome-buttonset element <strong>will trigger a change event</strong> when a button is clicked. Check the <em>e.target.value</em> to see which button index is currently active.
+        </p>
+        <p>
+            Paste the following into your console to see an example.
+        </p>
+        <br />
+        <pre>
+            <code>
+                document.querySelector('awesome-buttonset:first-of-type').addEventListener(
+                    'change',
+                    buttonsetChange
+                );
+
+                document.querySelector('awesome-buttonset:last-of-type').addEventListener(
+                    'change',
+                    buttonsetChange
+                );
+
+                function buttonsetChange(e){
+                    console.log(e.target);
+                    console.log(`The value is : ${e.target.value}`);
+                }
+            </code>
+        </pre>
+        <br />
+
         <awesome-header
             data-title='Default Buttonset'>
         </awesome-header>
