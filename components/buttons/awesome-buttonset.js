@@ -38,16 +38,18 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
 
             attachedCallback(){
                 this.value=this.dataset.index;
+
+                this.addEventListener(
+                    'click',
+                    this.update
+
+                );
+
                 if(this.value===''){
                     return;
                 }
 
                 this.querySelector(`[data-index='${this.value}']`).classList.add('active');
-
-                this.addEventListener(
-                    'click',
-                    this.update
-                );
             }
 
             detachedCallback(){
