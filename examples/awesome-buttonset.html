@@ -6,25 +6,31 @@
         <script type='application/javascript' src='../awesome.js'></script>
         <script type='application/javascript'>
             awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+            awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
         </script>
     </head>
     <body>
         <awesome-header
-            data-title='awesome styled native buttons'>
+            data-title='awesome-buttonset'>
+        </awesome-header>
+        <awesome-header
+            data-title='Default Buttonset'>
         </awesome-header>
         <br />
-        <button>Button</button>
+        <awesome-buttonset></awesome-buttonset>
         <br />
         <br />
-        <button disabled='true'>Disabled Button</button>
+        <awesome-header
+            data-title='Custom Buttonset'>
+        </awesome-header>
         <br />
-        <br />
-        <input type='reset' value='input type reset'/>
-        <br />
-        <br />
-        <input type='submit' value='input type submit'/>
-        <br />
-        <br />
-        <input type='button' value='input type button'/>
+        <awesome-buttonset
+            data-count='5'
+            data-b0='Some'
+            data-b1='Button'
+            data-b2='Names'
+            data-b3='You'
+            data-b4='Like'
+        ></awesome-buttonset>
     </body>
 </html>
