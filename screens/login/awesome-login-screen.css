@@ -29,6 +29,7 @@ Small desktop windows and mobile
 \*******************************/
 @media (max-width:800px), (max-height:700px){
 
+    awesome-login-screen input[type='password'],
     awesome-login-screen input[type='text'],
     awesome-login-screen input:not([type]){
         text-align:center;
