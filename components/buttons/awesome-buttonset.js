@@ -34,7 +34,10 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
             }
 
             attachedCallback(){
-
+                if(this.dataset.index===''){
+                    return;
+                }
+                this.querySelectorAll('button')[this.dataset.index].classList.add('active');
             }
 
             detachedCallback(){
