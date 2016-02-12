@@ -38,6 +38,10 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
                     return;
                 }
                 this.querySelectorAll('button')[this.dataset.index].classList.add('active');
+                this.addEventListener(
+                    'click',
+                    this.selectButton
+                );
             }
 
             detachedCallback(){
@@ -46,6 +50,11 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
 
             attributeChangedCallback(key,oldValue,newValue){
 
+            }
+
+            selectButton(e){
+                this.querySelector('.active').classList.remove('active');
+                e.target.classList.add('active');
             }
         }
 
