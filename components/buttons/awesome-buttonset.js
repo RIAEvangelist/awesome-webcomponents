@@ -5,6 +5,7 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
 (
     function(){
         const defaults={
+            index:'',
             count:3,
             'b0':0,
             'b1':1,
