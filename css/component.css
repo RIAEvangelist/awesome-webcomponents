@@ -71,8 +71,28 @@ input[type='button'].active{
 }
 
 button:disabled,
-input:disabled{
+button:disabled,
+input[type='submit']:disabled,
+input[type='reset']:disabled,
+input[type='button']:disabled{
     background:rgb(245,245,245);
+    color:rgb(200,200,200);
+    box-shadow:inset 0 0 .1em rgba(0,0,0,.5);
+}
+
+body *:disabled{
+    cursor:not-allowed;
+}
+
+button:disabled:active,
+button:disabled.active,
+input[type='submit']:disabled:active,
+input[type='submit']:disabled.active,
+input[type='reset']:disabled:active,
+input[type='reset']:disabled.active,
+input[type='button']:disabled:active,
+input[type='button']:disabled.active{
+    background:rgb(225,225,225);
     color:rgb(200,200,200);
     box-shadow:inset 0 0 .1em rgba(0,0,0,.5);
 }
