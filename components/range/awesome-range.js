@@ -8,7 +8,8 @@ awesome.requireCSS(`${awesome.path}components/range/awesome-range.css`);
             min: 0,
             max: 0,
             step: 0,
-            value: 0
+            value: 0,
+            diabled: false
         }
 
         class Component extends HTMLElement{
@@ -22,6 +23,12 @@ awesome.requireCSS(`${awesome.path}components/range/awesome-range.css`);
                         max = '${this.dataset.max}'
                         step = '${this.dataset.step}'
                         value = '${this.dataset.value}'
+                        ${
+                            (this.dataset.disabled=='true')?
+                                'disabled'
+                                    :
+                                ''
+                        }
                     ></input>
                 `;
             }
