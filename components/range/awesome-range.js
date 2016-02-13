@@ -9,7 +9,7 @@ awesome.requireCSS(`${awesome.path}components/range/awesome-range.css`);
             max: 0,
             step: 0,
             value: 0,
-            diabled: false
+            disabled: false
         }
 
         class Component extends HTMLElement{
