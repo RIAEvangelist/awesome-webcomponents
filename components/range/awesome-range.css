@@ -10,6 +10,9 @@ awesome-range input{
     background:transparent;
 }
 
+awesome-range input:disabled{
+    box-shadow: none;
+}
 
 /******************\
     TRACK
@@ -26,6 +29,10 @@ awesome-range input::-webkit-slider-runnable-track {
     padding:0 .4em;
 }
 
+awesome-range input:disabled::-webkit-slider-runnable-track{
+    background: rgb(220, 220, 220);
+}
+
 awesome-range input::-moz-range-track{
     width: calc(100% - .8em);
     height: 2.6em;
@@ -35,6 +42,10 @@ awesome-range input::-moz-range-track{
     border:0;
     border-radius:.5em;
     padding:0 .4em;
+}
+
+awesome-range input:disabled::-moz-range-track{
+    background: rgb(220, 220, 220);
 }
 
 awesome-range input::-ms-track{
@@ -49,6 +60,9 @@ awesome-range input::-ms-track{
    border-radius:.5em;
 }
 
+awesome-range input:disabled::-ms-track{
+    background: rgb(220, 220, 220);
+}
 
 /******************\
     THUMB
@@ -66,7 +80,11 @@ awesome-range input::-webkit-slider-thumb {
     margin:.3em 0;
 }
 
-awesome-range input::-moz-range-thumb {
+awesome-range input:disabled::-webkit-slider-thumb{
+    background: rgb(250, 250, 250);
+}
+
+awesome-range input::-moz-range-thumb{
     box-shadow: 0 0 .3em rgba(0,0,0,.7), inset 0 0 .4em rgba(0,0,0,.7);
     border:0;
     height: 2em;
@@ -75,6 +93,10 @@ awesome-range input::-moz-range-thumb {
     background: rgb(200,200,200);
     cursor: pointer;
     margin:.3em 0;
+}
+
+awesome-range input:disabled::-moz-range-thumb{
+    background: rgb(250, 250, 250);
 }
 
 awesome-range input::-ms-thumb {
@@ -86,6 +108,10 @@ awesome-range input::-ms-thumb {
     background: rgb(200,200,200);
     cursor: pointer;
     margin:.3em 0;
+}
+
+awesome-range input:disabled::-ms-thumb{
+    background: rgb(250, 250, 250);
 }
 
 /*******************************\
