@@ -24,13 +24,18 @@ awesome.requireCSS(`${awesome.path}components/range/awesome-range.css`);
                         step = '${this.dataset.step}'
                         value = '${this.dataset.value}'
                         ${
-                            (this.dataset.disabled=='true')?
+                            (this.dataset.disabled==='true')?
                                 'disabled'
                                     :
                                 ''
                         }
                     ></input>
                 `;
+
+                this.querySelector('input').addEventListener(
+                    'change',
+                    this.change.bind(this)
+                );
             }
 
             attachedCallback(){
@@ -42,11 +47,22 @@ awesome.requireCSS(`${awesome.path}components/range/awesome-range.css`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                awesome.updateAttributesFromData(
-                    this.querySelector('input'),
-                    key,
-                    newValue
+                this.createdCallback();
+            }
+
+            change(e){
+                e.preventDefault();
+                e.stopPropagation();
+                this.value=e.target.value;
+                const change = new Event(
+                    'change',
+                    {
+                        'bubbles':true,
+                        'cancelable':false
+                    }
                 );
+
+                this.dispatchEvent(change);
             }
         }
 

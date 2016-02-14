@@ -24,6 +24,12 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
                     buttons.push(
                         `<button
                             data-index='${i}'
+                            class='${
+                                (i==this.dataset.index)?
+                                    'active'
+                                        :
+                                    ''
+                            }'
                             ${
                                 (this.dataset.disabled=='true')?
                                     'disabled'
@@ -64,7 +70,7 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-
+                this.createdCallback()
             }
 
             update(e){
