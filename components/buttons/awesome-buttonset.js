@@ -25,7 +25,7 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
                         `<button
                             data-index='${i}'
                             class='${
-                                (i==this.dataset.index)?
+                                (`${i}`===this.dataset.index)?
                                     'active'
                                         :
                                     ''
