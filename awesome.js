@@ -250,6 +250,7 @@ awesome.requireCSS(`${awesome.path}css/component.css`);
 //node modules
 awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
 awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
+awesome.requireScript(`${awesome.bower}browser-error-classes/Errors.js`);
 
 //constants
 awesome.requireScript(`${awesome.path}stores/constants.js`);
