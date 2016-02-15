@@ -32,6 +32,11 @@ class Awesome{
                     writable:false,
                     value:{}
                 },
+                loadTemplate:{
+                    enumerable:true,
+                    writable:false,
+                    value:loadTemplate
+                },
                 requireScript:{
                     enumerable:true,
                     writable:false,
@@ -126,6 +131,18 @@ class Awesome{
             Object.assign(components,constants);
             uniqueEntries(components);
             return components;
+        }
+
+        function loadTemplate(instance){
+            const template=instance.querySelector('template');
+            let content='';
+            if(template){
+                content=`
+                    ${template.innerHTML}
+                    ${template.outerHTML}
+                `;
+            }
+            return content;
         }
 
         function requireScript(path){

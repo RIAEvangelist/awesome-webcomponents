@@ -14,6 +14,7 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
         class Component extends HTMLElement{
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
+                const content=awesome.loadTemplate(this);
 
                 let header='';
 
@@ -29,7 +30,7 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
                 this.innerHTML=`
                     ${header}
                     <div class='content'>
-                        ${this.innerHTML}
+                        ${content}
                     </div>
                 `;
             }
@@ -43,7 +44,7 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-
+                this.createdCallback();
             }
         }
 

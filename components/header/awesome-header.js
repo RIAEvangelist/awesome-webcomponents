@@ -12,9 +12,8 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
         class Component extends HTMLElement{
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
-            }
+                const content=awesome.loadTemplate(this);
 
-            attachedCallback(){
                 let icon='';
                 if(this.dataset.icon){
                     icon=`
@@ -29,8 +28,13 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
                     <header>
                         ${icon}
                         ${this.dataset.title}
+                        ${content}
                     </header>
                 `;
+            }
+
+            attachedCallback(){
+
             }
 
             detachedCallback(){
@@ -38,7 +42,7 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-
+                this.createdCallback();
             }
         }
 

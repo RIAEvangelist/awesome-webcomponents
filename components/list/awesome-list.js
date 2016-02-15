@@ -8,10 +8,11 @@ awesome.requireCSS(`${awesome.path}components/list/awesome-list.css`);
         class Component extends HTMLElement{
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
-
+                const content=awesome.loadTemplate(this);
+                
                 this.innerHTML=`
                     <ul>
-                        ${this.innerHTML}
+                        ${content}
                     </ul>
                 `;
             }
