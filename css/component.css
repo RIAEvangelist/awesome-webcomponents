@@ -76,12 +76,13 @@ input[type='submit']:disabled,
 input[type='reset']:disabled,
 input[type='button']:disabled{
     background:rgb(245,245,245);
-    color:rgb(200,200,200);
     box-shadow:inset 0 0 .1em rgba(0,0,0,.5);
 }
 
-body *:disabled{
+input:disabled,
+button:disabled{
     cursor:not-allowed;
+    color:rgb(200,200,200);
 }
 
 button:disabled:active,
