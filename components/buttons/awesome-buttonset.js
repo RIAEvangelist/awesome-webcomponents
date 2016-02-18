@@ -8,6 +8,7 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
             index:'',
             count:3,
             disabled:false,
+            multi_select:false,
             'b0':0,
             'b1':1,
             'b2':2
@@ -19,13 +20,15 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
 
                 const count=Number(this.dataset.count);
                 const buttons=[];
+                const indexs=this.dataset.index.split(',');
+                console.log(indexs);
 
                 for(let i=0; i<count; i++){
                     buttons.push(
                         `<button
                             data-index='${i}'
                             class='${
-                                (`${i}`===this.dataset.index)?
+                                (indexs.includes(`${i}`))?
                                     'active'
                                         :
                                     ''
@@ -74,19 +77,44 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
             }
 
             update(e){
-                const active=this.querySelector('.active');
+                const active=this.querySelectorAll('.active');
+                active.includes=Array.prototype.includes;
 
-                if(active){
-                    active.classList.remove('active');
+                updateActiveButtons :
+                if(active.length>0){
                     this.value='';
+
+                    e.target.classList.remove('active');
+
+                    if(this.dataset.multi_select!=='true'){
+                        active[0].classList.remove('active');
+                        break updateActiveButtons;
+                    }
+
+                    for(let i=0; i<active.length; i++){
+                        this.value+=`${active[i].dataset.index},`;
+                    }
+                    if(this.value.length>1){
+                        this.value=this.value.slice(0,-1);
+                    }
                 }
 
+                selectActiveButtons :
                 if(
-                    active!==e.target
-                    || !active
+                    !active.includes(e.target)
+                    || active.length<1
                 ){
-                    this.value=e.target.dataset.index;
                     e.target.classList.add('active');
+
+                    if(this.dataset.multi_select!=='true'){
+                        this.value=e.target.dataset.index;
+                        break selectActiveButtons;
+                    }
+
+                    this.value+=`,${e.target.dataset.index}`;
+                    if(this.value.indexOf(',')==0){
+                        this.value=this.value.slice(1);
+                    }
                 }
 
                 const change = new Event(

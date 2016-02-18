@@ -24,17 +24,19 @@
         <br />
         <pre>
             <code>
-                document.querySelector('awesome-buttonset:first-of-type').addEventListener(
-                    'change',
-                    buttonsetChange
-                );
+                const buttons=document.querySelectorAll('awesome-buttonset');
+                buttons.includes=Array.prototype.includes;
 
-                document.querySelector('awesome-buttonset:last-of-type').addEventListener(
+                document.addEventListener(
                     'change',
                     buttonsetChange
                 );
 
                 function buttonsetChange(e){
+                    if(!buttons.includes(e.target)){
+                        return;
+                    }
+
                     console.log(e.target);
                     console.log(`The value is : ${e.target.value}`);
                 }
@@ -61,6 +63,16 @@
         <awesome-buttonset
             data-index=1
             data-disabled=true
+        ></awesome-buttonset>
+        <br />
+        <br />
+        <awesome-header
+            data-title='Default Multi Select Buttonset'>
+        </awesome-header>
+        <br />
+        <awesome-buttonset
+            data-index=1
+            data-multi_select=true
         ></awesome-buttonset>
         <br />
         <br />
