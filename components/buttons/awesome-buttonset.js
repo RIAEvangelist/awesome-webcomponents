@@ -21,7 +21,6 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
                 const count=Number(this.dataset.count);
                 const buttons=[];
                 const indexs=this.dataset.index.split(',');
-                console.log(indexs);
 
                 for(let i=0; i<count; i++){
                     buttons.push(
@@ -91,7 +90,8 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
                         break updateActiveButtons;
                     }
 
-                    for(let i=0; i<active.length; i++){
+                    const newActive=this.querySelectorAll('.active');
+                    for(let i=0; i<newActive.length; i++){
                         this.value+=`${active[i].dataset.index},`;
                     }
                     if(this.value.length>1){
