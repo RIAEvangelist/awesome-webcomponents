@@ -272,11 +272,7 @@ class Awesome{
             const data={};
             Object.assign(
                 data,
-                defaults
-            );
-
-            Object.assign(
-                data,
+                defaults,
                 el.dataset
             );
 
