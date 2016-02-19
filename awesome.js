@@ -2,11 +2,19 @@
 window.on=window.addEventListener;
 window.off=window.removeEventListener;
 
+/**
+ *
+ * @namespace Awesome
+ */
 class Awesome{
     constructor(){
         Object.defineProperties(
             this,
             {
+                /**
+                 * path used for requiring scripts or CSS to components or screens
+                 * @type {String}
+                 */
                 path:{
                     enumerable:true,
                     writable:false,
@@ -17,16 +25,28 @@ class Awesome{
                         ''
                     )
                 },
+                /**
+                 * constants
+                 * @type {Object}
+                 */
                 constants:{
                     enumerable:true,
                     writable:false,
                     value:{}
                 },
+                /**
+                 * dispatchers
+                 * @type {Object}
+                 */
                 dispatchers:{
                     enumerable:true,
                     writable:false,
                     value:{}
                 },
+                /**
+                 * stores
+                 * @type {Object}
+                 */
                 stores:{
                     enumerable:true,
                     writable:false,
@@ -67,6 +87,10 @@ class Awesome{
 
         Object.defineProperty(
             this,
+            /**
+             * Path to bower components
+             * @type {String}
+             */
             'bower',
             {
                 enumerable:true,
@@ -81,19 +105,55 @@ class Awesome{
         Object.defineProperties(
             this.constants,
             {
+                /**
+                 * action constants
+                 * @type {Object}
+                 */
                 action:{
                     enumerable:true,
+                    /**
+                     * get the action constants
+                     * @type {[type]}
+                     */
                     get:getActionConstants,
+                    /**
+                     * set the actions constants
+                     * @type {[type]}
+                     */
                     set:setActionConstants
                 },
+                /**
+                 * store constants
+                 * @type {Object}
+                 */
                 store:{
                     enumerable:true,
+                    /**
+                     * get store constants
+                     * @type {[type]}
+                     */
                     get:getStoreConstants,
+                    /**
+                     * set store constants
+                     * @type {[type]}
+                     */
                     set:setStoreConstants
                 },
+                /**
+                 * component constants
+                 * @type {Object}
+                 */
                 component:{
                     enumerable:true,
+                    /**
+                     * get component constants
+                     * @type {[type]}
+                     */
                     get:getComponentConstants,
+                    /**
+                     * set component constants
+                     * @type {[type]}
+                     */
                     set:setComponentConstants
                 }
             }
@@ -133,6 +193,11 @@ class Awesome{
             return components;
         }
 
+        /**
+         * [loadTemplate description]
+         * @param  {[type]} instance [description]
+         * @return {[type]}          [description]
+         */
         function loadTemplate(instance){
             const template=instance.querySelector('template');
             let content='';
@@ -145,6 +210,11 @@ class Awesome{
             return content;
         }
 
+        /**
+         * [requireScript description]
+         * @param  {[type]} path [description]
+         * @return {[type]}      [description]
+         */
         function requireScript(path){
             const script=document.createElement('script');
             const existingScript=document.head.querySelector(`script[src='${path}']`);
@@ -160,6 +230,10 @@ class Awesome{
             return true;
         }
 
+        /**
+         * [scriptLoaded description]
+         * @return {[type]} [description]
+         */
         function scriptLoaded(){
             const e=new CustomEvent(
                 'awesome-script-loaded',
@@ -171,6 +245,11 @@ class Awesome{
             window.dispatchEvent(e);
         }
 
+        /**
+         * [requireCSS description]
+         * @param  {[type]} path [description]
+         * @return {[type]}      [description]
+         */
         function requireCSS(path){
             const css=document.createElement('link');
             const existingCSS=document.head.querySelector(`link[href='${path}']`);
@@ -184,6 +263,11 @@ class Awesome{
             document.head.appendChild(css);
         }
 
+        /**
+         * [mergeDataset description]
+         * @param {[type]} el       [description]
+         * @param {[type]} defaults [description]
+         */
         function mergeDataset(el,defaults){
             const data={};
             Object.assign(
@@ -202,6 +286,13 @@ class Awesome{
             );
         }
 
+        /**
+         * [updateAttributesFromData description]
+         * @param  {[type]} el    [description]
+         * @param  {[type]} key   [description]
+         * @param  {[type]} value [description]
+         * @return {[type]}       [description]
+         */
         function updateAttributesFromData(el,key,value){
             if(key.indexOf('data-')!==0){
                 return el;
@@ -214,6 +305,11 @@ class Awesome{
             return el;
         }
 
+        /**
+         * [uniqueEntries description]
+         * @param  {[type]} data [description]
+         * @return {[type]}      [description]
+         */
         function uniqueEntries(data){
             var duplicateCheckArray=[];
             var duplicateKeyArray=[];
