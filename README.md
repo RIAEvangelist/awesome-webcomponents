@@ -18,6 +18,7 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
         * [.component](#Awesome.constants.component) : <code>Object</code>
     * [.dispatchers](#Awesome.dispatchers) : <code>Object</code>
     * [.stores](#Awesome.stores) : <code>Object</code>
+    * [.bower](#Awesome.bower) : <code>String</code>
     * [.loadTemplate(instance)](#Awesome.loadTemplate) ⇒ <code>Object</code>
     * [.requireScript(path)](#Awesome.requireScript) ⇒ <code>Boolean</code>
     * [.requireCSS(path)](#Awesome.requireCSS) ⇒ <code>Boolean</code>
@@ -68,6 +69,11 @@ dispatchers for store/action/component messages
 <a name="Awesome.stores"></a>
 ### Awesome.stores : <code>Object</code>
 stores
+
+**Kind**: static property of <code>[Awesome](#Awesome)</code>  
+<a name="Awesome.bower"></a>
+### Awesome.bower : <code>String</code>
+path to bower components
 
 **Kind**: static property of <code>[Awesome](#Awesome)</code>  
 <a name="Awesome.loadTemplate"></a>

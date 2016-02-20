@@ -100,20 +100,17 @@ class Awesome{
             }
         );
 
-        /**
-         * @extends Awesome
-         */
         Object.defineProperty(
             this,
-            /**
-             * Path to bower components
-             * @memberof Awesome
-             * @type {String}
-             */
             'bower',
             {
                 enumerable:true,
                 writable:false,
+                /**
+                 * path to bower components
+                 * @alias Awesome.bower
+                 * @type {String}
+                 */
                 value:(document.location.pathname.indexOf('/awesome-webcomponents/') !== 0)?
                     this.path.split('awesome-webcomponents/')[0]
                         :
