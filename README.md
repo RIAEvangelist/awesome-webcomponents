@@ -67,6 +67,7 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
         * [.action](#awesome.constants.action) : <code>Object</code>
             * [.RESET_STORES](#awesome.constants.action.RESET_STORES) : <code>EventName</code>
             * [.TRIGGER_GLOBAL_MODAL](#awesome.constants.action.TRIGGER_GLOBAL_MODAL) : <code>String</code>
+            * [.GENERIC_DRAG_DROP_FILE](#awesome.constants.action.GENERIC_DRAG_DROP_FILE) : <code>String</code>
             * [.LOGOUT_REQUEST](#awesome.constants.action.LOGOUT_REQUEST) : <code>String</code>
             * [.LOGIN_REQUEST](#awesome.constants.action.LOGIN_REQUEST) : <code>String</code>
             * [.getter()](#awesome.constants.action.getter) ⇒ <code>ActionConstants</code>
@@ -182,6 +183,7 @@ extensible/overwriteable constansts used in awesome apps
     * [.action](#awesome.constants.action) : <code>Object</code>
         * [.RESET_STORES](#awesome.constants.action.RESET_STORES) : <code>EventName</code>
         * [.TRIGGER_GLOBAL_MODAL](#awesome.constants.action.TRIGGER_GLOBAL_MODAL) : <code>String</code>
+        * [.GENERIC_DRAG_DROP_FILE](#awesome.constants.action.GENERIC_DRAG_DROP_FILE) : <code>String</code>
         * [.LOGOUT_REQUEST](#awesome.constants.action.LOGOUT_REQUEST) : <code>String</code>
         * [.LOGIN_REQUEST](#awesome.constants.action.LOGIN_REQUEST) : <code>String</code>
         * [.getter()](#awesome.constants.action.getter) ⇒ <code>ActionConstants</code>
@@ -207,6 +209,7 @@ Shallow merge action constants object
 * [.action](#awesome.constants.action) : <code>Object</code>
     * [.RESET_STORES](#awesome.constants.action.RESET_STORES) : <code>EventName</code>
     * [.TRIGGER_GLOBAL_MODAL](#awesome.constants.action.TRIGGER_GLOBAL_MODAL) : <code>String</code>
+    * [.GENERIC_DRAG_DROP_FILE](#awesome.constants.action.GENERIC_DRAG_DROP_FILE) : <code>String</code>
     * [.LOGOUT_REQUEST](#awesome.constants.action.LOGOUT_REQUEST) : <code>String</code>
     * [.LOGIN_REQUEST](#awesome.constants.action.LOGIN_REQUEST) : <code>String</code>
     * [.getter()](#awesome.constants.action.getter) ⇒ <code>ActionConstants</code>
@@ -220,6 +223,11 @@ all stores should reset their state
 <a name="awesome.constants.action.TRIGGER_GLOBAL_MODAL"></a>
 ##### action.TRIGGER_GLOBAL_MODAL : <code>String</code>
 triggere global modal
+
+**Kind**: static property of <code>[action](#awesome.constants.action)</code>  
+<a name="awesome.constants.action.GENERIC_DRAG_DROP_FILE"></a>
+##### action.GENERIC_DRAG_DROP_FILE : <code>String</code>
+file dropped into drop field
 
 **Kind**: static property of <code>[action](#awesome.constants.action)</code>  
 <a name="awesome.constants.action.LOGOUT_REQUEST"></a>

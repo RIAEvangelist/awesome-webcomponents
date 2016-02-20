@@ -17,7 +17,7 @@ awesome.constants.action={
 
     /**
      * file dropped into drop field
-     * @member aweseome.constants.action.GENERIC_DRAG_DROP_FILE
+     * @member awesome.constants.action.GENERIC_DRAG_DROP_FILE
      * @type {String}
      */
     GENERIC_DRAG_DROP_FILE:'generic.drag.drop.file',
