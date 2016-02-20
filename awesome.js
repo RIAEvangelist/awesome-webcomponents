@@ -41,22 +41,22 @@ window.off=window.removeEventListener;
  * @class Awesome
  * @namespace awesome
  *
- * @prop path {String} Path to folder awesome.js is located in
- * @prop bower {String} path to bower components
+ * @prop awesome.path {String} Path to folder awesome.js is located in
+ * @prop awesome.bower {String} path to bower components
  *
  *
- * @prop constants {Object} awesome constants
- * @prop dispatchers {Object} dispatchers for store/action/component messages
- * @prop stores {Object} registered awesome.Store instances. These are designed to support 1 way data flows for use by components
+ * @prop awesome.constants {Object} awesome constants
+ * @prop awesome.dispatchers {Object} dispatchers for store/action/component messages
+ * @prop awesome.stores {Object} registered awesome.Store instances. These are designed to support 1 way data flows for use by components
  *
- * @prop Store {Class} Store class, used to create new stores
+ * @prop awesome.Store {Class} Store class, used to create new stores
  *
- * @prop loadTemplate {Function} fetches nested template contents for inclusion in awesome-component
- * @prop requireScript {Function} inject script tag into header
- * @prop requireCSS {Function} inject stylesheet link tag into header
- * @prop mergeDataset {Function} merges element's data-* attributes with the defaults for that component element
- * @prop updateAttributesFromData {Function} maps data-* values to * attribute values
- * @prop uniqueEntries {Function} ensures that keys and values of an object unique
+ * @prop awesome.loadTemplate {Function} fetches nested template contents for inclusion in awesome-component
+ * @prop awesome.requireScript {Function} inject script tag into header
+ * @prop awesome.requireCSS {Function} inject stylesheet link tag into header
+ * @prop awesome.mergeDataset {Function} merges element's data-* attributes with the defaults for that component element
+ * @prop awesome.updateAttributesFromData {Function} maps data-* values to * attribute values
+ * @prop awesome.uniqueEntries {Function} ensures that keys and values of an object unique
  *
  */
 class Awesome{

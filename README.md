@@ -40,18 +40,18 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
 
 | Name | Type | Description |
 | --- | --- | --- |
-| path | <code>String</code> | Path to folder awesome.js is located in |
-| bower | <code>String</code> | path to bower components |
-| constants | <code>Object</code> | awesome constants |
-| dispatchers | <code>Object</code> | dispatchers for store/action/component messages |
-| stores | <code>Object</code> | registered awesome.Store instances. These are designed to support 1 way data flows for use by components |
-| Store | <code>Class</code> | Store class, used to create new stores |
-| loadTemplate | <code>function</code> | fetches nested template contents for inclusion in awesome-component |
-| requireScript | <code>function</code> | inject script tag into header |
-| requireCSS | <code>function</code> | inject stylesheet link tag into header |
-| mergeDataset | <code>function</code> | merges element's data-* attributes with the defaults for that component element |
-| updateAttributesFromData | <code>function</code> | maps data-* values to * attribute values |
-| uniqueEntries | <code>function</code> | ensures that keys and values of an object unique |
+| awesome.path | <code>String</code> | Path to folder awesome.js is located in |
+| awesome.bower | <code>String</code> | path to bower components |
+| awesome.constants | <code>Object</code> | awesome constants |
+| awesome.dispatchers | <code>Object</code> | dispatchers for store/action/component messages |
+| awesome.stores | <code>Object</code> | registered awesome.Store instances. These are designed to support 1 way data flows for use by components |
+| awesome.Store | <code>Class</code> | Store class, used to create new stores |
+| awesome.loadTemplate | <code>function</code> | fetches nested template contents for inclusion in awesome-component |
+| awesome.requireScript | <code>function</code> | inject script tag into header |
+| awesome.requireCSS | <code>function</code> | inject stylesheet link tag into header |
+| awesome.mergeDataset | <code>function</code> | merges element's data-* attributes with the defaults for that component element |
+| awesome.updateAttributesFromData | <code>function</code> | maps data-* values to * attribute values |
+| awesome.uniqueEntries | <code>function</code> | ensures that keys and values of an object unique |
 
 
 * [awesome](#awesome) : <code>object</code>
