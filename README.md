@@ -38,6 +38,11 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
     * [.constants](#awesome.constants) : <code>Object</code>
         * [.action](#awesome.constants.action) : <code>Object</code>
         * [.store](#awesome.constants.store) : <code>Object</code>
+            * [.RESET](#awesome.constants.store.RESET) : <code>EventName</code>
+            * [.LOGIN_ERROR](#awesome.constants.store.LOGIN_ERROR) : <code>EventName</code>
+            * [.LOGOUT_ERROR](#awesome.constants.store.LOGOUT_ERROR) : <code>EventName</code>
+            * [.LOGIN_SUCCESS](#awesome.constants.store.LOGIN_SUCCESS) : <code>EventName</code>
+            * [.LOGOUT_SUCCESS](#awesome.constants.store.LOGOUT_SUCCESS) : <code>EventName</code>
         * [.component](#awesome.constants.component) : <code>Object</code>
     * [.dispatchers](#awesome.dispatchers) : <code>Object</code>
         * [.action](#awesome.dispatchers.action)
@@ -74,6 +79,11 @@ extensible/overwriteable constansts used in awesome apps
 * [.constants](#awesome.constants) : <code>Object</code>
     * [.action](#awesome.constants.action) : <code>Object</code>
     * [.store](#awesome.constants.store) : <code>Object</code>
+        * [.RESET](#awesome.constants.store.RESET) : <code>EventName</code>
+        * [.LOGIN_ERROR](#awesome.constants.store.LOGIN_ERROR) : <code>EventName</code>
+        * [.LOGOUT_ERROR](#awesome.constants.store.LOGOUT_ERROR) : <code>EventName</code>
+        * [.LOGIN_SUCCESS](#awesome.constants.store.LOGIN_SUCCESS) : <code>EventName</code>
+        * [.LOGOUT_SUCCESS](#awesome.constants.store.LOGOUT_SUCCESS) : <code>EventName</code>
     * [.component](#awesome.constants.component) : <code>Object</code>
 
 <a name="awesome.constants.action"></a>
@@ -86,6 +96,39 @@ Shallow merge action constants object
 Shallow merge store constants object
 
 **Kind**: static property of <code>[constants](#awesome.constants)</code>  
+
+* [.store](#awesome.constants.store) : <code>Object</code>
+    * [.RESET](#awesome.constants.store.RESET) : <code>EventName</code>
+    * [.LOGIN_ERROR](#awesome.constants.store.LOGIN_ERROR) : <code>EventName</code>
+    * [.LOGOUT_ERROR](#awesome.constants.store.LOGOUT_ERROR) : <code>EventName</code>
+    * [.LOGIN_SUCCESS](#awesome.constants.store.LOGIN_SUCCESS) : <code>EventName</code>
+    * [.LOGOUT_SUCCESS](#awesome.constants.store.LOGOUT_SUCCESS) : <code>EventName</code>
+
+<a name="awesome.constants.store.RESET"></a>
+##### store.RESET : <code>EventName</code>
+all stores should reset their state
+
+**Kind**: static property of <code>[store](#awesome.constants.store)</code>  
+<a name="awesome.constants.store.LOGIN_ERROR"></a>
+##### store.LOGIN_ERROR : <code>EventName</code>
+all stores should reset their state
+
+**Kind**: static property of <code>[store](#awesome.constants.store)</code>  
+<a name="awesome.constants.store.LOGOUT_ERROR"></a>
+##### store.LOGOUT_ERROR : <code>EventName</code>
+all stores should reset their state
+
+**Kind**: static property of <code>[store](#awesome.constants.store)</code>  
+<a name="awesome.constants.store.LOGIN_SUCCESS"></a>
+##### store.LOGIN_SUCCESS : <code>EventName</code>
+all stores should reset their state
+
+**Kind**: static property of <code>[store](#awesome.constants.store)</code>  
+<a name="awesome.constants.store.LOGOUT_SUCCESS"></a>
+##### store.LOGOUT_SUCCESS : <code>EventName</code>
+all stores should reset their state
+
+**Kind**: static property of <code>[store](#awesome.constants.store)</code>  
 <a name="awesome.constants.component"></a>
 #### constants.component : <code>Object</code>
 Shallow merge constants constants object
@@ -210,6 +253,3 @@ emitted when a script included via [requireScript](#awesome.requireScript) has c
 | e | <code>Event</code> | Event Data |
 | e.detail | <code>String</code> | path of the loaded script |
 
-<a name="POOP"></a>
-## POOP : <code>object</code>
-**Kind**: global namespace  
