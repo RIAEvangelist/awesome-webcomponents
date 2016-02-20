@@ -21,6 +21,12 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
 3. Submit a Pull Request
 4. Feel Awesome!
 
+# Awesome.js Class api
+
+` window.awesome = new Awesome; ` is called automatically to instantiate a global ` awesome ` object for your use right away.
+
+---
+
 **Kind**: global namespace  
 **Properties**
 
@@ -59,7 +65,7 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
             * [.LOGOUT_SUCCESS](#awesome.constants.store.LOGOUT_SUCCESS) : <code>EventName</code>
         * [.component](#awesome.constants.component) : <code>Object</code>
     * [.dispatchers](#awesome.dispatchers) : <code>Object</code>
-        * [.action](#awesome.dispatchers.action)
+        * [.action](#awesome.dispatchers.action) : <code>Events</code>
     * [.stores](#awesome.stores) : <code>Object</code>
     * [.bower](#awesome.bower) : <code>String</code>
     * [.loadTemplate(instance)](#awesome.loadTemplate) ⇒ <code>Object</code>
@@ -227,8 +233,8 @@ dispatchers for awesome 1 way data flow
 | component | <code>Object</code> | component dispatcher |
 
 <a name="awesome.dispatchers.action"></a>
-#### dispatchers.action
-awesome dispatcher for actions
+#### dispatchers.action : <code>Events</code>
+awesome dispatcher for actions, uses event-pubsub
 
 **Kind**: static property of <code>[dispatchers](#awesome.dispatchers)</code>  
 **Properties**
@@ -237,7 +243,7 @@ awesome dispatcher for actions
 | --- | --- | --- |
 | on | <code>function</code> | binds handler to action event |
 | off | <code>function</code> | ***un***binds handler from action event |
-| trigger | <code>function</code> | fires store events |
+| trigger | <code>function</code> | fires store event |
 
 <a name="awesome.stores"></a>
 ### awesome.stores : <code>Object</code>

@@ -24,6 +24,12 @@ window.off=window.removeEventListener;
  * 3. Submit a Pull Request
  * 4. Feel Awesome!
  *
+ * # Awesome.js Class api
+ *
+ * ` window.awesome = new Awesome; ` is called automatically to instantiate a global ` awesome ` object for your use right away.
+ *
+ * ---
+ *
  * @class Awesome
  * @namespace awesome
  *
