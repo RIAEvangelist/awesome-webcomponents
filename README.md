@@ -4,9 +4,17 @@
 
 Awesome ES6 compliant web componants for use in your app or website.
 
-Currently works awesome in/on Android, Chrome, Chromium, ChromeOS, ChromiumOS, Electron and NW.
+Tested and working on :
+* Chrome
+* Chromium
+* Android Chrome
+* FireFox >=45
+* IE Edge
+* [Electron](http://electron.atom.io/)
+* [NW.js](http://nwjs.io/)
 
-Only Chromium based browsers support ES6 well enough for these components. Firefox only needs to complete support for standards compliant ` const ` and ` let ` and these will work in FF as well.
+Firefox >=45 supports evrything needed with the included ` ./bower_components/document-register-element/build/document-register-element.js `.
+IE Edge ` Array.prototype.includes ` polyfill is build into awesome.js
 
 install awesome-webcomponents via bower for your project by running ` bower install awesome-webcomponents ` don't forget to run ` bower update ` on occasion to get the latest version!
 
