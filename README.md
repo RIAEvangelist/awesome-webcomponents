@@ -8,12 +8,18 @@ Currently works awesome in/on Android, Chrome, Chromium, ChromeOS, ChromiumOS, E
 
 Only Chromium based browsers support ES6 well enough for these components. Firefox only needs to complete support for standards compliant ` const ` and ` let ` and these will work in FF as well.
 
+install awesome-webcomponents via bower for your project by running ` bower install awesome-webcomponents ` don't forget to run ` bower update ` on occasion to get the latest version!
 
 ### Working Component Examples and Demos
 [awesome-webcomponents on github.io](https://riaevangelist.github.io/awesome-webcomponents/)
 #### Licensed under DBAD license
 See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or our [licence.md](https://github.com/RIAEvangelist/awesome-webcomponents/blob/master/LICENSE.md) file.
-`npm install `
+
+# Contributing
+1. Fork the repo
+2. Do awesome stuff!
+3. Submit a Pull Request
+4. Feel Awesome!
 
 **Kind**: global namespace  
 **Properties**
@@ -24,7 +30,7 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
 | bower | <code>String</code> | path to bower components |
 | constants | <code>Object</code> | awesome constants |
 | dispatchers | <code>Object</code> | dispatchers for store/action/component messages |
-| stores | <code>Object</code> | awesome 1 way data flow stores for use by components |
+| stores | <code>Object</code> | registered awesome.Store instances. These are designed to support 1 way data flows for use by components |
 | Store | <code>Class</code> | Store class, used to create new stores |
 | loadTemplate | <code>function</code> | fetches nested template contents for inclusion in awesome-component |
 | requireScript | <code>function</code> | inject script tag into header |
@@ -71,7 +77,7 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
 
 | Name | Type | Description |
 | --- | --- | --- |
-| state | <code>Object</code> | store state |
+| state | <code>Object</code> | state data of store exposed for reading by components via expose. The store modifies this as a shallow merge Object. |
 | defaultState | <code>Object</code> | default store state |
 | ignoreResetEvent | <code>Boolean</code> | flag to ignore the global reset event ***USE WITH CAUTION*** |
 | resetState | <code>function</code> | rests the store state |
@@ -324,4 +330,55 @@ emitted when a script included via [requireScript](#awesome.requireScript) has c
 | --- | --- | --- |
 | e | <code>Event</code> | Event Data |
 | e.detail | <code>String</code> | path of the loaded script |
+
+<a name="getActionConstants"></a>
+## getActionConstants() ⇒ <code>Object</code>
+gets the action constants
+
+**Kind**: global function  
+**Returns**: <code>Object</code> - action constants  
+<a name="setActionConstants"></a>
+## setActionConstants(constants) ⇒ <code>Object</code>
+merges the current action constants and the new constants via shallow merge.
+
+**Kind**: global function  
+**Returns**: <code>Object</code> - actions merged constants  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| constants | <code>Object</code> | constants to merge |
+
+<a name="getStoreConstants"></a>
+## getStoreConstants() ⇒ <code>Object</code>
+gets the store constants
+
+**Kind**: global function  
+**Returns**: <code>Object</code> - store constants  
+<a name="setStoreConstants"></a>
+## setStoreConstants(constants) ⇒ <code>Object</code>
+merges the current store constants and the new constants via shallow merge.
+
+**Kind**: global function  
+**Returns**: <code>Object</code> - stores merged constants  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| constants | <code>Object</code> | constants to merge |
+
+<a name="getComponentConstants"></a>
+## getComponentConstants() ⇒ <code>Object</code>
+gets the component constants
+
+**Kind**: global function  
+**Returns**: <code>Object</code> - component constants  
+<a name="setComponentConstants"></a>
+## setComponentConstants(constants) ⇒ <code>Object</code>
+merges the current component constants and the new constants via shallow merge.
+
+**Kind**: global function  
+**Returns**: <code>Object</code> - components merged constants  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| constants | <code>Object</code> | constants to merge |
 
