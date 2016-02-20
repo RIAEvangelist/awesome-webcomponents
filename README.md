@@ -64,6 +64,7 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
             * [.LOGIN_SUCCESS](#awesome.constants.store.LOGIN_SUCCESS) : <code>EventName</code>
             * [.LOGOUT_SUCCESS](#awesome.constants.store.LOGOUT_SUCCESS) : <code>EventName</code>
         * [.component](#awesome.constants.component) : <code>Object</code>
+            * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>Object</code>
     * [.dispatchers](#awesome.dispatchers) : <code>Object</code>
         * [.action](#awesome.dispatchers.action) : <code>Events</code>
     * [.stores](#awesome.stores) : <code>Object</code>
@@ -169,6 +170,7 @@ extensible/overwriteable constansts used in awesome apps
         * [.LOGIN_SUCCESS](#awesome.constants.store.LOGIN_SUCCESS) : <code>EventName</code>
         * [.LOGOUT_SUCCESS](#awesome.constants.store.LOGOUT_SUCCESS) : <code>EventName</code>
     * [.component](#awesome.constants.component) : <code>Object</code>
+        * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>Object</code>
 
 <a name="awesome.constants.action"></a>
 #### constants.action : <code>Object</code>
@@ -218,6 +220,18 @@ logout was successful
 Shallow merge constants constants object
 
 **Kind**: static property of <code>[constants](#awesome.constants)</code>  
+<a name="awesome.constants.component.setter"></a>
+##### component.setter(constants) ⇒ <code>Object</code>
+merges the current component constants and the new constants via shallow merge.
+
+**Kind**: static method of <code>[component](#awesome.constants.component)</code>  
+**Returns**: <code>Object</code> - components merged constants  
+**Access:** protected  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| constants | <code>Object</code> | constants to merge |
+
 <a name="awesome.dispatchers"></a>
 ### awesome.dispatchers : <code>Object</code>
 dispatchers for awesome 1 way data flow
@@ -377,14 +391,3 @@ gets the component constants
 
 **Kind**: global function  
 **Returns**: <code>Object</code> - component constants  
-<a name="setComponentConstants"></a>
-## setComponentConstants(constants) ⇒ <code>Object</code>
-merges the current component constants and the new constants via shallow merge.
-
-**Kind**: global function  
-**Returns**: <code>Object</code> - components merged constants  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| constants | <code>Object</code> | constants to merge |
-

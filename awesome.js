@@ -200,8 +200,9 @@ class Awesome{
         const components={};
 
         /**
-         * gets the action constants
-         * @method getActionConstants
+         * action constants getter
+         * @method awesome.constants.action.getter
+         * @protected
          * @return {Object}           action constants
          */
         function getActionConstants(){
@@ -209,8 +210,9 @@ class Awesome{
         }
 
         /**
-         * merges the current action constants and the new constants via shallow merge.
-         * @method setActionConstants
+         * action constants setter : merges the current action constants and the new constants via shallow merge.
+         * @method awesome.constants.action.setter
+         * @protected
          * @param  {Object}           constants constants to merge
          * @return {Object} actions merged constants
          */
@@ -221,8 +223,9 @@ class Awesome{
         }
 
         /**
-         * gets the store constants
-         * @method getStoreConstants
+         * store constants getter
+         * @method awesome.constants.store.getter
+         * @protected
          * @return {Object}           store constants
          */
         function getStoreConstants(){
@@ -230,8 +233,9 @@ class Awesome{
         }
 
         /**
-         * merges the current store constants and the new constants via shallow merge.
-         * @method setStoreConstants
+         * action constants setter : merges the current store constants and the new constants via shallow merge.
+         * @method awesome.constants.store.setter
+         * @protected
          * @param  {Object}           constants constants to merge
          * @return {Object} stores merged constants
          */
@@ -242,8 +246,9 @@ class Awesome{
         }
 
         /**
-         * gets the component constants
-         * @method getComponentConstants
+         * component constants getter
+         * @method awesome.constants.component.getter
+         * @protected
          * @return {Object}           component constants
          */
         function getComponentConstants(){
@@ -251,8 +256,9 @@ class Awesome{
         }
 
         /**
-         * merges the current component constants and the new constants via shallow merge.
-         * @method setComponentConstants
+         * component constants setter : merges the current component constants and the new constants via shallow merge.
+         * @method awesome.constants.component.setter
+         * @protected
          * @param  {Object}           constants constants to merge
          * @return {Object} components merged constants
          */
