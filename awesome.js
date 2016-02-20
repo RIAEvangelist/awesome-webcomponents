@@ -122,21 +122,13 @@ class Awesome{
             this.constants,
             {
                 /**
-                 * action constants
+                 * action constant
                  * @memberof Awesome.constants
                  * @type {Object}
                  */
                 action:{
                     enumerable:true,
-                    /**
-                     * get the action constants
-                     * @type {Object}
-                     */
                     get:getActionConstants,
-                    /**
-                     * set the actions constants
-                     * @type {Object}
-                     */
                     set:setActionConstants
                 },
                 /**
