@@ -195,22 +195,22 @@ all stores should reset their state
 **Kind**: static property of <code>[store](#awesome.constants.store)</code>  
 <a name="awesome.constants.store.LOGIN_ERROR"></a>
 ##### store.LOGIN_ERROR : <code>EventName</code>
-all stores should reset their state
+user supplied bad credentials
 
 **Kind**: static property of <code>[store](#awesome.constants.store)</code>  
 <a name="awesome.constants.store.LOGOUT_ERROR"></a>
 ##### store.LOGOUT_ERROR : <code>EventName</code>
-all stores should reset their state
+there was an error logging out
 
 **Kind**: static property of <code>[store](#awesome.constants.store)</code>  
 <a name="awesome.constants.store.LOGIN_SUCCESS"></a>
 ##### store.LOGIN_SUCCESS : <code>EventName</code>
-all stores should reset their state
+login was successful
 
 **Kind**: static property of <code>[store](#awesome.constants.store)</code>  
 <a name="awesome.constants.store.LOGOUT_SUCCESS"></a>
 ##### store.LOGOUT_SUCCESS : <code>EventName</code>
-all stores should reset their state
+logout was successful
 
 **Kind**: static property of <code>[store](#awesome.constants.store)</code>  
 <a name="awesome.constants.component"></a>
