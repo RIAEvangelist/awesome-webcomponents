@@ -101,7 +101,7 @@ class Awesome{
         );
 
         /**
-         * @property {Class}
+         * @extends Awesome
          */
         Object.defineProperty(
             this,
