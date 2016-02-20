@@ -203,7 +203,7 @@ class Awesome{
          * action constants getter
          * @method awesome.constants.action.getter
          * @protected
-         * @return {Object}           action constants
+         * @return {ActionConstants}           action constants
          */
         function getActionConstants(){
             return actions;
@@ -214,7 +214,7 @@ class Awesome{
          * @method awesome.constants.action.setter
          * @protected
          * @param  {Object}           constants constants to merge
-         * @return {Object} actions merged constants
+         * @return {ActionConstants} actions merged constants
          */
         function setActionConstants(constants){
             Object.assign(actions,constants);
@@ -226,7 +226,7 @@ class Awesome{
          * store constants getter
          * @method awesome.constants.store.getter
          * @protected
-         * @return {Object}           store constants
+         * @return {StoreConstants}           store constants
          */
         function getStoreConstants(){
             return stores;
@@ -237,7 +237,7 @@ class Awesome{
          * @method awesome.constants.store.setter
          * @protected
          * @param  {Object}           constants constants to merge
-         * @return {Object} stores merged constants
+         * @return {StoreConstants} stores merged constants
          */
         function setStoreConstants(constants){
             Object.assign(stores,constants);
@@ -249,7 +249,7 @@ class Awesome{
          * component constants getter
          * @method awesome.constants.component.getter
          * @protected
-         * @return {Object}           component constants
+         * @return {ComponentConstants}           component constants
          */
         function getComponentConstants(){
             return components;
@@ -260,7 +260,7 @@ class Awesome{
          * @method awesome.constants.component.setter
          * @protected
          * @param  {Object}           constants constants to merge
-         * @return {Object} components merged constants
+         * @return {ComponentConstants} components merged constants
          */
         function setComponentConstants(constants){
             Object.assign(components,constants);

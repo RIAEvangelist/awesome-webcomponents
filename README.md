@@ -57,19 +57,19 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
     * [.path](#awesome.path) : <code>String</code>
     * [.constants](#awesome.constants) : <code>Object</code>
         * [.action](#awesome.constants.action) : <code>Object</code>
-            * [.getter()](#awesome.constants.action.getter) ⇒ <code>Object</code>
-            * [.setter(constants)](#awesome.constants.action.setter) ⇒ <code>Object</code>
+            * [.getter()](#awesome.constants.action.getter) ⇒ <code>ActionConstants</code>
+            * [.setter(constants)](#awesome.constants.action.setter) ⇒ <code>ActionConstants</code>
         * [.store](#awesome.constants.store) : <code>Object</code>
             * [.RESET](#awesome.constants.store.RESET) : <code>EventName</code>
             * [.LOGIN_ERROR](#awesome.constants.store.LOGIN_ERROR) : <code>EventName</code>
             * [.LOGOUT_ERROR](#awesome.constants.store.LOGOUT_ERROR) : <code>EventName</code>
             * [.LOGIN_SUCCESS](#awesome.constants.store.LOGIN_SUCCESS) : <code>EventName</code>
             * [.LOGOUT_SUCCESS](#awesome.constants.store.LOGOUT_SUCCESS) : <code>EventName</code>
-            * [.getter()](#awesome.constants.store.getter) ⇒ <code>Object</code>
-            * [.setter(constants)](#awesome.constants.store.setter) ⇒ <code>Object</code>
+            * [.getter()](#awesome.constants.store.getter) ⇒ <code>StoreConstants</code>
+            * [.setter(constants)](#awesome.constants.store.setter) ⇒ <code>StoreConstants</code>
         * [.component](#awesome.constants.component) : <code>Object</code>
-            * [.getter()](#awesome.constants.component.getter) ⇒ <code>Object</code>
-            * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>Object</code>
+            * [.getter()](#awesome.constants.component.getter) ⇒ <code>ComponentConstants</code>
+            * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>ComponentConstants</code>
     * [.dispatchers](#awesome.dispatchers) : <code>Object</code>
         * [.action](#awesome.dispatchers.action) : <code>Events</code>
     * [.stores](#awesome.stores) : <code>Object</code>
@@ -168,19 +168,19 @@ extensible/overwriteable constansts used in awesome apps
 
 * [.constants](#awesome.constants) : <code>Object</code>
     * [.action](#awesome.constants.action) : <code>Object</code>
-        * [.getter()](#awesome.constants.action.getter) ⇒ <code>Object</code>
-        * [.setter(constants)](#awesome.constants.action.setter) ⇒ <code>Object</code>
+        * [.getter()](#awesome.constants.action.getter) ⇒ <code>ActionConstants</code>
+        * [.setter(constants)](#awesome.constants.action.setter) ⇒ <code>ActionConstants</code>
     * [.store](#awesome.constants.store) : <code>Object</code>
         * [.RESET](#awesome.constants.store.RESET) : <code>EventName</code>
         * [.LOGIN_ERROR](#awesome.constants.store.LOGIN_ERROR) : <code>EventName</code>
         * [.LOGOUT_ERROR](#awesome.constants.store.LOGOUT_ERROR) : <code>EventName</code>
         * [.LOGIN_SUCCESS](#awesome.constants.store.LOGIN_SUCCESS) : <code>EventName</code>
         * [.LOGOUT_SUCCESS](#awesome.constants.store.LOGOUT_SUCCESS) : <code>EventName</code>
-        * [.getter()](#awesome.constants.store.getter) ⇒ <code>Object</code>
-        * [.setter(constants)](#awesome.constants.store.setter) ⇒ <code>Object</code>
+        * [.getter()](#awesome.constants.store.getter) ⇒ <code>StoreConstants</code>
+        * [.setter(constants)](#awesome.constants.store.setter) ⇒ <code>StoreConstants</code>
     * [.component](#awesome.constants.component) : <code>Object</code>
-        * [.getter()](#awesome.constants.component.getter) ⇒ <code>Object</code>
-        * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>Object</code>
+        * [.getter()](#awesome.constants.component.getter) ⇒ <code>ComponentConstants</code>
+        * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>ComponentConstants</code>
 
 <a name="awesome.constants.action"></a>
 #### constants.action : <code>Object</code>
@@ -189,22 +189,22 @@ Shallow merge action constants object
 **Kind**: static property of <code>[constants](#awesome.constants)</code>  
 
 * [.action](#awesome.constants.action) : <code>Object</code>
-    * [.getter()](#awesome.constants.action.getter) ⇒ <code>Object</code>
-    * [.setter(constants)](#awesome.constants.action.setter) ⇒ <code>Object</code>
+    * [.getter()](#awesome.constants.action.getter) ⇒ <code>ActionConstants</code>
+    * [.setter(constants)](#awesome.constants.action.setter) ⇒ <code>ActionConstants</code>
 
 <a name="awesome.constants.action.getter"></a>
-##### action.getter() ⇒ <code>Object</code>
+##### action.getter() ⇒ <code>ActionConstants</code>
 action constants getter
 
 **Kind**: static method of <code>[action](#awesome.constants.action)</code>  
-**Returns**: <code>Object</code> - action constants  
+**Returns**: <code>ActionConstants</code> - action constants  
 **Access:** protected  
 <a name="awesome.constants.action.setter"></a>
-##### action.setter(constants) ⇒ <code>Object</code>
+##### action.setter(constants) ⇒ <code>ActionConstants</code>
 action constants setter : merges the current action constants and the new constants via shallow merge.
 
 **Kind**: static method of <code>[action](#awesome.constants.action)</code>  
-**Returns**: <code>Object</code> - actions merged constants  
+**Returns**: <code>ActionConstants</code> - actions merged constants  
 **Access:** protected  
 
 | Param | Type | Description |
@@ -223,8 +223,8 @@ Shallow merge store constants object
     * [.LOGOUT_ERROR](#awesome.constants.store.LOGOUT_ERROR) : <code>EventName</code>
     * [.LOGIN_SUCCESS](#awesome.constants.store.LOGIN_SUCCESS) : <code>EventName</code>
     * [.LOGOUT_SUCCESS](#awesome.constants.store.LOGOUT_SUCCESS) : <code>EventName</code>
-    * [.getter()](#awesome.constants.store.getter) ⇒ <code>Object</code>
-    * [.setter(constants)](#awesome.constants.store.setter) ⇒ <code>Object</code>
+    * [.getter()](#awesome.constants.store.getter) ⇒ <code>StoreConstants</code>
+    * [.setter(constants)](#awesome.constants.store.setter) ⇒ <code>StoreConstants</code>
 
 <a name="awesome.constants.store.RESET"></a>
 ##### store.RESET : <code>EventName</code>
@@ -252,18 +252,18 @@ logout was successful
 
 **Kind**: static property of <code>[store](#awesome.constants.store)</code>  
 <a name="awesome.constants.store.getter"></a>
-##### store.getter() ⇒ <code>Object</code>
+##### store.getter() ⇒ <code>StoreConstants</code>
 store constants getter
 
 **Kind**: static method of <code>[store](#awesome.constants.store)</code>  
-**Returns**: <code>Object</code> - store constants  
+**Returns**: <code>StoreConstants</code> - store constants  
 **Access:** protected  
 <a name="awesome.constants.store.setter"></a>
-##### store.setter(constants) ⇒ <code>Object</code>
+##### store.setter(constants) ⇒ <code>StoreConstants</code>
 action constants setter : merges the current store constants and the new constants via shallow merge.
 
 **Kind**: static method of <code>[store](#awesome.constants.store)</code>  
-**Returns**: <code>Object</code> - stores merged constants  
+**Returns**: <code>StoreConstants</code> - stores merged constants  
 **Access:** protected  
 
 | Param | Type | Description |
@@ -277,22 +277,22 @@ Shallow merge constants constants object
 **Kind**: static property of <code>[constants](#awesome.constants)</code>  
 
 * [.component](#awesome.constants.component) : <code>Object</code>
-    * [.getter()](#awesome.constants.component.getter) ⇒ <code>Object</code>
-    * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>Object</code>
+    * [.getter()](#awesome.constants.component.getter) ⇒ <code>ComponentConstants</code>
+    * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>ComponentConstants</code>
 
 <a name="awesome.constants.component.getter"></a>
-##### component.getter() ⇒ <code>Object</code>
+##### component.getter() ⇒ <code>ComponentConstants</code>
 component constants getter
 
 **Kind**: static method of <code>[component](#awesome.constants.component)</code>  
-**Returns**: <code>Object</code> - component constants  
+**Returns**: <code>ComponentConstants</code> - component constants  
 **Access:** protected  
 <a name="awesome.constants.component.setter"></a>
-##### component.setter(constants) ⇒ <code>Object</code>
+##### component.setter(constants) ⇒ <code>ComponentConstants</code>
 component constants setter : merges the current component constants and the new constants via shallow merge.
 
 **Kind**: static method of <code>[component](#awesome.constants.component)</code>  
-**Returns**: <code>Object</code> - components merged constants  
+**Returns**: <code>ComponentConstants</code> - components merged constants  
 **Access:** protected  
 
 | Param | Type | Description |
