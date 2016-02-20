@@ -62,7 +62,7 @@ get or set component constants
 **Kind**: static property of <code>[constants](#Awesome.constants)</code>  
 <a name="Awesome.dispatchers"></a>
 ### Awesome.dispatchers : <code>Object</code>
-dispatchers
+dispatchers for store/action/component messages
 
 **Kind**: static property of <code>[Awesome](#Awesome)</code>  
 <a name="Awesome.stores"></a>

@@ -48,7 +48,7 @@ class Awesome{
                     value:{}
                 },
                 /**
-                 * dispatchers
+                 * dispatchers for store/action/component messages
                  * @memberof Awesome
                  * @type {Object}
                  */
@@ -100,6 +100,9 @@ class Awesome{
             }
         );
 
+        /**
+         * @property {Class}
+         */
         Object.defineProperty(
             this,
             /**
