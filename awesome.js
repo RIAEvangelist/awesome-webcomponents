@@ -21,7 +21,7 @@ window.off=window.removeEventListener;
  * @class Awesome
  * @namespace awesome
  *
- * @prop path {String} Path to folder awesome.js is located in
+ * @prop {@link awesome.path} {String} Path to folder awesome.js is located in
  * @prop bower {String} path to bower components
  *
  *
