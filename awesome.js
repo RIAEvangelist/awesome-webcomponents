@@ -193,30 +193,63 @@ class Awesome{
         const stores={};
         const components={};
 
+        /**
+         * gets the action constants
+         * @method getActionConstants
+         * @return {Object}           action constants
+         */
         function getActionConstants(){
             return actions;
         }
 
+        /**
+         * merges the current action constants and the new constants via shallow merge.
+         * @method setActionConstants
+         * @param  {Object}           constants constants to merge
+         * @return {Object} actions merged constants
+         */
         function setActionConstants(constants){
             Object.assign(actions,constants);
             uniqueEntries(actions);
             return actions;
         }
 
+        /**
+         * gets the store constants
+         * @method getStoreConstants
+         * @return {Object}           store constants
+         */
         function getStoreConstants(){
             return stores;
         }
 
+        /**
+         * merges the current store constants and the new constants via shallow merge.
+         * @method setStoreConstants
+         * @param  {Object}           constants constants to merge
+         * @return {Object} stores merged constants
+         */
         function setStoreConstants(constants){
             Object.assign(stores,constants);
             uniqueEntries(stores);
             return stores;
         }
 
+        /**
+         * gets the component constants
+         * @method getComponentConstants
+         * @return {Object}           component constants
+         */
         function getComponentConstants(){
             return components;
         }
 
+        /**
+         * merges the current component constants and the new constants via shallow merge.
+         * @method setComponentConstants
+         * @param  {Object}           constants constants to merge
+         * @return {Object} components merged constants
+         */
         function setComponentConstants(constants){
             Object.assign(components,constants);
             uniqueEntries(components);
