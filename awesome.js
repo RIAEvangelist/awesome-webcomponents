@@ -215,8 +215,8 @@ class Awesome{
         /**
          * loadTemplate collects template element and returns element
          * @method Awesome.loadTemplate
-         * @param  {Object} instance [instance or scope of template element]
-         * @return {Object}          [contents of template element]
+         * @param  {Object} instance instance or scope of template element
+         * @return {Object}          contents of template element
          */
         function loadTemplate(instance){
             const template=instance.querySelector('template');
@@ -233,8 +233,8 @@ class Awesome{
         /**
          * requireScript includes js scripts into document
          * @method Awesome.requireScript
-         * @param  {String} path [path to script]
-         * @return {Boolean}      [true]
+         * @param  {String} path path to script
+         * @return {Boolean}      true
          */
         function requireScript(path){
             const script=document.createElement('script');
@@ -270,8 +270,8 @@ class Awesome{
         /**
          * requireCSS requires a CSS stylesheet into the document
          * @method Awesome.requireCSS
-         * @param  {String} path [Path to CSS stylesheet]
-         * @return {Boolean}      [false if stylesheet has already been loaded into document]
+         * @param  {String} path Path to CSS stylesheet
+         * @return {Boolean}      false if stylesheet has already been loaded into document
          */
         function requireCSS(path){
             const css=document.createElement('link');
@@ -289,8 +289,8 @@ class Awesome{
         /**
          * mergeDataset merges element's dataset to current default dataset of document
          * @method Awesome.mergeDataset
-         * @param {Object} el       [element dataset to be merged]
-         * @param {Object} defaults [default dataset]
+         * @param {Object} el       element dataset to be merged
+         * @param {Object} defaults default dataset
          */
         function mergeDataset(el,defaults){
             const data={};
@@ -309,10 +309,10 @@ class Awesome{
         /**
          * updateAttributesFromData updates an element's attributes
          * @method Awesome.updateAttributesFromData
-         * @param  {Object} el    [element object]
-         * @param  {String} key   [key of element]
-         * @param  {String} value [value to update data to]
-         * @return {Object}       [updted element object]
+         * @param  {Object} el    element object
+         * @param  {String} key   key of element
+         * @param  {String} value value to update data to
+         * @return {Object}       updted element object
          */
         function updateAttributesFromData(el,key,value){
             if(key.indexOf('data-')!==0){
@@ -329,8 +329,8 @@ class Awesome{
         /**
          * uniqueEntries ensures that keys and values of data array are unique
          * @method Awesome.uniqueEntries
-         * @param  {Array} data [Data array with unique entries]
-         * @return {Boolean}      [true]
+         * @param  {Array} data Data array with unique entries
+         * @return {Boolean}      true
          */
         function uniqueEntries(data){
             const duplicateCheckArray=[];
