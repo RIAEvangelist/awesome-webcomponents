@@ -11,12 +11,18 @@ window.off=window.removeEventListener;
  *
  * Only Chromium based browsers support ES6 well enough for these components. Firefox only needs to complete support for standards compliant ` const ` and ` let ` and these will work in FF as well.
  *
+ * install awesome-webcomponents via bower for your project by running ` bower install awesome-webcomponents ` don't forget to run ` bower update ` on occasion to get the latest version!
  *
  * ### Working Component Examples and Demos
  * [awesome-webcomponents on github.io](https://riaevangelist.github.io/awesome-webcomponents/)
  * #### Licensed under DBAD license
  * See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or our [licence.md](https://github.com/RIAEvangelist/awesome-webcomponents/blob/master/LICENSE.md) file.
- * `npm install `
+ *
+ * # Contributing
+ * 1. Fork the repo
+ * 2. Do awesome stuff!
+ * 3. Submit a Pull Request
+ * 4. Feel Awesome!
  *
  * @class Awesome
  * @namespace awesome
@@ -27,7 +33,7 @@ window.off=window.removeEventListener;
  *
  * @prop constants {Object} awesome constants
  * @prop dispatchers {Object} dispatchers for store/action/component messages
- * @prop stores {Object} awesome 1 way data flow stores for use by components
+ * @prop stores {Object} registered awesome.Store instances. These are designed to support 1 way data flows for use by components
  *
  * @prop Store {Class} Store class, used to create new stores
  *
