@@ -29,6 +29,7 @@ window.off=window.removeEventListener;
  * @prop dispatchers {Object} dispatchers for store/action/component messages
  * @prop stores {Object} awesome 1 way data flow stores for use by components
  *
+ * @prop Store {Class} Store class, used to create new stores
  *
  * @prop loadTemplate {Function} fetches nested template contents for inclusion in awesome-component
  * @prop requireScript {Function} inject script tag into header

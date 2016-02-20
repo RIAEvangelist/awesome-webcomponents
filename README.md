@@ -25,6 +25,7 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
 | constants | <code>Object</code> | awesome constants |
 | dispatchers | <code>Object</code> | dispatchers for store/action/component messages |
 | stores | <code>Object</code> | awesome 1 way data flow stores for use by components |
+| Store | <code>Class</code> | Store class, used to create new stores |
 | loadTemplate | <code>function</code> | fetches nested template contents for inclusion in awesome-component |
 | requireScript | <code>function</code> | inject script tag into header |
 | requireCSS | <code>function</code> | inject stylesheet link tag into header |
@@ -34,6 +35,13 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
 
 
 * [awesome](#awesome) : <code>object</code>
+    * [.Store](#awesome.Store)
+        * [.state](#awesome.Store.state) : <code>Object</code>
+        * [.defaultState](#awesome.Store.defaultState) : <code>Object</code>
+        * [.ignoreResetEvent](#awesome.Store.ignoreResetEvent) : <code>Boolean</code>
+        * [.expose(instance, name)](#awesome.Store.expose)
+        * [.resetState(events)](#awesome.Store.resetState)
+        * ["change"](#awesome.Store.event_change)
     * [.path](#awesome.path) : <code>String</code>
     * [.constants](#awesome.constants) : <code>Object</code>
         * [.action](#awesome.constants.action) : <code>Object</code>
@@ -56,6 +64,70 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
     * [.uniqueEntries(data)](#awesome.uniqueEntries) ⇒ <code>Boolean</code>
     * ["awesome-script-loaded" (e)](#awesome.event_awesome-script-loaded)
 
+<a name="awesome.Store"></a>
+### awesome.Store
+**Kind**: static class of <code>[awesome](#awesome)</code>  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| state | <code>Object</code> | store state |
+| defaultState | <code>Object</code> | default store state |
+| ignoreResetEvent | <code>Boolean</code> | flag to ignore the global reset event ***USE WITH CAUTION*** |
+| resetState | <code>function</code> | rests the store state |
+| expose | <code>function</code> | registers the read-only state with awesome.stores[store name] for components to use |
+
+
+* [.Store](#awesome.Store)
+    * [.state](#awesome.Store.state) : <code>Object</code>
+    * [.defaultState](#awesome.Store.defaultState) : <code>Object</code>
+    * [.ignoreResetEvent](#awesome.Store.ignoreResetEvent) : <code>Boolean</code>
+    * [.expose(instance, name)](#awesome.Store.expose)
+    * [.resetState(events)](#awesome.Store.resetState)
+    * ["change"](#awesome.Store.event_change)
+
+<a name="awesome.Store.state"></a>
+#### Store.state : <code>Object</code>
+state data of store exposed for reading by components via expose. The store modifies this as a shallow merge Object.
+
+**Kind**: static property of <code>[Store](#awesome.Store)</code>  
+**Access:** protected  
+<a name="awesome.Store.defaultState"></a>
+#### Store.defaultState : <code>Object</code>
+default store state
+
+**Kind**: static property of <code>[Store](#awesome.Store)</code>  
+<a name="awesome.Store.ignoreResetEvent"></a>
+#### Store.ignoreResetEvent : <code>Boolean</code>
+flag to ignore the global reset event ***USE WITH CAUTION***
+
+**Kind**: static property of <code>[Store](#awesome.Store)</code>  
+<a name="awesome.Store.expose"></a>
+#### Store.expose(instance, name)
+registers the read-only state with awesome.stores[store name] for components to use
+
+**Kind**: static method of <code>[Store](#awesome.Store)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| instance | <code>Store</code> | your instantiated Store instance |
+| name | <code>String</code> | The name of your store |
+
+<a name="awesome.Store.resetState"></a>
+#### Store.resetState(events)
+rests the store state
+
+**Kind**: static method of <code>[Store](#awesome.Store)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| events | <code>Object</code> | your stores event-pubsub instance |
+
+<a name="awesome.Store.event_change"></a>
+#### "change"
+Store.state change event used to notify component that the store state has changed.
+
+**Kind**: event emitted by <code>[Store](#awesome.Store)</code>  
 <a name="awesome.path"></a>
 ### awesome.path : <code>String</code>
 Path to folder awesome.js is located in
