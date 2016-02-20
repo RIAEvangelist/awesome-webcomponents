@@ -277,3 +277,21 @@ awesome.requireScript(`${awesome.path}dispatchers/component.js`);
 
 //awesome classes
 awesome.requireScript(`${awesome.path}stores/store.js`);
+
+
+
+
+//polyfills
+if(!document.registerElement){
+    console.log(
+        `
+            ####################################
+            CONSIDER ADDING THIS TO YOUR <HEAD>
+            TO SUPPORT MORE browsers with the
+            latest polyfill for document.registerElement
+
+            <script src='${awesome.bower}document-register-element/build/document-register-element.js'></script>
+            ####################################
+        `
+    );
+}
