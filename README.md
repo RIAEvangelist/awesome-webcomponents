@@ -14,14 +14,8 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
     * [.path](#Awesome.path)
     * [.constants](#Awesome.constants) : <code>Object</code>
         * [.action](#Awesome.constants.action) : <code>Object</code>
-            * [.get](#Awesome.constants.action.get) : <code>Object</code>
-            * [.set](#Awesome.constants.action.set) : <code>Object</code>
         * [.store](#Awesome.constants.store) : <code>Object</code>
-            * [.get](#Awesome.constants.store.get) : <code>Object</code>
-            * [.set](#Awesome.constants.store.set) : <code>Object</code>
         * [.component](#Awesome.constants.component) : <code>Object</code>
-            * [.get](#Awesome.constants.component.get) : <code>Object</code>
-            * [.set](#Awesome.constants.component.set) : <code>Object</code>
     * [.dispatchers](#Awesome.dispatchers) : <code>Object</code>
     * [.stores](#Awesome.stores) : <code>Object</code>
     * [.loadTemplate(instance)](#Awesome.loadTemplate) ⇒ <code>Object</code>
@@ -40,12 +34,6 @@ constructor creates awesome
 Path is used for requiring scripts or CSS to components or screens
 
 **Kind**: static property of <code>[Awesome](#Awesome)</code>  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| path | <code>String</code> | path |
-
 <a name="Awesome.constants"></a>
 ### Awesome.constants : <code>Object</code>
 constants
@@ -54,75 +42,24 @@ constants
 
 * [.constants](#Awesome.constants) : <code>Object</code>
     * [.action](#Awesome.constants.action) : <code>Object</code>
-        * [.get](#Awesome.constants.action.get) : <code>Object</code>
-        * [.set](#Awesome.constants.action.set) : <code>Object</code>
     * [.store](#Awesome.constants.store) : <code>Object</code>
-        * [.get](#Awesome.constants.store.get) : <code>Object</code>
-        * [.set](#Awesome.constants.store.set) : <code>Object</code>
     * [.component](#Awesome.constants.component) : <code>Object</code>
-        * [.get](#Awesome.constants.component.get) : <code>Object</code>
-        * [.set](#Awesome.constants.component.set) : <code>Object</code>
 
 <a name="Awesome.constants.action"></a>
 #### constants.action : <code>Object</code>
-action constants
+get or set action constants
 
 **Kind**: static property of <code>[constants](#Awesome.constants)</code>  
-
-* [.action](#Awesome.constants.action) : <code>Object</code>
-    * [.get](#Awesome.constants.action.get) : <code>Object</code>
-    * [.set](#Awesome.constants.action.set) : <code>Object</code>
-
-<a name="Awesome.constants.action.get"></a>
-##### action.get : <code>Object</code>
-get the action constants
-
-**Kind**: static property of <code>[action](#Awesome.constants.action)</code>  
-<a name="Awesome.constants.action.set"></a>
-##### action.set : <code>Object</code>
-set the actions constants
-
-**Kind**: static property of <code>[action](#Awesome.constants.action)</code>  
 <a name="Awesome.constants.store"></a>
 #### constants.store : <code>Object</code>
-store constants
+get or set store constants
 
 **Kind**: static property of <code>[constants](#Awesome.constants)</code>  
-
-* [.store](#Awesome.constants.store) : <code>Object</code>
-    * [.get](#Awesome.constants.store.get) : <code>Object</code>
-    * [.set](#Awesome.constants.store.set) : <code>Object</code>
-
-<a name="Awesome.constants.store.get"></a>
-##### store.get : <code>Object</code>
-get store constants
-
-**Kind**: static property of <code>[store](#Awesome.constants.store)</code>  
-<a name="Awesome.constants.store.set"></a>
-##### store.set : <code>Object</code>
-set store constants
-
-**Kind**: static property of <code>[store](#Awesome.constants.store)</code>  
 <a name="Awesome.constants.component"></a>
 #### constants.component : <code>Object</code>
-component constants
+get or set component constants
 
 **Kind**: static property of <code>[constants](#Awesome.constants)</code>  
-
-* [.component](#Awesome.constants.component) : <code>Object</code>
-    * [.get](#Awesome.constants.component.get) : <code>Object</code>
-    * [.set](#Awesome.constants.component.set) : <code>Object</code>
-
-<a name="Awesome.constants.component.get"></a>
-##### component.get : <code>Object</code>
-get component constants
-
-**Kind**: static property of <code>[component](#Awesome.constants.component)</code>  
-<a name="Awesome.constants.component.set"></a>
-##### component.set : <code>Object</code>
-set component constants
-
-**Kind**: static property of <code>[component](#Awesome.constants.component)</code>  
 <a name="Awesome.dispatchers"></a>
 ### Awesome.dispatchers : <code>Object</code>
 dispatchers
@@ -138,33 +75,33 @@ stores
 loadTemplate collects template element and returns element
 
 **Kind**: static method of <code>[Awesome](#Awesome)</code>  
-**Returns**: <code>Object</code> - [contents of template element]  
+**Returns**: <code>Object</code> - contents of template element  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| instance | <code>Object</code> | [instance or scope of template element] |
+| instance | <code>Object</code> | instance or scope of template element |
 
 <a name="Awesome.requireScript"></a>
 ### Awesome.requireScript(path) ⇒ <code>Boolean</code>
 requireScript includes js scripts into document
 
 **Kind**: static method of <code>[Awesome](#Awesome)</code>  
-**Returns**: <code>Boolean</code> - [true]  
+**Returns**: <code>Boolean</code> - true  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| path | <code>String</code> | [path to script] |
+| path | <code>String</code> | path to script |
 
 <a name="Awesome.requireCSS"></a>
 ### Awesome.requireCSS(path) ⇒ <code>Boolean</code>
 requireCSS requires a CSS stylesheet into the document
 
 **Kind**: static method of <code>[Awesome](#Awesome)</code>  
-**Returns**: <code>Boolean</code> - [false if stylesheet has already been loaded into document]  
+**Returns**: <code>Boolean</code> - false if stylesheet has already been loaded into document  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| path | <code>String</code> | [Path to CSS stylesheet] |
+| path | <code>String</code> | Path to CSS stylesheet |
 
 <a name="Awesome.mergeDataset"></a>
 ### Awesome.mergeDataset(el, defaults)
@@ -174,32 +111,32 @@ mergeDataset merges element's dataset to current default dataset of document
 
 | Param | Type | Description |
 | --- | --- | --- |
-| el | <code>Object</code> | [element dataset to be merged] |
-| defaults | <code>Object</code> | [default dataset] |
+| el | <code>Object</code> | element dataset to be merged |
+| defaults | <code>Object</code> | default dataset |
 
 <a name="Awesome.updateAttributesFromData"></a>
 ### Awesome.updateAttributesFromData(el, key, value) ⇒ <code>Object</code>
 updateAttributesFromData updates an element's attributes
 
 **Kind**: static method of <code>[Awesome](#Awesome)</code>  
-**Returns**: <code>Object</code> - [updted element object]  
+**Returns**: <code>Object</code> - updted element object  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| el | <code>Object</code> | [element object] |
-| key | <code>String</code> | [key of element] |
-| value | <code>String</code> | [value to update data to] |
+| el | <code>Object</code> | element object |
+| key | <code>String</code> | key of element |
+| value | <code>String</code> | value to update data to |
 
 <a name="Awesome.uniqueEntries"></a>
 ### Awesome.uniqueEntries(data) ⇒ <code>Boolean</code>
 uniqueEntries ensures that keys and values of data array are unique
 
 **Kind**: static method of <code>[Awesome](#Awesome)</code>  
-**Returns**: <code>Boolean</code> - [true]  
+**Returns**: <code>Boolean</code> - true  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| data | <code>Array</code> | [Data array with unique entries] |
+| data | <code>Array</code> | Data array with unique entries |
 
 <a name="event_awesome-script-loaded"></a>
 ## "awesome-script-loaded"
