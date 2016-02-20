@@ -9,7 +9,7 @@ window.off=window.removeEventListener;
  *
  * Currently works awesome in/on Android, Chrome, Chromium, ChromeOS, ChromiumOS, Electron and NW.
  *
- * Only Chromium based browsers support ES6 well enough for these components. Firefox only needs to complete support for standards compliant ` const ` and ` let ` and these will work in FF as well.
+ * Only Chromium based browsers and Firefox 45 or newer support ES6 well enough for these components. Firefox 45 or newer supports evrything needed with the included ` ./bower_components/document-register-element/build/document-register-element.js `.
  *
  * install awesome-webcomponents via bower for your project by running ` bower install awesome-webcomponents ` don't forget to run ` bower update ` on occasion to get the latest version!
  *
