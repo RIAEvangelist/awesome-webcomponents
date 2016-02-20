@@ -19,6 +19,14 @@ awesome.requireScript(`${awesome.path}dispatchers/store.js`);
 
             store=awesome.dispatchers.store.events;
 
+            /**
+             * awesome dispatcher for actions
+             * @member awesome.dispatchers.action
+             *
+             * @prop on {Function} binds handler to action event
+             * @prop off {Function} ***un***binds handler from action event
+             * @prop trigger {Function} fires store events
+             */
             Object.defineProperty(
                 awesome.dispatchers,
                 'action',

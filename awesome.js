@@ -260,7 +260,7 @@ class Awesome{
         function scriptLoaded(){
             /**
              * emitted when a script included via {@link awesome.requireScript} has completed loading a script.
-             * @event "awesome-script-loaded"
+             * @event awesome.awesome-script-loaded
              * @param {Event} e Event Data
              * @param {String} e.detail path of the loaded script
              *

@@ -40,6 +40,7 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
         * [.store](#awesome.constants.store) : <code>Object</code>
         * [.component](#awesome.constants.component) : <code>Object</code>
     * [.dispatchers](#awesome.dispatchers) : <code>Object</code>
+        * [.action](#awesome.dispatchers.action)
     * [.stores](#awesome.stores) : <code>Object</code>
     * [.bower](#awesome.bower) : <code>String</code>
     * [.loadTemplate(instance)](#awesome.loadTemplate) ⇒ <code>Object</code>
@@ -48,6 +49,7 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
     * [.mergeDataset(el, defaults)](#awesome.mergeDataset)
     * [.updateAttributesFromData(el, key, value)](#awesome.updateAttributesFromData) ⇒ <code>Object</code>
     * [.uniqueEntries(data)](#awesome.uniqueEntries) ⇒ <code>Boolean</code>
+    * ["awesome-script-loaded" (e)](#awesome.event_awesome-script-loaded)
 
 <a name="awesome.path"></a>
 ### awesome.path : <code>String</code>
@@ -102,6 +104,19 @@ dispatchers for awesome 1 way data flow
 | action | <code>Object</code> | action dispatcher |
 | store | <code>Object</code> | store dispatcher |
 | component | <code>Object</code> | component dispatcher |
+
+<a name="awesome.dispatchers.action"></a>
+#### dispatchers.action
+awesome dispatcher for actions
+
+**Kind**: static property of <code>[dispatchers](#awesome.dispatchers)</code>  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| on | <code>function</code> | binds handler to action event |
+| off | <code>function</code> | ***un***binds handler from action event |
+| trigger | <code>function</code> | fires store events |
 
 <a name="awesome.stores"></a>
 ### awesome.stores : <code>Object</code>
@@ -184,14 +199,17 @@ uniqueEntries ensures that keys and values of data array are unique
 | --- | --- | --- |
 | data | <code>Array</code> | Data array with unique entries |
 
-<a name="event_awesome-script-loaded"></a>
-## "awesome-script-loaded" (e)
+<a name="awesome.event_awesome-script-loaded"></a>
+### "awesome-script-loaded" (e)
 emitted when a script included via [requireScript](#awesome.requireScript) has completed loading a script.
 
-**Kind**: event emitted  
+**Kind**: event emitted by <code>[awesome](#awesome)</code>  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | e | <code>Event</code> | Event Data |
 | e.detail | <code>String</code> | path of the loaded script |
 
+<a name="POOP"></a>
+## POOP : <code>object</code>
+**Kind**: global namespace  
