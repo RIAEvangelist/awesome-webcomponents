@@ -3,17 +3,29 @@ window.on=window.addEventListener;
 window.off=window.removeEventListener;
 
 /**
- *
- * @namespace Awesome
+ * # Awesome-Webcomponents
+ * ### Working Component Examples and Demos
+ * [awesome-webcomponents on github.io](https://riaevangelist.github.io/awesome-webcomponents/)
+ * #### Licensed under DBAD license
+ * See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or our [licence.md](https://github.com/RIAEvangelist/awesome-webcomponents/blob/master/LICENSE.md) file.
+ * `npm install `
  */
 class Awesome{
+    /**
+     * constructor creates awesome
+     * @constructor
+     * @return {Awesome} Awesome instance
+     */
     constructor(){
+        /**
+         * @property {Class}
+         */
         Object.defineProperties(
             this,
             {
                 /**
-                 * path used for requiring scripts or CSS to components or screens
-                 * @type {String}
+                 * Path is used for requiring scripts or CSS to components or screens
+                 * @memberof Awesome
                  */
                 path:{
                     enumerable:true,
@@ -27,6 +39,7 @@ class Awesome{
                 },
                 /**
                  * constants
+                 * @memberof Awesome
                  * @type {Object}
                  */
                 constants:{
@@ -36,6 +49,7 @@ class Awesome{
                 },
                 /**
                  * dispatchers
+                 * @memberof Awesome
                  * @type {Object}
                  */
                 dispatchers:{
@@ -45,6 +59,7 @@ class Awesome{
                 },
                 /**
                  * stores
+                 * @memberof Awesome
                  * @type {Object}
                  */
                 stores:{
@@ -89,6 +104,7 @@ class Awesome{
             this,
             /**
              * Path to bower components
+             * @memberof Awesome
              * @type {String}
              */
             'bower',
@@ -107,52 +123,55 @@ class Awesome{
             {
                 /**
                  * action constants
+                 * @memberof Awesome.constants
                  * @type {Object}
                  */
                 action:{
                     enumerable:true,
                     /**
                      * get the action constants
-                     * @type {[type]}
+                     * @type {Object}
                      */
                     get:getActionConstants,
                     /**
                      * set the actions constants
-                     * @type {[type]}
+                     * @type {Object}
                      */
                     set:setActionConstants
                 },
                 /**
                  * store constants
+                 * @memberof Awesome.constants
                  * @type {Object}
                  */
                 store:{
                     enumerable:true,
                     /**
                      * get store constants
-                     * @type {[type]}
+                     * @type {Object}
                      */
                     get:getStoreConstants,
                     /**
                      * set store constants
-                     * @type {[type]}
+                     * @type {Object}
                      */
                     set:setStoreConstants
                 },
                 /**
                  * component constants
+                 * @memberof Awesome.constants
                  * @type {Object}
                  */
                 component:{
                     enumerable:true,
                     /**
                      * get component constants
-                     * @type {[type]}
+                     * @type {Object}
                      */
                     get:getComponentConstants,
                     /**
                      * set component constants
-                     * @type {[type]}
+                     * @type {Object}
                      */
                     set:setComponentConstants
                 }
@@ -194,9 +213,10 @@ class Awesome{
         }
 
         /**
-         * [loadTemplate description]
-         * @param  {[type]} instance [description]
-         * @return {[type]}          [description]
+         * loadTemplate collects template element and returns element
+         * @method Awesome.loadTemplate
+         * @param  {Object} instance [instance or scope of template element]
+         * @return {Object}          [contents of template element]
          */
         function loadTemplate(instance){
             const template=instance.querySelector('template');
@@ -211,9 +231,10 @@ class Awesome{
         }
 
         /**
-         * [requireScript description]
-         * @param  {[type]} path [description]
-         * @return {[type]}      [description]
+         * requireScript includes js scripts into document
+         * @method Awesome.requireScript
+         * @param  {String} path [path to script]
+         * @return {Boolean}      [true]
          */
         function requireScript(path){
             const script=document.createElement('script');
@@ -231,8 +252,9 @@ class Awesome{
         }
 
         /**
-         * [scriptLoaded description]
-         * @return {[type]} [description]
+         * scriptLoaded emits an event when the awesome-script has been loaded with the instance of 'this' as data
+         * @method Awesome.scriptLoaded
+         * @event "awesome-script-loaded"
          */
         function scriptLoaded(){
             const e=new CustomEvent(
@@ -246,9 +268,10 @@ class Awesome{
         }
 
         /**
-         * [requireCSS description]
-         * @param  {[type]} path [description]
-         * @return {[type]}      [description]
+         * requireCSS requires a CSS stylesheet into the document
+         * @method Awesome.requireCSS
+         * @param  {String} path [Path to CSS stylesheet]
+         * @return {Boolean}      [false if stylesheet has already been loaded into document]
          */
         function requireCSS(path){
             const css=document.createElement('link');
@@ -264,9 +287,10 @@ class Awesome{
         }
 
         /**
-         * [mergeDataset description]
-         * @param {[type]} el       [description]
-         * @param {[type]} defaults [description]
+         * mergeDataset merges element's dataset to current default dataset of document
+         * @method Awesome.mergeDataset
+         * @param {Object} el       [element dataset to be merged]
+         * @param {Object} defaults [default dataset]
          */
         function mergeDataset(el,defaults){
             const data={};
@@ -283,11 +307,12 @@ class Awesome{
         }
 
         /**
-         * [updateAttributesFromData description]
-         * @param  {[type]} el    [description]
-         * @param  {[type]} key   [description]
-         * @param  {[type]} value [description]
-         * @return {[type]}       [description]
+         * updateAttributesFromData updates an element's attributes
+         * @method Awesome.updateAttributesFromData
+         * @param  {Object} el    [element object]
+         * @param  {String} key   [key of element]
+         * @param  {String} value [value to update data to]
+         * @return {Object}       [updted element object]
          */
         function updateAttributesFromData(el,key,value){
             if(key.indexOf('data-')!==0){
@@ -302,25 +327,26 @@ class Awesome{
         }
 
         /**
-         * [uniqueEntries description]
-         * @param  {[type]} data [description]
-         * @return {[type]}      [description]
+         * uniqueEntries ensures that keys and values of data array are unique
+         * @method Awesome.uniqueEntries
+         * @param  {Array} data [Data array with unique entries]
+         * @return {Boolean}      [true]
          */
         function uniqueEntries(data){
-            var duplicateCheckArray=[];
-            var duplicateKeyArray=[];
+            const duplicateCheckArray=[];
+            const duplicateKeyArray=[];
 
-            var keys=Object.keys(data);
-            for(var i=0; i<keys.length; i++){
-                var key=keys[i];
-                var entry=data[
+            const keys=Object.keys(data);
+            for(let i=0; i<keys.length; i++){
+                const key=keys[i];
+                const entry=data[
                     key
                 ];
-                var duplicateKeyIndex=duplicateKeyArray.indexOf(key);
-                var duplicateIndex=duplicateCheckArray.indexOf(entry);
+                const duplicateKeyIndex=duplicateKeyArray.indexOf(key);
+                const duplicateIndex=duplicateCheckArray.indexOf(entry);
 
                 if(duplicateKeyIndex>-1){
-                    var error=[
+                    const error=[
                         'duplicate key of',
                         key,
                         'const keys MUST be unique!'
@@ -330,7 +356,7 @@ class Awesome{
                 }
 
                 if(duplicateIndex>-1){
-                    var error=[
+                    const error=[
                         'duplicate value string of',
                         data[key],
                         'found on',
