@@ -7,9 +7,17 @@ window.off=window.removeEventListener;
  *
  * Awesome ES6 compliant web componants for use in your app or website.
  *
- * Currently works awesome in/on Android, Chrome, Chromium, ChromeOS, ChromiumOS, Electron and NW.
+ * Tested and working on :
+ * * Chrome
+ * * Chromium
+ * * Android Chrome
+ * * FireFox >=45
+ * * IE Edge
+ * * [Electron](http://electron.atom.io/)
+ * * [NW.js](http://nwjs.io/)
  *
- * Only Chromium based browsers support ES6 well enough for these components. Firefox only needs to complete support for standards compliant ` const ` and ` let ` and these will work in FF as well.
+ * Firefox >=45 supports evrything needed with the included ` ./bower_components/document-register-element/build/document-register-element.js `.
+ * IE Edge ` Array.prototype.includes ` polyfill is build into awesome.js
  *
  * install awesome-webcomponents via bower for your project by running ` bower install awesome-webcomponents ` don't forget to run ` bower update ` on occasion to get the latest version!
  *
@@ -200,19 +208,21 @@ class Awesome{
         const components={};
 
         /**
-         * gets the action constants
-         * @method getActionConstants
-         * @return {Object}           action constants
+         * action constants getter
+         * @method awesome.constants.action.getter
+         * @protected
+         * @return {ActionConstants}           action constants
          */
         function getActionConstants(){
             return actions;
         }
 
         /**
-         * merges the current action constants and the new constants via shallow merge.
-         * @method setActionConstants
+         * action constants setter : merges the current action constants and the new constants via shallow merge.
+         * @method awesome.constants.action.setter
+         * @protected
          * @param  {Object}           constants constants to merge
-         * @return {Object} actions merged constants
+         * @return {ActionConstants} actions merged constants
          */
         function setActionConstants(constants){
             Object.assign(actions,constants);
@@ -221,19 +231,21 @@ class Awesome{
         }
 
         /**
-         * gets the store constants
-         * @method getStoreConstants
-         * @return {Object}           store constants
+         * store constants getter
+         * @method awesome.constants.store.getter
+         * @protected
+         * @return {StoreConstants}           store constants
          */
         function getStoreConstants(){
             return stores;
         }
 
         /**
-         * merges the current store constants and the new constants via shallow merge.
-         * @method setStoreConstants
+         * action constants setter : merges the current store constants and the new constants via shallow merge.
+         * @method awesome.constants.store.setter
+         * @protected
          * @param  {Object}           constants constants to merge
-         * @return {Object} stores merged constants
+         * @return {StoreConstants} stores merged constants
          */
         function setStoreConstants(constants){
             Object.assign(stores,constants);
@@ -242,19 +254,21 @@ class Awesome{
         }
 
         /**
-         * gets the component constants
-         * @method getComponentConstants
-         * @return {Object}           component constants
+         * component constants getter
+         * @method awesome.constants.component.getter
+         * @protected
+         * @return {ComponentConstants}           component constants
          */
         function getComponentConstants(){
             return components;
         }
 
         /**
-         * merges the current component constants and the new constants via shallow merge.
-         * @method setComponentConstants
+         * component constants setter : merges the current component constants and the new constants via shallow merge.
+         * @method awesome.constants.component.setter
+         * @protected
          * @param  {Object}           constants constants to merge
-         * @return {Object} components merged constants
+         * @return {ComponentConstants} components merged constants
          */
         function setComponentConstants(constants){
             Object.assign(components,constants);
