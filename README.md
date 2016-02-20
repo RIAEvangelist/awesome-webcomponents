@@ -79,7 +79,7 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
             * [.getter()](#awesome.constants.component.getter) ⇒ <code>ComponentConstants</code>
             * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>ComponentConstants</code>
     * [.dispatchers](#awesome.dispatchers) : <code>Object</code>
-        * [.action](#awesome.dispatchers.action) : <code>Events</code>
+        * [.action](#awesome.dispatchers.action) : <code>EventEmitter</code>
     * [.stores](#awesome.stores) : <code>Object</code>
     * [.bower](#awesome.bower) : <code>String</code>
     * [.loadTemplate(instance)](#awesome.loadTemplate) ⇒ <code>Object</code>
@@ -322,7 +322,7 @@ dispatchers for awesome 1 way data flow
 | component | <code>Object</code> | component dispatcher |
 
 <a name="awesome.dispatchers.action"></a>
-#### dispatchers.action : <code>Events</code>
+#### dispatchers.action : <code>EventEmitter</code>
 awesome dispatcher for actions, uses event-pubsub
 
 **Kind**: static property of <code>[dispatchers](#awesome.dispatchers)</code>  
