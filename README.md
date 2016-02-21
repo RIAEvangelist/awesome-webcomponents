@@ -91,6 +91,8 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
             * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>ComponentConstants</code>
     * [.dispatchers](#awesome.dispatchers) : <code>Object</code>
         * [.action](#awesome.dispatchers.action) : <code>EventEmitter</code>
+        * [.component](#awesome.dispatchers.component) : <code>EventEmitter</code>
+        * [.store](#awesome.dispatchers.store) : <code>EventEmitter</code>
     * [.stores](#awesome.stores) : <code>Object</code>
     * [.bower](#awesome.bower) : <code>String</code>
     * [.loadTemplate(instance)](#awesome.loadTemplate) ⇒ <code>Object</code>
@@ -415,6 +417,12 @@ dispatchers for awesome 1 way data flow
 | store | <code>Object</code> | store dispatcher |
 | component | <code>Object</code> | component dispatcher |
 
+
+* [.dispatchers](#awesome.dispatchers) : <code>Object</code>
+    * [.action](#awesome.dispatchers.action) : <code>EventEmitter</code>
+    * [.component](#awesome.dispatchers.component) : <code>EventEmitter</code>
+    * [.store](#awesome.dispatchers.store) : <code>EventEmitter</code>
+
 <a name="awesome.dispatchers.action"></a>
 #### dispatchers.action : <code>EventEmitter</code>
 awesome dispatcher for actions, uses event-pubsub
@@ -427,6 +435,30 @@ awesome dispatcher for actions, uses event-pubsub
 | on | <code>function</code> | binds handler to action event |
 | off | <code>function</code> | ***un***binds handler from action event |
 | trigger | <code>function</code> | fires store event |
+
+<a name="awesome.dispatchers.component"></a>
+#### dispatchers.component : <code>EventEmitter</code>
+awesome dispatcher for components, uses event-pubsub
+
+**Kind**: static property of <code>[dispatchers](#awesome.dispatchers)</code>  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| trigger | <code>function</code> | fires action event |
+
+<a name="awesome.dispatchers.store"></a>
+#### dispatchers.store : <code>EventEmitter</code>
+awesome dispatcher for stores, uses event-pubsub
+
+**Kind**: static property of <code>[dispatchers](#awesome.dispatchers)</code>  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| on | <code>function</code> | binds handler to event |
+| off | <code>function</code> | ***un***binds handler from event |
+| trigger | <code>function</code> | fires event |
 
 <a name="awesome.stores"></a>
 ### awesome.stores : <code>Object</code>

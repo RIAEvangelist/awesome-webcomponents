@@ -19,6 +19,12 @@ awesome.requireScript(`${awesome.path}dispatchers/action.js`);
 
             action=awesome.dispatchers.action.events;
 
+            /**
+             * awesome dispatcher for components, uses event-pubsub
+             * @member awesome.dispatchers.component
+             * @type {EventEmitter}
+             * @prop trigger {Function} fires action event
+             */
             Object.defineProperty(
                 awesome.dispatchers,
                 'component',
