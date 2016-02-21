@@ -81,6 +81,12 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
             * [.getter()](#awesome.constants.store.getter) ⇒ <code>StoreConstants</code>
             * [.setter(constants)](#awesome.constants.store.setter) ⇒ <code>StoreConstants</code>
         * [.component](#awesome.constants.component) : <code>Object</code>
+            * [.DRAG_DROP_ENTER](#awesome.constants.component.DRAG_DROP_ENTER) : <code>String</code>
+            * [.DRAG_DROP_OVER](#awesome.constants.component.DRAG_DROP_OVER) : <code>String</code>
+            * [.DRAG_DROP_LEAVE](#awesome.constants.component.DRAG_DROP_LEAVE) : <code>String</code>
+            * [.VALIDATE_USERNAME](#awesome.constants.component.VALIDATE_USERNAME) : <code>String</code>
+            * [.VALIDATE_EMAIL](#awesome.constants.component.VALIDATE_EMAIL) : <code>String</code>
+            * [.VALIDATE_URL](#awesome.constants.component.VALIDATE_URL) : <code>String</code>
             * [.getter()](#awesome.constants.component.getter) ⇒ <code>ComponentConstants</code>
             * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>ComponentConstants</code>
     * [.dispatchers](#awesome.dispatchers) : <code>Object</code>
@@ -197,6 +203,12 @@ extensible/overwriteable constansts used in awesome apps
         * [.getter()](#awesome.constants.store.getter) ⇒ <code>StoreConstants</code>
         * [.setter(constants)](#awesome.constants.store.setter) ⇒ <code>StoreConstants</code>
     * [.component](#awesome.constants.component) : <code>Object</code>
+        * [.DRAG_DROP_ENTER](#awesome.constants.component.DRAG_DROP_ENTER) : <code>String</code>
+        * [.DRAG_DROP_OVER](#awesome.constants.component.DRAG_DROP_OVER) : <code>String</code>
+        * [.DRAG_DROP_LEAVE](#awesome.constants.component.DRAG_DROP_LEAVE) : <code>String</code>
+        * [.VALIDATE_USERNAME](#awesome.constants.component.VALIDATE_USERNAME) : <code>String</code>
+        * [.VALIDATE_EMAIL](#awesome.constants.component.VALIDATE_EMAIL) : <code>String</code>
+        * [.VALIDATE_URL](#awesome.constants.component.VALIDATE_URL) : <code>String</code>
         * [.getter()](#awesome.constants.component.getter) ⇒ <code>ComponentConstants</code>
         * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>ComponentConstants</code>
 
@@ -327,9 +339,49 @@ Shallow merge constants constants object
 **Kind**: static property of <code>[constants](#awesome.constants)</code>  
 
 * [.component](#awesome.constants.component) : <code>Object</code>
+    * [.DRAG_DROP_ENTER](#awesome.constants.component.DRAG_DROP_ENTER) : <code>String</code>
+    * [.DRAG_DROP_OVER](#awesome.constants.component.DRAG_DROP_OVER) : <code>String</code>
+    * [.DRAG_DROP_LEAVE](#awesome.constants.component.DRAG_DROP_LEAVE) : <code>String</code>
+    * [.VALIDATE_USERNAME](#awesome.constants.component.VALIDATE_USERNAME) : <code>String</code>
+    * [.VALIDATE_EMAIL](#awesome.constants.component.VALIDATE_EMAIL) : <code>String</code>
+    * [.VALIDATE_URL](#awesome.constants.component.VALIDATE_URL) : <code>String</code>
     * [.getter()](#awesome.constants.component.getter) ⇒ <code>ComponentConstants</code>
     * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>ComponentConstants</code>
 
+<a name="awesome.constants.component.DRAG_DROP_ENTER"></a>
+##### component.DRAG_DROP_ENTER : <code>String</code>
+pointer enters drag and drop field
+
+**Kind**: static property of <code>[component](#awesome.constants.component)</code>  
+<a name="awesome.constants.component.DRAG_DROP_OVER"></a>
+##### component.DRAG_DROP_OVER : <code>String</code>
+pointer over drag and drop field
+
+**Kind**: static property of <code>[component](#awesome.constants.component)</code>  
+**Memeber**: awesome.constants.component.DRAG_DROP_OVER  
+<a name="awesome.constants.component.DRAG_DROP_LEAVE"></a>
+##### component.DRAG_DROP_LEAVE : <code>String</code>
+pointer leaves drag and drop field
+
+**Kind**: static property of <code>[component](#awesome.constants.component)</code>  
+<a name="awesome.constants.component.VALIDATE_USERNAME"></a>
+##### component.VALIDATE_USERNAME : <code>String</code>
+regular expression for validating user name
+
+**Kind**: static property of <code>[component](#awesome.constants.component)</code>  
+**Memeber**: awesome.constants.component.VALIDATE_USERNAME  
+<a name="awesome.constants.component.VALIDATE_EMAIL"></a>
+##### component.VALIDATE_EMAIL : <code>String</code>
+regular expression for validating user email
+
+**Kind**: static property of <code>[component](#awesome.constants.component)</code>  
+**Memeber**: awesome.constansts.component.VALIDATE_EMAIL  
+<a name="awesome.constants.component.VALIDATE_URL"></a>
+##### component.VALIDATE_URL : <code>String</code>
+regular expression for validating url
+
+**Kind**: static property of <code>[component](#awesome.constants.component)</code>  
+**Memeber**: awesome.constansts.component.VALIDATE_URL  
 <a name="awesome.constants.component.getter"></a>
 ##### component.getter() ⇒ <code>ComponentConstants</code>
 component constants getter
