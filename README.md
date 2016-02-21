@@ -169,10 +169,15 @@ Store.state change event used to notify component that the store state has chang
 **Kind**: event emitted by <code>[Store](#awesome.Store)</code>  
 <a name="awesome.path"></a>
 ### awesome.path : <code>String</code>
-Path to folder awesome.js is located in
+Path to folder awesome.js is located in.
 
 **Kind**: static property of <code>[awesome](#awesome)</code>  
 **Access:** protected  
+**Example**  
+```javascript
+awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
+awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
+```
 <a name="awesome.constants"></a>
 ### awesome.constants : <code>Object</code>
 extensible/overwriteable constansts used in awesome apps

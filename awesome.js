@@ -65,7 +65,13 @@ class Awesome{
             this,
             {
                 /**
-                 * Path to folder awesome.js is located in
+                 * Path to folder awesome.js is located in.
+                 *
+                 * @example
+                 *
+                 * awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
+                 * awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
+                 *
                  * @member awesome.path
                  * @protected
                  * @type {String}
