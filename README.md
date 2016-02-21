@@ -196,8 +196,8 @@ extensible/overwriteable constansts used in awesome apps
 const constants = awesome.constants.component;
 
 const defaults={
-                     username_pattern: constants.VALIDATE_USERNAME,
-                   };
+		username_pattern: constants.VALIDATE_USERNAME,
+};
 ```
 
 * [.constants](#awesome.constants) : <code>Object</code>
@@ -447,11 +447,11 @@ dispatchers for awesome 1 way data flow
 const dispatcher=awesome.dispatchers.action;
 
 dispatcher.trigger(
-                    storeEvents.EVENT_NAME,
-                    {
-                        data : 'data'
-                    }
-                );
+storeEvents.EVENT_NAME,
+   {
+       data : 'data'
+   }
+);
 ```
 
 * [.dispatchers](#awesome.dispatchers) : <code>Object</code>
@@ -506,9 +506,9 @@ awesome 1 way data flow stores for use by components
 state=awesome.stores.auth.state;
 
 state.on(
-                    'change',
-                    this.update.bind(this)
-                  );
+   'change',
+   this.update.bind(this)
+ );
 ```
 <a name="awesome.bower"></a>
 ### awesome.bower : <code>String</code>
@@ -537,12 +537,12 @@ loadTemplate collects template element and returns element
 const content=awesome.loadTemplate(this);
 
 this.innerHTML=`
-             <header>
-                 ${icon}
-                 ${this.dataset.title}
-                 ${content}
-             </header>
-         `;
+  <header>
+     ${icon}
+     ${this.dataset.title}
+     ${content}
+  </header>
+`;
 ```
 <a name="awesome.requireScript"></a>
 ### awesome.requireScript(path) ⇒ <code>Boolean</code>
@@ -559,8 +559,8 @@ requireScript includes js scripts into document
 **Example**  
 ```javascript
 awesome.requireScript(`${awesome.path}dispatchers/action.js`);
-           awesome.requireScript(`${awesome.path}actions/constants.js`);
-           awesome.requireScript(`${awesome.path}stores/constants.js`);
+awesome.requireScript(`${awesome.path}actions/constants.js`);
+awesome.requireScript(`${awesome.path}stores/constants.js`);
 ```
 <a name="awesome.requireCSS"></a>
 ### awesome.requireCSS(path) ⇒ <code>Boolean</code>
@@ -630,7 +630,7 @@ emitted when a script included via [requireScript](#awesome.requireScript) has c
 **Example**  
 ```javascript
 window.on(
-                 'awesome-script-loaded',
-                 init
-               );
+'awesome-script-loaded',
+init
+);
 ```

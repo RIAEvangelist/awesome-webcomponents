@@ -95,8 +95,8 @@ class Awesome{
                  * const constants = awesome.constants.component;
                  *
                  * const defaults={
-                     username_pattern: constants.VALIDATE_USERNAME,
-                   };
+                 * 		username_pattern: constants.VALIDATE_USERNAME,
+                 * };
                  *
                  * @prop action {Object} action constants
                  * @prop store {Object} store constants
@@ -116,11 +116,11 @@ class Awesome{
                 * const dispatcher=awesome.dispatchers.action;
                 *
                 * dispatcher.trigger(
-                    storeEvents.EVENT_NAME,
-                    {
-                        data : 'data'
-                    }
-                );
+                * storeEvents.EVENT_NAME,
+                *    {
+                *        data : 'data'
+                *    }
+                * );
                 *
                 * @protected
                 * @prop action {Object} action dispatcher
@@ -140,10 +140,10 @@ class Awesome{
                 * state=awesome.stores.auth.state;
                 *
                 * state.on(
-                    'change',
-                    this.update.bind(this)
-                  );
-
+                *    'change',
+                *    this.update.bind(this)
+                *  );
+                *
                 * @type {Object} awesome 1 way data flow stores for use by components
                 */
                 stores:{
@@ -338,12 +338,12 @@ class Awesome{
          * const content=awesome.loadTemplate(this);
          *
          * this.innerHTML=`
-             <header>
-                 ${icon}
-                 ${this.dataset.title}
-                 ${content}
-             </header>
-         `;
+         *   <header>
+         *      ${icon}
+         *      ${this.dataset.title}
+         *      ${content}
+         *   </header>
+         * `;
          *
          * @method awesome.loadTemplate
          * @protected
@@ -368,8 +368,8 @@ class Awesome{
          * @example
          *
          * awesome.requireScript(`${awesome.path}dispatchers/action.js`);
-           awesome.requireScript(`${awesome.path}actions/constants.js`);
-           awesome.requireScript(`${awesome.path}stores/constants.js`);
+         * awesome.requireScript(`${awesome.path}actions/constants.js`);
+         * awesome.requireScript(`${awesome.path}stores/constants.js`);
          *
          * @method awesome.requireScript
          * @protected
@@ -398,9 +398,9 @@ class Awesome{
              * @example
              *
              * window.on(
-                 'awesome-script-loaded',
-                 init
-               );
+             * 'awesome-script-loaded',
+                *init
+               *);
              *
              * @event awesome.awesome-script-loaded
              * @param {Event} e Event Data
