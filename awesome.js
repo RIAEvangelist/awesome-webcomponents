@@ -90,6 +90,14 @@ class Awesome{
                  * @member awesome.constants
                  * @type {Object} extensible/overwriteable constansts used in awesome apps
                  *
+                 * @example
+                 *
+                 * const constants = awesome.constants.component;
+                 *
+                 * const defaults={
+                     username_pattern: constants.VALIDATE_USERNAME,
+                   };
+                 *
                  * @prop action {Object} action constants
                  * @prop store {Object} store constants
                  * @prop component {Object} component constants
@@ -102,6 +110,18 @@ class Awesome{
                 /**
                 * @member awesome.dispatchers
                 * @type {Object} dispatchers for awesome 1 way data flow
+                *
+                * @example
+                *
+                * const dispatcher=awesome.dispatchers.action;
+                *
+                * dispatcher.trigger(
+                    storeEvents.EVENT_NAME,
+                    {
+                        data : 'data'
+                    }
+                );
+                *
                 * @protected
                 * @prop action {Object} action dispatcher
                 * @prop store {Object} store dispatcher
@@ -114,6 +134,16 @@ class Awesome{
                 },
                 /**
                 * @member awesome.stores
+                *
+                * @example
+                *
+                * state=awesome.stores.auth.state;
+                *
+                * state.on(
+                    'change',
+                    this.update.bind(this)
+                  );
+
                 * @type {Object} awesome 1 way data flow stores for use by components
                 */
                 stores:{
@@ -156,6 +186,10 @@ class Awesome{
 
         /**
          * Path to bower components
+         * @example
+         *
+         * awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
+         *
          * @member awesome.bower
          * @protected
          * @type {String}
@@ -178,6 +212,12 @@ class Awesome{
             {
                 /**
                  * Shallow merge action constants object
+                 *
+                 * @example
+                 *
+                 * const constants=awesome.constants.action;
+                 *
+                 *
                  * @member awesome.constants.action
                  * @type {Object}
                  */
@@ -188,6 +228,11 @@ class Awesome{
                 },
                 /**
                  * Shallow merge store constants object
+                 *
+                 * @example
+                 *
+                 * const constants=awesome.constants.store;
+                 *
                  * @member awesome.constants.store
                  * @type {Object}
                  */
@@ -198,6 +243,9 @@ class Awesome{
                 },
                 /**
                  * Shallow merge constants constants object
+                 *
+                 * @example const constants=awesome.constants.component;
+                 *
                  * @member awesome.constants.component
                  * @type {Object}
                  */
@@ -284,6 +332,19 @@ class Awesome{
 
         /**
          * loadTemplate collects template element and returns element
+         *
+         * @example
+         *
+         * const content=awesome.loadTemplate(this);
+         *
+         * this.innerHTML=`
+             <header>
+                 ${icon}
+                 ${this.dataset.title}
+                 ${content}
+             </header>
+         `;
+         *
          * @method awesome.loadTemplate
          * @protected
          * @param  {Object} instance instance or scope of template element
@@ -303,6 +364,13 @@ class Awesome{
 
         /**
          * requireScript includes js scripts into document
+         *
+         * @example
+         *
+         * awesome.requireScript(`${awesome.path}dispatchers/action.js`);
+           awesome.requireScript(`${awesome.path}actions/constants.js`);
+           awesome.requireScript(`${awesome.path}stores/constants.js`);
+         *
          * @method awesome.requireScript
          * @protected
          * @param  {String} path path to script
@@ -326,6 +394,14 @@ class Awesome{
         function scriptLoaded(){
             /**
              * emitted when a script included via {@link awesome.requireScript} has completed loading a script.
+             *
+             * @example
+             *
+             * window.on(
+                 'awesome-script-loaded',
+                 init
+               );
+             *
              * @event awesome.awesome-script-loaded
              * @param {Event} e Event Data
              * @param {String} e.detail path of the loaded script
@@ -343,6 +419,11 @@ class Awesome{
 
         /**
          * requireCSS requires a CSS stylesheet into the document
+         *
+         * @example
+         *
+         * awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
+         *
          * @method awesome.requireCSS
          * @param  {String} path Path to CSS stylesheet
          * @return {Boolean}      false if stylesheet has already been loaded into document
@@ -362,6 +443,11 @@ class Awesome{
 
         /**
          * mergeDataset merges element's dataset to current default dataset of document
+         *
+         * @example
+         *
+         * awesome.mergeDataset(this,defaults);
+         *
          * @method awesome.mergeDataset
          * @param {Object} el       element dataset to be merged
          * @param {Object} defaults default dataset

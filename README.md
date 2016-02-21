@@ -191,6 +191,14 @@ extensible/overwriteable constansts used in awesome apps
 | store | <code>Object</code> | store constants |
 | component | <code>Object</code> | component constants |
 
+**Example**  
+```javascript
+const constants = awesome.constants.component;
+
+const defaults={
+                     username_pattern: constants.VALIDATE_USERNAME,
+                   };
+```
 
 * [.constants](#awesome.constants) : <code>Object</code>
     * [.action](#awesome.constants.action) : <code>Object</code>
@@ -224,6 +232,10 @@ extensible/overwriteable constansts used in awesome apps
 Shallow merge action constants object
 
 **Kind**: static property of <code>[constants](#awesome.constants)</code>  
+**Example**  
+```javascript
+const constants=awesome.constants.action;
+```
 
 * [.action](#awesome.constants.action) : <code>Object</code>
     * [.RESET_STORES](#awesome.constants.action.RESET_STORES) : <code>EventName</code>
@@ -285,6 +297,10 @@ action constants setter : merges the current action constants and the new consta
 Shallow merge store constants object
 
 **Kind**: static property of <code>[constants](#awesome.constants)</code>  
+**Example**  
+```javascript
+const constants=awesome.constants.store;
+```
 
 * [.store](#awesome.constants.store) : <code>Object</code>
     * [.RESET](#awesome.constants.store.RESET) : <code>EventName</code>
@@ -344,6 +360,10 @@ action constants setter : merges the current store constants and the new constan
 Shallow merge constants constants object
 
 **Kind**: static property of <code>[constants](#awesome.constants)</code>  
+**Example**  
+```javascript
+const constants=awesome.constants.component;
+```
 
 * [.component](#awesome.constants.component) : <code>Object</code>
     * [.DRAG_DROP_ENTER](#awesome.constants.component.DRAG_DROP_ENTER) : <code>EventName</code>
@@ -422,6 +442,17 @@ dispatchers for awesome 1 way data flow
 | store | <code>Object</code> | store dispatcher |
 | component | <code>Object</code> | component dispatcher |
 
+**Example**  
+```javascript
+const dispatcher=awesome.dispatchers.action;
+
+dispatcher.trigger(
+                    storeEvents.EVENT_NAME,
+                    {
+                        data : 'data'
+                    }
+                );
+```
 
 * [.dispatchers](#awesome.dispatchers) : <code>Object</code>
     * [.action](#awesome.dispatchers.action) : <code>EventEmitter</code>
@@ -470,12 +501,25 @@ awesome dispatcher for stores, uses event-pubsub
 awesome 1 way data flow stores for use by components
 
 **Kind**: static property of <code>[awesome](#awesome)</code>  
+**Example**  
+```javascript
+state=awesome.stores.auth.state;
+
+state.on(
+                    'change',
+                    this.update.bind(this)
+                  );
+```
 <a name="awesome.bower"></a>
 ### awesome.bower : <code>String</code>
 Path to bower components
 
 **Kind**: static property of <code>[awesome](#awesome)</code>  
 **Access:** protected  
+**Example**  
+```javascript
+awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
+```
 <a name="awesome.loadTemplate"></a>
 ### awesome.loadTemplate(instance) ⇒ <code>Object</code>
 loadTemplate collects template element and returns element
@@ -488,6 +532,18 @@ loadTemplate collects template element and returns element
 | --- | --- | --- |
 | instance | <code>Object</code> | instance or scope of template element |
 
+**Example**  
+```javascript
+const content=awesome.loadTemplate(this);
+
+this.innerHTML=`
+             <header>
+                 ${icon}
+                 ${this.dataset.title}
+                 ${content}
+             </header>
+         `;
+```
 <a name="awesome.requireScript"></a>
 ### awesome.requireScript(path) ⇒ <code>Boolean</code>
 requireScript includes js scripts into document
@@ -500,6 +556,12 @@ requireScript includes js scripts into document
 | --- | --- | --- |
 | path | <code>String</code> | path to script |
 
+**Example**  
+```javascript
+awesome.requireScript(`${awesome.path}dispatchers/action.js`);
+           awesome.requireScript(`${awesome.path}actions/constants.js`);
+           awesome.requireScript(`${awesome.path}stores/constants.js`);
+```
 <a name="awesome.requireCSS"></a>
 ### awesome.requireCSS(path) ⇒ <code>Boolean</code>
 requireCSS requires a CSS stylesheet into the document
@@ -511,6 +573,10 @@ requireCSS requires a CSS stylesheet into the document
 | --- | --- | --- |
 | path | <code>String</code> | Path to CSS stylesheet |
 
+**Example**  
+```javascript
+awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
+```
 <a name="awesome.mergeDataset"></a>
 ### awesome.mergeDataset(el, defaults)
 mergeDataset merges element's dataset to current default dataset of document
@@ -522,6 +588,10 @@ mergeDataset merges element's dataset to current default dataset of document
 | el | <code>Object</code> | element dataset to be merged |
 | defaults | <code>Object</code> | default dataset |
 
+**Example**  
+```javascript
+awesome.mergeDataset(this,defaults);
+```
 <a name="awesome.updateAttributesFromData"></a>
 ### awesome.updateAttributesFromData(el, key, value) ⇒ <code>Object</code>
 updateAttributesFromData updates an element's attributes
@@ -557,3 +627,10 @@ emitted when a script included via [requireScript](#awesome.requireScript) has c
 | e | <code>Event</code> | Event Data |
 | e.detail | <code>String</code> | path of the loaded script |
 
+**Example**  
+```javascript
+window.on(
+                 'awesome-script-loaded',
+                 init
+               );
+```
