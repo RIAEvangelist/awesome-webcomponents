@@ -1,0 +1,10 @@
+awesome-boilerplate{
+    display:block;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}
