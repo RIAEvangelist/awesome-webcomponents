@@ -188,7 +188,7 @@ class Awesome{
          * Path to bower components
          * @example
          *
-         * awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
+         * awesome.requireScript(`${awesome.bower}bower-component/bower-component.js`);
          *
          * @member awesome.bower
          * @protected
@@ -261,6 +261,25 @@ class Awesome{
 
         /**
          * action constants setter : merges the current action constants and the new constants via shallow merge.
+         *
+         * @example
+         *
+         * myNewConstants = {
+         *  	NEW_CONSTANT_1: 'const1',
+         *  	NEW_CONSTANT_2: 'const2'
+         * }
+         *
+         * awesome.setActionConstants(myNewConstants);
+         *
+         * //action constants will now be
+         * //awesome.constants.action
+         * {
+         *  	ACTION_CONSTANT1: 'actionConst1',
+         *  	ACTION_CONSTANT2: 'actionConst2',
+         *  	NEW_CONSTANT_1: 'const1',
+         *  	NEW_CONSTANT_2: 'const2'
+         * }
+         *
          * @method awesome.constants.action.setter
          * @protected
          * @param  {Object}           constants constants to merge
@@ -284,6 +303,26 @@ class Awesome{
 
         /**
          * action constants setter : merges the current store constants and the new constants via shallow merge.
+         *
+         * @example
+         *
+         * myNewConstants = {
+         *  	NEW_CONSTANT_1: 'const1',
+         *  	NEW_CONSTANT_2: 'const2'
+         * }
+         *
+         * awesome.setStoreConstants(myNewConstants);
+         *
+         * //action constants will now be
+         * //awesome.constants.store
+         *
+         * {
+         *  	ACTION_CONSTANT1: 'actionConst1',
+         *  	ACTION_CONSTANT2: 'actionConst2',
+         *  	NEW_CONSTANT_1: 'const1',
+         *  	NEW_CONSTANT_2: 'const2'
+         * }
+         *
          * @method awesome.constants.store.setter
          * @protected
          * @param  {Object}           constants constants to merge
@@ -307,6 +346,25 @@ class Awesome{
 
         /**
          * component constants setter : merges the current component constants and the new constants via shallow merge.
+         *
+         * @example
+         *
+         * myNewConstants = {
+         *  	NEW_CONSTANT_1: 'const1',
+         *  	NEW_CONSTANT_2: 'const2'
+         * }
+         *
+         * awesome.setStoreConstants(myNewConstants);
+         *
+         * //action constants will now be
+         * //awesome.constants.component
+         * {
+         *  	ACTION_CONSTANT1: 'actionConst1',
+         *  	ACTION_CONSTANT2: 'actionConst2',
+         *  	NEW_CONSTANT_1: 'const1',
+         *  	NEW_CONSTANT_2: 'const2'
+         * }
+         *
          * @method awesome.constants.component.setter
          * @protected
          * @param  {Object}           constants constants to merge
@@ -384,9 +442,9 @@ class Awesome{
              * @example
              *
              * window.on(
-             * 'awesome-script-loaded',
-                *init
-               *);
+             *  	'awesome-script-loaded',
+             *  	init
+             *);
              *
              * @event awesome.awesome-script-loaded
              * @param {Event} e Event Data
@@ -430,6 +488,17 @@ class Awesome{
         /**
          * mergeDataset merges element's dataset to current default dataset of document
          *
+         * @example
+         *
+         * update(){
+         *  	 awesome.mergeDataset(this,defaults);
+         *
+         *  	 this.innerHTML=`
+         *  	 	<p>${this.dataset.something}</p>
+         *  	 	${this.innerHTML}
+         *  	 `;
+         *  }
+         *
          * @method awesome.mergeDataset
          * @param {Object} el       element dataset to be merged
          * @param {Object} defaults default dataset
@@ -450,6 +519,13 @@ class Awesome{
 
         /**
          * updateAttributesFromData updates an element's attributes
+         *
+         * @example
+         *
+         * attributeChangedCallback(key,oldValue,newValue){
+         *  	awesome.updateAttributesFromData(this,key);
+         * }
+         *
          * @method awesome.updateAttributesFromData
          * @param  {Object} el    element object
          * @param  {String} key   key of element
@@ -470,6 +546,12 @@ class Awesome{
 
         /**
          * uniqueEntries ensures that keys and values of data array are unique
+         *
+         * @example
+         *
+         * awesome.uniqueEntries(awesome.components.actions);
+         * awesome.uniqueEntries(awesome.components.store);
+         *
          * @method awesome.uniqueEntries
          * @param  {Array} data Data array with unique entries
          * @return {Boolean}      true

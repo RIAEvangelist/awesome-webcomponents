@@ -288,6 +288,24 @@ action constants setter : merges the current action constants and the new consta
 | --- | --- | --- |
 | constants | <code>Object</code> | constants to merge |
 
+**Example**  
+```javascript
+myNewConstants = {
+ 	NEW_CONSTANT_1: 'const1',
+ 	NEW_CONSTANT_2: 'const2'
+}
+
+awesome.setActionConstants(myNewConstants);
+
+//action constants will now be
+//awesome.constants.action
+{
+ 	ACTION_CONSTANT1: 'actionConst1',
+ 	ACTION_CONSTANT2: 'actionConst2',
+ 	NEW_CONSTANT_1: 'const1',
+ 	NEW_CONSTANT_2: 'const2'
+}
+```
 <a name="awesome.constants.store"></a>
 #### constants.store : <code>Object</code>
 Shallow merge store constants object
@@ -347,6 +365,25 @@ action constants setter : merges the current store constants and the new constan
 | --- | --- | --- |
 | constants | <code>Object</code> | constants to merge |
 
+**Example**  
+```javascript
+myNewConstants = {
+ 	NEW_CONSTANT_1: 'const1',
+ 	NEW_CONSTANT_2: 'const2'
+}
+
+awesome.setStoreConstants(myNewConstants);
+
+//action constants will now be
+//awesome.constants.store
+
+{
+ 	ACTION_CONSTANT1: 'actionConst1',
+ 	ACTION_CONSTANT2: 'actionConst2',
+ 	NEW_CONSTANT_1: 'const1',
+ 	NEW_CONSTANT_2: 'const2'
+}
+```
 <a name="awesome.constants.component"></a>
 #### constants.component : <code>Object</code>
 Shallow merge constants constants object
@@ -417,6 +454,24 @@ component constants setter : merges the current component constants and the new 
 | --- | --- | --- |
 | constants | <code>Object</code> | constants to merge |
 
+**Example**  
+```javascript
+myNewConstants = {
+ 	NEW_CONSTANT_1: 'const1',
+ 	NEW_CONSTANT_2: 'const2'
+}
+
+awesome.setStoreConstants(myNewConstants);
+
+//action constants will now be
+//awesome.constants.component
+{
+ 	ACTION_CONSTANT1: 'actionConst1',
+ 	ACTION_CONSTANT2: 'actionConst2',
+ 	NEW_CONSTANT_1: 'const1',
+ 	NEW_CONSTANT_2: 'const2'
+}
+```
 <a name="awesome.dispatchers"></a>
 ### awesome.dispatchers : <code>Object</code>
 dispatchers for awesome 1 way data flow
@@ -507,7 +562,7 @@ Path to bower components
 **Access:** protected  
 **Example**  
 ```javascript
-awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
+awesome.requireScript(`${awesome.bower}bower-component/bower-component.js`);
 ```
 <a name="awesome.loadTemplate"></a>
 ### awesome.loadTemplate(instance) ⇒ <code>Object</code>
@@ -575,6 +630,17 @@ mergeDataset merges element's dataset to current default dataset of document
 | el | <code>Object</code> | element dataset to be merged |
 | defaults | <code>Object</code> | default dataset |
 
+**Example**  
+```javascript
+update(){
+ 	 awesome.mergeDataset(this,defaults);
+
+ 	 this.innerHTML=`
+ 	 	<p>${this.dataset.something}</p>
+ 	 	${this.innerHTML}
+ 	 `;
+ }
+```
 <a name="awesome.updateAttributesFromData"></a>
 ### awesome.updateAttributesFromData(el, key, value) ⇒ <code>Object</code>
 updateAttributesFromData updates an element's attributes
@@ -588,6 +654,12 @@ updateAttributesFromData updates an element's attributes
 | key | <code>String</code> | key of element |
 | value | <code>String</code> | value to update data to |
 
+**Example**  
+```javascript
+attributeChangedCallback(key,oldValue,newValue){
+ 	awesome.updateAttributesFromData(this,key);
+}
+```
 <a name="awesome.uniqueEntries"></a>
 ### awesome.uniqueEntries(data) ⇒ <code>Boolean</code>
 uniqueEntries ensures that keys and values of data array are unique
@@ -599,6 +671,11 @@ uniqueEntries ensures that keys and values of data array are unique
 | --- | --- | --- |
 | data | <code>Array</code> | Data array with unique entries |
 
+**Example**  
+```javascript
+awesome.uniqueEntries(awesome.components.actions);
+awesome.uniqueEntries(awesome.components.store);
+```
 <a name="awesome.event_awesome-script-loaded"></a>
 ### "awesome-script-loaded" (e)
 emitted when a script included via [requireScript](#awesome.requireScript) has completed loading a script.
@@ -613,7 +690,7 @@ emitted when a script included via [requireScript](#awesome.requireScript) has c
 **Example**  
 ```javascript
 window.on(
-'awesome-script-loaded',
-init
+ 	'awesome-script-loaded',
+ 	init
 );
 ```
