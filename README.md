@@ -232,10 +232,6 @@ const defaults={
 Shallow merge action constants object
 
 **Kind**: static property of <code>[constants](#awesome.constants)</code>  
-**Example**  
-```javascript
-const constants=awesome.constants.action;
-```
 
 * [.action](#awesome.constants.action) : <code>Object</code>
     * [.RESET_STORES](#awesome.constants.action.RESET_STORES) : <code>EventName</code>
@@ -297,10 +293,6 @@ action constants setter : merges the current action constants and the new consta
 Shallow merge store constants object
 
 **Kind**: static property of <code>[constants](#awesome.constants)</code>  
-**Example**  
-```javascript
-const constants=awesome.constants.store;
-```
 
 * [.store](#awesome.constants.store) : <code>Object</code>
     * [.RESET](#awesome.constants.store.RESET) : <code>EventName</code>
@@ -358,12 +350,9 @@ action constants setter : merges the current store constants and the new constan
 <a name="awesome.constants.component"></a>
 #### constants.component : <code>Object</code>
 Shallow merge constants constants object
+                *
 
 **Kind**: static property of <code>[constants](#awesome.constants)</code>  
-**Example**  
-```javascript
-const constants=awesome.constants.component;
-```
 
 * [.component](#awesome.constants.component) : <code>Object</code>
     * [.DRAG_DROP_ENTER](#awesome.constants.component.DRAG_DROP_ENTER) : <code>EventName</code>
@@ -537,11 +526,9 @@ loadTemplate collects template element and returns element
 const content=awesome.loadTemplate(this);
 
 this.innerHTML=`
-  <header>
-     ${icon}
-     ${this.dataset.title}
+  <element>
      ${content}
-  </header>
+  </element>
 `;
 ```
 <a name="awesome.requireScript"></a>
@@ -588,10 +575,6 @@ mergeDataset merges element's dataset to current default dataset of document
 | el | <code>Object</code> | element dataset to be merged |
 | defaults | <code>Object</code> | default dataset |
 
-**Example**  
-```javascript
-awesome.mergeDataset(this,defaults);
-```
 <a name="awesome.updateAttributesFromData"></a>
 ### awesome.updateAttributesFromData(el, key, value) ⇒ <code>Object</code>
 updateAttributesFromData updates an element's attributes

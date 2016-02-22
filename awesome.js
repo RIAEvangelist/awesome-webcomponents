@@ -213,11 +213,6 @@ class Awesome{
                 /**
                  * Shallow merge action constants object
                  *
-                 * @example
-                 *
-                 * const constants=awesome.constants.action;
-                 *
-                 *
                  * @member awesome.constants.action
                  * @type {Object}
                  */
@@ -228,11 +223,6 @@ class Awesome{
                 },
                 /**
                  * Shallow merge store constants object
-                 *
-                 * @example
-                 *
-                 * const constants=awesome.constants.store;
-                 *
                  * @member awesome.constants.store
                  * @type {Object}
                  */
@@ -243,9 +233,7 @@ class Awesome{
                 },
                 /**
                  * Shallow merge constants constants object
-                 *
-                 * @example const constants=awesome.constants.component;
-                 *
+                 *                 *
                  * @member awesome.constants.component
                  * @type {Object}
                  */
@@ -338,11 +326,9 @@ class Awesome{
          * const content=awesome.loadTemplate(this);
          *
          * this.innerHTML=`
-         *   <header>
-         *      ${icon}
-         *      ${this.dataset.title}
+         *   <element>
          *      ${content}
-         *   </header>
+         *   </element>
          * `;
          *
          * @method awesome.loadTemplate
@@ -443,10 +429,6 @@ class Awesome{
 
         /**
          * mergeDataset merges element's dataset to current default dataset of document
-         *
-         * @example
-         *
-         * awesome.mergeDataset(this,defaults);
          *
          * @method awesome.mergeDataset
          * @param {Object} el       element dataset to be merged
