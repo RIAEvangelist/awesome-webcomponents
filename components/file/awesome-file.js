@@ -7,7 +7,7 @@ awesome.requireCSS(`${awesome.path}components/file/awesome-file.css`);
         const defaults={
             filename:'',
             filesize:'',
-            filemodifieddate:''
+            file_last_modified:''
         }
 
         class Component extends HTMLElement{
@@ -19,7 +19,7 @@ awesome.requireCSS(`${awesome.path}components/file/awesome-file.css`);
                     <p>${this.dataset.filename}</p>
                         ${content}
                     <p>${this.dataset.filesize}</p>
-                    <p>${this.dataset.filemodifieddate}</p>
+                    <p>${this.dataset.file_last_modified}</p>
                 `;
             }
 
@@ -32,7 +32,7 @@ awesome.requireCSS(`${awesome.path}components/file/awesome-file.css`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-
+                this.createdCallback();
             }
         }
 
