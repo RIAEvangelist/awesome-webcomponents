@@ -41,22 +41,22 @@ window.off=window.removeEventListener;
  * @class Awesome
  * @namespace awesome
  *
- * @prop path {String} Path to folder awesome.js is located in
- * @prop bower {String} path to bower components
+ * @prop awesome.path {String} Path to folder awesome.js is located in
+ * @prop awesome.bower {String} path to bower components
  *
  *
- * @prop constants {Object} awesome constants
- * @prop dispatchers {Object} dispatchers for store/action/component messages
- * @prop stores {Object} registered awesome.Store instances. These are designed to support 1 way data flows for use by components
+ * @prop awesome.constants {Object} awesome constants
+ * @prop awesome.dispatchers {Object} dispatchers for store/action/component messages
+ * @prop awesome.stores {Object} registered awesome.Store instances. These are designed to support 1 way data flows for use by components
  *
- * @prop Store {Class} Store class, used to create new stores
+ * @prop awesome.Store {Class} Store class, used to create new stores
  *
- * @prop loadTemplate {Function} fetches nested template contents for inclusion in awesome-component
- * @prop requireScript {Function} inject script tag into header
- * @prop requireCSS {Function} inject stylesheet link tag into header
- * @prop mergeDataset {Function} merges element's data-* attributes with the defaults for that component element
- * @prop updateAttributesFromData {Function} maps data-* values to * attribute values
- * @prop uniqueEntries {Function} ensures that keys and values of an object unique
+ * @prop awesome.loadTemplate {Function} fetches nested template contents for inclusion in awesome-component
+ * @prop awesome.requireScript {Function} inject script tag into header
+ * @prop awesome.requireCSS {Function} inject stylesheet link tag into header
+ * @prop awesome.mergeDataset {Function} merges element's data-* attributes with the defaults for that component element
+ * @prop awesome.updateAttributesFromData {Function} maps data-* values to * attribute values
+ * @prop awesome.uniqueEntries {Function} ensures that keys and values of an object unique
  *
  */
 class Awesome{
@@ -65,7 +65,13 @@ class Awesome{
             this,
             {
                 /**
-                 * Path to folder awesome.js is located in
+                 * Path to folder awesome.js is located in.
+                 *
+                 * @example
+                 *
+                 * awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
+                 * awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
+                 *
                  * @member awesome.path
                  * @protected
                  * @type {String}
@@ -84,6 +90,14 @@ class Awesome{
                  * @member awesome.constants
                  * @type {Object} extensible/overwriteable constansts used in awesome apps
                  *
+                 * @example
+                 *
+                 * const constants = awesome.constants.component;
+                 *
+                 * const defaults={
+                 * 		username_pattern: constants.VALIDATE_USERNAME,
+                 * };
+                 *
                  * @prop action {Object} action constants
                  * @prop store {Object} store constants
                  * @prop component {Object} component constants
@@ -96,6 +110,18 @@ class Awesome{
                 /**
                 * @member awesome.dispatchers
                 * @type {Object} dispatchers for awesome 1 way data flow
+                *
+                * @example
+                *
+                * const dispatcher=awesome.dispatchers.action;
+                *
+                * dispatcher.trigger(
+                * storeEvents.EVENT_NAME,
+                *    {
+                *        data : 'data'
+                *    }
+                * );
+                *
                 * @protected
                 * @prop action {Object} action dispatcher
                 * @prop store {Object} store dispatcher
@@ -108,6 +134,16 @@ class Awesome{
                 },
                 /**
                 * @member awesome.stores
+                *
+                * @example
+                *
+                * state=awesome.stores.auth.state;
+                *
+                * state.on(
+                *    'change',
+                *    this.update.bind(this)
+                *  );
+                *
                 * @type {Object} awesome 1 way data flow stores for use by components
                 */
                 stores:{
@@ -150,6 +186,10 @@ class Awesome{
 
         /**
          * Path to bower components
+         * @example
+         *
+         * awesome.requireScript(`${awesome.bower}bower-component/bower-component.js`);
+         *
          * @member awesome.bower
          * @protected
          * @type {String}
@@ -172,6 +212,7 @@ class Awesome{
             {
                 /**
                  * Shallow merge action constants object
+                 *
                  * @member awesome.constants.action
                  * @type {Object}
                  */
@@ -192,6 +233,7 @@ class Awesome{
                 },
                 /**
                  * Shallow merge constants constants object
+                 *                 *
                  * @member awesome.constants.component
                  * @type {Object}
                  */
@@ -219,6 +261,25 @@ class Awesome{
 
         /**
          * action constants setter : merges the current action constants and the new constants via shallow merge.
+         *
+         * @example
+         *
+         * myNewConstants = {
+         *  	NEW_CONSTANT_1: 'const1',
+         *  	NEW_CONSTANT_2: 'const2'
+         * }
+         *
+         * awesome.setActionConstants(myNewConstants);
+         *
+         * //action constants will now be
+         * //awesome.constants.action
+         * {
+         *  	ACTION_CONSTANT1: 'actionConst1',
+         *  	ACTION_CONSTANT2: 'actionConst2',
+         *  	NEW_CONSTANT_1: 'const1',
+         *  	NEW_CONSTANT_2: 'const2'
+         * }
+         *
          * @method awesome.constants.action.setter
          * @protected
          * @param  {Object}           constants constants to merge
@@ -242,6 +303,26 @@ class Awesome{
 
         /**
          * action constants setter : merges the current store constants and the new constants via shallow merge.
+         *
+         * @example
+         *
+         * myNewConstants = {
+         *  	NEW_CONSTANT_1: 'const1',
+         *  	NEW_CONSTANT_2: 'const2'
+         * }
+         *
+         * awesome.setStoreConstants(myNewConstants);
+         *
+         * //action constants will now be
+         * //awesome.constants.store
+         *
+         * {
+         *  	ACTION_CONSTANT1: 'actionConst1',
+         *  	ACTION_CONSTANT2: 'actionConst2',
+         *  	NEW_CONSTANT_1: 'const1',
+         *  	NEW_CONSTANT_2: 'const2'
+         * }
+         *
          * @method awesome.constants.store.setter
          * @protected
          * @param  {Object}           constants constants to merge
@@ -265,6 +346,25 @@ class Awesome{
 
         /**
          * component constants setter : merges the current component constants and the new constants via shallow merge.
+         *
+         * @example
+         *
+         * myNewConstants = {
+         *  	NEW_CONSTANT_1: 'const1',
+         *  	NEW_CONSTANT_2: 'const2'
+         * }
+         *
+         * awesome.setStoreConstants(myNewConstants);
+         *
+         * //action constants will now be
+         * //awesome.constants.component
+         * {
+         *  	ACTION_CONSTANT1: 'actionConst1',
+         *  	ACTION_CONSTANT2: 'actionConst2',
+         *  	NEW_CONSTANT_1: 'const1',
+         *  	NEW_CONSTANT_2: 'const2'
+         * }
+         *
          * @method awesome.constants.component.setter
          * @protected
          * @param  {Object}           constants constants to merge
@@ -278,6 +378,17 @@ class Awesome{
 
         /**
          * loadTemplate collects template element and returns element
+         *
+         * @example
+         *
+         * const content=awesome.loadTemplate(this);
+         *
+         * this.innerHTML=`
+         *   <element>
+         *      ${content}
+         *   </element>
+         * `;
+         *
          * @method awesome.loadTemplate
          * @protected
          * @param  {Object} instance instance or scope of template element
@@ -297,6 +408,13 @@ class Awesome{
 
         /**
          * requireScript includes js scripts into document
+         *
+         * @example
+         *
+         * awesome.requireScript(`${awesome.path}dispatchers/action.js`);
+         * awesome.requireScript(`${awesome.path}actions/constants.js`);
+         * awesome.requireScript(`${awesome.path}stores/constants.js`);
+         *
          * @method awesome.requireScript
          * @protected
          * @param  {String} path path to script
@@ -320,6 +438,14 @@ class Awesome{
         function scriptLoaded(){
             /**
              * emitted when a script included via {@link awesome.requireScript} has completed loading a script.
+             *
+             * @example
+             *
+             * window.on(
+             *  	'awesome-script-loaded',
+             *  	init
+             *);
+             *
              * @event awesome.awesome-script-loaded
              * @param {Event} e Event Data
              * @param {String} e.detail path of the loaded script
@@ -337,6 +463,11 @@ class Awesome{
 
         /**
          * requireCSS requires a CSS stylesheet into the document
+         *
+         * @example
+         *
+         * awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
+         *
          * @method awesome.requireCSS
          * @param  {String} path Path to CSS stylesheet
          * @return {Boolean}      false if stylesheet has already been loaded into document
@@ -356,6 +487,18 @@ class Awesome{
 
         /**
          * mergeDataset merges element's dataset to current default dataset of document
+         *
+         * @example
+         *
+         * update(){
+         *  	 awesome.mergeDataset(this,defaults);
+         *
+         *  	 this.innerHTML=`
+         *  	 	<p>${this.dataset.something}</p>
+         *  	 	${this.innerHTML}
+         *  	 `;
+         *  }
+         *
          * @method awesome.mergeDataset
          * @param {Object} el       element dataset to be merged
          * @param {Object} defaults default dataset
@@ -376,6 +519,13 @@ class Awesome{
 
         /**
          * updateAttributesFromData updates an element's attributes
+         *
+         * @example
+         *
+         * attributeChangedCallback(key,oldValue,newValue){
+         *  	awesome.updateAttributesFromData(this,key);
+         * }
+         *
          * @method awesome.updateAttributesFromData
          * @param  {Object} el    element object
          * @param  {String} key   key of element
@@ -396,6 +546,12 @@ class Awesome{
 
         /**
          * uniqueEntries ensures that keys and values of data array are unique
+         *
+         * @example
+         *
+         * awesome.uniqueEntries(awesome.components.actions);
+         * awesome.uniqueEntries(awesome.components.store);
+         *
          * @method awesome.uniqueEntries
          * @param  {Array} data Data array with unique entries
          * @return {Boolean}      true

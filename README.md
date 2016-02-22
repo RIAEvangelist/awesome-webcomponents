@@ -40,18 +40,18 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
 
 | Name | Type | Description |
 | --- | --- | --- |
-| path | <code>String</code> | Path to folder awesome.js is located in |
-| bower | <code>String</code> | path to bower components |
-| constants | <code>Object</code> | awesome constants |
-| dispatchers | <code>Object</code> | dispatchers for store/action/component messages |
-| stores | <code>Object</code> | registered awesome.Store instances. These are designed to support 1 way data flows for use by components |
-| Store | <code>Class</code> | Store class, used to create new stores |
-| loadTemplate | <code>function</code> | fetches nested template contents for inclusion in awesome-component |
-| requireScript | <code>function</code> | inject script tag into header |
-| requireCSS | <code>function</code> | inject stylesheet link tag into header |
-| mergeDataset | <code>function</code> | merges element's data-* attributes with the defaults for that component element |
-| updateAttributesFromData | <code>function</code> | maps data-* values to * attribute values |
-| uniqueEntries | <code>function</code> | ensures that keys and values of an object unique |
+| awesome.path | <code>String</code> | Path to folder awesome.js is located in |
+| awesome.bower | <code>String</code> | path to bower components |
+| awesome.constants | <code>Object</code> | awesome constants |
+| awesome.dispatchers | <code>Object</code> | dispatchers for store/action/component messages |
+| awesome.stores | <code>Object</code> | registered awesome.Store instances. These are designed to support 1 way data flows for use by components |
+| awesome.Store | <code>Class</code> | Store class, used to create new stores |
+| awesome.loadTemplate | <code>function</code> | fetches nested template contents for inclusion in awesome-component |
+| awesome.requireScript | <code>function</code> | inject script tag into header |
+| awesome.requireCSS | <code>function</code> | inject stylesheet link tag into header |
+| awesome.mergeDataset | <code>function</code> | merges element's data-* attributes with the defaults for that component element |
+| awesome.updateAttributesFromData | <code>function</code> | maps data-* values to * attribute values |
+| awesome.uniqueEntries | <code>function</code> | ensures that keys and values of an object unique |
 
 
 * [awesome](#awesome) : <code>object</code>
@@ -65,6 +65,11 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
     * [.path](#awesome.path) : <code>String</code>
     * [.constants](#awesome.constants) : <code>Object</code>
         * [.action](#awesome.constants.action) : <code>Object</code>
+            * [.RESET_STORES](#awesome.constants.action.RESET_STORES) : <code>EventName</code>
+            * [.TRIGGER_GLOBAL_MODAL](#awesome.constants.action.TRIGGER_GLOBAL_MODAL) : <code>EventName</code>
+            * [.GENERIC_DRAG_DROP_FILE](#awesome.constants.action.GENERIC_DRAG_DROP_FILE) : <code>EventName</code>
+            * [.LOGOUT_REQUEST](#awesome.constants.action.LOGOUT_REQUEST) : <code>EventName</code>
+            * [.LOGIN_REQUEST](#awesome.constants.action.LOGIN_REQUEST) : <code>EventName</code>
             * [.getter()](#awesome.constants.action.getter) ⇒ <code>ActionConstants</code>
             * [.setter(constants)](#awesome.constants.action.setter) ⇒ <code>ActionConstants</code>
         * [.store](#awesome.constants.store) : <code>Object</code>
@@ -76,10 +81,18 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
             * [.getter()](#awesome.constants.store.getter) ⇒ <code>StoreConstants</code>
             * [.setter(constants)](#awesome.constants.store.setter) ⇒ <code>StoreConstants</code>
         * [.component](#awesome.constants.component) : <code>Object</code>
+            * [.DRAG_DROP_ENTER](#awesome.constants.component.DRAG_DROP_ENTER) : <code>EventName</code>
+            * [.DRAG_DROP_OVER](#awesome.constants.component.DRAG_DROP_OVER) : <code>EventName</code>
+            * [.DRAG_DROP_LEAVE](#awesome.constants.component.DRAG_DROP_LEAVE) : <code>EventName</code>
+            * [.VALIDATE_USERNAME](#awesome.constants.component.VALIDATE_USERNAME) : <code>EventName</code>
+            * [.VALIDATE_EMAIL](#awesome.constants.component.VALIDATE_EMAIL) : <code>EventName</code>
+            * [.VALIDATE_URL](#awesome.constants.component.VALIDATE_URL) : <code>EventName</code>
             * [.getter()](#awesome.constants.component.getter) ⇒ <code>ComponentConstants</code>
             * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>ComponentConstants</code>
     * [.dispatchers](#awesome.dispatchers) : <code>Object</code>
-        * [.action](#awesome.dispatchers.action) : <code>Events</code>
+        * [.action](#awesome.dispatchers.action) : <code>EventEmitter</code>
+        * [.component](#awesome.dispatchers.component) : <code>EventEmitter</code>
+        * [.store](#awesome.dispatchers.store) : <code>EventEmitter</code>
     * [.stores](#awesome.stores) : <code>Object</code>
     * [.bower](#awesome.bower) : <code>String</code>
     * [.loadTemplate(instance)](#awesome.loadTemplate) ⇒ <code>Object</code>
@@ -156,10 +169,15 @@ Store.state change event used to notify component that the store state has chang
 **Kind**: event emitted by <code>[Store](#awesome.Store)</code>  
 <a name="awesome.path"></a>
 ### awesome.path : <code>String</code>
-Path to folder awesome.js is located in
+Path to folder awesome.js is located in.
 
 **Kind**: static property of <code>[awesome](#awesome)</code>  
 **Access:** protected  
+**Example**  
+```javascript
+awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
+awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
+```
 <a name="awesome.constants"></a>
 ### awesome.constants : <code>Object</code>
 extensible/overwriteable constansts used in awesome apps
@@ -173,9 +191,22 @@ extensible/overwriteable constansts used in awesome apps
 | store | <code>Object</code> | store constants |
 | component | <code>Object</code> | component constants |
 
+**Example**  
+```javascript
+const constants = awesome.constants.component;
+
+const defaults={
+		username_pattern: constants.VALIDATE_USERNAME,
+};
+```
 
 * [.constants](#awesome.constants) : <code>Object</code>
     * [.action](#awesome.constants.action) : <code>Object</code>
+        * [.RESET_STORES](#awesome.constants.action.RESET_STORES) : <code>EventName</code>
+        * [.TRIGGER_GLOBAL_MODAL](#awesome.constants.action.TRIGGER_GLOBAL_MODAL) : <code>EventName</code>
+        * [.GENERIC_DRAG_DROP_FILE](#awesome.constants.action.GENERIC_DRAG_DROP_FILE) : <code>EventName</code>
+        * [.LOGOUT_REQUEST](#awesome.constants.action.LOGOUT_REQUEST) : <code>EventName</code>
+        * [.LOGIN_REQUEST](#awesome.constants.action.LOGIN_REQUEST) : <code>EventName</code>
         * [.getter()](#awesome.constants.action.getter) ⇒ <code>ActionConstants</code>
         * [.setter(constants)](#awesome.constants.action.setter) ⇒ <code>ActionConstants</code>
     * [.store](#awesome.constants.store) : <code>Object</code>
@@ -187,6 +218,12 @@ extensible/overwriteable constansts used in awesome apps
         * [.getter()](#awesome.constants.store.getter) ⇒ <code>StoreConstants</code>
         * [.setter(constants)](#awesome.constants.store.setter) ⇒ <code>StoreConstants</code>
     * [.component](#awesome.constants.component) : <code>Object</code>
+        * [.DRAG_DROP_ENTER](#awesome.constants.component.DRAG_DROP_ENTER) : <code>EventName</code>
+        * [.DRAG_DROP_OVER](#awesome.constants.component.DRAG_DROP_OVER) : <code>EventName</code>
+        * [.DRAG_DROP_LEAVE](#awesome.constants.component.DRAG_DROP_LEAVE) : <code>EventName</code>
+        * [.VALIDATE_USERNAME](#awesome.constants.component.VALIDATE_USERNAME) : <code>EventName</code>
+        * [.VALIDATE_EMAIL](#awesome.constants.component.VALIDATE_EMAIL) : <code>EventName</code>
+        * [.VALIDATE_URL](#awesome.constants.component.VALIDATE_URL) : <code>EventName</code>
         * [.getter()](#awesome.constants.component.getter) ⇒ <code>ComponentConstants</code>
         * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>ComponentConstants</code>
 
@@ -197,9 +234,41 @@ Shallow merge action constants object
 **Kind**: static property of <code>[constants](#awesome.constants)</code>  
 
 * [.action](#awesome.constants.action) : <code>Object</code>
+    * [.RESET_STORES](#awesome.constants.action.RESET_STORES) : <code>EventName</code>
+    * [.TRIGGER_GLOBAL_MODAL](#awesome.constants.action.TRIGGER_GLOBAL_MODAL) : <code>EventName</code>
+    * [.GENERIC_DRAG_DROP_FILE](#awesome.constants.action.GENERIC_DRAG_DROP_FILE) : <code>EventName</code>
+    * [.LOGOUT_REQUEST](#awesome.constants.action.LOGOUT_REQUEST) : <code>EventName</code>
+    * [.LOGIN_REQUEST](#awesome.constants.action.LOGIN_REQUEST) : <code>EventName</code>
     * [.getter()](#awesome.constants.action.getter) ⇒ <code>ActionConstants</code>
     * [.setter(constants)](#awesome.constants.action.setter) ⇒ <code>ActionConstants</code>
 
+<a name="awesome.constants.action.RESET_STORES"></a>
+##### action.RESET_STORES : <code>EventName</code>
+all stores should reset their state
+
+**Kind**: static property of <code>[action](#awesome.constants.action)</code>  
+<a name="awesome.constants.action.TRIGGER_GLOBAL_MODAL"></a>
+##### action.TRIGGER_GLOBAL_MODAL : <code>EventName</code>
+triggere global modal
+
+**Kind**: static property of <code>[action](#awesome.constants.action)</code>  
+<a name="awesome.constants.action.GENERIC_DRAG_DROP_FILE"></a>
+##### action.GENERIC_DRAG_DROP_FILE : <code>EventName</code>
+file dropped into drop field
+
+**Kind**: static property of <code>[action](#awesome.constants.action)</code>  
+<a name="awesome.constants.action.LOGOUT_REQUEST"></a>
+##### action.LOGOUT_REQUEST : <code>EventName</code>
+logout request
+
+**Kind**: static property of <code>[action](#awesome.constants.action)</code>  
+**Memeber**: awesome.constants.action.LOGOUT_REQUEST  
+<a name="awesome.constants.action.LOGIN_REQUEST"></a>
+##### action.LOGIN_REQUEST : <code>EventName</code>
+login request
+
+**Kind**: static property of <code>[action](#awesome.constants.action)</code>  
+**Memeber**: awesome.constants.action.LOGIN_REQUEST  
 <a name="awesome.constants.action.getter"></a>
 ##### action.getter() ⇒ <code>ActionConstants</code>
 action constants getter
@@ -219,6 +288,24 @@ action constants setter : merges the current action constants and the new consta
 | --- | --- | --- |
 | constants | <code>Object</code> | constants to merge |
 
+**Example**  
+```javascript
+myNewConstants = {
+ 	NEW_CONSTANT_1: 'const1',
+ 	NEW_CONSTANT_2: 'const2'
+}
+
+awesome.setActionConstants(myNewConstants);
+
+//action constants will now be
+//awesome.constants.action
+{
+ 	ACTION_CONSTANT1: 'actionConst1',
+ 	ACTION_CONSTANT2: 'actionConst2',
+ 	NEW_CONSTANT_1: 'const1',
+ 	NEW_CONSTANT_2: 'const2'
+}
+```
 <a name="awesome.constants.store"></a>
 #### constants.store : <code>Object</code>
 Shallow merge store constants object
@@ -278,16 +365,76 @@ action constants setter : merges the current store constants and the new constan
 | --- | --- | --- |
 | constants | <code>Object</code> | constants to merge |
 
+**Example**  
+```javascript
+myNewConstants = {
+ 	NEW_CONSTANT_1: 'const1',
+ 	NEW_CONSTANT_2: 'const2'
+}
+
+awesome.setStoreConstants(myNewConstants);
+
+//action constants will now be
+//awesome.constants.store
+
+{
+ 	ACTION_CONSTANT1: 'actionConst1',
+ 	ACTION_CONSTANT2: 'actionConst2',
+ 	NEW_CONSTANT_1: 'const1',
+ 	NEW_CONSTANT_2: 'const2'
+}
+```
 <a name="awesome.constants.component"></a>
 #### constants.component : <code>Object</code>
 Shallow merge constants constants object
+                *
 
 **Kind**: static property of <code>[constants](#awesome.constants)</code>  
 
 * [.component](#awesome.constants.component) : <code>Object</code>
+    * [.DRAG_DROP_ENTER](#awesome.constants.component.DRAG_DROP_ENTER) : <code>EventName</code>
+    * [.DRAG_DROP_OVER](#awesome.constants.component.DRAG_DROP_OVER) : <code>EventName</code>
+    * [.DRAG_DROP_LEAVE](#awesome.constants.component.DRAG_DROP_LEAVE) : <code>EventName</code>
+    * [.VALIDATE_USERNAME](#awesome.constants.component.VALIDATE_USERNAME) : <code>EventName</code>
+    * [.VALIDATE_EMAIL](#awesome.constants.component.VALIDATE_EMAIL) : <code>EventName</code>
+    * [.VALIDATE_URL](#awesome.constants.component.VALIDATE_URL) : <code>EventName</code>
     * [.getter()](#awesome.constants.component.getter) ⇒ <code>ComponentConstants</code>
     * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>ComponentConstants</code>
 
+<a name="awesome.constants.component.DRAG_DROP_ENTER"></a>
+##### component.DRAG_DROP_ENTER : <code>EventName</code>
+pointer enters drag and drop field
+
+**Kind**: static property of <code>[component](#awesome.constants.component)</code>  
+<a name="awesome.constants.component.DRAG_DROP_OVER"></a>
+##### component.DRAG_DROP_OVER : <code>EventName</code>
+pointer over drag and drop field
+
+**Kind**: static property of <code>[component](#awesome.constants.component)</code>  
+**Memeber**: awesome.constants.component.DRAG_DROP_OVER  
+<a name="awesome.constants.component.DRAG_DROP_LEAVE"></a>
+##### component.DRAG_DROP_LEAVE : <code>EventName</code>
+pointer leaves drag and drop field
+
+**Kind**: static property of <code>[component](#awesome.constants.component)</code>  
+<a name="awesome.constants.component.VALIDATE_USERNAME"></a>
+##### component.VALIDATE_USERNAME : <code>EventName</code>
+regular expression for validating user name
+
+**Kind**: static property of <code>[component](#awesome.constants.component)</code>  
+**Memeber**: awesome.constants.component.VALIDATE_USERNAME  
+<a name="awesome.constants.component.VALIDATE_EMAIL"></a>
+##### component.VALIDATE_EMAIL : <code>EventName</code>
+regular expression for validating user email
+
+**Kind**: static property of <code>[component](#awesome.constants.component)</code>  
+**Memeber**: awesome.constansts.component.VALIDATE_EMAIL  
+<a name="awesome.constants.component.VALIDATE_URL"></a>
+##### component.VALIDATE_URL : <code>EventName</code>
+regular expression for validating url
+
+**Kind**: static property of <code>[component](#awesome.constants.component)</code>  
+**Memeber**: awesome.constansts.component.VALIDATE_URL  
 <a name="awesome.constants.component.getter"></a>
 ##### component.getter() ⇒ <code>ComponentConstants</code>
 component constants getter
@@ -307,6 +454,24 @@ component constants setter : merges the current component constants and the new 
 | --- | --- | --- |
 | constants | <code>Object</code> | constants to merge |
 
+**Example**  
+```javascript
+myNewConstants = {
+ 	NEW_CONSTANT_1: 'const1',
+ 	NEW_CONSTANT_2: 'const2'
+}
+
+awesome.setStoreConstants(myNewConstants);
+
+//action constants will now be
+//awesome.constants.component
+{
+ 	ACTION_CONSTANT1: 'actionConst1',
+ 	ACTION_CONSTANT2: 'actionConst2',
+ 	NEW_CONSTANT_1: 'const1',
+ 	NEW_CONSTANT_2: 'const2'
+}
+```
 <a name="awesome.dispatchers"></a>
 ### awesome.dispatchers : <code>Object</code>
 dispatchers for awesome 1 way data flow
@@ -321,8 +486,25 @@ dispatchers for awesome 1 way data flow
 | store | <code>Object</code> | store dispatcher |
 | component | <code>Object</code> | component dispatcher |
 
+**Example**  
+```javascript
+const dispatcher=awesome.dispatchers.action;
+
+dispatcher.trigger(
+storeEvents.EVENT_NAME,
+   {
+       data : 'data'
+   }
+);
+```
+
+* [.dispatchers](#awesome.dispatchers) : <code>Object</code>
+    * [.action](#awesome.dispatchers.action) : <code>EventEmitter</code>
+    * [.component](#awesome.dispatchers.component) : <code>EventEmitter</code>
+    * [.store](#awesome.dispatchers.store) : <code>EventEmitter</code>
+
 <a name="awesome.dispatchers.action"></a>
-#### dispatchers.action : <code>Events</code>
+#### dispatchers.action : <code>EventEmitter</code>
 awesome dispatcher for actions, uses event-pubsub
 
 **Kind**: static property of <code>[dispatchers](#awesome.dispatchers)</code>  
@@ -334,17 +516,54 @@ awesome dispatcher for actions, uses event-pubsub
 | off | <code>function</code> | ***un***binds handler from action event |
 | trigger | <code>function</code> | fires store event |
 
+<a name="awesome.dispatchers.component"></a>
+#### dispatchers.component : <code>EventEmitter</code>
+awesome dispatcher for components, uses event-pubsub
+
+**Kind**: static property of <code>[dispatchers](#awesome.dispatchers)</code>  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| trigger | <code>function</code> | fires action event |
+
+<a name="awesome.dispatchers.store"></a>
+#### dispatchers.store : <code>EventEmitter</code>
+awesome dispatcher for stores, uses event-pubsub
+
+**Kind**: static property of <code>[dispatchers](#awesome.dispatchers)</code>  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| on | <code>function</code> | binds handler to event |
+| off | <code>function</code> | ***un***binds handler from event |
+| trigger | <code>function</code> | fires event |
+
 <a name="awesome.stores"></a>
 ### awesome.stores : <code>Object</code>
 awesome 1 way data flow stores for use by components
 
 **Kind**: static property of <code>[awesome](#awesome)</code>  
+**Example**  
+```javascript
+state=awesome.stores.auth.state;
+
+state.on(
+   'change',
+   this.update.bind(this)
+ );
+```
 <a name="awesome.bower"></a>
 ### awesome.bower : <code>String</code>
 Path to bower components
 
 **Kind**: static property of <code>[awesome](#awesome)</code>  
 **Access:** protected  
+**Example**  
+```javascript
+awesome.requireScript(`${awesome.bower}bower-component/bower-component.js`);
+```
 <a name="awesome.loadTemplate"></a>
 ### awesome.loadTemplate(instance) ⇒ <code>Object</code>
 loadTemplate collects template element and returns element
@@ -357,6 +576,16 @@ loadTemplate collects template element and returns element
 | --- | --- | --- |
 | instance | <code>Object</code> | instance or scope of template element |
 
+**Example**  
+```javascript
+const content=awesome.loadTemplate(this);
+
+this.innerHTML=`
+  <element>
+     ${content}
+  </element>
+`;
+```
 <a name="awesome.requireScript"></a>
 ### awesome.requireScript(path) ⇒ <code>Boolean</code>
 requireScript includes js scripts into document
@@ -369,6 +598,12 @@ requireScript includes js scripts into document
 | --- | --- | --- |
 | path | <code>String</code> | path to script |
 
+**Example**  
+```javascript
+awesome.requireScript(`${awesome.path}dispatchers/action.js`);
+awesome.requireScript(`${awesome.path}actions/constants.js`);
+awesome.requireScript(`${awesome.path}stores/constants.js`);
+```
 <a name="awesome.requireCSS"></a>
 ### awesome.requireCSS(path) ⇒ <code>Boolean</code>
 requireCSS requires a CSS stylesheet into the document
@@ -380,6 +615,10 @@ requireCSS requires a CSS stylesheet into the document
 | --- | --- | --- |
 | path | <code>String</code> | Path to CSS stylesheet |
 
+**Example**  
+```javascript
+awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
+```
 <a name="awesome.mergeDataset"></a>
 ### awesome.mergeDataset(el, defaults)
 mergeDataset merges element's dataset to current default dataset of document
@@ -391,6 +630,17 @@ mergeDataset merges element's dataset to current default dataset of document
 | el | <code>Object</code> | element dataset to be merged |
 | defaults | <code>Object</code> | default dataset |
 
+**Example**  
+```javascript
+update(){
+ 	 awesome.mergeDataset(this,defaults);
+
+ 	 this.innerHTML=`
+ 	 	<p>${this.dataset.something}</p>
+ 	 	${this.innerHTML}
+ 	 `;
+ }
+```
 <a name="awesome.updateAttributesFromData"></a>
 ### awesome.updateAttributesFromData(el, key, value) ⇒ <code>Object</code>
 updateAttributesFromData updates an element's attributes
@@ -404,6 +654,12 @@ updateAttributesFromData updates an element's attributes
 | key | <code>String</code> | key of element |
 | value | <code>String</code> | value to update data to |
 
+**Example**  
+```javascript
+attributeChangedCallback(key,oldValue,newValue){
+ 	awesome.updateAttributesFromData(this,key);
+}
+```
 <a name="awesome.uniqueEntries"></a>
 ### awesome.uniqueEntries(data) ⇒ <code>Boolean</code>
 uniqueEntries ensures that keys and values of data array are unique
@@ -415,6 +671,11 @@ uniqueEntries ensures that keys and values of data array are unique
 | --- | --- | --- |
 | data | <code>Array</code> | Data array with unique entries |
 
+**Example**  
+```javascript
+awesome.uniqueEntries(awesome.components.actions);
+awesome.uniqueEntries(awesome.components.store);
+```
 <a name="awesome.event_awesome-script-loaded"></a>
 ### "awesome-script-loaded" (e)
 emitted when a script included via [requireScript](#awesome.requireScript) has completed loading a script.
@@ -426,3 +687,10 @@ emitted when a script included via [requireScript](#awesome.requireScript) has c
 | e | <code>Event</code> | Event Data |
 | e.detail | <code>String</code> | path of the loaded script |
 
+**Example**  
+```javascript
+window.on(
+ 	'awesome-script-loaded',
+ 	init
+);
+```

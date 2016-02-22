@@ -1,26 +1,37 @@
 'use strict';
 
 awesome.constants.action={
-    //base reset
+    /**
+     * all stores should reset their state
+     * @member awesome.constants.action.RESET_STORES
+     * @type {EventName}
+     */
     RESET_STORES:'app.reset.all.stores',
 
-    //global errors
-    TRIGGER_GLOBAL_ERROR:'GlobalError.new',
-    EXPIRE_GLOBAL_ERROR:'GlobalError.expire',
-
-    //global modal
+    /**
+     * triggere global modal
+     * @member awesome.constants.action.TRIGGER_GLOBAL_MODAL
+     * @type {EventName}
+     */
     TRIGGER_GLOBAL_MODAL:'GlobalModal.new',
 
-    //user Input
-    USER_INPUT_CHANGE:'userInput.changed',
-    USER_INPUT_VALIDATE:'userInput.needs.validation',
+    /**
+     * file dropped into drop field
+     * @member awesome.constants.action.GENERIC_DRAG_DROP_FILE
+     * @type {EventName}
+     */
     GENERIC_DRAG_DROP_FILE:'generic.drag.drop.file',
 
-    //login
+    /**
+     * logout request
+     * @memeber awesome.constants.action.LOGOUT_REQUEST
+     * @type {EventName}
+     */
     LOGOUT_REQUEST:'logout.request',
+    /**
+     * login request
+     * @memeber awesome.constants.action.LOGIN_REQUEST
+     * @type {EventName}
+     */
     LOGIN_REQUEST:'login.request',
-
-    //router
-    ROUTE_REQUEST_CHANGE:'router.request.navigation',
-    ROUTE_REQUEST_SCREENS:'router.get.screens'
 }
