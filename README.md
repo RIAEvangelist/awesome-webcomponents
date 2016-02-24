@@ -634,34 +634,35 @@ loadTemplate collects template element and returns element
 //html snippet
 
  <awesome-list>
-                <template>
-                    <li>
-                        Test 1
-                    </li>
-                    <li>
-                        Test 2
-                    </li>
-                    <li>
-                        Test 3
-                    </li>
-                </template>
-            </awesome-list>
+       <template>
+           <li>
+               Test 1
+           </li>
+           <li>
+               Test 2
+           </li>
+           <li>
+               Test 3
+           </li>
+       </template>
+   </awesome-list>
+
 //js
 
 const content=awesome.loadTemplate(this);
 
 //constents of content
-            <template>
-                <li>
-                    Test 1
-                </li>
-                <li>
-                    Test 2
-                </li>
-                <li>
-                    Test 3
-                </li>
-            </template>
+   <template>
+       <li>
+           Test 1
+       </li>
+       <li>
+           Test 2
+       </li>
+       <li>
+           Test 3
+       </li>
+   </template>
 
 //usage
 //this content can now be loaded into awesome-list
