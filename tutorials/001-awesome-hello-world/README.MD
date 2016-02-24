@@ -1,5 +1,7 @@
 # Awesome-webcomponents Introduction and Hello World app/site
 
+This tutorial created by @RIAEvangelist, feel free to contact me with questions.
+
 ### Why did I create Awesome-webcomponents?
 
 I wanted a simple to use library / framework that would let the community use or extend it to quickly and easily for native ES6 apps. I primarily wanted to support [electron](http://electron.atom.io/), Cordova, and modern browsers without needing transpilers, or complicated tool chains. I found that these tool chains can lead us into developing in a way that is not native to the browser and mentally boxes us in, tightly coupling our apps to only working in one tool chain like webpack or babel, which are awesome for many needs, but over complicate and confuse many people. Sometimes simpler really is better.
