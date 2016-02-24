@@ -34,6 +34,7 @@ Just some guy who develops stuff he needs and shares it with the world. Sometime
 1. make a new dir for your project
 2. copy the [000-boilerplate index.html](https://github.com/RIAEvangelist/awesome-webcomponents/blob/master/tutorials/000-boilerplates/index.html) to your projects new dir as a starting point
 3. goto your projects dir in the terminal
+4. run ` bower init ` and hit enter for all questions until : ` would you like to mark this package as private which prevents it from being accidentally published to the registry? (y/N) `. At this question and the next hit ` y `.
 4. run ` bower install awesome-webcomponents `
 5. replace the ` ????BOWER???? ` with ` ./bower_components ` since we just installed them in the same dir.
 6. change the title to whatever you want in the title tag
@@ -61,7 +62,9 @@ Add an ` awesome-dialog ` to the body.
 
 ```
 
-That will render an empty dialog to the page. Let's populate the dialogs icon and data attributes next.
+![empty dialog](https://raw.githubusercontent.com/RIAEvangelist/awesome-webcomponents/master/tutorials/001-awesome-hello-world/img/empty.png)
+
+That will render an empty dialog to the page. Next populate the dialogs icon and data attributes next.
 
 ```HTML
 
@@ -72,6 +75,8 @@ That will render an empty dialog to the page. Let's populate the dialogs icon an
 </awesome-dialog>
 
 ```
+
+![title dialog](https://raw.githubusercontent.com/RIAEvangelist/awesome-webcomponents/master/tutorials/001-awesome-hello-world/img/header.png)
 
 Now the dialog will have an icon and title in it's header. Lets give it some content next, maybe a funny video from youtube? Awesome Components that support injecting content should always do so via a template object. This prevents [FOUSC](https://en.wikipedia.org/wiki/Flash_of_unstyled_content)
 ( Flash Of Unstyled Content ) and allows the component to remember your injected content if it ever needs to re-render itself.
@@ -84,7 +89,7 @@ Now the dialog will have an icon and title in it's header. Lets give it some con
 >
     <template>
         <!-- the expert (funny) -->
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/BKorP55Aqvg" frameborder="0" allowfullscreen></iframe>
+        <iframe style='width:100%;height:calc(100% - 3.8em);' src="https://www.youtube.com/embed/BKorP55Aqvg" frameborder="0" ></iframe>
     </template>
 </awesome-dialog>
 
@@ -93,7 +98,12 @@ Now the dialog will have an icon and title in it's header. Lets give it some con
 
 Now we see we have a video inside of our dialog with the image and title in the header.
 
+![title dialog](https://raw.githubusercontent.com/RIAEvangelist/awesome-webcomponents/master/tutorials/001-awesome-hello-world/img/video.png)
+
+
 ### Finished Hello World
+
+[the index.html code should now look like this](https://github.com/RIAEvangelist/awesome-webcomponents/blob/master/tutorials/001-awesome-hello-world/index.html)
 
 ```html
 
@@ -110,7 +120,7 @@ Now we see we have a video inside of our dialog with the image and title in the 
         <script src='./bower_components/document-register-element/build/document-register-element.js'></script>
 
         <!-- Include awesome.js -->
-        <script type='application/javascript' src='./bower_components/awesome_webcomponents/awesome.js'></script>
+        <script type='application/javascript' src='./bower_components/awesome-webcomponents/awesome.js'></script>
 
 
         <!-- get awesome stuff -->
@@ -128,13 +138,14 @@ Now we see we have a video inside of our dialog with the image and title in the 
         >
             <template>
                 <!-- the expert (funny) -->
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/BKorP55Aqvg" frameborder="0" allowfullscreen></iframe>
+                <iframe style='width:100%;height:calc(100% - 1.25em);' src="https://www.youtube.com/embed/BKorP55Aqvg" frameborder="0" ></iframe>
             </template>
         </awesome-dialog>
 
 
     </body>
 </html>
+
 
 
 ```

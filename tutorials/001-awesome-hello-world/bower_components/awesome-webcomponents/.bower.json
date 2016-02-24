@@ -29,15 +29,15 @@
     "browser-error-classes": "latest",
     "document-register-element": "latest"
   },
-  "version": "0.0.51",
-  "_release": "0.0.51",
+  "version": "0.0.52",
+  "_release": "0.0.52",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.51",
-    "commit": "42abf8a621258fcd55f897107920bf47af6256f9"
+    "tag": "0.0.52",
+    "commit": "ad31c36af564ba11425d69ec06cd2281ffad7829"
   },
   "_source": "git://github.com/RIAEvangelist/awesome-webcomponents.git",
-  "_target": "^0.0.51",
+  "_target": "^0.0.52",
   "_originalSource": "awesome-webcomponents",
   "_direct": true
 }
