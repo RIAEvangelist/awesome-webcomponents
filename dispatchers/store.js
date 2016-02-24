@@ -8,11 +8,26 @@ awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
 
         /**
          * awesome dispatcher for stores, uses event-pubsub
+         *
+         * @example
+         *
+         * //listen to an event from an action
+         * awesome.dispatchers.store.on(
+         *  	awesome.constants.action.YOUR_STORE_CONSTANT,
+         *  	yourHanderFunction
+         * );
+         *
+         * //stop listening to the event
+         *  awesome.dispatchers.store.off(
+         *  	awesome.constants.components.YOUR_STORE_CONSTANT,
+         *  	yourHanderFunction
+         * );
+         *
          * @member awesome.dispatchers.store
          * @type {EventEmitter}
-         * @prop on {Function} binds handler to event
-         * @prop off {Function} ***un***binds handler from event
-         * @prop trigger {Function} fires event
+         * @prop on {Function} binds handler to store events
+         * @prop off {Function} ***un***binds handler from store event
+         * @prop events {Function} fires event
          */
         Object.defineProperty(
             awesome.dispatchers,

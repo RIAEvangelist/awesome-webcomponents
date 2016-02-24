@@ -21,7 +21,7 @@ awesome.constants.component={
      */
     DRAG_DROP_LEAVE:'dragdrop.leave',
 
-    //validators
+    //validators make example for these. the regular expressions ***************
     /**
      * regular expression for validating user name
      * @memeber awesome.constants.component.VALIDATE_USERNAME

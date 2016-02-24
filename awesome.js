@@ -87,8 +87,11 @@ class Awesome{
                     )
                 },
                 /**
+                 * extensible/overwriteable constansts used in awesome apps
+                 *
                  * @member awesome.constants
-                 * @type {Object} extensible/overwriteable constansts used in awesome apps
+                 *
+                 * @type {Object}
                  *
                  * @example
                  *
@@ -108,8 +111,9 @@ class Awesome{
                     value:{}
                 },
                 /**
+                * dispatchers for awesome 1 way data flow
                 * @member awesome.dispatchers
-                * @type {Object} dispatchers for awesome 1 way data flow
+                * @type {Object}
                 *
                 * @example
                 *
@@ -133,6 +137,8 @@ class Awesome{
                     value:{}
                 },
                 /**
+                *
+                * awesome 1 way data flow stores for use by component
                 * @member awesome.stores
                 *
                 * @example
@@ -140,11 +146,11 @@ class Awesome{
                 * state=awesome.stores.auth.state;
                 *
                 * state.on(
-                *    'change',
-                *    this.update.bind(this)
-                *  );
+                *   	'change',
+                *   	this.yourAwesomeUpdateHandler.bind(this)
+                * );
                 *
-                * @type {Object} awesome 1 way data flow stores for use by components
+                * @type {Object}
                 */
                 stores:{
                     enumerable:true,
@@ -186,6 +192,7 @@ class Awesome{
 
         /**
          * Path to bower components
+         *
          * @example
          *
          * awesome.requireScript(`${awesome.bower}bower-component/bower-component.js`);
@@ -269,7 +276,7 @@ class Awesome{
          *  	NEW_CONSTANT_2: 'const2'
          * }
          *
-         * awesome.setActionConstants(myNewConstants);
+         * awesome.action.constants = myNewConstants;
          *
          * //action constants will now be
          * //awesome.constants.action
@@ -311,7 +318,7 @@ class Awesome{
          *  	NEW_CONSTANT_2: 'const2'
          * }
          *
-         * awesome.setStoreConstants(myNewConstants);
+         * awesome.constantants.store = myNewConstants;
          *
          * //action constants will now be
          * //awesome.constants.store
@@ -354,7 +361,7 @@ class Awesome{
          *  	NEW_CONSTANT_2: 'const2'
          * }
          *
-         * awesome.setStoreConstants(myNewConstants);
+         * awesome.constants.components = myNewConstants;
          *
          * //action constants will now be
          * //awesome.constants.component
@@ -407,10 +414,11 @@ class Awesome{
         }
 
         /**
-         * requireScript includes js scripts into document
+         * requireScript appends scripts to the docuyment head with a differed false
          *
          * @example
          *
+         * //here we require the dispatcher to action and the constants to stores and actions
          * awesome.requireScript(`${awesome.path}dispatchers/action.js`);
          * awesome.requireScript(`${awesome.path}actions/constants.js`);
          * awesome.requireScript(`${awesome.path}stores/constants.js`);
@@ -443,7 +451,7 @@ class Awesome{
              *
              * window.on(
              *  	'awesome-script-loaded',
-             *  	init
+             *  	yourAwesomeLoadedHandler
              *);
              *
              * @event awesome.awesome-script-loaded
@@ -462,11 +470,12 @@ class Awesome{
         }
 
         /**
-         * requireCSS requires a CSS stylesheet into the document
+         * requireCSS requires and appends scripts to CSS head
          *
          * @example
          *
-         * awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
+         * //require your component CSS
+         * awesome.requireCSS(`${awesome.path}components/your-component/your-component.css`);
          *
          * @method awesome.requireCSS
          * @param  {String} path Path to CSS stylesheet
@@ -490,18 +499,26 @@ class Awesome{
          *
          * @example
          *
-         * update(){
-         *  	 awesome.mergeDataset(this,defaults);
+         * defaultElementDataset = {
+         *  	property1: 'one',
+         *  	property2: 'two'
+         * }
          *
-         *  	 this.innerHTML=`
-         *  	 	<p>${this.dataset.something}</p>
-         *  	 	${this.innerHTML}
-         *  	 `;
+         * function yourElementAttributeChangeHandler(changedDataset){
+         * 		mergeDataset(myElement, changedDataset);
+         * }
+         *
+         * //after the dataset changes it will be
+         *
+         * //ElementDataset
+         *  {
+         *  	property1 : 'newProp1',
+         *  	property2 : 'newProp2'
          *  }
          *
          * @method awesome.mergeDataset
-         * @param {Object} el       element dataset to be merged
-         * @param {Object} defaults default dataset
+         * @param {HTMLElement} el         element with dataset to be merged
+         * @param {Object} defaults        default dataset
          */
         function mergeDataset(el,defaults){
             const data={};
@@ -521,16 +538,31 @@ class Awesome{
          * updateAttributesFromData updates an element's attributes
          *
          * @example
+         * //orginal element attributes
+         * {
+         *  	attribute1 : 'green',
+         *  	attribute2 : 'red',
+         *  	attribute3 : 'white'
+         * }
          *
-         * attributeChangedCallback(key,oldValue,newValue){
-         *  	awesome.updateAttributesFromData(this,key);
+         * yourElementAttributeUpdater(element, attribute3, black);
+         *
+         * function yourElementAttributeUpdater(element, elementKey,newValue){
+         *  	awesome.updateAttributesFromData(element, elementKey, newValue);
+         * }
+         *
+         * //resulting element attributes
+         * {
+         *  	attribute1 : 'green',
+         *  	attribute2 : 'red',
+         *  	attribute3 : 'black'
          * }
          *
          * @method awesome.updateAttributesFromData
-         * @param  {Object} el    element object
-         * @param  {String} key   key of element
-         * @param  {String} value value to update data to
-         * @return {Object}       updted element object
+         * @param  {HTMLElement}    el      element object
+         * @param  {String}         key     key of element
+         * @param  {String}         value   value to update data to
+         * @return {HTMLElement}            updated element object
          */
         function updateAttributesFromData(el,key,value){
             if(key.indexOf('data-')!==0){
@@ -549,12 +581,16 @@ class Awesome{
          *
          * @example
          *
-         * awesome.uniqueEntries(awesome.components.actions);
-         * awesome.uniqueEntries(awesome.components.store);
+         * let arr = ['green', 'red', 'white', 'black', 'red'];
+         *
+         * awesome.uniqueEntries(arr);
+         *
+         * //respose is
+         * duplicate value string of red found on 4 && 1 const value strings MUST be unique!
          *
          * @method awesome.uniqueEntries
-         * @param  {Array} data Data array with unique entries
-         * @return {Boolean}      true
+         * @param  {Object} data    Data object or array with unique entries
+         * @return {Boolean}        true
          */
         function uniqueEntries(data){
             const duplicateCheckArray=[];

@@ -48,6 +48,8 @@ awesome.requireCSS(`${awesome.path}components/range/awesome-range.css`);
 
             attributeChangedCallback(key,oldValue,newValue){
                 this.createdCallback();
+
+
             }
 
             change(e){

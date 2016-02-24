@@ -66,7 +66,6 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
     * [.constants](#awesome.constants) : <code>Object</code>
         * [.action](#awesome.constants.action) : <code>Object</code>
             * [.RESET_STORES](#awesome.constants.action.RESET_STORES) : <code>EventName</code>
-            * [.TRIGGER_GLOBAL_MODAL](#awesome.constants.action.TRIGGER_GLOBAL_MODAL) : <code>EventName</code>
             * [.GENERIC_DRAG_DROP_FILE](#awesome.constants.action.GENERIC_DRAG_DROP_FILE) : <code>EventName</code>
             * [.LOGOUT_REQUEST](#awesome.constants.action.LOGOUT_REQUEST) : <code>EventName</code>
             * [.LOGIN_REQUEST](#awesome.constants.action.LOGIN_REQUEST) : <code>EventName</code>
@@ -99,7 +98,7 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
     * [.requireScript(path)](#awesome.requireScript) ⇒ <code>Boolean</code>
     * [.requireCSS(path)](#awesome.requireCSS) ⇒ <code>Boolean</code>
     * [.mergeDataset(el, defaults)](#awesome.mergeDataset)
-    * [.updateAttributesFromData(el, key, value)](#awesome.updateAttributesFromData) ⇒ <code>Object</code>
+    * [.updateAttributesFromData(el, key, value)](#awesome.updateAttributesFromData) ⇒ <code>HTMLElement</code>
     * [.uniqueEntries(data)](#awesome.uniqueEntries) ⇒ <code>Boolean</code>
     * ["awesome-script-loaded" (e)](#awesome.event_awesome-script-loaded)
 
@@ -203,7 +202,6 @@ const defaults={
 * [.constants](#awesome.constants) : <code>Object</code>
     * [.action](#awesome.constants.action) : <code>Object</code>
         * [.RESET_STORES](#awesome.constants.action.RESET_STORES) : <code>EventName</code>
-        * [.TRIGGER_GLOBAL_MODAL](#awesome.constants.action.TRIGGER_GLOBAL_MODAL) : <code>EventName</code>
         * [.GENERIC_DRAG_DROP_FILE](#awesome.constants.action.GENERIC_DRAG_DROP_FILE) : <code>EventName</code>
         * [.LOGOUT_REQUEST](#awesome.constants.action.LOGOUT_REQUEST) : <code>EventName</code>
         * [.LOGIN_REQUEST](#awesome.constants.action.LOGIN_REQUEST) : <code>EventName</code>
@@ -235,7 +233,6 @@ Shallow merge action constants object
 
 * [.action](#awesome.constants.action) : <code>Object</code>
     * [.RESET_STORES](#awesome.constants.action.RESET_STORES) : <code>EventName</code>
-    * [.TRIGGER_GLOBAL_MODAL](#awesome.constants.action.TRIGGER_GLOBAL_MODAL) : <code>EventName</code>
     * [.GENERIC_DRAG_DROP_FILE](#awesome.constants.action.GENERIC_DRAG_DROP_FILE) : <code>EventName</code>
     * [.LOGOUT_REQUEST](#awesome.constants.action.LOGOUT_REQUEST) : <code>EventName</code>
     * [.LOGIN_REQUEST](#awesome.constants.action.LOGIN_REQUEST) : <code>EventName</code>
@@ -245,11 +242,6 @@ Shallow merge action constants object
 <a name="awesome.constants.action.RESET_STORES"></a>
 ##### action.RESET_STORES : <code>EventName</code>
 all stores should reset their state
-
-**Kind**: static property of <code>[action](#awesome.constants.action)</code>  
-<a name="awesome.constants.action.TRIGGER_GLOBAL_MODAL"></a>
-##### action.TRIGGER_GLOBAL_MODAL : <code>EventName</code>
-triggere global modal
 
 **Kind**: static property of <code>[action](#awesome.constants.action)</code>  
 <a name="awesome.constants.action.GENERIC_DRAG_DROP_FILE"></a>
@@ -295,7 +287,7 @@ myNewConstants = {
  	NEW_CONSTANT_2: 'const2'
 }
 
-awesome.setActionConstants(myNewConstants);
+awesome.action.constants = myNewConstants;
 
 //action constants will now be
 //awesome.constants.action
@@ -372,7 +364,7 @@ myNewConstants = {
  	NEW_CONSTANT_2: 'const2'
 }
 
-awesome.setStoreConstants(myNewConstants);
+awesome.constantants.store = myNewConstants;
 
 //action constants will now be
 //awesome.constants.store
@@ -461,7 +453,7 @@ myNewConstants = {
  	NEW_CONSTANT_2: 'const2'
 }
 
-awesome.setStoreConstants(myNewConstants);
+awesome.constants.components = myNewConstants;
 
 //action constants will now be
 //awesome.constants.component
@@ -516,6 +508,29 @@ awesome dispatcher for actions, uses event-pubsub
 | off | <code>function</code> | ***un***binds handler from action event |
 | trigger | <code>function</code> | fires store event |
 
+**Example**  
+```javascript
+//trigger an event to store
+awesome.dispatchers.action.trigger(
+ 	awesome.constants.store.YOUR_STORE_CONSTANT,
+ 	{
+ 		data1 : 'data1',
+ 		data2 : 'data2'
+ 	}
+);
+
+//listen to an event from a component
+awesome.dispatchers.action.on(
+ 	awesome.constants.components.YOUR_COMPONENT_CONSTANT,
+ 	yourHanderFunction
+);
+
+//stop listening to the event
+ awesome.dispatchers.action.off(
+ 	awesome.constants.components.YOUR_COMPONENT_CONSTANT,
+ 	yourHanderFunction
+);
+```
 <a name="awesome.dispatchers.component"></a>
 #### dispatchers.component : <code>EventEmitter</code>
 awesome dispatcher for components, uses event-pubsub
@@ -527,6 +542,17 @@ awesome dispatcher for components, uses event-pubsub
 | --- | --- | --- |
 | trigger | <code>function</code> | fires action event |
 
+**Example**  
+```javascript
+//trigger an event to action
+awesome.dispatchers.component.trigger(
+ 	awesome.constants.action.YOUR_COMPONENT_CONSTANT,
+ 	{
+ 		data1 : 'data1',
+ 		data2 : 'data2'
+ 	}
+);
+```
 <a name="awesome.dispatchers.store"></a>
 #### dispatchers.store : <code>EventEmitter</code>
 awesome dispatcher for stores, uses event-pubsub
@@ -536,13 +562,27 @@ awesome dispatcher for stores, uses event-pubsub
 
 | Name | Type | Description |
 | --- | --- | --- |
-| on | <code>function</code> | binds handler to event |
-| off | <code>function</code> | ***un***binds handler from event |
-| trigger | <code>function</code> | fires event |
+| on | <code>function</code> | binds handler to store events |
+| off | <code>function</code> | ***un***binds handler from store event |
+| events | <code>function</code> | fires event |
 
+**Example**  
+```javascript
+//listen to an event from an action
+awesome.dispatchers.store.on(
+ 	awesome.constants.action.YOUR_STORE_CONSTANT,
+ 	yourHanderFunction
+);
+
+//stop listening to the event
+ awesome.dispatchers.store.off(
+ 	awesome.constants.components.YOUR_STORE_CONSTANT,
+ 	yourHanderFunction
+);
+```
 <a name="awesome.stores"></a>
 ### awesome.stores : <code>Object</code>
-awesome 1 way data flow stores for use by components
+awesome 1 way data flow stores for use by component
 
 **Kind**: static property of <code>[awesome](#awesome)</code>  
 **Example**  
@@ -550,9 +590,9 @@ awesome 1 way data flow stores for use by components
 state=awesome.stores.auth.state;
 
 state.on(
-   'change',
-   this.update.bind(this)
- );
+  	'change',
+  	this.yourAwesomeUpdateHandler.bind(this)
+);
 ```
 <a name="awesome.bower"></a>
 ### awesome.bower : <code>String</code>
@@ -588,7 +628,7 @@ this.innerHTML=`
 ```
 <a name="awesome.requireScript"></a>
 ### awesome.requireScript(path) ⇒ <code>Boolean</code>
-requireScript includes js scripts into document
+requireScript appends scripts to the docuyment head with a differed false
 
 **Kind**: static method of <code>[awesome](#awesome)</code>  
 **Returns**: <code>Boolean</code> - true  
@@ -600,13 +640,14 @@ requireScript includes js scripts into document
 
 **Example**  
 ```javascript
+//here we require the dispatcher to action and the constants to stores and actions
 awesome.requireScript(`${awesome.path}dispatchers/action.js`);
 awesome.requireScript(`${awesome.path}actions/constants.js`);
 awesome.requireScript(`${awesome.path}stores/constants.js`);
 ```
 <a name="awesome.requireCSS"></a>
 ### awesome.requireCSS(path) ⇒ <code>Boolean</code>
-requireCSS requires a CSS stylesheet into the document
+requireCSS requires and appends scripts to CSS head
 
 **Kind**: static method of <code>[awesome](#awesome)</code>  
 **Returns**: <code>Boolean</code> - false if stylesheet has already been loaded into document  
@@ -617,7 +658,8 @@ requireCSS requires a CSS stylesheet into the document
 
 **Example**  
 ```javascript
-awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
+//require your component CSS
+awesome.requireCSS(`${awesome.path}components/your-component/your-component.css`);
 ```
 <a name="awesome.mergeDataset"></a>
 ### awesome.mergeDataset(el, defaults)
@@ -627,37 +669,61 @@ mergeDataset merges element's dataset to current default dataset of document
 
 | Param | Type | Description |
 | --- | --- | --- |
-| el | <code>Object</code> | element dataset to be merged |
+| el | <code>HTMLElement</code> | element with dataset to be merged |
 | defaults | <code>Object</code> | default dataset |
 
 **Example**  
 ```javascript
-update(){
- 	 awesome.mergeDataset(this,defaults);
+defaultElementDataset = {
+ 	property1: 'one',
+ 	property2: 'two'
+}
 
- 	 this.innerHTML=`
- 	 	<p>${this.dataset.something}</p>
- 	 	${this.innerHTML}
- 	 `;
+function yourElementAttributeChangeHandler(changedDataset){
+		mergeDataset(myElement, changedDataset);
+}
+
+//after the dataset changes it will be
+
+//ElementDataset
+ {
+ 	property1 : 'newProp1',
+ 	property2 : 'newProp2'
  }
 ```
 <a name="awesome.updateAttributesFromData"></a>
-### awesome.updateAttributesFromData(el, key, value) ⇒ <code>Object</code>
+### awesome.updateAttributesFromData(el, key, value) ⇒ <code>HTMLElement</code>
 updateAttributesFromData updates an element's attributes
 
 **Kind**: static method of <code>[awesome](#awesome)</code>  
-**Returns**: <code>Object</code> - updted element object  
+**Returns**: <code>HTMLElement</code> - updated element object  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| el | <code>Object</code> | element object |
+| el | <code>HTMLElement</code> | element object |
 | key | <code>String</code> | key of element |
 | value | <code>String</code> | value to update data to |
 
 **Example**  
 ```javascript
-attributeChangedCallback(key,oldValue,newValue){
- 	awesome.updateAttributesFromData(this,key);
+//orginal element attributes
+{
+ 	attribute1 : 'green',
+ 	attribute2 : 'red',
+ 	attribute3 : 'white'
+}
+
+yourElementAttributeUpdater(element, attribute3, black);
+
+function yourElementAttributeUpdater(element, elementKey,newValue){
+ 	awesome.updateAttributesFromData(element, elementKey, newValue);
+}
+
+//resulting element attributes
+{
+ 	attribute1 : 'green',
+ 	attribute2 : 'red',
+ 	attribute3 : 'black'
 }
 ```
 <a name="awesome.uniqueEntries"></a>
@@ -669,12 +735,16 @@ uniqueEntries ensures that keys and values of data array are unique
 
 | Param | Type | Description |
 | --- | --- | --- |
-| data | <code>Array</code> | Data array with unique entries |
+| data | <code>Object</code> | Data object or array with unique entries |
 
 **Example**  
 ```javascript
-awesome.uniqueEntries(awesome.components.actions);
-awesome.uniqueEntries(awesome.components.store);
+let arr = ['green', 'red', 'white', 'black', 'red'];
+
+awesome.uniqueEntries(arr);
+
+//respose is
+duplicate value string of red found on 4 && 1 const value strings MUST be unique!
 ```
 <a name="awesome.event_awesome-script-loaded"></a>
 ### "awesome-script-loaded" (e)
@@ -691,6 +761,6 @@ emitted when a script included via [requireScript](#awesome.requireScript) has c
 ```javascript
 window.on(
  	'awesome-script-loaded',
- 	init
+ 	yourAwesomeLoadedHandler
 );
 ```
