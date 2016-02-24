@@ -104,8 +104,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                this.querySelector(`#${this.dataset.username_id}`).value='';
-                this.querySelector(`#${this.dataset.password_id}`).value='';
+                this.createdCallback();
             }
 
             update(){
