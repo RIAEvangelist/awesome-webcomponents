@@ -17,7 +17,7 @@
         <script src='????BOWER????/document-register-element/build/document-register-element.js'></script>
 
         <!-- Include awesome.js -->
-        <script type='application/javascript' src='????BOWER????/awesome_webcomponents/awesome.js'></script>
+        <script type='application/javascript' src='????BOWER????/awesome-webcomponents/awesome.js'></script>
 
 
         <!-- get awesome stuff -->

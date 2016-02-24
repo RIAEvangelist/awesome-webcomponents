@@ -34,6 +34,7 @@ Just some guy who develops stuff he needs and shares it with the world. Sometime
 1. make a new dir for your project
 2. copy the [000-boilerplate index.html](https://github.com/RIAEvangelist/awesome-webcomponents/blob/master/tutorials/000-boilerplates/index.html) to your projects new dir as a starting point
 3. goto your projects dir in the terminal
+4. run ` bower init ` and hit enter for all questions until : ` would you like to mark this package as private which prevents it from being accidentally published to the registry? (y/N) `. At this question and the next hit ` y `.
 4. run ` bower install awesome-webcomponents `
 5. replace the ` ????BOWER???? ` with ` ./bower_components ` since we just installed them in the same dir.
 6. change the title to whatever you want in the title tag
@@ -84,7 +85,7 @@ Now the dialog will have an icon and title in it's header. Lets give it some con
 >
     <template>
         <!-- the expert (funny) -->
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/BKorP55Aqvg" frameborder="0" allowfullscreen></iframe>
+        <iframe style='width:100%;height:calc(100% - 3.8em);' src="https://www.youtube.com/embed/BKorP55Aqvg" frameborder="0" ></iframe>
     </template>
 </awesome-dialog>
 
@@ -110,7 +111,7 @@ Now we see we have a video inside of our dialog with the image and title in the 
         <script src='./bower_components/document-register-element/build/document-register-element.js'></script>
 
         <!-- Include awesome.js -->
-        <script type='application/javascript' src='./bower_components/awesome_webcomponents/awesome.js'></script>
+        <script type='application/javascript' src='./bower_components/awesome-webcomponents/awesome.js'></script>
 
 
         <!-- get awesome stuff -->
