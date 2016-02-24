@@ -174,6 +174,7 @@ Path to folder awesome.js is located in.
 **Access:** protected  
 **Example**  
 ```javascript
+//use awesome.path to require scripts
 awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
 awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
 ```
@@ -190,14 +191,6 @@ extensible/overwriteable constansts used in awesome apps
 | store | <code>Object</code> | store constants |
 | component | <code>Object</code> | component constants |
 
-**Example**  
-```javascript
-const constants = awesome.constants.component;
-
-const defaults={
-		username_pattern: constants.VALIDATE_USERNAME,
-};
-```
 
 * [.constants](#awesome.constants) : <code>Object</code>
     * [.action](#awesome.constants.action) : <code>Object</code>
@@ -282,6 +275,11 @@ action constants setter : merges the current action constants and the new consta
 
 **Example**  
 ```javascript
+//original constants
+{
+ 	ACTION_CONSTANT1: 'actionConst1',
+ 	ACTION_CONSTANT2: 'actionConst2',
+}
 myNewConstants = {
  	NEW_CONSTANT_1: 'const1',
  	NEW_CONSTANT_2: 'const2'
@@ -359,6 +357,12 @@ action constants setter : merges the current store constants and the new constan
 
 **Example**  
 ```javascript
+//original constants
+{
+ 	STORE_CONSTANT1: 'actionConst1',
+ 	STORE_CONSTANT2: 'actionConst2',
+}
+
 myNewConstants = {
  	NEW_CONSTANT_1: 'const1',
  	NEW_CONSTANT_2: 'const2'
@@ -368,10 +372,9 @@ awesome.constantants.store = myNewConstants;
 
 //action constants will now be
 //awesome.constants.store
-
 {
- 	ACTION_CONSTANT1: 'actionConst1',
- 	ACTION_CONSTANT2: 'actionConst2',
+ 	STORE_CONSTANT1: 'actionConst1',
+ 	STORE_CONSTANT2: 'actionConst2',
  	NEW_CONSTANT_1: 'const1',
  	NEW_CONSTANT_2: 'const2'
 }
@@ -448,6 +451,12 @@ component constants setter : merges the current component constants and the new 
 
 **Example**  
 ```javascript
+//original constants
+{
+ 	COMPONENT_CONSTANT1: 'actionConst1',
+ 	COMPONENT_CONSTANT2: 'actionConst2',
+}
+
 myNewConstants = {
  	NEW_CONSTANT_1: 'const1',
  	NEW_CONSTANT_2: 'const2'
@@ -458,8 +467,8 @@ awesome.constants.components = myNewConstants;
 //action constants will now be
 //awesome.constants.component
 {
- 	ACTION_CONSTANT1: 'actionConst1',
- 	ACTION_CONSTANT2: 'actionConst2',
+ 	COMPONENT_CONSTANT1: 'actionConst1',
+ 	COMPONENT_CONSTANT2: 'actionConst2',
  	NEW_CONSTANT_1: 'const1',
  	NEW_CONSTANT_2: 'const2'
 }
@@ -483,10 +492,10 @@ dispatchers for awesome 1 way data flow
 const dispatcher=awesome.dispatchers.action;
 
 dispatcher.trigger(
-storeEvents.EVENT_NAME,
-   {
-       data : 'data'
-   }
+	storeEvents.EVENT_NAME,
+	{
+   	data : 'data'
+	}
 );
 ```
 
@@ -602,6 +611,7 @@ Path to bower components
 **Access:** protected  
 **Example**  
 ```javascript
+//include bower components using the bower components path
 awesome.requireScript(`${awesome.bower}bower-component/bower-component.js`);
 ```
 <a name="awesome.loadTemplate"></a>
@@ -618,13 +628,49 @@ loadTemplate collects template element and returns element
 
 **Example**  
 ```javascript
+//taken from awesome-list example, loadTemplate will load template element of awesome-component
+//and returns element
+
+//html snippet
+
+ <awesome-list>
+                <template>
+                    <li>
+                        Test 1
+                    </li>
+                    <li>
+                        Test 2
+                    </li>
+                    <li>
+                        Test 3
+                    </li>
+                </template>
+            </awesome-list>
+//js
+
 const content=awesome.loadTemplate(this);
 
+//constents of content
+            <template>
+                <li>
+                    Test 1
+                </li>
+                <li>
+                    Test 2
+                </li>
+                <li>
+                    Test 3
+                </li>
+            </template>
+
+//usage
+//this content can now be loaded into awesome-list
+
 this.innerHTML=`
-  <element>
-     ${content}
-  </element>
-`;
+             <ul>
+                 ${content}
+             </ul>
+         `;
 ```
 <a name="awesome.requireScript"></a>
 ### awesome.requireScript(path) ⇒ <code>Boolean</code>
@@ -744,7 +790,7 @@ let arr = ['green', 'red', 'white', 'black', 'red'];
 awesome.uniqueEntries(arr);
 
 //respose is
-duplicate value string of red found on 4 && 1 const value strings MUST be unique!
+'duplicate value string of red found on 4 && 1 const value strings MUST be unique!'
 ```
 <a name="awesome.event_awesome-script-loaded"></a>
 ### "awesome-script-loaded" (e)

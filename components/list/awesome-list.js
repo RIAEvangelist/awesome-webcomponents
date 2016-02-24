@@ -9,7 +9,8 @@ awesome.requireCSS(`${awesome.path}components/list/awesome-list.css`);
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
                 const content=awesome.loadTemplate(this);
-                
+                console.log(content);
+
                 this.innerHTML=`
                     <ul>
                         ${content}

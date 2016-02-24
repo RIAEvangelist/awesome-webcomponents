@@ -69,6 +69,7 @@ class Awesome{
                  *
                  * @example
                  *
+                 * //use awesome.path to require scripts
                  * awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
                  * awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
                  *
@@ -93,14 +94,6 @@ class Awesome{
                  *
                  * @type {Object}
                  *
-                 * @example
-                 *
-                 * const constants = awesome.constants.component;
-                 *
-                 * const defaults={
-                 * 		username_pattern: constants.VALIDATE_USERNAME,
-                 * };
-                 *
                  * @prop action {Object} action constants
                  * @prop store {Object} store constants
                  * @prop component {Object} component constants
@@ -120,10 +113,10 @@ class Awesome{
                 * const dispatcher=awesome.dispatchers.action;
                 *
                 * dispatcher.trigger(
-                * storeEvents.EVENT_NAME,
-                *    {
-                *        data : 'data'
-                *    }
+                * 	storeEvents.EVENT_NAME,
+                * 	{
+                *    	data : 'data'
+                * 	}
                 * );
                 *
                 * @protected
@@ -195,6 +188,7 @@ class Awesome{
          *
          * @example
          *
+         * //include bower components using the bower components path
          * awesome.requireScript(`${awesome.bower}bower-component/bower-component.js`);
          *
          * @member awesome.bower
@@ -270,7 +264,11 @@ class Awesome{
          * action constants setter : merges the current action constants and the new constants via shallow merge.
          *
          * @example
-         *
+         * //original constants
+         * {
+         *  	ACTION_CONSTANT1: 'actionConst1',
+         *  	ACTION_CONSTANT2: 'actionConst2',
+         * }
          * myNewConstants = {
          *  	NEW_CONSTANT_1: 'const1',
          *  	NEW_CONSTANT_2: 'const2'
@@ -312,6 +310,11 @@ class Awesome{
          * action constants setter : merges the current store constants and the new constants via shallow merge.
          *
          * @example
+         * //original constants
+         * {
+         *  	STORE_CONSTANT1: 'actionConst1',
+         *  	STORE_CONSTANT2: 'actionConst2',
+         * }
          *
          * myNewConstants = {
          *  	NEW_CONSTANT_1: 'const1',
@@ -322,10 +325,9 @@ class Awesome{
          *
          * //action constants will now be
          * //awesome.constants.store
-         *
          * {
-         *  	ACTION_CONSTANT1: 'actionConst1',
-         *  	ACTION_CONSTANT2: 'actionConst2',
+         *  	STORE_CONSTANT1: 'actionConst1',
+         *  	STORE_CONSTANT2: 'actionConst2',
          *  	NEW_CONSTANT_1: 'const1',
          *  	NEW_CONSTANT_2: 'const2'
          * }
@@ -356,6 +358,12 @@ class Awesome{
          *
          * @example
          *
+         * //original constants
+         * {
+         *  	COMPONENT_CONSTANT1: 'actionConst1',
+         *  	COMPONENT_CONSTANT2: 'actionConst2',
+         * }
+         *
          * myNewConstants = {
          *  	NEW_CONSTANT_1: 'const1',
          *  	NEW_CONSTANT_2: 'const2'
@@ -366,8 +374,8 @@ class Awesome{
          * //action constants will now be
          * //awesome.constants.component
          * {
-         *  	ACTION_CONSTANT1: 'actionConst1',
-         *  	ACTION_CONSTANT2: 'actionConst2',
+         *  	COMPONENT_CONSTANT1: 'actionConst1',
+         *  	COMPONENT_CONSTANT2: 'actionConst2',
          *  	NEW_CONSTANT_1: 'const1',
          *  	NEW_CONSTANT_2: 'const2'
          * }
@@ -388,13 +396,50 @@ class Awesome{
          *
          * @example
          *
+         * //taken from awesome-list example, loadTemplate will load template element of awesome-component
+         * //and returns element
+         *
+         * //html snippet
+         *
+         *  <awesome-list>
+                <template>
+                    <li>
+                        Test 1
+                    </li>
+                    <li>
+                        Test 2
+                    </li>
+                    <li>
+                        Test 3
+                    </li>
+                </template>
+            </awesome-list>
+
+         * //js
+         *
          * const content=awesome.loadTemplate(this);
          *
+         * //constents of content
+            <template>
+                <li>
+                    Test 1
+                </li>
+                <li>
+                    Test 2
+                </li>
+                <li>
+                    Test 3
+                </li>
+            </template>
+         *
+         * //usage
+         * //this content can now be loaded into awesome-list
+         *
          * this.innerHTML=`
-         *   <element>
-         *      ${content}
-         *   </element>
-         * `;
+             <ul>
+                 ${content}
+             </ul>
+         `;
          *
          * @method awesome.loadTemplate
          * @protected
@@ -586,7 +631,7 @@ class Awesome{
          * awesome.uniqueEntries(arr);
          *
          * //respose is
-         * duplicate value string of red found on 4 && 1 const value strings MUST be unique!
+         * 'duplicate value string of red found on 4 && 1 const value strings MUST be unique!'
          *
          * @method awesome.uniqueEntries
          * @param  {Object} data    Data object or array with unique entries
