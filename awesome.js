@@ -420,7 +420,7 @@ class Awesome{
          * const content=awesome.loadTemplate(this);
          *
          * //constents of content
-        *    '<template>
+        *    `<template>
         *        <li>
         *            Test 1
         *        </li>
@@ -430,7 +430,7 @@ class Awesome{
         *        <li>
         *            Test 3
         *        </li>
-        *    </template>'
+        *    </template>`
          *
          * //usage
          * //this content can now be loaded into awesome-list
