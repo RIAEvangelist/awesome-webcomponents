@@ -12,6 +12,17 @@ I am a big fan of the [KISS Method](https://www.youtube.com/watch?v=hoj5Scm7HaY)
 
 I didn't want to spend time thinking up a better name, and the idea seems pretty awesome. Hopefully it will be awesome for you to use as well. Or maybe I'm just a :shit: ...
 
+### Who the hell am I?
+
+Just some guy who develops stuff he needs and shares it with the world. Sometimes people like it and use it. At the time of writing this I am also working on building a bionic eye, which is working out pretty well. [Here's a video of a blind person skiing with the bionic eye.](https://www.youtube.com/watch?v=dTxcPhSKoig)
+
+* [My npm account](https://www.npmjs.com/~riaevangelist)
+* [My npm stats](http://npm-stat.com/charts.html?package=&author=riaevangelist&from=2014-01-2&)
+* [My linkedin](https://www.linkedin.com/in/electriccowboy)
+* [My Twitter @electricCowboyR](https://twitter.com/electricCowboyR)
+* [My company - DigiNow.it](http://diginow.it/)
+
+
 ### Awesome Hello World
 
 ```html
