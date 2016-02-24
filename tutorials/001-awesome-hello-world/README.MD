@@ -25,6 +25,76 @@ Just some guy who develops stuff he needs and shares it with the world. Sometime
 
 ### Awesome Hello World
 
+#### Prerequisites
+
+1. bower must either exist in your project or be installed globally via ` npm i -g bower `
+
+#### Setup
+
+1. make a new dir for your project
+2. copy the [000-boilerplate index.html](https://github.com/RIAEvangelist/awesome-webcomponents/blob/master/tutorials/000-boilerplates/index.html) to your projects new dir as a starting point
+3. goto your projects dir in the terminal
+4. run ` bower install awesome-webcomponents `
+5. replace the ` ????BOWER???? ` with ` ./bower_components ` since we just installed them in the same dir.
+6. change the title to whatever you want in the title tag
+
+#### JS
+
+In the empty script tag add
+
+```javascript
+
+awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
+
+```
+
+This will include the dialog component.
+
+#### html
+
+Add an ` awesome-dialog ` to the body.
+
+```HTML
+
+<awesome-dialog>
+</awesome-dialog>
+
+```
+
+That will render an empty dialog to the page. Let's populate the dialogs icon and data attributes next.
+
+```HTML
+
+<awesome-dialog
+    data-icon='./img/yao.png'
+    data-title='Hello World'
+>
+</awesome-dialog>
+
+```
+
+Now the dialog will have an icon and title in it's header. Lets give it some content next, maybe a funny video from youtube? Awesome Components that support injecting content should always do so via a template object. This prevents [FOUSC](https://en.wikipedia.org/wiki/Flash_of_unstyled_content)
+( Flash Of Unstyled Content ) and allows the component to remember your injected content if it ever needs to re-render itself.
+
+```HTML
+
+<awesome-dialog
+    data-icon='./img/yao.png'
+    data-title='Hello World'
+>
+    <template>
+        <!-- the expert (funny) -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/BKorP55Aqvg" frameborder="0" allowfullscreen></iframe>
+    </template>
+</awesome-dialog>
+
+
+```
+
+Now we see we have a video inside of our dialog with the image and title in the header.
+
+### Finished Hello World
+
 ```html
 
 <html>
@@ -37,22 +107,30 @@ Just some guy who develops stuff he needs and shares it with the world. Sometime
         <title>Tutorial 001 - Awesome Introduction and Hello World</title>
 
         <!-- include polyfill for close to modern browsers -->
-        <script src='????BOWER????/document-register-element/build/document-register-element.js'></script>
+        <script src='./bower_components/document-register-element/build/document-register-element.js'></script>
 
         <!-- Include awesome.js -->
-        <script type='application/javascript' src='????BOWER????/awesome_webcomponents/awesome.js'></script>
+        <script type='application/javascript' src='./bower_components/awesome_webcomponents/awesome.js'></script>
 
 
         <!-- get awesome stuff -->
         <script type='application/javascript'>
-
+            awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
         </script>
 
     </head>
     <body>
 
         <!-- make something awesome -->
-
+        <awesome-dialog
+            data-icon='./img/yao.png'
+            data-title='Hello World'
+        >
+            <template>
+                <!-- the expert (funny) -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/BKorP55Aqvg" frameborder="0" allowfullscreen></iframe>
+            </template>
+        </awesome-dialog>
 
 
     </body>

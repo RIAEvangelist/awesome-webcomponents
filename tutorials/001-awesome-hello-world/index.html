@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <!-- basic viewport to support desktop and mobile -->
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+        <title>Tutorial 001 - Awesome Introduction and Hello World</title>
+
+        <!-- include polyfill for close to modern browsers -->
+        <script src='./bower_components/document-register-element/build/document-register-element.js'></script>
+
+        <!-- Include awesome.js -->
+        <script type='application/javascript' src='./bower_components/awesome_webcomponents/awesome.js'></script>
+
+
+        <!-- get awesome stuff -->
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
+        </script>
+
+    </head>
+    <body>
+
+        <!-- make something awesome -->
+        <awesome-dialog
+            data-icon='./img/yao.png'
+            data-title='Hello World'
+        >
+            <template>
+                <!-- the expert (funny) -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/BKorP55Aqvg" frameborder="0" allowfullscreen></iframe>
+            </template>
+        </awesome-dialog>
+
+
+    </body>
+</html>
