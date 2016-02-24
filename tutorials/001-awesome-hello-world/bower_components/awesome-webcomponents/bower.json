@@ -1,0 +1,32 @@
+{
+  "name": "awesome-webcomponents",
+  "description": "awesome native js web components",
+  "main": "awesome.js",
+  "authors": [
+    "Brandon Nozaki Miller <brandon@diginow.it>"
+  ],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "keywords": [
+    "awesome",
+    "web",
+    "components",
+    "webcomponents"
+  ],
+  "homepage": "https://github.com/RIAEvangelist/awesome-webcomponents",
+  "moduleType": [
+    "globals"
+  ],
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "**/.*"
+  ],
+  "dependencies": {
+    "js-message": "latest",
+    "event-pubsub": "latest",
+    "browser-error-classes": "latest",
+    "document-register-element": "latest"
+  }
+}

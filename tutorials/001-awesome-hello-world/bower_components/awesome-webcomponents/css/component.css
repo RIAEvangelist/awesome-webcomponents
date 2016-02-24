@@ -1,0 +1,105 @@
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    font-family: ubuntu, helvetica, arial, sans-serif;
+    background:rgb(245,245,245)
+}
+
+body *{
+    position:relative;
+    outline:none;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='number'],
+input[type='email'],
+input[type='url'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='file'],
+input[type='month'],
+input[type='search'],
+input[type='tel'],
+input[type='time'],
+input[type='week'],
+input:not([type]){
+    width:18em;
+    max-width:calc(100% - .6em);
+    padding:.3em;
+    border-radius:.3em;
+    border:none;
+    box-shadow:inset 0 0 .3em rgba(0,0,0,.5);
+    font-size:1.6em;
+    outline: none;
+    color:rgb(0,0,0);
+}
+
+input[type='color']{
+    height: 3em;
+    border: none;
+    background: rgb(255,255,255);
+    box-shadow: inset 0 0 .4em rgba(0,0,0,.5);
+}
+
+button,
+input[type='submit'],
+input[type='reset'],
+input[type='button']{
+    padding:.5em;
+    border-radius:.3em;
+    border:none;
+    box-shadow:inset 0 0 .1em rgba(0,0,0,.2);
+    font-size:1.2em;
+    background:rgb(230,230,230);
+    cursor:pointer;
+}
+
+button:active,
+button.active,
+input[type='submit']:active,
+input[type='submit'].active,
+input[type='reset']:active,
+input[type='reset'].active,
+input[type='button']:active,
+input[type='button'].active{
+    background:rgb(200,200,200);
+    box-shadow:inset 0 0 .3em rgba(0,0,0,.5)
+}
+
+button:disabled,
+button:disabled,
+input[type='submit']:disabled,
+input[type='reset']:disabled,
+input[type='button']:disabled{
+    background:rgb(245,245,245);
+    box-shadow:inset 0 0 .1em rgba(0,0,0,.5);
+}
+
+input:disabled,
+button:disabled{
+    cursor:not-allowed;
+    color:rgb(200,200,200);
+}
+
+button:disabled:active,
+button:disabled.active,
+input[type='submit']:disabled:active,
+input[type='submit']:disabled.active,
+input[type='reset']:disabled:active,
+input[type='reset']:disabled.active,
+input[type='button']:disabled:active,
+input[type='button']:disabled.active{
+    background:rgb(225,225,225);
+}
+
+input:not([type='range']):invalid{
+    background:rgb(255,255,200);
+}
+
+input:required:not([type='range']):valid{
+    background:rgb(200,255,200);
+}

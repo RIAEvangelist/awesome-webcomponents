@@ -1,0 +1,28 @@
+awesome-buttonset{
+    display:inline-block;
+}
+
+awesome-buttonset button{
+    padding:.5em 1em;
+}
+
+awesome-buttonset button:first-of-type{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+awesome-buttonset button:last-of-type{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+awesome-buttonset button:not(:first-of-type):not(:last-of-type){
+    border-radius: 0;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}

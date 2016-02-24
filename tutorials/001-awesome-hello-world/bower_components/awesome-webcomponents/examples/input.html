@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <title>awesome.js inputs</title>
+        <script src='../bower_components/document-register-element/build/document-register-element.js'></script>
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+            awesome.requireScript(`${awesome.path}components/range/awesome-range.js`);
+        </script>
+    </head>
+    <body>
+        <awesome-header
+            data-title='awesome styled native input element'>
+        </awesome-header>
+        <input placeholder='Normal Input Placeholder'></input>
+        <input
+            placeholder='Disabled Input Placeholder'
+            disabled='true'
+        ></input>
+
+        <input
+            placeholder='Disabled Input Value'
+            value='Disabled Input Value'
+            disabled='true'
+        ></input>
+        <awesome-header
+            data-title='Valid and invalid examples'>
+        </awesome-header>
+        <input
+            placeholder='Valid Input Placeholder'
+            required='true'
+            value='Valid Input Value'
+        ></input>
+        <input
+            placeholder='Invalid Input Placeholder'
+            required='true'
+        ></input>
+        <input
+            placeholder= 'whole numbers 1-10'
+            required='true'
+            type='number'
+            min='0'
+            max='10'
+            step='1'
+        ></input>
+        <input
+            placeholder='whole and half numbers 1-10'
+            required='true'
+            type='number'
+            min='0'
+            max='10'
+            step='.5'
+        ></input>
+        <input
+            placeholder='custom pattern uppercase only'
+            required='true'
+            pattern='[A-Z]{1,20}'
+        ></input>
+        <br />
+        <br />
+        native email patterns are not very good<br />
+        this patten can be found @<br />
+        <strong><em>awesome.constants.components.VALIDATE_EMAIL</em></strong><br />
+        <input
+            placeholder='emails'
+            required='true'
+            type='email'
+            pattern='([a-zA-Z0-9\.\-\_]{1,20})\@([a-zA-Z0-9\.\-\_]{2,50})\.([a-zA-Z]{2,10})'
+        ></input>
+        <br />
+        <br />
+        native url patterns are not very good<br />
+        this patten can be found @<br />
+        <strong><em>awesome.constants.components.VALIDATE_URL</em></strong><br />
+        <input
+            placeholder='website urls, must have http or https starter'
+            required='true'
+            type='url'
+            pattern='^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+        ></input>
+        <awesome-header
+            data-title='other awesome styled native input elements'>
+        </awesome-header>
+        <input
+            placeholder='date mm/dd/yyyy'
+            type='date'
+        ></input>
+        <input
+            placeholder='color #000000'
+            value='#000000'
+            pattern='#[a-f0-9]{6}'
+            type='color'
+        ></input>
+        <input
+            placeholder='datetime-local'
+            type='datetime-local'
+        ></input>
+        <input
+            placeholder='month'
+            type='month'
+        ></input>
+        <input
+            placeholder='week'
+            type='week'
+        ></input>
+        <input
+            placeholder='time'
+            type='time'
+        ></input>
+        <input
+            placeholder='telephone number'
+            type='tel'
+        ></input>
+        <input
+            placeholder='search'
+            type='search'
+        ></input>
+        <input
+            type='file'
+        ></input>
+    </body>
+</html>

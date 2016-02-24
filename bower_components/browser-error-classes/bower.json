@@ -1,0 +1,29 @@
+{
+  "name": "browser-error-classes",
+  "homepage": "https://github.com/RIAEvangelist/browser-error-classes",
+  "authors": [
+    "Brandon Nozaki Miller <brandon@diginow.it>"
+  ],
+  "description": "better vanilla js error classes for the browser",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "error",
+    "errors",
+    "class",
+    "classes",
+    "javascript",
+    "browser",
+    "js"
+  ],
+  "license": "DBAD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

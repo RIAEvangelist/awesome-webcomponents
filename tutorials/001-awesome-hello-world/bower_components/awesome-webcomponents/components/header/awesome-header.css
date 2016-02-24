@@ -1,0 +1,21 @@
+awesome-header{
+    display:block;
+    padding:.5em 0;
+    background:rgb(230,230,230);
+}
+
+awesome-header header{
+    font-size: 1.5em;
+    margin:0 .5em;
+}
+
+awesome-header .icon{
+    height:1em;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}

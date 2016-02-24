@@ -1,0 +1,33 @@
+{
+  "name": "awesome-webcomponents",
+  "version": "0.0.37",
+  "description": "awesome native js web components",
+  "main": "awesome.js",
+  "devDependencies": {
+      "bower": "^1.7.7",
+      "jsdoc-to-markdown": "^1.3.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc2md -h&& jsdoc2md -l javascript -g none -m none awesome.js dispatchers/*.js actions/*.js stores/*.js components/*.js   > README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RIAEvangelist/awesome-webcomponents.git"
+  },
+  "keywords": [
+    "awesome",
+    "web",
+    "components",
+    "webcomponents"
+  ],
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/RIAEvangelist/awesome-webcomponents/issues"
+  },
+  "homepage": "https://github.com/RIAEvangelist/awesome-webcomponents#readme",
+  "directories": {
+    "example": "examples"
+  }
+}

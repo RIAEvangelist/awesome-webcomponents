@@ -1,0 +1,26 @@
+{
+  "name": "browser-error-classes",
+  "version": "",
+  "description": "",
+  "main": "",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc2md -h&& jsdoc2md -l javascript -g none -m none *.js lib/*.js > README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RIAEvangelist/browser-error-classes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RIAEvangelist/browser-error-classes/issues"
+  },
+  "homepage": "https://github.com/RIAEvangelist/browser-error-classes#readme",
+  "devDependencies": {
+    "jsdoc-to-markdown": "^1.3.3"
+  }
+}
