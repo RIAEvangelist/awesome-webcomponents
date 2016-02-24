@@ -652,7 +652,7 @@ loadTemplate collects template element and returns element
 const content=awesome.loadTemplate(this);
 
 //constents of content
-   <template>
+   '<template>
        <li>
            Test 1
        </li>
@@ -662,16 +662,16 @@ const content=awesome.loadTemplate(this);
        <li>
            Test 3
        </li>
-   </template>
+   </template>'
 
 //usage
 //this content can now be loaded into awesome-list
 
 this.innerHTML=`
-             <ul>
-                 ${content}
-             </ul>
-         `;
+    <ul>
+        ${content}
+    </ul>
+`;
 ```
 <a name="awesome.requireScript"></a>
 ### awesome.requireScript(path) ⇒ <code>Boolean</code>
