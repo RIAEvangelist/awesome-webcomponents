@@ -21,8 +21,33 @@ awesome.requireScript(`${awesome.path}dispatchers/store.js`);
 
             /**
              * awesome dispatcher for actions, uses event-pubsub
+             *
+             * @example
+             *
+             * //trigger an event to store
+             * awesome.dispatchers.action.trigger(
+             *  	awesome.constants.store.YOUR_STORE_CONSTANT,
+             *  	{
+             *  		data1 : 'data1',
+             *  		data2 : 'data2'
+             *  	}
+             * );
+             *
+             * //listen to an event from a component
+             * awesome.dispatchers.action.on(
+             *  	awesome.constants.components.YOUR_COMPONENT_CONSTANT,
+             *  	yourHanderFunction
+             * );
+             *
+             * //stop listening to the event
+             *  awesome.dispatchers.action.off(
+             *  	awesome.constants.components.YOUR_COMPONENT_CONSTANT,
+             *  	yourHanderFunction
+             * );
+             *
+             *
              * @member awesome.dispatchers.action
-             * @type {Events}
+             * @type {EventEmitter}
              * @prop on {Function} binds handler to action event
              * @prop off {Function} ***un***binds handler from action event
              * @prop trigger {Function} fires store event
