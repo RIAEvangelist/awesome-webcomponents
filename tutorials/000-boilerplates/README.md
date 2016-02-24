@@ -1,3 +1,9 @@
+# Awesome Boilerplate
+
+[index.html](https://github.com/RIAEvangelist/awesome-webcomponents/blob/master/tutorials/000-boilerplates/index.html) is just a super basic boilerplate to get started with awesome.
+
+```html
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -28,3 +34,6 @@
 
     </body>
 </html>
+
+
+```
