@@ -1,5 +1,10 @@
 # Awesome-webcomponents Introduction and Hello World app/site
 
+<<<<<<< HEAD
+### Why did I create Awesome-webcomponents?
+
+I wanted a simple to use library / framework that would let the community use or extend it to quickly and easily for native ES6 apps. I primarily wanted to support [electron](http://electron.atom.io/), Cordova, and modern browsers without needing transpilers, or complicated tool chains. I found that these tool chains can lead us into developing in a way that is not native to the browser and mentally boxes us in, tightly coupling our apps to only working in one tool chain like webpack or babel, which are awesome for many needs, but over complicate and confuse many people. Sometimes simpler really is better. I am a big fan of the [KISS Method](https://www.youtube.com/watch?v=hoj5Scm7HaY). :point_left: Lots of people feel like that video with today's JS tools. But feel free to use awesome along side of any app bundled with an advanced tool chain. If you dig into the code just a bit, you will see we use some isomorphic libraries under the hood as well.
+=======
 This tutorial created by [@RIAEvangelist](https://github.com/RIAEvangelist), feel free to contact me with questions.
 
 ### Why did I create Awesome-webcomponents?
@@ -7,11 +12,15 @@ This tutorial created by [@RIAEvangelist](https://github.com/RIAEvangelist), fee
 I wanted a simple to use library / framework that would let the community use or extend it to quickly and easily for native ES6 apps. I primarily wanted to support [electron](http://electron.atom.io/), Cordova, and modern browsers without needing transpilers, or complicated tool chains. I found that these tool chains can lead us into developing in a way that is not native to the browser and mentally boxes us in, tightly coupling our apps to only working in one tool chain like webpack or babel, which are awesome for many needs, but over complicate and confuse many people. Sometimes simpler really is better.
 
 I am a big fan of the [KISS Method](https://www.youtube.com/watch?v=hoj5Scm7HaY). :point_left: Lots of people feel like that video with today's JS tools. But feel free to use awesome along side of any app bundled with an advanced tool chain. If you dig into the code just a bit, you will see we use some isomorphic libraries under the hood as well.
+>>>>>>> origin/master
 
 ### Why did I call it awesome?
 
 I didn't want to spend time thinking up a better name, and the idea seems pretty awesome. Hopefully it will be awesome for you to use as well. Or maybe I'm just a :shit: ...
 
+<<<<<<< HEAD
+### Awesome Hello World
+=======
 ### Who the hell am I?
 
 Just some guy who develops stuff he needs and shares it with the world. Sometimes people like it and use it. At the time of writing this I am also working on building a bionic eye, which is working out pretty well. [Here's a video of a blind person skiing with the bionic eye.](https://www.youtube.com/watch?v=dTxcPhSKoig)
@@ -105,6 +114,8 @@ Now we see we have a video inside of our dialog with the image and title in the 
 
 [the index.html code should now look like this](https://github.com/RIAEvangelist/awesome-webcomponents/blob/master/tutorials/001-awesome-hello-world/index.html)
 
+[see the demo on github.io](https://riaevangelist.github.io/awesome-webcomponents/tutorials/001-awesome-hello-world/index.html)
+
 ```html
 
 <html>
@@ -149,3 +160,4 @@ Now we see we have a video inside of our dialog with the image and title in the 
 
 
 ```
+>>>>>>> origin/master
