@@ -62,7 +62,9 @@ Add an ` awesome-dialog ` to the body.
 
 ```
 
-That will render an empty dialog to the page. Let's populate the dialogs icon and data attributes next.
+![empty dialog](https://raw.githubusercontent.com/RIAEvangelist/awesome-webcomponents/master/tutorials/001-awesome-hello-world/img/empty.png)
+
+That will render an empty dialog to the page. Next populate the dialogs icon and data attributes next.
 
 ```HTML
 
@@ -73,6 +75,8 @@ That will render an empty dialog to the page. Let's populate the dialogs icon an
 </awesome-dialog>
 
 ```
+
+![title dialog](https://raw.githubusercontent.com/RIAEvangelist/awesome-webcomponents/master/tutorials/001-awesome-hello-world/img/header.png)
 
 Now the dialog will have an icon and title in it's header. Lets give it some content next, maybe a funny video from youtube? Awesome Components that support injecting content should always do so via a template object. This prevents [FOUSC](https://en.wikipedia.org/wiki/Flash_of_unstyled_content)
 ( Flash Of Unstyled Content ) and allows the component to remember your injected content if it ever needs to re-render itself.
@@ -93,6 +97,9 @@ Now the dialog will have an icon and title in it's header. Lets give it some con
 ```
 
 Now we see we have a video inside of our dialog with the image and title in the header.
+
+![title dialog](https://raw.githubusercontent.com/RIAEvangelist/awesome-webcomponents/master/tutorials/001-awesome-hello-world/img/video.png)
+
 
 ### Finished Hello World
 
@@ -129,13 +136,14 @@ Now we see we have a video inside of our dialog with the image and title in the 
         >
             <template>
                 <!-- the expert (funny) -->
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/BKorP55Aqvg" frameborder="0" allowfullscreen></iframe>
+                <iframe style='width:100%;height:calc(100% - 1.25em);' src="https://www.youtube.com/embed/BKorP55Aqvg" frameborder="0" ></iframe>
             </template>
         </awesome-dialog>
 
 
     </body>
 </html>
+
 
 
 ```
