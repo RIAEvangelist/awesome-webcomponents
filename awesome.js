@@ -45,18 +45,20 @@ window.off=window.removeEventListener;
  * @prop awesome.bower {String} path to bower components
  *
  *
- * @prop awesome.constants {Object} awesome constants
- * @prop awesome.dispatchers {Object} dispatchers for store/action/component messages
- * @prop awesome.stores {Object} registered awesome.Store instances. These are designed to support 1 way data flows for use by components
+ * @prop constants {Object} awesome constants
+ * @prop config {Object} awesome config objects
+ * @prop dispatchers {Object} dispatchers for store/action/component messages
+ * @prop stores {Object} registered awesome.Store instances. These are designed to support 1 way data flows for use by components
  *
- * @prop awesome.Store {Class} Store class, used to create new stores
+ * @prop Store {Class} Store class, used to create new stores
+ * @prop loadTemplate {Function} fetches nested template contents for inclusion in awesome-component
+ * @prop requireScript {Function} inject script tag into header
+ * @prop requireCSS {Function} inject stylesheet link tag into header
  *
- * @prop awesome.loadTemplate {Function} fetches nested template contents for inclusion in awesome-component
- * @prop awesome.requireScript {Function} inject script tag into header
- * @prop awesome.requireCSS {Function} inject stylesheet link tag into header
- * @prop awesome.mergeDataset {Function} merges element's data-* attributes with the defaults for that component element
- * @prop awesome.updateAttributesFromData {Function} maps data-* values to * attribute values
- * @prop awesome.uniqueEntries {Function} ensures that keys and values of an object unique
+ * @prop configMerge {Function} awesome config objects
+ * @prop mergeDataset {Function} merges element's data-* attributes with the defaults for that component element
+ * @prop updateAttributesFromData {Function} maps data-* values to * attribute values
+ * @prop uniqueEntries {Function} ensures that keys and values of an object unique
  *
  */
 class Awesome{
@@ -64,6 +66,11 @@ class Awesome{
         Object.defineProperties(
             this,
             {
+                ready:{
+                    enumerable:true,
+                    writable:true,
+                    value:false
+                },
                 /**
                  * Path to folder awesome.js is located in.
                  *
@@ -81,7 +88,7 @@ class Awesome{
                     enumerable:true,
                     writable:false,
                     value:document.head.querySelector(
-                        '[src$="/awesome.js"]'
+                        '[src$="/awesome.js"], [src^="/awesome.js"]'
                     ).src.replace(
                         /awesome\.js$/,
                         ''
@@ -99,6 +106,39 @@ class Awesome{
                  * @prop component {Object} component constants
                  */
                 constants:{
+                    enumerable:true,
+                    writable:false,
+                    value:{}
+                },
+                /**
+                 * @member awesome.configs
+                 * @type {Object} extensible/overwriteable constansts used in awesome apps
+                 *
+                 */
+                config:{
+                    enumerable:true,
+                    writable:false,
+                    value:{}
+                },
+                configMerge:{
+                    enumerable:true,
+                    writable:false,
+                    value:configMerge.bind(this,this.config)
+                },
+                /**
+                 * @member awesome.language
+                 * @type {Object} language objects used by awesome components
+                 *
+                 */
+                language:{
+                    enumerable:true,
+                    writable:false,
+                    value:{
+                        default:{},
+                        current:{}
+                    }
+                },
+                setLanguage:{
                     enumerable:true,
                     writable:false,
                     value:{}
@@ -201,10 +241,10 @@ class Awesome{
             {
                 enumerable:true,
                 writable:false,
-                value:(document.location.pathname.indexOf('/awesome-webcomponents/') !== 0)?
-                    this.path.split('awesome-webcomponents/')[0]
-                        :
-                    '/awesome-webcomponents/bower_components/'
+                value:(document.location.pathname.match(/\/awesome-webcomponents\//))?
+                    `${this.path}bower_components/` //if demo
+                    :
+                    this.path.split('awesome-webcomponents/')[0] //if not demo
             }
         );
 
@@ -245,6 +285,167 @@ class Awesome{
                 }
             }
         );
+
+        /**
+         * Deep merge config object
+         * @member awesome.configMerge
+         * @type {Object}
+         *
+         *	@example
+         *
+         * ```javascript
+         *
+         * // awesome.config could be
+         * {
+         *     a:1,
+         *     b:{
+         *         c:3
+         *     },
+         *     d:{
+         *         e:55,
+         *         f:{
+         *             g:99
+         *         }
+         *     },
+         *     q:{
+         *         r:77
+         *     }
+         * }
+         *
+         * awesome.configMerge(
+         *     {
+         *         b:{
+         *             x:{
+         *                 y:{
+         *                     z:99999
+         *                 }
+         *             }
+         *         },         *
+         *         d:{
+         *             f:{
+         *                 h:55
+         *             }
+         *         },
+         *         q:33
+         *     }
+         * )
+         *
+         *
+         * //now awesome.config would look like
+         * {
+         *     a:1,
+         *     b:{
+         *         c:3
+         *             x:{
+         *                 y:{
+         *                     z:99999
+         *                 }
+         *             }
+         *         }
+         *     },
+         *     d:{
+         *         e:55,
+         *         f:{
+         *             g:99,
+         *             h:55
+         *         }
+         *     },
+         *     q:33
+         * }
+         *
+         *
+         * ```
+         * @param  {Object}    root    auto populated by awesome, don't pass.
+         * @param  {Object}    newRoot object to merge into awesome.config (this is the only thing to pass)
+         * @return {Boolean}            success
+         */
+        function configMerge(root,newRoot){
+            for (const key in newRoot) {
+                const newChild=newRoot[key];
+                const rootChild=root[key];
+                newChildIsObject=(typeof newChild==='object');
+
+                if (newChildIsObject && typeof rootChild==='object') {
+                    configMerge.bind(this,rootChild,newChild);
+                    continue;
+                }
+
+                root[key]=(newChildIsObject)?
+                    Object.assign({},newChild)
+                    :
+                    newChild;
+            }
+        }
+
+        /**
+         * Merge a specific language and the default languages. If the languageCode has not been populated on the awesome.language object, the awesome.language.default will be used.
+         * @method setLanguage
+         * @param  {String}    languageCode like 'en', 'es' or 'zh' etc.
+         *
+         * @example
+         *
+         * ```javascript
+         * //if awesome.language.default is
+         * {
+         *     hello:'Hello',
+         *     appName:'My Awesome App'
+         * }
+         *
+         * //and awesome.language.es is
+         * {
+         *     hello:'Ola'
+         * }
+         *
+         * awesome.setLanguage('es');
+         *
+         * //will result in awesome.language.current being
+         * {
+         *     hello:'Ola',
+         *     appName:'My Awesome App'
+         * }
+         *
+         * ```
+         *
+         */
+        function setLanguage(languageCode){
+            const desiredLanguage=this.language[languageCode];
+
+            if(!desiredLanguage){
+                this.language.current=Object.assign(
+                    {},
+                    this.language.default
+                );
+                return false;
+            }
+
+            const newLanguage={};
+            Object.assign(
+                newLanguage,
+                this.language.default,
+                desiredLanguage
+            );
+
+            this.language.current=Object.assign(
+                {},
+                newLanguage
+            );
+        }
+
+        function dynamicLanguageString(key,params){
+            const vars = new RegExp(`\\$\\{${Object.keys(params).join('\}|\\$\\{')}\\}`,"gi");
+            const string=this.language.current[key];
+
+            if(!string){
+                return string;
+            }
+
+            return string.replace(
+                vars,
+                function(matched){
+                    return params[matched.slice(2,-1)];
+                }
+            );
+        }
 
         const actions={};
         const stores={};
@@ -458,6 +659,8 @@ class Awesome{
             return content;
         }
 
+        let remainingScriptCount=0;
+
         /**
          * requireScript appends scripts to the docuyment head with a differed false
          *
@@ -474,21 +677,24 @@ class Awesome{
          * @return {Boolean}      true
          */
         function requireScript(path){
-            const script=document.createElement('script');
             const existingScript=document.head.querySelector(`script[src='${path}']`);
             if(existingScript){
                 return false;
             }
+            const script=document.createElement('script');
+            remainingScriptCount++;
+            this.ready=false;
+
             script.src=path;
             script.async=false;
             script.defer=true;
             script.type='text/javascript';
-            script.onload=scriptLoaded.bind(path);
+            script.onload=scriptLoaded.bind(this,path);
             document.head.appendChild(script);
             return true;
         }
 
-        function scriptLoaded(){
+        function scriptLoaded(path){
             /**
              * emitted when a script included via {@link awesome.requireScript} has completed loading a script.
              *
@@ -507,8 +713,27 @@ class Awesome{
             const e=new CustomEvent(
                 'awesome-script-loaded',
                 {
-                    detail:this
+                    detail:path
                 }
+            );
+
+            remainingScriptCount--;
+            if(remainingScriptCount<1){
+                this.ready=true;
+            }
+
+            window.dispatchEvent(e);
+
+            awesomeReady.bind(this)();
+        }
+
+        function awesomeReady(){
+            if(!this.ready){
+                return;
+            }
+
+            const e=new CustomEvent(
+                'awesome-ready'
             );
 
             window.dispatchEvent(e);
@@ -687,10 +912,13 @@ const awesome=new Awesome;
 //bootstrap css
 awesome.requireCSS(`${awesome.path}css/component.css`);
 
-//node modules
+//libs
 awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
 awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
 awesome.requireScript(`${awesome.bower}browser-error-classes/Errors.js`);
+
+//default language file
+awesome.requireScript(`${awesome.path}languages/default.js`);
 
 //constants
 awesome.requireScript(`${awesome.path}stores/constants.js`);
