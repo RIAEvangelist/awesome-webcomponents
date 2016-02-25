@@ -8,25 +8,30 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 (
     function(){
         let state=null;
-        let dispatcher=awesome.dispatchers.component;
-        const constants = awesome.constants.component;
-        const action = awesome.constants.action;
-
-        const defaults={
-            title:'Login',
-            login_type:null,
-
-            username_id:'awesome-login-screen-username',
-            username_placeholder:'username',
-            username_pattern: constants.VALIDATE_USERNAME,
-
-            password_id:'awesome-login-screen-password',
-            password_placeholder:'password',
-
-            submit_button_text:'Login'
-        };
+        let dispatcher=null;
+        let constants = null;
+        let action = null;
+        let defaults=null;
 
         function init(e){
+            dispatcher=awesome.dispatchers.component;
+            constants = awesome.constants.component;
+            action = awesome.constants.action;
+
+            defaults={
+                title:awesome.language.current['awesome-login-screen-header'],
+                login_type:null,
+
+                username_id:'awesome-login-screen-username',
+                username_placeholder:awesome.language.current.username,
+                username_pattern: constants.VALIDATE_USERNAME,
+
+                password_id:'awesome-login-screen-password',
+                password_placeholder:awesome.language.current.password,
+
+                submit_button_text:awesome.language.current.login
+            };
+
             window.off(
                 'awesome-ready',
                 init

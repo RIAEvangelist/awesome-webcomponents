@@ -131,7 +131,7 @@ class Awesome{
                 setLanguage:{
                     enumerable:true,
                     writable:false,
-                    value:{}
+                    value:setLanguage
                 },
                 /**
                 * @member awesome.dispatchers
