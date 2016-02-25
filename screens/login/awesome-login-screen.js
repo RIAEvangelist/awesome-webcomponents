@@ -5,7 +5,6 @@ awesome.requireScript(`${awesome.path}actions/user/auth.js`);
 awesome.requireScript(`${awesome.path}stores/user/auth.js`);
 awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
-
 (
     function(){
         let state=null;
@@ -28,12 +27,8 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
         };
 
         function init(e){
-            if(e && e.detail!==`${awesome.path}stores/user/auth.js`){
-                return;
-            }
-
             window.off(
-                'awesome-script-loaded',
+                'awesome-ready',
                 init
             );
 
@@ -104,8 +99,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                this.querySelector(`#${this.dataset.username_id}`).value='';
-                this.querySelector(`#${this.dataset.password_id}`).value='';
+                this.createdCallback();
             }
 
             update(){
@@ -133,9 +127,9 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             }
         }
 
-        if(!awesome.stores.auth){
+        if(!awesome.ready){
             window.on(
-                'awesome-script-loaded',
+                'awesome-ready',
                 init
             )
             return;
