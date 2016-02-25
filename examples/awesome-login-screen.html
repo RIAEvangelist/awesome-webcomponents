@@ -3,15 +3,43 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
         <title>awesome.js awesome-login-screen</title>
+        <script src='../bower_components/document-register-element/build/document-register-element.js'></script>
         <script type='application/javascript' src='../awesome.js'></script>
         <script type='application/javascript'>
-            awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             awesome.requireScript(`${awesome.path}screens/login/awesome-login-screen.js`);
+
+            //show manual localization buttons
+            awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
+
+            window.on(
+                'change',
+                function(e){
+                    if(e.target.tagName!=='AWESOME-BUTTONSET'){
+                        return;
+                    }
+
+                    switch(e.target.value){
+                        case '0' :
+                            awesome.setLanguage(null); //default
+                            break;
+                        case '1' :
+                            awesome.setLanguage('ru'); //russian
+                            break;
+                        case '2' :
+                            awesome.setLanguage('jp'); //japanese
+                            break;
+                    }
+                }
+            )
         </script>
     </head>
     <body>
-        <awesome-login-screen
-            data-title='Test Login'
-        ></awesome-login-screen>
+        <awesome-buttonset
+            data-count=3
+            data-b0='english'
+            data-b1='русски'
+            data-b2='日本語'
+        ></awesome-buttonset>
+        <awesome-login-screen></awesome-login-screen>
     </body>
 </html>

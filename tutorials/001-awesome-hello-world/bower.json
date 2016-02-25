@@ -1,0 +1,19 @@
+{
+  "name": "001-awesome-hello-world",
+  "homepage": "https://github.com/RIAEvangelist/awesome-webcomponents",
+  "authors": [
+    "Brandon Nozaki Miller <brandon@diginow.it>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "DBAD",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

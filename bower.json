@@ -26,6 +26,7 @@
   "dependencies": {
     "js-message": "latest",
     "event-pubsub": "latest",
-    "browser-error-classes": "latest"
+    "browser-error-classes": "latest",
+    "document-register-element": "latest"
   }
 }

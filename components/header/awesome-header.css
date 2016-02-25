@@ -7,6 +7,7 @@ awesome-header{
 awesome-header header{
     font-size: 1.5em;
     margin:0 .5em;
+    min-height:1.5em;
 }
 
 awesome-header .icon{
