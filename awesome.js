@@ -200,15 +200,10 @@ class Awesome{
             {
                 enumerable:true,
                 writable:false,
-                value:(
-                    document.location.pathname.match(
-                        /\/awesome-webcomponents\//
-                    )
-                )?  (
+                value:(document.location.pathname.match(/\/awesome-webcomponents\//))?
+                    (
                         (
-                            (
-                                document.location.protocol=='file:'
-                            )?
+                            (document.location.protocol=='file:')?
                                 `${this.path}bower_components/` //if local clone
                                 :
                                 this.path.split('awesome-webcomponents/')[0] // normal use
