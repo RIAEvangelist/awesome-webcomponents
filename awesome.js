@@ -879,6 +879,10 @@ awesome.requireScript(`${awesome.bower}browser-error-classes/Errors.js`);
 //default language file
 awesome.requireScript(`${awesome.path}languages/default.js`);
 
+//configs
+awesome.requireScript(`${awesome.path}configs/default.js`);
+
+
 //constants
 awesome.requireScript(`${awesome.path}stores/constants.js`);
 awesome.requireScript(`${awesome.path}actions/constants.js`);
