@@ -105,6 +105,8 @@ Now we see we have a video inside of our dialog with the image and title in the 
 
 [the index.html code should now look like this](https://github.com/RIAEvangelist/awesome-webcomponents/blob/master/tutorials/001-awesome-hello-world/index.html)
 
+[see the demo on github.io](https://riaevangelist.github.io/awesome-webcomponents/tutorials/001-awesome-hello-world/index.html)
+
 ```html
 
 <html>
