@@ -744,8 +744,6 @@ class Awesome{
                 window.dispatchEvent(e);
             }
 
-            console.log(hasLang);
-
             return hasLang;
         }
 
