@@ -1,19 +1,6 @@
 'use strict';
 
 awesome.constants.component={
-    //Drag and drop related
-    /**
-     * pointer enters drag and drop field
-     * @member awesome.constants.component.DRAG_DROP_ENTER
-     * @type {EventName}
-     */
-    DRAG_DROP_ENTER:'dragdrop.enter',
-    /**
-     * pointer over drag and drop field
-     * @memeber awesome.constants.component.DRAG_DROP_OVER
-     * @type {EventName}
-     */
-    DRAG_DROP_OVER:'dragdrop.over',
     /**
      * pointer leaves drag and drop field
      * @member awesome.constants.component.DRAG_DROP_LEAVE
@@ -24,6 +11,11 @@ awesome.constants.component={
     //validators make example for these. the regular expressions ***************
     /**
      * regular expression for validating user name
+     *
+     * @example
+     *
+     * 
+     *
      * @memeber awesome.constants.component.VALIDATE_USERNAME
      * @type {EventName}
      */

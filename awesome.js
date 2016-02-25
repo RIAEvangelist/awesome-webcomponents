@@ -69,7 +69,7 @@ class Awesome{
                  *
                  * @example
                  *
-                 * //use awesome.path to require scripts
+                 * //use awesome.path to reference the awesome-webcomponents directory
                  * awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
                  * awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
                  *
