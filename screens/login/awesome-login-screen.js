@@ -22,7 +22,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 login_type:null,
 
                 username_id:'awesome-login-screen-username',
-                username_pattern: awesome.config.VALIDATE_USERNAME,
+                username_pattern: awesome.config.validate.username,
 
                 password_id:'awesome-login-screen-password'
             };

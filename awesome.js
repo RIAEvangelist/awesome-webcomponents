@@ -46,17 +46,19 @@ window.off=window.removeEventListener;
  *
  *
  * @prop constants {Object} awesome constants
- * @prop config {Object} awesome config objects
- * @prop configMerge {Function} deep recursive merge for awesome config objects
+ * @prop constants.components {Shallow Merge Object} shallow merge for awesome.constants.components
+ * @prop constants.stores {Shallow Merge Object} shallow merge for awesome.constants.stores
+ * @prop constants.actions {Shallow Merge Object} shallow merge for awesome.constants.actions
+ *
+ * @prop config {Deep Merge Object} deep recursive merge for awesome config object
  *
  * @prop language {Object} awesome language objects
  * @prop language.default {Object} awesome default language object
  * @prop language.current {Object} awesome language object merged default and desiredLanguage
  * @prop language.* {Object} awesome language objects for specific languages like ` awesome.language.en ` or ` awesome.language.ru `
- * @prop language {Object} awesome language objects
  * @prop setLanguage {Function} set the current language
- *
  * @prop dynamicLanguageString {Function} a way to pass variables to language strings. This is helpful when you support languages with a variety of grammatical structures
+ *
  * @prop dispatchers {Object} dispatchers for store/action/component messages
  * @prop stores {Object} registered awesome.Store instances. These are designed to support 1 way data flows for use by components
  *
@@ -109,20 +111,20 @@ class Awesome{
                     writable:false,
                     value:{}
                 },
+                _config:{
+                    enumerable:false,
+                    writable:true,
+                    value:{}
+                },
                 /**
-                 * @member awesome.configs
+                 * @member awesome.config
                  * @type {Object} extensible/overwriteable constansts used in awesome apps
                  *
                  */
                 config:{
                     enumerable:true,
-                    writable:true,
-                    value:{}
-                },
-                configMerge:{
-                    enumerable:true,
-                    writable:false,
-                    value:configMerge.bind(this,this.config)
+                    get:getConfigs,
+                    set:configMerge
                 },
                 /**
                  * @member awesome.language
@@ -264,8 +266,7 @@ class Awesome{
 
         /**
          * Deep merge config object
-         * @member awesome.configMerge
-         * @type {Object}
+         * @method awesome.config.setter
          *
          *	@example
          *
@@ -331,18 +332,22 @@ class Awesome{
          *
          *
          * ```
-         * @param  {Object}    root    auto populated by awesome, don't pass.
-         * @param  {Object}    newRoot object to merge into awesome.config (this is the only thing to pass)
-         * @return {Boolean}            success
+         *
+         * @return {Object}            awesome.config
          */
         function configMerge(root,newRoot){
+            if(!newRoot){
+                newRoot=root;
+                root=this._config;
+            }
+
             for (const key in newRoot) {
                 const newChild=newRoot[key];
-                const rootChild=root[key];
-                newChildIsObject=(typeof newChild==='object');
+                let rootChild=root[key];
+                const newChildIsObject=(typeof newChild==='object');
 
                 if (newChildIsObject && typeof rootChild==='object') {
-                    configMerge.bind(this,rootChild,newChild);
+                    root[key]=configMerge(rootChild,newChild);
                     continue;
                 }
 
@@ -351,6 +356,12 @@ class Awesome{
                     :
                     newChild;
             }
+
+            return root;
+        }
+
+        function getConfigs(){
+            return this._config;
         }
 
         /**
