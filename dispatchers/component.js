@@ -24,9 +24,12 @@ awesome.requireScript(`${awesome.path}dispatchers/action.js`);
              *
              * @example
              *
+             * const dispatcher = awesome.dispatcher.component;
+             * const constants = awesome.constants;
+             *
              * //trigger an event to action
-             * awesome.dispatchers.component.trigger(
-             *  	awesome.constants.action.YOUR_COMPONENT_CONSTANT,
+             * dispatcher.trigger(
+             *  	constants.action.YOUR_COMPONENT_CONSTANT,
              *  	{
              *  		data1 : 'data1',
              *  		data2 : 'data2'

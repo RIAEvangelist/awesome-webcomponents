@@ -24,9 +24,12 @@ awesome.requireScript(`${awesome.path}dispatchers/store.js`);
              *
              * @example
              *
+             * const dispatcher = awesome.dispatchers.action;
+             * const constants = awesome.constants;
+             *
              * //trigger an event to store
-             * awesome.dispatchers.action.trigger(
-             *  	awesome.constants.store.YOUR_STORE_CONSTANT,
+             * dispatcher.trigger(
+             *  	constants.store.YOUR_STORE_CONSTANT,
              *  	{
              *  		data1 : 'data1',
              *  		data2 : 'data2'
@@ -34,14 +37,14 @@ awesome.requireScript(`${awesome.path}dispatchers/store.js`);
              * );
              *
              * //listen to an event from a component
-             * awesome.dispatchers.action.on(
-             *  	awesome.constants.components.YOUR_COMPONENT_CONSTANT,
+             *dispatcher.on(
+             *  	constants.components.YOUR_COMPONENT_CONSTANT,
              *  	yourHanderFunction
              * );
              *
              * //stop listening to the event
-             *  awesome.dispatchers.action.off(
-             *  	awesome.constants.components.YOUR_COMPONENT_CONSTANT,
+             * dispatcher.off(
+             *  	constants.components.YOUR_COMPONENT_CONSTANT,
              *  	yourHanderFunction
              * );
              *

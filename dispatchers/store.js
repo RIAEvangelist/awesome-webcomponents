@@ -11,15 +11,18 @@ awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
          *
          * @example
          *
+         * const dispatcher = awesome.dispatcher.store;
+         * const constants = awesome.constants;
+         *
          * //listen to an event from an action
-         * awesome.dispatchers.store.on(
-         *  	awesome.constants.action.YOUR_STORE_CONSTANT,
+         * dispatcher.on(
+         *  	constants.action.YOUR_STORE_CONSTANT,
          *  	yourHanderFunction
          * );
          *
          * //stop listening to the event
-         *  awesome.dispatchers.store.off(
-         *  	awesome.constants.components.YOUR_STORE_CONSTANT,
+         *  dispatcher.off(
+         *  	constants.components.YOUR_STORE_CONSTANT,
          *  	yourHanderFunction
          * );
          *
@@ -29,16 +32,6 @@ awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
          * @prop off {Function} ***un***binds handler from store event
          * @prop events {Function} fires event
          */
-        Object.defineProperty(
-            awesome.dispatchers,
-            'store',
-            {
-                enumerable:true,
-                writable:false,
-                value:new Dispatcher
-            }
-        );
-
         class Dispatcher{
             constructor(){
                 Object.defineProperties(
@@ -63,5 +56,15 @@ awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
                 );
             }
         }
+
+        Object.defineProperty(
+            awesome.dispatchers,
+            'store',
+            {
+                enumerable:true,
+                writable:false,
+                value:new Dispatcher
+            }
+        );
     }
 )();

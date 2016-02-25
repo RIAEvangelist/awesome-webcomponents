@@ -147,18 +147,6 @@ class Awesome{
                 * dispatchers for awesome 1 way data flow
                 * @member awesome.dispatchers
                 * @type {Object}
-                *
-                * @example
-                *
-                * const dispatcher=awesome.dispatchers.action;
-                *
-                * dispatcher.trigger(
-                * 	storeEvents.EVENT_NAME,
-                * 	{
-                *    	data : 'data'
-                * 	}
-                * );
-                *
                 * @protected
                 * @prop action {Object} action dispatcher
                 * @prop store {Object} store dispatcher
@@ -621,8 +609,7 @@ class Awesome{
          * const content=awesome.loadTemplate(this);
          *
          * //constents of content
-        *    `<template>
-        *        <li>
+        *        `<li>
         *            Test 1
         *        </li>
         *        <li>
@@ -630,8 +617,7 @@ class Awesome{
         *        </li>
         *        <li>
         *            Test 3
-        *        </li>
-        *    </template>`
+        *        </li>`
          *
          * //usage
          * //this content can now be loaded into awesome-list
@@ -744,7 +730,7 @@ class Awesome{
          *
          * @example
          *
-         * //require your component CSS
+         * //require any CSS to script
          * awesome.requireCSS(`${awesome.path}components/your-component/your-component.css`);
          *
          * @method awesome.requireCSS
@@ -774,12 +760,11 @@ class Awesome{
          *  	property2: 'two'
          * }
          *
-         * function yourElementAttributeChangeHandler(changedDataset){
-         * 		mergeDataset(myElement, changedDataset);
+         * function componentCreatedCallback(componentDataset){
+         * 		mergeDataset(myElement, componentDataset);
          * }
          *
-         * //after the dataset changes it will be
-         *
+         * //after the component is created it will contain
          * //ElementDataset
          *  {
          *  	property1 : 'newProp1',
@@ -851,12 +836,17 @@ class Awesome{
          *
          * @example
          *
-         * let arr = ['green', 'red', 'white', 'black', 'red'];
+         * //check that your constants all have unique entries as they should
+         *  const constans = awesome.constans;
          *
-         * awesome.uniqueEntries(arr);
+         * awesome.uniqueEntries(constans.store);
+         * awesome.uniqueEntries(constans.components);
+         * awesome.uniqueEntries(constans.actions);
          *
-         * //respose is
-         * 'duplicate value string of red found on 4 && 1 const value strings MUST be unique!'
+         * //if entires are not unique an error will be thrown
+         * `duplicate key of yourKey const keys mist be unique!`
+         * //or
+         * `duplicate value of yourConstant found on yourKey and yourKeyDuplicate const value strings MUST be unique!`
          *
          * @method awesome.uniqueEntries
          * @param  {Object} data    Data object or array with unique entries
