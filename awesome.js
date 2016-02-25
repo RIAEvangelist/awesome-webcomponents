@@ -116,7 +116,7 @@ class Awesome{
                  */
                 config:{
                     enumerable:true,
-                    writable:false,
+                    writable:true,
                     value:{}
                 },
                 configMerge:{
