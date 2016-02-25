@@ -46,7 +46,19 @@ window.off=window.removeEventListener;
  *
  *
  * @prop constants {Object} awesome constants
- * @prop config {Object} awesome config objects
+ * @prop constants.components {Shallow Merge Object} shallow merge for awesome.constants.components
+ * @prop constants.stores {Shallow Merge Object} shallow merge for awesome.constants.stores
+ * @prop constants.actions {Shallow Merge Object} shallow merge for awesome.constants.actions
+ *
+ * @prop config {Deep Merge Object} deep recursive merge for awesome config object
+ *
+ * @prop language {Object} awesome language objects
+ * @prop language.default {Object} awesome default language object
+ * @prop language.current {Object} awesome language object merged default and desiredLanguage
+ * @prop language.* {Object} awesome language objects for specific languages like ` awesome.language.en ` or ` awesome.language.ru `
+ * @prop setLanguage {Function} set the current language
+ * @prop dynamicLanguageString {Function} a way to pass variables to language strings. This is helpful when you support languages with a variety of grammatical structures
+ *
  * @prop dispatchers {Object} dispatchers for store/action/component messages
  * @prop stores {Object} registered awesome.Store instances. These are designed to support 1 way data flows for use by components
  *
@@ -55,7 +67,6 @@ window.off=window.removeEventListener;
  * @prop requireScript {Function} inject script tag into header
  * @prop requireCSS {Function} inject stylesheet link tag into header
  *
- * @prop configMerge {Function} awesome config objects
  * @prop mergeDataset {Function} merges element's data-* attributes with the defaults for that component element
  * @prop updateAttributesFromData {Function} maps data-* values to * attribute values
  * @prop uniqueEntries {Function} ensures that keys and values of an object unique
@@ -110,20 +121,20 @@ class Awesome{
                     writable:false,
                     value:{}
                 },
+                _config:{
+                    enumerable:false,
+                    writable:true,
+                    value:{}
+                },
                 /**
-                 * @member awesome.configs
+                 * @member awesome.config
                  * @type {Object} extensible/overwriteable constansts used in awesome apps
                  *
                  */
                 config:{
                     enumerable:true,
-                    writable:false,
-                    value:{}
-                },
-                configMerge:{
-                    enumerable:true,
-                    writable:false,
-                    value:configMerge.bind(this,this.config)
+                    get:getConfigs,
+                    set:configMerge
                 },
                 /**
                  * @member awesome.language
@@ -141,7 +152,12 @@ class Awesome{
                 setLanguage:{
                     enumerable:true,
                     writable:false,
-                    value:{}
+                    value:setLanguage
+                },
+                dynamicLanguageString:{
+                    enumerable:true,
+                    writable:false,
+                    value:dynamicLanguageString
                 },
                 /**
                 * dispatchers for awesome 1 way data flow
@@ -187,6 +203,11 @@ class Awesome{
                     enumerable:true,
                     writable:false,
                     value:requireScript
+                },
+                requireLanguage:{
+                    enumerable:true,
+                    writable:false,
+                    value:requireLanguage
                 },
                 requireCSS:{
                     enumerable:true,
@@ -276,8 +297,7 @@ class Awesome{
 
         /**
          * Deep merge config object
-         * @member awesome.configMerge
-         * @type {Object}
+         * @method awesome.config.setter
          *
          *	@example
          *
@@ -343,18 +363,22 @@ class Awesome{
          *
          *
          * ```
-         * @param  {Object}    root    auto populated by awesome, don't pass.
-         * @param  {Object}    newRoot object to merge into awesome.config (this is the only thing to pass)
-         * @return {Boolean}            success
+         *
+         * @return {Object}            awesome.config
          */
         function configMerge(root,newRoot){
+            if(!newRoot){
+                newRoot=root;
+                root=this._config;
+            }
+
             for (const key in newRoot) {
                 const newChild=newRoot[key];
-                const rootChild=root[key];
-                newChildIsObject=(typeof newChild==='object');
+                let rootChild=root[key];
+                const newChildIsObject=(typeof newChild==='object');
 
                 if (newChildIsObject && typeof rootChild==='object') {
-                    configMerge.bind(this,rootChild,newChild);
+                    root[key]=configMerge(rootChild,newChild);
                     continue;
                 }
 
@@ -363,12 +387,18 @@ class Awesome{
                     :
                     newChild;
             }
+
+            return root;
+        }
+
+        function getConfigs(){
+            return this._config;
         }
 
         /**
          * Merge a specific language and the default languages. If the languageCode has not been populated on the awesome.language object, the awesome.language.default will be used.
          * @method setLanguage
-         * @param  {String}    languageCode like 'en', 'es' or 'zh' etc.
+         * @param  {String}    languageCode like 'en', 'en-US', 'es' or 'zh' etc.
          *
          * @example
          *
@@ -396,15 +426,31 @@ class Awesome{
          *
          */
         function setLanguage(languageCode){
-            const desiredLanguage=this.language[languageCode];
+            if(!languageCode){
+                languageCode='default';
+            }
+
+            let desiredLanguage=this.language[languageCode];
+
+            if(!desiredLanguage && languageCode.length>2){
+                if(!hasLang(languageCode)){
+                    localStorage.setItem('language',languageCode);
+                    return;
+                }
+                languageCode=languageCode.slice(0,2);
+                desiredLanguage=this.language[languageCode];
+            }
 
             if(!desiredLanguage){
-                this.language.current=Object.assign(
-                    {},
-                    this.language.default
-                );
-                return false;
+                if(!hasLang(languageCode)){
+                    localStorage.setItem('language',languageCode);
+                    return;
+                }
+                languageCode='default';
+                desiredLanguage=this.language[languageCode];
             }
+
+            localStorage.setItem('language',languageCode);
 
             const newLanguage={};
             Object.assign(
@@ -417,9 +463,26 @@ class Awesome{
                 {},
                 newLanguage
             );
+
+            /**
+             * emitted when the language is set or changed via {@link awesome.setLanguage}.
+             * @event awesome.awesome-language-set
+             * @param {Event} e Event Data
+             * @param {String} e.detail languageCode
+             *
+             */
+            const e=new CustomEvent(
+                'awesome-language-set',
+                {
+                    detail:languageCode
+                }
+            );
+
+            window.dispatchEvent(e);
         }
 
         function dynamicLanguageString(key,params){
+            // make regEx like :  /${your-var1}|${anotherVar}|${magicalVar}/ig
             const vars = new RegExp(`\\$\\{${Object.keys(params).join('\}|\\$\\{')}\\}`,"gi");
             const string=this.language.current[key];
 
@@ -676,6 +739,34 @@ class Awesome{
             script.defer=true;
             script.type='text/javascript';
             script.onload=scriptLoaded.bind(this,path);
+            script.onerror=scriptError.bind(this,path);
+            document.head.appendChild(script);
+            return true;
+        }
+
+        /**
+         * requireLanguage includes js scripts into document
+         * @method awesome.requireScript
+         * @protected
+         * @param  {String} path path to script
+         * @return {Boolean}      true
+         */
+        function requireLanguage(path){
+            const existingScript=document.head.querySelector(`script[src='${path}']`);
+            if(existingScript){
+                return false;
+            }
+            const script=document.createElement('script');
+            remainingScriptCount++;
+            this.ready=false;
+
+            script.src=path;
+            script.dataset.language=true;
+            script.async=true;
+            script.defer=false;
+            script.type='text/javascript';
+            script.onload=languageLoaded.bind(this);;
+            script.onerror=scriptError.bind(this);
             document.head.appendChild(script);
             return true;
         }
@@ -710,7 +801,69 @@ class Awesome{
 
             window.dispatchEvent(e);
 
-            awesomeReady.bind(this)();
+            //give a small buffer incase more scripts are added right away
+            setTimeout(
+                awesomeReady.bind(this),
+                10
+            );
+        }
+
+        function scriptError(path){
+            /**
+             * emitted when a script included via {@link awesome.requireScript} can NOT be loaded.
+             * @event awesome.awesome-script-error
+             * @param {Event} e Event Data
+             * @param {String} e.detail path of the loaded script
+             *
+             */
+            const e=new CustomEvent(
+                'awesome-script-error',
+                {
+                    detail:path
+                }
+            );
+
+            remainingScriptCount--;
+            if(remainingScriptCount<1){
+                this.ready=true;
+            }
+
+            window.dispatchEvent(e);
+
+            awesomeReady.bind(this);
+        }
+
+        function languageLoaded(path){
+            /**
+             * emitted when a new language file included via {@link awesome.requireLanguage} has completed loading.
+             * @event awesome.awesome-language-loaded
+             * @param {Event} e Event Data
+             * @param {String} e.detail path of the loaded language
+             *
+             */
+            const e=new CustomEvent(
+                'awesome-language-loaded',
+                {
+                    detail:path
+                }
+            );
+
+            this.setLanguage(
+                localStorage.getItem('language')
+            );
+
+            remainingScriptCount--;
+            if(remainingScriptCount<1){
+                this.ready=true;
+            }
+
+            window.dispatchEvent(e);
+
+            //give a small buffer incase more languages are added right away
+            setTimeout(
+                awesomeReady.bind(this),
+                10
+            );
         }
 
         function awesomeReady(){
@@ -718,11 +871,65 @@ class Awesome{
                 return;
             }
 
+            /**
+             * emitted when all queued scripts included via {@link awesome.requireScript} have completed loading. This will fire each time awesome deems it is ready for use. So if you include more scripts long after load it will fire again once all the new scripts are loaded.
+             * @event awesome.awesome-ready
+             *
+             */
             const e=new CustomEvent(
                 'awesome-ready'
             );
 
+            //detect or determine language
+            let lang=localStorage.getItem('language');
+            if(!lang){
+                lang=window.navigator.language;
+                localStorage.setItem('language',lang);
+            }
+
+            if(!hasLang(lang)){
+                return;
+            }
+
+            // if language is geographically specific like 'en-US' and not present try the non-specific version like 'en'
+            if(!this.language[lang] && lang.length>2){
+                lang=lang.slice(0,2);
+                localStorage.setItem('language',lang);
+            }
+
+            if(!hasLang(lang)){
+                return;
+            }
+
+            this.setLanguage(lang);
+
             window.dispatchEvent(e);
+        }
+
+        function hasLang(lang){
+            const hasLang=(document.head.querySelector(`[src$='${lang}.js']`))?
+                true:false;
+
+            /**
+             * emitted when a language check is performed for the first time and the language script is NOT in the head. This is useful when you have your own language files to load.
+             * @event awesome.awesome-wants-lang
+             * @param {Event} e Event Data
+             * @param {String} e.detail desired language code
+             *
+             */
+            const e=new CustomEvent(
+                'awesome-wants-lang',
+                {
+                    detail:lang
+                }
+            );
+
+            if(!hasLang){
+                awesome.requireLanguage(`${awesome.path}languages/${lang}.js`);
+                window.dispatchEvent(e);
+            }
+
+            return hasLang;
         }
 
         /**
@@ -909,6 +1116,10 @@ awesome.requireScript(`${awesome.bower}browser-error-classes/Errors.js`);
 
 //default language file
 awesome.requireScript(`${awesome.path}languages/default.js`);
+
+//configs
+awesome.requireScript(`${awesome.path}configs/default.js`);
+
 
 //constants
 awesome.requireScript(`${awesome.path}stores/constants.js`);
