@@ -1,10 +1,18 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}components/file-loader/awesome-file-loader.css`);
+awesome.requireScript(`${awesome.path}actions/file-loader/file-loader.js`);
+// awesome.requireScript(`${awesome.path}stores/user/auth.js`);
+
 
 (
     function(){
-        const defaults={}
+        let state=null;
+        let dispatcher=awesome.dispatchers.component;
+        const constants = awesome.constants.component;
+        const action = awesome.constants.action;
+
+        const defaults = {};
 
         class Component extends HTMLElement{
             createdCallback(){
@@ -25,6 +33,16 @@ awesome.requireCSS(`${awesome.path}components/file-loader/awesome-file-loader.cs
                 this.addEventListener(
                     'change',
                     this.update
+                );
+
+                const message = new Message();
+                message.data = {
+                    name:'adrian',
+                    last:'sida'
+                }
+                dispatcher.trigger(
+                    action.USER_INPUT_FILE_LOADED,
+                    message
                 );
             }
 
@@ -54,7 +72,9 @@ awesome.requireCSS(`${awesome.path}components/file-loader/awesome-file-loader.cs
                         txt += "lastModified: " + file.lastModifiedDate.toUTCString() + "<hr>";
                     }
                 }
+
                 document.getElementById('fileInfo').innerHTML = txt;
+
             }
         }
 

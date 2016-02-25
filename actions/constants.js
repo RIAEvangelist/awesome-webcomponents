@@ -13,6 +13,7 @@ awesome.constants.action={
 
     //user Input
     USER_INPUT_CHANGE:'userInput.changed',
+    USER_INPUT_FILE_LOADED:'userInput.file.loaded',
     USER_INPUT_VALIDATE:'userInput.needs.validation',
     GENERIC_DRAG_DROP_FILE:'generic.drag.drop.file',
 
