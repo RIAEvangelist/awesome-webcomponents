@@ -47,6 +47,16 @@ window.off=window.removeEventListener;
  *
  * @prop constants {Object} awesome constants
  * @prop config {Object} awesome config objects
+ * @prop configMerge {Function} deep recursive merge for awesome config objects
+ *
+ * @prop language {Object} awesome language objects
+ * @prop language.default {Object} awesome default language object
+ * @prop language.current {Object} awesome language object merged default and desiredLanguage
+ * @prop language.* {Object} awesome language objects for specific languages like ` awesome.language.en ` or ` awesome.language.ru `
+ * @prop language {Object} awesome language objects
+ * @prop setLanguage {Function} set the current language
+ *
+ * @prop dynamicLanguageString {Function} a way to pass variables to language strings. This is helpful when you support languages with a variety of grammatical structures
  * @prop dispatchers {Object} dispatchers for store/action/component messages
  * @prop stores {Object} registered awesome.Store instances. These are designed to support 1 way data flows for use by components
  *
@@ -55,7 +65,6 @@ window.off=window.removeEventListener;
  * @prop requireScript {Function} inject script tag into header
  * @prop requireCSS {Function} inject stylesheet link tag into header
  *
- * @prop configMerge {Function} awesome config objects
  * @prop mergeDataset {Function} merges element's data-* attributes with the defaults for that component element
  * @prop updateAttributesFromData {Function} maps data-* values to * attribute values
  * @prop uniqueEntries {Function} ensures that keys and values of an object unique
