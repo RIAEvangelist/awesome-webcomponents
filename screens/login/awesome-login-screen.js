@@ -19,17 +19,12 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             action = awesome.constants.action;
 
             defaults={
-                title:awesome.language.current['awesome-login-screen-header'],
                 login_type:null,
 
                 username_id:'awesome-login-screen-username',
-                username_placeholder:awesome.language.current.username,
                 username_pattern: constants.VALIDATE_USERNAME,
 
-                password_id:'awesome-login-screen-password',
-                password_placeholder:awesome.language.current.password,
-
-                submit_button_text:awesome.language.current.login
+                password_id:'awesome-login-screen-password'
             };
 
             window.off(
@@ -53,7 +48,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 awesome.mergeDataset(this,defaults);
 
                 this.innerHTML=`
-                    <awesome-dialog data-title='${this.dataset.title}'>
+                    <awesome-dialog data-title='${awesome.language.current['awesome-login-screen-header']}'>
                         <template>
                             <form>
                                 <input
@@ -64,18 +59,18 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                                     maxlength=30
                                     pattern='${this.dataset.username_pattern}'
                                     class=''
-                                    placeholder='${this.dataset.username_placeholder}'
+                                    placeholder='${awesome.language.current.username}'
                                 />
                                 <input
                                     id='${this.dataset.password_id}'
                                     value=''
                                     required='true'
                                     type='password'
-                                    placeholder='${this.dataset.password_placeholder}'
+                                    placeholder='${awesome.language.current.password}'
                                 />
                                 <div class='button-wrapper'>
                                     <button>
-                                        ${this.dataset.submit_button_text}
+                                        ${awesome.language.current.login}
                                     </button>
                                 </div>
                             </form>
@@ -85,6 +80,11 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             }
 
             attachedCallback(){
+                window.on(
+                    'awesome-language-set',
+                    this.createdCallback.bind(this)
+                );
+
                 state.on(
                     'change',
                     this.update.bind(this)
@@ -136,7 +136,8 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             window.on(
                 'awesome-ready',
                 init
-            )
+            );
+
             return;
         }
 

@@ -9,7 +9,6 @@
             awesome.requireScript(`${awesome.path}screens/login/awesome-login-screen.js`);
 
             //show manual localization buttons
-            awesome.requireScript(`${awesome.path}languages/ru.js`);
             awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
 
             window.on(
@@ -26,6 +25,9 @@
                         case '1' :
                             awesome.setLanguage('ru'); //russian
                             break;
+                        case '2' :
+                            awesome.setLanguage('jp'); //japanese
+                            break;
                     }
                 }
             )
@@ -33,10 +35,10 @@
     </head>
     <body>
         <awesome-buttonset
-            data-count=2
-            data-index=0
+            data-count=3
             data-b0='english'
             data-b1='русски'
+            data-b2='日本語'
         ></awesome-buttonset>
         <awesome-login-screen></awesome-login-screen>
     </body>

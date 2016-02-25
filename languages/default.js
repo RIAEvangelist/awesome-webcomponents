@@ -7,4 +7,3 @@ awesome.language.default={
     "awesome-login-screen-header":"Login"
 
 }
-awesome.setLanguage(null);
