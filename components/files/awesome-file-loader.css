@@ -1,5 +1,5 @@
 awesome-file-loader {
-    display:block;
+    display: inline-block;
 }
 
 awesome-file-loader > input[type='file']{
@@ -22,6 +22,13 @@ awesome-file-loader > input[type='text']{
     line-height: 1.4em;
     padding: .4em;
     font-size: 1.4em;
+}
+
+awesome-file-loader > awesome-file-info{
+    margin:0 .6em;
+    box-shadow:inset 0 .1em .3em 0em rgba(0,0,0,.5);
+    border-bottom-right-radius: .3em;
+    border-bottom-left-radius: .3em;
 }
 
 /*******************************\

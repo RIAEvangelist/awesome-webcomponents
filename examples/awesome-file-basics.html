@@ -8,7 +8,6 @@
             awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             awesome.requireScript(`${awesome.path}components/localization/awesome-languages.js`);
             awesome.requireScript(`${awesome.path}components/files/awesome-file-loader.js`);
-            awesome.requireScript(`${awesome.path}components/files/awesome-file-info.js`);
         </script>
     </head>
     <body>
@@ -22,8 +21,11 @@
             data-title='Load one file.'>
         </awesome-header>
         <br/>
-        <awesome-file-loader>
+        <awesome-file-loader
+            data-id='awesome-file-loader-example-single'
+        >
         </awesome-file-loader>
+        </awesome-file-info>
         <br/>
         <br/>
         <awesome-header
@@ -31,8 +33,12 @@
         </awesome-header>
         <br/>
         <awesome-file-loader
+            data-id='awesome-file-loader-example-multiple'
             data-multiple='true'
         >
         </awesome-file-loader>
+        <section>
+
+        </section>
     </body>
 </html>

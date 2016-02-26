@@ -9,7 +9,7 @@
                 const dispatcher=awesome.dispatchers.store;
                 const constants=awesome.constants.store;
 
-                store.expose(this,'file-loader');
+                store.expose(this,'fileInfo');
 
                 /*********************************\
                 Set your default store state here

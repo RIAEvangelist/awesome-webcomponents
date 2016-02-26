@@ -1,6 +1,7 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}components/files/awesome-file-loader.css`);
+awesome.requireScript(`${awesome.path}components/files/awesome-file-info.js`);
 awesome.requireScript(`${awesome.path}actions/file/loader.js`);
 awesome.requireScript(`${awesome.path}stores/file/info.js`);
 
@@ -35,6 +36,9 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                         }
                     </button>
                     <input type='text' />
+                    <awesome-file-info
+                        data-file_id='${this.dataset.id}'
+                    ></awesome-file-info>
                 `;
             }
 
@@ -65,28 +69,21 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
 
             update(e){
                 const loadedFiles = e.target.files;
-               const list = [];
-               const loadedInfo = {
-                   id:this.dataset.id
-               };
+                const list = [];
+                const loadedInfo = {
+                    id:this.dataset.id
+                };
 
-               for(let i = 0; i < loadedFiles.length; i++){
-                   const file = loadedFiles[i];
+                for(let i = 0; i < loadedFiles.length; i++){
+                    const file = loadedFiles[i];
 
-                   if(!e.target.multiple){
-                       list.push(file);
-                       break;
-                   }
+                    if(!e.target.multiple){
+                        list.push(file);
+                        break;
+                    }
 
-                   list.push(
-                       {
-                           name: file.name,
-                           size: file.size,
-                           lastModifiedDate:file.lastModifiedDate
-                       }
-                   );
-
-               }
+                    list.push(file);
+                }
 
                loadedInfo.files = list;
 
