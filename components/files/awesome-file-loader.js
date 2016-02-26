@@ -1,9 +1,7 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}components/file-loader/awesome-file-loader.css`);
-awesome.requireScript(`${awesome.path}actions/file-loader/file-loader.js`);
-awesome.requireScript(`${awesome.path}stores/file-loader/file-loader.js`);
-
+awesome.requireScript(`${awesome.path}actions/file/loader.js`);
 
 (
     function(){
@@ -27,6 +25,13 @@ awesome.requireScript(`${awesome.path}stores/file-loader/file-loader.js`);
                 }
                 this.innerHTML=`
                     <input type='file' ${multiple}/>
+                    <button>
+                        ${
+                            ()
+                            ? awesome.language.current.chooseFile
+                            : awesome.language.current.chooseFiles
+
+                        }
                 `;
             }
 

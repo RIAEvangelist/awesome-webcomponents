@@ -4,6 +4,12 @@ awesome-buttonset{
 
 awesome-buttonset button{
     padding:.5em 1em;
+    min-height:1em;
+    line-height:1.3em;
+}
+
+awesome-buttonset button:empty::before{
+    content:' - '
 }
 
 awesome-buttonset button:first-of-type{
