@@ -35,6 +35,7 @@ awesome.constants.store={
 
     /**
      * file list available
+     * @member awesome.constants.store.FILE_LIST
      * @type {String}
      */
     FILE_LIST:'file.list'

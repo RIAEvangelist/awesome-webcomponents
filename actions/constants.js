@@ -1,17 +1,30 @@
 'use strict';
 
 awesome.constants.action={
-    //base reset
+    /**
+     * all stores should reset their state
+     * @member awesome.constants.action.RESET_STORES
+     * @type {EventName}
+     */
     RESET_STORES:'app.reset.all.stores',
 
-    //File loader
+    /**
+     * files loaded and available
+     * @member awesome.constants.action.FILE_LOADED
+     * @type {String}
+     */
     FILE_LOADED:'file.loaded',
 
-    //login
+    /**
+     * logout request
+     * @memeber awesome.constants.action.LOGOUT_REQUEST
+     * @type {EventName}
+     */
     LOGOUT_REQUEST:'logout.request',
-    LOGIN_REQUEST:'login.request',
-
-    //router
-    ROUTE_REQUEST_CHANGE:'router.request.navigation',
-    ROUTE_REQUEST_SCREENS:'router.get.screens'
+    /**
+     * login request
+     * @memeber awesome.constants.action.LOGIN_REQUEST
+     * @type {EventName}
+     */
+    LOGIN_REQUEST:'login.request'
 }
