@@ -31,7 +31,7 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                 const fileInfo=state[this.dataset.file_id];
 
                 let tableContent=`
-                    <caption colspan=2>
+                    <caption>
                         No files Selected.
                     </caption>
                 `;
@@ -41,35 +41,32 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                 console.log(state,fileInfo);
 
                 if(fileInfo && Array.isArray(fileInfo.files)){
-                    tableContent='';
+                    tableContent=`<tr>
+                        <th>name</th>
+                        <th>size</th>
+                        <th>last modified</th>
+                        <th>content</th>
+                    </tr>`;
+
                     count=fileInfo.files.length;
                     for(let i=0; i<fileInfo.files.length; i++){
                         const file=fileInfo.files[i];
-                        tableContent+=`<th>
-                            <td></td>
-                            <td></td>
-                        </th>
-                        <tr>
-                            <td>File Name</td>
-                            <td>${file.name}</td>
-                        </tr>
-                        <caption colspan=2>
-                            ${content}
-                        </caption>
-                        <tr>
-                            <td>File Size</td>
-                            <td>${file.size}</td>
-                        </tr>
-                        <tr>
-                            <td>File Last Modified</td>
-                            <td>${file.lastModifiedDate}</td>
-                        </tr>`;
+                        tableContent+=`
+                            <tr>
+                                <td>${file.name}</td>
+                                <td>${file.size}</td>
+                                <td>${file.lastModifiedDate}</td>
+                                <td>${file.content}</td>
+                            </tr>
+                        `;
                     }
                 }
 
                 this.innerHTML=`
                     <table data-count='${count}'>
-                        ${tableContent}
+                        <tbody>
+                            ${tableContent}
+                        </tbody>
                     </table>
                 `;
             }
