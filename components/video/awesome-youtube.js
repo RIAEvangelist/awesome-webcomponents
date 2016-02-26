@@ -28,7 +28,7 @@ awesome.requireCSS(`${awesome.path}components/video/awesome-youtube.css`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-
+                this.createdCallback();
             }
         }
 
