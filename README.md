@@ -43,25 +43,22 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
 | awesome.path | <code>String</code> | Path to folder awesome.js is located in |
 | awesome.bower | <code>String</code> | path to bower components |
 | constants | <code>Object</code> | awesome constants |
-| config | <code>Object</code> | awesome config objects |
-<<<<<<< HEAD
-=======
-| configMerge | <code>function</code> | deep recursive merge for awesome config objects |
+| constants.components | <code>ShallowMergeObject</code> | shallow merge for awesome.constants.components |
+| constants.stores | <code>ShallowMergeObject</code> | shallow merge for awesome.constants.stores |
+| constants.actions | <code>ShallowMergeObject</code> | shallow merge for awesome.constants.actions |
+| config | <code>DeepMergeObject</code> | deep recursive merge for awesome config object |
 | language | <code>Object</code> | awesome language objects |
 | language.default | <code>Object</code> | awesome default language object |
 | language.current | <code>Object</code> | awesome language object merged default and desiredLanguage |
 | language.* | <code>Object</code> | awesome language objects for specific languages like ` awesome.language.en ` or ` awesome.language.ru ` |
-| language | <code>Object</code> | awesome language objects |
 | setLanguage | <code>function</code> | set the current language |
 | dynamicLanguageString | <code>function</code> | a way to pass variables to language strings. This is helpful when you support languages with a variety of grammatical structures |
->>>>>>> upstream/master
 | dispatchers | <code>Object</code> | dispatchers for store/action/component messages |
 | stores | <code>Object</code> | registered awesome.Store instances. These are designed to support 1 way data flows for use by components |
 | Store | <code>Class</code> | Store class, used to create new stores |
 | loadTemplate | <code>function</code> | fetches nested template contents for inclusion in awesome-component |
 | requireScript | <code>function</code> | inject script tag into header |
 | requireCSS | <code>function</code> | inject stylesheet link tag into header |
-| configMerge | <code>function</code> | awesome config objects |
 | mergeDataset | <code>function</code> | merges element's data-* attributes with the defaults for that component element |
 | updateAttributesFromData | <code>function</code> | maps data-* values to * attribute values |
 | uniqueEntries | <code>function</code> | ensures that keys and values of an object unique |
@@ -99,7 +96,8 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
             * [.VALIDATE_URL](#awesome.constants.component.VALIDATE_URL) : <code>EventName</code>
             * [.getter()](#awesome.constants.component.getter) ⇒ <code>ComponentConstants</code>
             * [.setter(constants)](#awesome.constants.component.setter) ⇒ <code>ComponentConstants</code>
-    * [.configs](#awesome.configs) : <code>Object</code>
+    * [.config](#awesome.config) : <code>Object</code>
+        * [.setter()](#awesome.config.setter) ⇒ <code>Object</code>
     * [.language](#awesome.language) : <code>Object</code>
     * [.dispatchers](#awesome.dispatchers) : <code>Object</code>
         * [.action](#awesome.dispatchers.action) : <code>EventEmitter</code>
@@ -107,7 +105,6 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
         * [.store](#awesome.dispatchers.store) : <code>EventEmitter</code>
     * [.stores](#awesome.stores) : <code>Object</code>
     * [.bower](#awesome.bower) : <code>String</code>
-    * [.configMerge](#awesome.configMerge) ⇒ <code>Boolean</code>
     * [.loadTemplate(instance)](#awesome.loadTemplate) ⇒ <code>Object</code>
     * [.requireScript(path)](#awesome.requireScript) ⇒ <code>Boolean</code>
     * [.requireScript(path)](#awesome.requireScript) ⇒ <code>Boolean</code>
@@ -520,7 +517,6 @@ component constants setter : merges the current component constants and the new 
 | --- | --- | --- |
 | constants | <code>Object</code> | constants to merge |
 
-<<<<<<< HEAD
 **Example**  
 ```javascript
 //original constants
@@ -545,13 +541,80 @@ awesome.constants.components = myNewConstants;
  	NEW_CONSTANT_2: 'const2'
 }
 ```
-=======
->>>>>>> upstream/master
-<a name="awesome.configs"></a>
-### awesome.configs : <code>Object</code>
+<a name="awesome.config"></a>
+### awesome.config : <code>Object</code>
 extensible/overwriteable constansts used in awesome apps
 
 **Kind**: static property of <code>[awesome](#awesome)</code>  
+<a name="awesome.config.setter"></a>
+#### config.setter() ⇒ <code>Object</code>
+Deep merge config object
+
+**Kind**: static method of <code>[config](#awesome.config)</code>  
+**Returns**: <code>Object</code> - awesome.config  
+**Example**  
+```javascript
+
+// awesome.config could be
+{
+    a:1,
+    b:{
+        c:3
+    },
+    d:{
+        e:55,
+        f:{
+            g:99
+        }
+    },
+    q:{
+        r:77
+    }
+}
+
+awesome.configMerge(
+    {
+        b:{
+            x:{
+                y:{
+                    z:99999
+                }
+            }
+        },         *
+        d:{
+            f:{
+                h:55
+            }
+        },
+        q:33
+    }
+)
+
+
+//now awesome.config would look like
+{
+    a:1,
+    b:{
+        c:3
+            x:{
+                y:{
+                    z:99999
+                }
+            }
+        }
+    },
+    d:{
+        e:55,
+        f:{
+            g:99,
+            h:55
+        }
+    },
+    q:33
+}
+
+
+```
 <a name="awesome.language"></a>
 ### awesome.language : <code>Object</code>
 language objects used by awesome components
@@ -691,88 +754,10 @@ Path to bower components
 
 **Kind**: static property of <code>[awesome](#awesome)</code>  
 **Access:** protected  
-<<<<<<< HEAD
 **Example**  
 ```javascript
 //include bower components using the bower components path
 awesome.requireScript(`${awesome.bower}bower-component/bower-component.js`);
-```
-=======
->>>>>>> upstream/master
-<a name="awesome.configMerge"></a>
-### awesome.configMerge ⇒ <code>Boolean</code>
-Deep merge config object
-
-**Kind**: static property of <code>[awesome](#awesome)</code>  
-**Returns**: <code>Boolean</code> - success  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| root | <code>Object</code> | auto populated by awesome, don't pass. |
-| newRoot | <code>Object</code> | object to merge into awesome.config (this is the only thing to pass) |
-
-**Example**  
-```javascript
-
-// awesome.config could be
-{
-    a:1,
-    b:{
-        c:3
-    },
-    d:{
-        e:55,
-        f:{
-            g:99
-        }
-    },
-    q:{
-        r:77
-    }
-}
-
-awesome.configMerge(
-    {
-        b:{
-            x:{
-                y:{
-                    z:99999
-                }
-            }
-        },         *
-        d:{
-            f:{
-                h:55
-            }
-        },
-        q:33
-    }
-)
-
-
-//now awesome.config would look like
-{
-    a:1,
-    b:{
-        c:3
-            x:{
-                y:{
-                    z:99999
-                }
-            }
-        }
-    },
-    d:{
-        e:55,
-        f:{
-            g:99,
-            h:55
-        }
-    },
-    q:33
-}
-
-
 ```
 <a name="awesome.loadTemplate"></a>
 ### awesome.loadTemplate(instance) ⇒ <code>Object</code>
@@ -843,7 +828,6 @@ requireScript appends scripts to the docuyment head with a differed false
 | --- | --- | --- |
 | path | <code>String</code> | path to script |
 
-<<<<<<< HEAD
 **Example**  
 ```javascript
 //here we require the dispatcher to action and the constants to stores and actions
@@ -851,7 +835,6 @@ awesome.requireScript(`${awesome.path}dispatchers/action.js`);
 awesome.requireScript(`${awesome.path}actions/constants.js`);
 awesome.requireScript(`${awesome.path}stores/constants.js`);
 ```
-=======
 <a name="awesome.requireScript"></a>
 ### awesome.requireScript(path) ⇒ <code>Boolean</code>
 requireLanguage includes js scripts into document
@@ -864,7 +847,6 @@ requireLanguage includes js scripts into document
 | --- | --- | --- |
 | path | <code>String</code> | path to script |
 
->>>>>>> upstream/master
 <a name="awesome.requireCSS"></a>
 ### awesome.requireCSS(path) ⇒ <code>Boolean</code>
 requireCSS requires and appends scripts to CSS head
@@ -954,7 +936,6 @@ uniqueEntries ensures that keys and values of data array are unique
 
 | Param | Type | Description |
 | --- | --- | --- |
-<<<<<<< HEAD
 | data | <code>Object</code> | Data object or array with unique entries |
 
 **Example**  
@@ -971,9 +952,6 @@ awesome.uniqueEntries(constans.actions);
 //or
 `duplicate value of yourConstant found on yourKey and yourKeyDuplicate const value strings MUST be unique!`
 ```
-=======
-| data | <code>Array</code> | Data array with unique entries |
-
 <a name="awesome.event_awesome-language-set"></a>
 ### "awesome-language-set" (e)
 emitted when the language is set or changed via [awesome.setLanguage](awesome.setLanguage).
@@ -985,7 +963,6 @@ emitted when the language is set or changed via [awesome.setLanguage](awesome.se
 | e | <code>Event</code> | Event Data |
 | e.detail | <code>String</code> | languageCode |
 
->>>>>>> upstream/master
 <a name="awesome.event_awesome-script-loaded"></a>
 ### "awesome-script-loaded" (e)
 emitted when a script included via [requireScript](#awesome.requireScript) has completed loading a script.
@@ -997,7 +974,6 @@ emitted when a script included via [requireScript](#awesome.requireScript) has c
 | e | <code>Event</code> | Event Data |
 | e.detail | <code>String</code> | path of the loaded script |
 
-<<<<<<< HEAD
 **Example**  
 ```javascript
 window.on(
@@ -1005,7 +981,6 @@ window.on(
  	yourAwesomeLoadedHandler
 );
 ```
-=======
 <a name="awesome.event_awesome-script-error"></a>
 ### "awesome-script-error" (e)
 emitted when a script included via [requireScript](#awesome.requireScript) can NOT be loaded.
@@ -1044,7 +1019,6 @@ emitted when a language check is performed for the first time and the language s
 | e | <code>Event</code> | Event Data |
 | e.detail | <code>String</code> | desired language code |
 
->>>>>>> upstream/master
 <a name="setLanguage"></a>
 ## setLanguage(languageCode)
 Merge a specific language and the default languages. If the languageCode has not been populated on the awesome.language object, the awesome.language.default will be used.
@@ -1053,11 +1027,7 @@ Merge a specific language and the default languages. If the languageCode has not
 
 | Param | Type | Description |
 | --- | --- | --- |
-<<<<<<< HEAD
-| languageCode | <code>String</code> | like 'en', 'es' or 'zh' etc. |
-=======
 | languageCode | <code>String</code> | like 'en', 'en-US', 'es' or 'zh' etc. |
->>>>>>> upstream/master
 
 **Example**  
 ```javascript

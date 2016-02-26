@@ -46,11 +46,11 @@ window.off=window.removeEventListener;
  *
  *
  * @prop constants {Object} awesome constants
- * @prop constants.components {Shallow Merge Object} shallow merge for awesome.constants.components
- * @prop constants.stores {Shallow Merge Object} shallow merge for awesome.constants.stores
- * @prop constants.actions {Shallow Merge Object} shallow merge for awesome.constants.actions
+ * @prop constants.components {ShallowMergeObject} shallow merge for awesome.constants.components
+ * @prop constants.stores {ShallowMergeObject} shallow merge for awesome.constants.stores
+ * @prop constants.actions {ShallowMergeObject} shallow merge for awesome.constants.actions
  *
- * @prop config {Deep Merge Object} deep recursive merge for awesome config object
+ * @prop config {DeepMergeObject} deep recursive merge for awesome config object
  *
  * @prop language {Object} awesome language objects
  * @prop language.default {Object} awesome default language object
@@ -127,8 +127,9 @@ class Awesome{
                     value:{}
                 },
                 /**
+                 * extensible/overwriteable constansts used in awesome apps
                  * @member awesome.config
-                 * @type {Object} extensible/overwriteable constansts used in awesome apps
+                 * @type {Object}
                  *
                  */
                 config:{
@@ -137,9 +138,9 @@ class Awesome{
                     set:configMerge
                 },
                 /**
+                 * language objects used by awesome components
                  * @member awesome.language
-                 * @type {Object} language objects used by awesome components
-                 *
+                 * @type {Object}
                  */
                 language:{
                     enumerable:true,

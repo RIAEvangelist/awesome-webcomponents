@@ -1,7 +1,6 @@
 'use strict';
 
 awesome.constants.component={
-<<<<<<< HEAD
     /**
      * pointer leaves drag and drop field
      * @member awesome.constants.component.DRAG_DROP_LEAVE
@@ -62,10 +61,4 @@ awesome.constants.component={
      * @type {EventName}
      */
     VALIDATE_URL:'^(https?:\/\/)?([\da-z\.-]+)\.(.{2,100})$'
-=======
-    //Drag and drop related
-    DRAG_DROP_ENTER:'dragdrop.enter',
-    DRAG_DROP_OVER:'dragdrop.over',
-    DRAG_DROP_LEAVE:'dragdrop.leave'
->>>>>>> upstream/master
 };
