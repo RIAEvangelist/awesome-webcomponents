@@ -12,18 +12,20 @@ awesome.requireScript(`${awesome.path}actions/file-loader/file-loader.js`);
         const constants = awesome.constants.component;
         const action = awesome.constants.action;
 
-        const defaults = {};
+        const defaults = {
+            multiple:false
+        };
 
         class Component extends HTMLElement{
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
 
+                let multiple = '';
+                if(this.dataset.multiple === 'true'){
+                    multiple = 'multiple';
+                }
                 this.innerHTML=`
-                    <input type='file' id='input-files' multiple>
-
-                    <p class='upload-text'>
-                        Select one or more files.
-                    </p>
+                    <input type='file' ${multiple}/>
                 `;
             }
 
@@ -43,16 +45,14 @@ awesome.requireScript(`${awesome.path}actions/file-loader/file-loader.js`);
             }
 
             update(e){
-                const loadedFiles = document.getElementById('input-files').files;
-                document.querySelector('.upload-text').classList.add('hidden');
-                const message = new Message();
+                const loadedFiles = e.target.files;
                 const list = [];
 
                 for(let i = 0; i < loadedFiles.length; i++){
                     const file = loadedFiles[i];
 
                     list.push(
-                        message.data = {
+                        {
                             filename:file.name,
                             filesize:file.size,
                             lastModifiedDate:file.lastModifiedDate.toUTCString()
@@ -61,7 +61,7 @@ awesome.requireScript(`${awesome.path}actions/file-loader/file-loader.js`);
                 }
 
                 dispatcher.trigger(
-                    action.USER_INPUT_FILE_LOADED,
+                    action.FILE_LOADED,
                     list
                 );
             }

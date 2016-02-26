@@ -31,5 +31,11 @@ awesome.constants.store={
      * @member awesome.constants.store.LOGOUT_SUCCESS
      * @type {EventName}
      */
-    LOGOUT_SUCCESS:'logout.success'
+    LOGOUT_SUCCESS:'logout.success',
+
+    /**
+     * file list available
+     * @type {String}
+     */
+    FILE_LIST:'file.list'
 };

@@ -4,18 +4,8 @@ awesome.constants.action={
     //base reset
     RESET_STORES:'app.reset.all.stores',
 
-    //global errors
-    TRIGGER_GLOBAL_ERROR:'GlobalError.new',
-    EXPIRE_GLOBAL_ERROR:'GlobalError.expire',
-
-    //global modal
-    TRIGGER_GLOBAL_MODAL:'GlobalModal.new',
-
-    //user Input
-    USER_INPUT_CHANGE:'userInput.changed',
-    USER_INPUT_FILE_LOADED:'userInput.file.loaded',
-    USER_INPUT_VALIDATE:'userInput.needs.validation',
-    GENERIC_DRAG_DROP_FILE:'generic.drag.drop.file',
+    //File loader
+    FILE_LOADED:'file.loaded',
 
     //login
     LOGOUT_REQUEST:'logout.request',

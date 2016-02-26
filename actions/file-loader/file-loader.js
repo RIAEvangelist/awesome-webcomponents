@@ -12,18 +12,22 @@ awesome.requireScript(`${awesome.path}stores/constants.js`);
         const storeEvents=awesome.constants.store;
 
         dispatcher.on(
-            constants.USER_INPUT_FILE_LOADED,
+            constants.FILE_LOADED,
             fileLoaded
         );
 
 
         /**
-         * [fileLoaded description]
-         * @param  {[object]} message returns object of files loaded
-         * @return {[void]}     Message objects in console
+         * Takes in file/files list object and dispatches to store
+         * @param  {Object} list contains files
+         * @return {Void}
          */
-        function fileLoaded(message){
-            console.log('Action received this message: ', message);
+        function fileLoaded(list){
+            console.log('Action received this message: ', list);
+            dispatcher.trigger(
+                storeEvents.FILE_LIST,
+                list
+            );
         }
     }
 )();
