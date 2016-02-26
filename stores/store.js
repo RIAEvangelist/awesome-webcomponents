@@ -15,8 +15,6 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
          * @prop state {Object} state data of store exposed for reading by components via expose. The store modifies this as a shallow merge Object.
          * @prop defaultState {Object} default store state
          * @prop ignoreResetEvent {Boolean} flag to ignore the global reset event ***USE WITH CAUTION***
-         *
-         *
          * @prop resetState {Function} rests the store state
          * @prop expose {Function} registers the read-only state with awesome.stores[store name] for components to use
          */
@@ -29,6 +27,18 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                     {
                         /**
                          * state data of store exposed for reading by components via expose. The store modifies this as a shallow merge Object.
+                         *
+                         * @example
+                         *
+                         * //set the store state with a shallow merge
+                         *  myStoreState = {
+                         *   	property: 'prop'
+                         *  }
+                         *  store.state = myStoreState;
+                         *
+                         * //get the store state
+                         *  const state = store.state
+                         *
                          * @member awesome.Store.state
                          * @protected
                          * @type {Object}
@@ -40,6 +50,16 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                         },
                         /**
                          * default store state
+                         *
+                         * @example
+                         *
+                         * //set your default store
+                         * store.defaultState = {
+                         *  	defaultProperty1: 'red',
+                         *  	defaultProperty2: 'white',
+                         *  	defaultPropertyN: 'mandalorian'
+                         * }
+                         *
                          * @member awesome.Store.defaultState
                          * @type {Object}
                          */
@@ -50,6 +70,12 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                         },
                         /**
                          * flag to ignore the global reset event ***USE WITH CAUTION***
+                         *
+                         * @example
+                         *
+                         * //ignore the global reset event
+                         *  store.ignoreResetEvent = true;
+                         *
                          * @member awesome.Store.ignoreResetEvent
                          * @type {Boolean}
                          */
@@ -92,6 +118,12 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
 
                 /**
                  * registers the read-only state with awesome.stores[store name] for components to use
+                 *
+                 * @example
+                 *
+                 * //expose your store
+                 * store.expose(yourStoreScope, 'yourStoreName');
+                 *
                  * @method awesome.Store.expose
                  * @param  {Store} instance your instantiated Store instance
                  * @param  {String} name     The name of your store
@@ -123,6 +155,11 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
 
                 /**
                  * rests the store state
+                 *
+                 * @example
+                 * //reset the store state
+                 * store.resetState();
+                 *
                  * @method awesome.Store.resetState
                  * @param  {Object}   events your stores event-pubsub instance
                  */
