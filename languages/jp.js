@@ -1,10 +1,13 @@
 awesome.language.jp={
 
-    "login":"ログイン",
-    "username":"ユーザーID",
-    "password":"パスワード",
+    login:'ログイン',
+    username:'ユーザーID',
+    password:'パスワード',
 
-    "awesome-login-screen-header":"顧客ログイン"
+    chooseFile:'ファイルを選ぶ',
+    chooseFiles:'ファイルを選ぶ',
+    'filesSelectedCount':'${count} ファイル',
 
-}
-;
+    'awesome-login-screen-header':'顧客ログイン'
+
+};

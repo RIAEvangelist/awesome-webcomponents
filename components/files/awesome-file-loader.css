@@ -1,0 +1,39 @@
+awesome-file-loader {
+    display: inline-block;
+}
+
+awesome-file-loader > input[type='file']{
+    display:none;
+}
+
+awesome-file-loader > button{
+    float:left;
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
+}
+
+awesome-file-loader > input[type='text']{
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+}
+
+awesome-file-loader > button,
+awesome-file-loader > input[type='text']{
+    line-height: 1.4em;
+    padding: .4em;
+    font-size: 1.4em;
+}
+
+awesome-file-loader > awesome-file-info{
+    margin:0 .6em;
+    box-shadow:inset 0 .1em .3em 0em rgba(0,0,0,.5);
+    border-bottom-right-radius: .3em;
+    border-bottom-left-radius: .3em;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}

@@ -1,9 +1,12 @@
 awesome.language.ru={
 
-    "login":"Войти",
-    "username":"Логин",
-    "password":"Пароль",
+    login:'Войти',
+    username:'Логин',
+    password:'Пароль',
 
-    "awesome-login-screen-header":"Вход"
+    chooseFile:'добавить файл',
+    chooseFiles:'добавить файлы',
+    'filesSelectedCount':'${count} выбран',
 
-}
+    'awesome-login-screen-header':'Вход'
+};
