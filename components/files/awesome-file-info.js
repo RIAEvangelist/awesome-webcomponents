@@ -42,10 +42,10 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
 
                 if(fileInfo && Array.isArray(fileInfo.files)){
                     tableContent=`<tr>
-                        <th>name</th>
-                        <th>size</th>
-                        <th>last modified</th>
-                        <th>content</th>
+                        <th>${awesome.language.current.fileName}</th>
+                        <th>${awesome.language.current.fileSize}</th>
+                        <th>${awesome.language.current.fileLastModified}</th>
+                        <th>${awesome.language.current.fileContent}</th>
                     </tr>`;
 
                     count=fileInfo.files.length;
@@ -72,6 +72,11 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
             }
 
             attachedCallback(){
+                window.on(
+                    'awesome-language-set',
+                    this.createdCallback.bind(this)
+                );
+
                 state.on(
                     'change',
                     this.createdCallback.bind(this)
