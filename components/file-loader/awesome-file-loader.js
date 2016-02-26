@@ -2,7 +2,7 @@
 
 awesome.requireCSS(`${awesome.path}components/file-loader/awesome-file-loader.css`);
 awesome.requireScript(`${awesome.path}actions/file-loader/file-loader.js`);
-// awesome.requireScript(`${awesome.path}stores/user/auth.js`);
+awesome.requireScript(`${awesome.path}stores/file-loader/file-loader.js`);
 
 
 (
@@ -13,7 +13,8 @@ awesome.requireScript(`${awesome.path}actions/file-loader/file-loader.js`);
         const action = awesome.constants.action;
 
         const defaults = {
-            multiple:false
+            multiple:false,
+            id:'default'
         };
 
         class Component extends HTMLElement{
@@ -32,7 +33,7 @@ awesome.requireScript(`${awesome.path}actions/file-loader/file-loader.js`);
             attachedCallback(){
                 this.addEventListener(
                     'change',
-                    this.update
+                    this.update.bind(this)
                 );
             }
 
@@ -53,6 +54,7 @@ awesome.requireScript(`${awesome.path}actions/file-loader/file-loader.js`);
 
                     list.push(
                         {
+                            id:this.dataset.id,
                             filename:file.name,
                             filesize:file.size,
                             lastModifiedDate:file.lastModifiedDate.toUTCString()
