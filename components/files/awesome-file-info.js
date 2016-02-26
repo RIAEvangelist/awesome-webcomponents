@@ -1,6 +1,6 @@
 'use strict';
 
-awesome.requireCSS(`${awesome.path}components/file/awesome-file.css`);
+awesome.requireCSS(`${awesome.path}components/file/awesome-file-info.css`);
 
 (
     function(){
@@ -37,7 +37,7 @@ awesome.requireCSS(`${awesome.path}components/file/awesome-file.css`);
         }
 
         document.registerElement(
-            'awesome-file',
+            'awesome-file-info',
             Component
         );
     }

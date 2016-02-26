@@ -6,23 +6,28 @@
         <script type='application/javascript' src='../awesome.js'></script>
         <script type='application/javascript'>
             awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
-            awesome.requireScript(`${awesome.path}components/file-loader/awesome-file-loader.js`);
+            awesome.requireScript(`${awesome.path}components/files/awesome-file-loader.js`);
+            awesome.requireScript(`${awesome.path}components/file/awesome-file-info.js`);
         </script>
     </head>
     <body>
         <awesome-header
             data-title='awesome-file-loader'>
         </awesome-header>
-        <hr>
+        <br/>
+        <br/>
         <awesome-header
             data-title='Load one file.'>
         </awesome-header>
+        <br/>
         <awesome-file-loader>
         </awesome-file-loader>
-        <hr>
+        <br/>
+        <br/>
         <awesome-header
             data-title='Load multiple files.'>
         </awesome-header>
+        <br/>
         <awesome-file-loader
             data-multiple='true'
         >
