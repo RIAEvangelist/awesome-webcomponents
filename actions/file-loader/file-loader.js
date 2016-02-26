@@ -16,10 +16,14 @@ awesome.requireScript(`${awesome.path}stores/constants.js`);
             fileLoaded
         );
 
+
+        /**
+         * [fileLoaded description]
+         * @param  {[object]} message returns object of files loaded
+         * @return {[void]}     Message objects in console
+         */
         function fileLoaded(message){
-            console.log(`Received this message: ${message}`);
+            console.log('Action received this message: ', message);
         }
-
-
     }
 )();

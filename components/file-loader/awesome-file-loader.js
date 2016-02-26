@@ -20,9 +20,7 @@ awesome.requireScript(`${awesome.path}actions/file-loader/file-loader.js`);
 
                 this.innerHTML=`
                     <input type='file' id='input-files' multiple>
-                    <p id='fileInfo'>
 
-                    </p>
                     <p class='upload-text'>
                         Select one or more files.
                     </p>
@@ -33,16 +31,6 @@ awesome.requireScript(`${awesome.path}actions/file-loader/file-loader.js`);
                 this.addEventListener(
                     'change',
                     this.update
-                );
-
-                const message = new Message();
-                message.data = {
-                    name:'adrian',
-                    last:'sida'
-                }
-                dispatcher.trigger(
-                    action.USER_INPUT_FILE_LOADED,
-                    message
                 );
             }
 
@@ -55,26 +43,27 @@ awesome.requireScript(`${awesome.path}actions/file-loader/file-loader.js`);
             }
 
             update(e){
-                let loadedFiles = document.getElementById('input-files').files;
+                const loadedFiles = document.getElementById('input-files').files;
                 document.querySelector('.upload-text').classList.add('hidden');
-                var txt='';
+                const message = new Message();
+                const list = [];
 
-                for(var i = 0; i < loadedFiles.length; i++){
-                    txt += "<br><strong>" + (i+1) + ". File</strong><br>";
-                    var file = loadedFiles[i];
-                    if ('name' in file) {
-                        txt += "name: " + file.name + "<br>";
-                    }
-                    if ('size' in file) {
-                        txt += "size: " + file.size + " bytes <br>";
-                    }
-                    if ('lastModifiedDate' in file) {
-                        txt += "lastModified: " + file.lastModifiedDate.toUTCString() + "<hr>";
-                    }
+                for(let i = 0; i < loadedFiles.length; i++){
+                    const file = loadedFiles[i];
+
+                    list.push(
+                        message.data = {
+                            filename:file.name,
+                            filesize:file.size,
+                            lastModifiedDate:file.lastModifiedDate.toUTCString()
+                        }
+                    );
                 }
 
-                document.getElementById('fileInfo').innerHTML = txt;
-
+                dispatcher.trigger(
+                    action.USER_INPUT_FILE_LOADED,
+                    list
+                );
             }
         }
 
