@@ -13,7 +13,8 @@ awesome.requireScript(`${awesome.path}stores/file-loader/file-loader.js`);
         const action = awesome.constants.action;
 
         const defaults = {
-            multiple:false
+            multiple:false,
+            id:'default'
         };
 
         class Component extends HTMLElement{
@@ -32,7 +33,7 @@ awesome.requireScript(`${awesome.path}stores/file-loader/file-loader.js`);
             attachedCallback(){
                 this.addEventListener(
                     'change',
-                    this.update
+                    this.update.bind(this)
                 );
             }
 
@@ -46,14 +47,19 @@ awesome.requireScript(`${awesome.path}stores/file-loader/file-loader.js`);
 
             update(e){
                 const loadedFiles = e.target.files;
-                const list = {};
+                const list = [];
 
                 for(let i = 0; i < loadedFiles.length; i++){
                     const file = loadedFiles[i];
-                    list[file.name]={
-                        filesize:file.size,
-                        lastModifiedDate:file.lastModifiedDate.toUTCString()
-                    };
+
+                    list.push(
+                        {
+                            id:this.dataset.id,
+                            filename:file.name,
+                            filesize:file.size,
+                            lastModifiedDate:file.lastModifiedDate.toUTCString()
+                        }
+                    );
                 }
 
                 dispatcher.trigger(

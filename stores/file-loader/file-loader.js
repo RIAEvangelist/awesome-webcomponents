@@ -15,9 +15,7 @@
                 Set your default store state here
                 \*********************************/
 
-                store.defaultState={
-                    files:{}
-                };
+                store.defaultState={};
 
                 store.resetState();
 
@@ -32,9 +30,7 @@
                 );
 
                 function receivedFiles(list){
-                    store.state ={
-                        files:list
-                    }
+                    store.state = list;
                     console.log(store.state, 'STORE');
                 }
             }
