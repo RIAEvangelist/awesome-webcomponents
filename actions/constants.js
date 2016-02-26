@@ -9,11 +9,11 @@ awesome.constants.action={
     RESET_STORES:'app.reset.all.stores',
 
     /**
-     * file dropped into drop field
-     * @member awesome.constants.action.GENERIC_DRAG_DROP_FILE
-     * @type {EventName}
+     * files loaded and available
+     * @member awesome.constants.action.FILE_LOADED
+     * @type {String}
      */
-    GENERIC_DRAG_DROP_FILE:'generic.drag.drop.file',
+    FILE_LOADED:'file.loaded',
 
     /**
      * logout request
@@ -26,5 +26,5 @@ awesome.constants.action={
      * @memeber awesome.constants.action.LOGIN_REQUEST
      * @type {EventName}
      */
-    LOGIN_REQUEST:'login.request',
+    LOGIN_REQUEST:'login.request'
 }
