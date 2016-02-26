@@ -12,10 +12,10 @@ awesome.language.default={
     chooseFiles:'Choose files',
     'filesSelectedCount':'${count} selected',
 
-    name:'name',
-    size:'size',
-    lastModified:'last modified',
-    content:'content',
+    fileName:'name',
+    fileSize:'size',
+    fileLastModified:'last modified',
+    fileContent:'content',
 
     'awesome-login-screen-header':'Login'
 

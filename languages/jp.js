@@ -8,10 +8,10 @@ awesome.language.jp={
     chooseFiles:'ファイルを選ぶ',
     'filesSelectedCount':'${count} ファイル',
 
-    name:'名',
-    size:'サイズ',
-    lastModified:'最終更新日',
-    content:'コンテンツ',
+    fileName:'名',
+    fileSize:'サイズ',
+    fileLastModified:'最終更新日',
+    fileContent:'コンテンツ',
 
     'awesome-login-screen-header':'顧客ログイン'
 

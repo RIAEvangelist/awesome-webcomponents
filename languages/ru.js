@@ -8,10 +8,10 @@ awesome.language.ru={
     chooseFiles:'добавить файлы',
     'filesSelectedCount':'${count} выбран',
 
-    name:'имя',
-    size:'размер',
-    lastModified:'Последнее изменение',
-    content:'содержание',
+    fileName:'имя',
+    fileSize:'размер',
+    fileLastModified:'Последнее изменение',
+    fileContent:'содержание',
 
     'awesome-login-screen-header':'Вход'
 };

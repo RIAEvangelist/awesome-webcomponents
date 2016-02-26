@@ -42,10 +42,10 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
 
                 if(fileInfo && Array.isArray(fileInfo.files)){
                     tableContent=`<tr>
-                        <th>${awesome.language.current.name}</th>
-                        <th>${awesome.language.current.size}</th>
-                        <th>${awesome.language.current.lastModified}</th>
-                        <th>${awesome.language.current.content}</th>
+                        <th>${awesome.language.current.fileName}</th>
+                        <th>${awesome.language.current.fileSize}</th>
+                        <th>${awesome.language.current.fileLastModified}</th>
+                        <th>${awesome.language.current.fileContent}</th>
                     </tr>`;
 
                     count=fileInfo.files.length;
