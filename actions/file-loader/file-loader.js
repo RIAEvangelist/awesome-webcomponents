@@ -25,11 +25,8 @@ awesome.requireScript(`${awesome.path}stores/constants.js`);
         function fileLoaded(list){
             console.log('Action received this message: ', list);
             const files = {};
-            for(let i=0; i<list.length; i++){
-                files[
-                    list[i].id
-                ] = list[i];
-            }
+            files[list.id] = list;
+
             dispatcher.trigger(
                 storeEvents.FILE_LIST,
                 files

@@ -2,7 +2,7 @@
 
 awesome.requireCSS(`${awesome.path}components/file-loader/awesome-file-loader.css`);
 awesome.requireScript(`${awesome.path}actions/file-loader/file-loader.js`);
-awesome.requireScript(`${awesome.path}stores/file-loader/file-loader.js`);
+awesome.requireScript(`${awesome.path}stores/files/files.js`);
 
 
 (
@@ -48,23 +48,33 @@ awesome.requireScript(`${awesome.path}stores/file-loader/file-loader.js`);
             update(e){
                 const loadedFiles = e.target.files;
                 const list = [];
+                const loadedInfo = {
+                    id:this.dataset.id
+                };
 
                 for(let i = 0; i < loadedFiles.length; i++){
                     const file = loadedFiles[i];
 
+                    if(!e.target.multiple){
+                        list.push(file);
+                        break;
+                    }
+
                     list.push(
                         {
-                            id:this.dataset.id,
-                            filename:file.name,
-                            filesize:file.size,
-                            lastModifiedDate:file.lastModifiedDate.toUTCString()
+                            name: file.name,
+                            size: file.size,
+                            lastModifiedDate:file.lastModifiedDate
                         }
                     );
+
                 }
+
+                loadedInfo.files = list;
 
                 dispatcher.trigger(
                     action.FILE_LOADED,
-                    list
+                    loadedInfo
                 );
             }
         }
