@@ -2,8 +2,26 @@ awesome-file-loader {
     display:block;
 }
 
-.hidden {
-    display: none;
+awesome-file-loader > input[type='file']{
+    display:none;
+}
+
+awesome-file-loader > button{
+    float:left;
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
+}
+
+awesome-file-loader > input[type='text']{
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+}
+
+awesome-file-loader > button,
+awesome-file-loader > input[type='text']{
+    line-height: 1.4em;
+    padding: .4em;
+    font-size: 1.4em;
 }
 
 /*******************************\

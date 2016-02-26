@@ -4,9 +4,9 @@ awesome.language.ru={
     username:'Логин',
     password:'Пароль',
 
-    chooseFile:'выбрать файл',
-    chooseFiles:'выбрать файл',
+    chooseFile:'добавить файл',
+    chooseFiles:'добавить файлы',
+    'filesSelectedCount':'${count} выбран',
 
     'awesome-login-screen-header':'Вход'
-
 };

@@ -10,6 +10,7 @@ awesome.language.default={
 
     chooseFile:'Choose file',
     chooseFiles:'Choose files',
+    'filesSelectedCount':'${count} selected',
 
     'awesome-login-screen-header':'Login'
 

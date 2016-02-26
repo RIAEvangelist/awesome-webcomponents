@@ -1,6 +1,6 @@
 'use strict';
 
-awesome.requireCSS(`${awesome.path}components/file/awesome-file-info.css`);
+awesome.requireCSS(`${awesome.path}components/files/awesome-file-info.css`);
 
 (
     function(){

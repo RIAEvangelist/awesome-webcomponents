@@ -6,14 +6,16 @@
         <script type='application/javascript' src='../awesome.js'></script>
         <script type='application/javascript'>
             awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+            awesome.requireScript(`${awesome.path}components/localization/awesome-languages.js`);
             awesome.requireScript(`${awesome.path}components/files/awesome-file-loader.js`);
-            awesome.requireScript(`${awesome.path}components/file/awesome-file-info.js`);
+            awesome.requireScript(`${awesome.path}components/files/awesome-file-info.js`);
         </script>
     </head>
     <body>
         <awesome-header
             data-title='awesome-file-loader'>
         </awesome-header>
+        <awesome-languages></awesome-languages>
         <br/>
         <br/>
         <awesome-header
