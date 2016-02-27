@@ -15,6 +15,7 @@ awesome-file-loader > button{
 awesome-file-loader > input[type='text']{
     border-top-left-radius:0;
     border-bottom-left-radius:0;
+    cursor:pointer;
 }
 
 awesome-file-loader > button,
@@ -25,6 +26,8 @@ awesome-file-loader > input[type='text']{
 }
 
 awesome-file-loader > awesome-file-info{
+    position:absolute;
+    z-index:100;
     margin:0 .6em;
     box-shadow:inset 0 .1em .3em 0em rgba(0,0,0,.5);
     border-bottom-right-radius: .3em;
