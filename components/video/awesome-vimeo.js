@@ -4,6 +4,8 @@ awesome.requireCSS(`${awesome.path}components/video/awesome-vimeo.css`);
 
 (
     function(){
+        //full documentation of these parameters can be seen @
+        //https://developer.vimeo.com/player/embedding
         const defaults={
             video_id:'',
             allow_fullscreen: true,
