@@ -114,6 +114,9 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                         count:e.target.files.length
                     }
                 );
+
+                const info=this.querySelector('awesome-file-info');
+                info.style.height=`${info.querySelector('table').offsetHeight}px`;
             }
 
             chooseFile(e){
