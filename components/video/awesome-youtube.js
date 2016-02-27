@@ -10,6 +10,7 @@ awesome.requireCSS(`${awesome.path}components/video/awesome-youtube.css`);
             video_id:'',
             allow_fullscreen: true,
             autoplay: 0,
+            cc_load_policy: 0,
             controls: 1,
             color: 'white',
             disablekb: 1,
