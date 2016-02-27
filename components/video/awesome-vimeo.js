@@ -26,7 +26,6 @@ awesome.requireCSS(`${awesome.path}components/video/awesome-vimeo.css`);
                     if(i == 'video_id' || i == 'allow_fullscreen'){
                         continue;
                     }
-
                     vimeoURL = vimeoURL.concat(`${i}=${this.dataset[i]}&`);
                 }
 

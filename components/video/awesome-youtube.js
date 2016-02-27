@@ -36,7 +36,6 @@ awesome.requireCSS(`${awesome.path}components/video/awesome-youtube.css`);
                     if(i == 'video_id' || i == 'allow_fullscreen'){
                         continue;
                     }
-
                     youTubeURL = youTubeURL.concat(`${i}=${this.dataset[i]}&`);
                 }
 
