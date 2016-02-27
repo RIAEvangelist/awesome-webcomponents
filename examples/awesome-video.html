@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script src='../bower_components/document-register-element/build/document-register-element.js'></script>
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/video/awesome-youtube.js`);
+            awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+            awesome.requireScript(`${awesome.path}components/video/awesome-vimeo.js`)
+        </script>
+    </head>
+    <body>
+        <awesome-header
+            data-title = 'Simple embedded videos'
+        ></awesome-header>
+        <br />
+        <br />
+        <awesome-header
+            data-icon = 'img/YouTube-logo-dark.png'
+        ></awesome-header>
+        <awesome-youtube
+            data-video_id = 'bjYhmX_OUQQ'
+        ></awesome-youtube>
+        <br />
+        <br />
+        <awesome-header
+            data-icon = 'img/vimeo.png'
+        ></awesome-header>
+        <awesome-vimeo
+            data-video_id = '156161909'
+        ></awesome-vimeo>
+    </body>
+</html>
