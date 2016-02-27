@@ -38,8 +38,6 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
 
                 let count=0;
 
-                console.log(state,fileInfo);
-
                 if(fileInfo && Array.isArray(fileInfo.files)){
                     tableContent=`<tr>
                         <th>${awesome.language.current.fileName}</th>
@@ -51,6 +49,9 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                     count=fileInfo.files.length;
                     for(let i=0; i<fileInfo.files.length; i++){
                         const file=fileInfo.files[i];
+                        for(const i in file){
+                            console.log(i,':',file[i])
+                        }
                         tableContent+=`
                             <tr>
                                 <td>${file.name}</td>
