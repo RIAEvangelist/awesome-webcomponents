@@ -13,9 +13,9 @@ awesome.requireCSS(`${awesome.path}components/video/awesome-vimeo.css`);
             autoplay: 0,
             badge: 0,
             byline: 0,
-            color: '00adef',
+            color: 'cccccc',
             loop: 0,
-            protrait: 0,
+            portrait: 0,
             title:1
         }
 

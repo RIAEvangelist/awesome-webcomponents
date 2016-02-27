@@ -13,23 +13,24 @@ awesome.requireCSS(`${awesome.path}components/video/awesome-youtube.css`);
             cc_load_policy: 0,
             controls: 1,
             color: 'white',
-            disablekb: 1,
+            disablekb: 0,
             enablejsapi: 1,
             end: -1,
             fs: 1,
-            h1: 'eng',
-            iv_load_policy: 3,
+            h1: '',
+            iv_load_policy: 0,
             modestbranding: 1,
             loop: 0,
             rel: 0,
-            showinfo: 0,
-            start: -1,
-            theme: 'dark'
+            showinfo: 1,
+            start: 0
         }
 
         class Component extends HTMLElement{
 
             createdCallback(){
+
+                defaults.h1 = localStorage.getItem('language');
                 awesome.mergeDataset(this,defaults);
 
                 let youTubeURL = `https://www.youtube.com/embed/${this.dataset.video_id}?`;
@@ -43,7 +44,7 @@ awesome.requireCSS(`${awesome.path}components/video/awesome-youtube.css`);
                 this.innerHTML=`
                     <iframe
                         src = '${youTubeURL}'
-                        allowfullscreen = ${this.dataset.allow_fullscreen}
+                        allowfullscreen = '${this.dataset.allow_fullscreen}'
                     ></iframe>
                 `;
 
