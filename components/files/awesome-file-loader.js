@@ -35,11 +35,32 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                             : awesome.language.current.chooseFiles
                         }
                     </button>
-                    <input type='text' />
+                    <input
+                        type='text'
+                        placeholder='${
+                            awesome.dynamicLanguageString(
+                                'filesSelectedCount',
+                                {
+                                    count:0
+                                }
+                            )
+                        }'
+                    />
                     <awesome-file-info
+                        style='width:0px'
                         data-file_id='${this.dataset.id}'
                     ></awesome-file-info>
                 `;
+
+                this.querySelector('awesome-file-info').style.width=`calc(${this.clientWidth}px - 1.3em)`;
+                this.querySelector('button').addEventListener(
+                    'click',
+                    this.chooseFile.bind(this)
+                );
+                this.querySelector('input[type="text"]').addEventListener(
+                    'click',
+                    this.chooseFile.bind(this)
+                );
             }
 
             attachedCallback(){
@@ -51,11 +72,6 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                 this.addEventListener(
                     'change',
                     this.update.bind(this)
-                );
-
-                this.addEventListener(
-                    'click',
-                    this.chooseFile.bind(this)
                 );
             }
 
@@ -85,22 +101,26 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                     list.push(file);
                 }
 
-               loadedInfo.files = list;
+                loadedInfo.files = list;
 
-               dispatcher.trigger(
-                   action.FILE_LOADED,
-                   loadedInfo
-               );
+                dispatcher.trigger(
+                    action.FILE_LOADED,
+                    loadedInfo
+                );
 
-                this.querySelector('input[type="text"]').value=awesome.dynamicLanguageString(
+                this.querySelector('input[type="text"]').placeholder=awesome.dynamicLanguageString(
                     'filesSelectedCount',
                     {
                         count:e.target.files.length
                     }
                 );
+
+                const info=this.querySelector('awesome-file-info');
+                info.style.height=`${info.querySelector('table').offsetHeight}px`;
             }
 
             chooseFile(e){
+                e.target.blur();
                 this.querySelector('input[type="file"]').click();
             }
         }

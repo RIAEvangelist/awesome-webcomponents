@@ -1,5 +1,6 @@
 awesome-file-loader {
     display: inline-block;
+    margin-bottom:1em;
 }
 
 awesome-file-loader > input[type='file']{
@@ -15,6 +16,7 @@ awesome-file-loader > button{
 awesome-file-loader > input[type='text']{
     border-top-left-radius:0;
     border-bottom-left-radius:0;
+    cursor:pointer;
 }
 
 awesome-file-loader > button,
@@ -22,13 +24,19 @@ awesome-file-loader > input[type='text']{
     line-height: 1.4em;
     padding: .4em;
     font-size: 1.4em;
+    z-index:101;
 }
 
 awesome-file-loader > awesome-file-info{
+    position:absolute;
+    height:1.3em;
+    overflow:hidden;
+    z-index:100;
     margin:0 .6em;
-    box-shadow:inset 0 .1em .3em 0em rgba(0,0,0,.5);
+    box-shadow:inset 0 .1em .3em 0em rgba(0,0,0,.5), 0 0 1em rgba(0,0,0,.2);
     border-bottom-right-radius: .3em;
     border-bottom-left-radius: .3em;
+    transition:height 300ms ease-out;
 }
 
 /*******************************\

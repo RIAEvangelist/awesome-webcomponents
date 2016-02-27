@@ -31,9 +31,9 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                 const fileInfo=state[this.dataset.file_id];
 
                 let tableContent=`
-                    <caption>
-                        No files Selected.
-                    </caption>
+                    <tr>
+                        <th>No files Selected.</th>
+                    </tr>
                 `;
 
                 let count=0;
@@ -52,9 +52,13 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                     for(let i=0; i<fileInfo.files.length; i++){
                         const file=fileInfo.files[i];
                         tableContent+=`
-                            <tr>
+                            <tr class='${
+                                (i%2)
+                                ? ''
+                                : 'oddRow'
+                            }'>
                                 <td>${file.name}</td>
-                                <td>${file.size}</td>
+                                <td>${file.size}kb</td>
                                 <td>${file.lastModifiedDate}</td>
                                 <td>${file.content}</td>
                             </tr>
