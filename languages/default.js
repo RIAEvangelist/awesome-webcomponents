@@ -1,9 +1,22 @@
 awesome.language.default={
 
-    "login":"login",
-    "username":"username",
-    "password":"password",
+    english:'english',
+    russian:'русски',
+    japanese:'日本語',
 
-    "awesome-login-screen-header":"Login"
+    login:'login',
+    username:'username',
+    password:'password',
 
-}
+    chooseFile:'Choose file',
+    chooseFiles:'Choose files',
+    'filesSelectedCount':'${count} selected',
+
+    fileName:'name',
+    fileSize:'size',
+    fileLastModified:'last modified',
+    fileContent:'content',
+
+    'awesome-login-screen-header':'Login'
+
+};

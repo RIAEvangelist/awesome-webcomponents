@@ -9,7 +9,7 @@ awesome.requireCSS(`${awesome.path}components/list/awesome-list.css`);
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
                 const content=awesome.loadTemplate(this);
-                
+
                 this.innerHTML=`
                     <ul>
                         ${content}
