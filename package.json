@@ -1,6 +1,6 @@
 {
   "name": "awesome-webcomponents",
-  "version": "0.0.37",
+  "version": "0.0.58",
   "description": "awesome native js web components",
   "main": "awesome.js",
   "devDependencies": {
