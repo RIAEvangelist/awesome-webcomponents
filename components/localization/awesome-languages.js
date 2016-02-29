@@ -1,5 +1,5 @@
 'use strict';
-awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
+awesome.requireCSS(`${awesome.path}components/localization/awesome-languages.css`);
 awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
 
 (
