@@ -61,6 +61,8 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                     'click',
                     this.chooseFile.bind(this)
                 );
+                const info=this.querySelector('awesome-file-info');
+                info.style.height=`${info.querySelector('table').offsetHeight}px`;
             }
 
             attachedCallback(){
