@@ -19,6 +19,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             action = awesome.constants.action;
 
             defaults={
+                screen:'login',
                 login_type:null,
 
                 username_id:'awesome-login-screen-username',

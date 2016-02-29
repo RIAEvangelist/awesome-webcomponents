@@ -31,7 +31,7 @@
 
                 function receivedFiles(list){
                     store.state = list;
-                    console.log(store.state, 'STORE');
+                    console.log('STORE', store.state);
                 }
             }
         }

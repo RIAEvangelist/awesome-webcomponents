@@ -12,6 +12,7 @@ awesome.language.ru={
     fileSize:'размер',
     fileLastModified:'Последнее изменение',
     fileContent:'содержание',
+    noFilesSelected:'Файлы не выбраны',
 
     'awesome-login-screen-header':'Вход'
 };
