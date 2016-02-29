@@ -57,9 +57,8 @@ awesome.requireScript(`${awesome.path}stores/constants.js`);
                 screen:screen
             };
             data.pop=true;
-            
-            handleChangeRequest(data);
 
+            handleChangeRequest(data);
         }
     }
 )();
