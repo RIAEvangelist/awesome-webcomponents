@@ -905,6 +905,27 @@ class Awesome{
             this.setLanguage(lang);
 
             window.dispatchEvent(e);
+
+            awesome.dispatchers.component.trigger(
+                awesome.constants.action.ROUTE_UPDATE_SCREENS
+            );
+
+            const activeScreen=document.querySelector('.activeScreen');
+            let startScreen=document.querySelector('body').dataset.start_screen;
+            const hashScreen=document.location.hash.slice(2);
+
+            if(hashScreen){
+                startScreen=hashScreen;
+            }
+
+            if(activeScreen || !startScreen){
+                return;
+            }
+
+            awesome.dispatchers.component.trigger(
+                awesome.constants.action.ROUTE_REQUEST,
+                startScreen
+            );
         }
 
         function hasLang(lang){
@@ -1135,6 +1156,11 @@ awesome.requireScript(`${awesome.path}dispatchers/component.js`);
 //awesome classes
 awesome.requireScript(`${awesome.path}stores/store.js`);
 
+//default stores
+awesome.requireScript(`${awesome.path}stores/router/route.js`);
+
+//default actions
+awesome.requireScript(`${awesome.path}actions/router/route.js`);
 
 
 

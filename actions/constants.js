@@ -26,5 +26,9 @@ awesome.constants.action={
      * @memeber awesome.constants.action.LOGIN_REQUEST
      * @type {EventName}
      */
-    LOGIN_REQUEST:'login.request'
+    LOGIN_REQUEST:'login.request',
+
+    ROUTE_REQUEST:'router.navigate',
+
+    ROUTE_UPDATE_SCREENS:'router.find.screens'
 }
