@@ -12,6 +12,7 @@ awesome.language.jp={
     fileSize:'サイズ',
     fileLastModified:'最終更新日',
     fileContent:'コンテンツ',
+    noFilesSelected:'どのファイルが選択されていません',
 
     'awesome-login-screen-header':'顧客ログイン'
 

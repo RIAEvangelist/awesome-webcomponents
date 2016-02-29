@@ -92,33 +92,43 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                     id:this.dataset.id
                 };
 
+                let filesRemaining=loadedFiles.length;
+
                 for(let i = 0; i < loadedFiles.length; i++){
                     const file = loadedFiles[i];
+                    const reader = new FileReader;
+
+                    reader.onload = function(e) {
+                        file.content = e.target.result;
+                        list.push(file);
+                        filesRemaining--;
+                        if(!filesRemaining===0){
+                            return;
+                        }
+
+                        loadedInfo.files = list;
+
+                        dispatcher.trigger(
+                           action.FILE_LOADED,
+                           loadedInfo
+                        );
+
+                        this.querySelector('input[type="text"]').placeholder=awesome.dynamicLanguageString(
+                            'filesSelectedCount',
+                            {
+                                count:loadedFiles.length
+                            }
+                        );
+
+                        const info=this.querySelector('awesome-file-info');
+                        info.style.height=`${info.querySelector('table').offsetHeight}px`;
+                    }.bind(this)
+                    reader.readAsDataURL(file);
 
                     if(!e.target.multiple){
-                        list.push(file);
                         break;
                     }
-
-                    list.push(file);
                 }
-
-                loadedInfo.files = list;
-
-                dispatcher.trigger(
-                    action.FILE_LOADED,
-                    loadedInfo
-                );
-
-                this.querySelector('input[type="text"]').placeholder=awesome.dynamicLanguageString(
-                    'filesSelectedCount',
-                    {
-                        count:e.target.files.length
-                    }
-                );
-
-                const info=this.querySelector('awesome-file-info');
-                info.style.height=`${info.querySelector('table').offsetHeight}px`;
             }
 
             chooseFile(e){
