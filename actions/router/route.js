@@ -15,7 +15,7 @@ awesome.requireScript(`${awesome.path}stores/constants.js`);
             handleChangeRequest
         );
 
-        shared.dispatcher.on(
+        dispatcher.on(
             constants.ROUTE_UPDATE_SCREENS,
             getScreens
         );
@@ -28,23 +28,34 @@ awesome.requireScript(`${awesome.path}stores/constants.js`);
 
         function getScreens(){
             var screenList=document.querySelectorAll('[data-screen]');
-            var screens=[];
-            for(var i=0; i<screenList.length; i++){
-                screens.push(
-                    Object.assign(
-                        {},
-                        screenList[i].dataset
-                    )
-                );
-            }
-
             dispatcher.trigger(
                 storeEvents.ROUTER_SCREEN_LIST,
-                screens
+                screenList
             );
         }
 
-        function handleChangeRequest(data){
+        function handleChangeRequest(req){
+            let data=req;
+            if(typeof req==='string'){
+                const screenName=req;
+                const startScreen=document.querySelector('body').dataset.start_screen;
+                let screen=null;
+
+                if(screenName){
+                    screen=document.querySelector(`[data-screen=${screenName}`);
+                }
+
+                if(!screen){
+                    screen=document.querySelector(
+                        `[data-screen=${startScreen}]`
+                    );
+                }
+
+                data={
+                    screen:screen
+                };
+            }
+
             dispatcher.trigger(
                 storeEvents.ROUTER_SCREEN_CHANGE,
                 data
@@ -52,8 +63,21 @@ awesome.requireScript(`${awesome.path}stores/constants.js`);
         }
 
         function handlePopstate(e){
-            var screen=location.hash.slice(2)||this.props.startScreen;
-            var data={
+            const screenName=location.hash.slice(2);
+            const startScreen=document.querySelector('body').dataset.start_screen;
+            let screen=null;
+
+            if(screenName){
+                screen=document.querySelector(`[data-screen=${screenName}]`);
+            }
+
+            if(!screen){
+                screen=document.querySelector(
+                    `[data-screen=${startScreen}`
+                );
+            }
+
+            const data={
                 screen:screen
             };
             data.pop=true;

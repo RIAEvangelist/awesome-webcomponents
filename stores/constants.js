@@ -38,5 +38,9 @@ awesome.constants.store={
      * @member awesome.constants.store.FILE_LIST
      * @type {String}
      */
-    FILE_LIST:'file.list'
+    FILE_LIST:'file.list',
+
+    ROUTER_SCREEN_CHANGE:'router.screen.change',
+
+    ROUTER_SCREEN_LIST:'router.screens.list'
 };

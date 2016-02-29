@@ -9,7 +9,7 @@
                 const dispatcher=awesome.dispatchers.store;
                 const constants=awesome.constants.store;
 
-                store.expose(this,'navigation');
+                store.expose(this,'route');
 
                 /*********************************\
                 Set your default store state here
@@ -17,7 +17,7 @@
 
                 store.defaultState={
                     screens:[],
-                    screen:'login'
+                    screen:''
                 };
 
                 store.resetState();
@@ -40,49 +40,58 @@
 
                 function updateScreens(screens){
                     store.state={
-                        screens : Object.assign([],screens)
+                        screens : screens
                     };
                 }
 
                 function handleScreenChange(data){
-                    var screen=data.screen||store.screen;
-                    console.log(screen);
+                    const screen=data.screen||store.screen;
+
+                    if(!screen){
+                        //TODO maybe throw an error?
+                        return;
+                    }
+
+                    const screenName=screen.dataset.screen;
+
+                    if(store.state.screen===screenName){
+                        return;
+                    }
 
                     if(
-                        store.state.screen!==screen
-                        && !data.isPop
+                        !data.isPop
                         && (history.state)
                     ){
                         history.pushState(
                             {
-                                screen:screen
+                                screen:screenName
                             },
-                            screen,
-                            '#/'+screen
+                            screenName,
+                            '#/'+screenName
                         );
                     }
 
                     if(data.nextScreen){
                         history.replaceState(
                             {
-                                nextScreen:data.nextScreen||null,
-                                screen:screen
+                                nextScreen:data.nextScreen.dataset.screen,
+                                screen:screenName
                             },
-                            screen,
-                            '#/'+screen
+                            screenName,
+                            '#/'+screenName
                         );
                     }
 
                     store.state={
-                        screen : screen,
+                        screen : screenName,
                         nextScreen:data.nextScreen
                     };
 
                     for(let i=0; i<store.state.screens.length;i++){
                         const screen=store.state.screens[i];
-                        if(!screen.dataset.screen==store.state.screen){
+                        if(!screen.dataset.screen===store.state.screen){
                             screen.classList.remove('activeScreen');
-                            return;
+                            continue;
                         }
                         screen.classList.add('activeScreen');
                     }

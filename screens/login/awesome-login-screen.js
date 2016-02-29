@@ -1,7 +1,6 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}screens/login/awesome-login-screen.css`);
-awesome.requireScript(`${awesome.path}actions/user/auth.js`);
 awesome.requireScript(`${awesome.path}stores/user/auth.js`);
 awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
@@ -20,7 +19,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
             defaults={
                 screen:'login',
-                login_type:null,
+                action_path:`${awesome.path}actions/user/auth.js`,
 
                 username_id:'awesome-login-screen-username',
                 username_pattern: awesome.config.validate.username,
@@ -43,10 +42,9 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
         class Component extends HTMLElement{
             createdCallback(){
-                if(this.dataset.action){
-                    awesome.requireScript(`${this.dataset.action}`);
-                }
                 awesome.mergeDataset(this,defaults);
+
+                awesome.requireScript(this.dataset.action_path);
 
                 this.innerHTML=`
                     <awesome-dialog data-title='${awesome.language.current['awesome-login-screen-header']}'>
