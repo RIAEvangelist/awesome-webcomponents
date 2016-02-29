@@ -16,6 +16,7 @@ awesome.language.default={
     fileSize:'size',
     fileLastModified:'last modified',
     fileContent:'content',
+    noFilesSelected:'No files Selected.',
 
     'awesome-login-screen-header':'Login'
 

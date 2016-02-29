@@ -122,7 +122,6 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                         info.style.height=`${info.querySelector('table').offsetHeight}px`;
                     }.bind(this)
                     reader.readAsDataURL(file);
-                    // list.push(file);
 
                     if(!e.target.multiple){
                         break;
