@@ -1,0 +1,35 @@
+awesome-document-viewer{
+    display:block;
+}
+
+awesome-document-viewer awesome-dialog{
+    width: 22.5em;
+    height: 24em;
+    border-radius: 0.15em;
+    top: 10em;
+    transition: all 0.55s;
+}
+
+awesome-document-viewer awesome-dialog .content{
+    margin:.25em;
+    overflow:auto;
+    height:calc(100% - 2.5em);
+}
+
+awesome-document-viewer .fullScreenView {
+    height: 49.25em;
+    width: calc(100% - 6em);
+    top: 1em;
+    left: 3em;
+}
+
+body.fullScreenViewBG {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}
