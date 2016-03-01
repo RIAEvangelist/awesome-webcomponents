@@ -1,0 +1,26 @@
+awesome-screen-icon{
+    width:2.1em;
+    height:2.1em;
+    line-height:.5em;
+    cursor: pointer;
+}
+
+awesome-screen-icon div{
+    width: 4em;
+    height:4em;
+    margin:.5em;
+    text-align: center;
+    line-height: 1em;
+}
+
+awesome-screen-icon img{
+    width: 100%;
+    height: 100%;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}
