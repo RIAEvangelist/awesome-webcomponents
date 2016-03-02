@@ -64,7 +64,7 @@ awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
             clicked(e){
                 dispatcher.trigger(
                     action.ROUTE_REQUEST,
-                    'login'
+                    e.target.id
                 );
             }
         }
