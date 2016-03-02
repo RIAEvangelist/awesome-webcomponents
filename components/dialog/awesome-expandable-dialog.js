@@ -17,23 +17,19 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
                 awesome.mergeDataset(this,defaults);
                 const content=awesome.loadTemplate(this);
 
-                let header='';
-
-                if(this.dataset.header==='true'){
-                    header=`
-                        <awesome-header
-                            data-icon='${this.dataset.icon}'
-                            data-title='${this.dataset.title}'
-                        ></awesome-header>
-                    `;
-                }
-
                 this.innerHTML=`
-                    <awesome-dialog>
-                        ${header}
-                        <div class='content'>
+                    <awesome-dialog
+                        data-header=${this.dataset.header}
+                        ${
+                            (this.dataset.icon)
+                            ? `data-icon=${this.dataset.icon}`
+                            : ''
+                        }
+                        data-title=${this.dataset.title}
+                    >
+                        <template>
                             ${content}
-                        </div>
+                        </template>
                     </awesome-dialog>
                 `;
             }
@@ -43,7 +39,7 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             attachedCallback(){
                 this.addEventListener(
                     'click',
-                    this.change
+                    this.change.bind(this)
                 );
             }
 
@@ -56,10 +52,7 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             }
 
             change(e){
-                const doc = document.querySelector('awesome-dialog');
-                const bg = document.querySelector('body');
-                doc.classList.toggle('fullScreenView');
-                bg.classList.toggle('fullScreenViewBG');
+                this.classList.toggle('fullScreenView');
             }
         }
 
