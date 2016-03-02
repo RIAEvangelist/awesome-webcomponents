@@ -2,7 +2,6 @@
 
 awesome.requireCSS(`${awesome.path}components/dialog/awesome-expandable-dialog.css`);
 awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
-awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
 
 (
     function(){
@@ -39,7 +38,7 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             attachedCallback(){
                 this.addEventListener(
                     'click',
-                    this.change.bind(this)
+                    this.change
                 );
             }
 
@@ -48,7 +47,10 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-
+                if(key==='class'){
+                    return;
+                }
+                this.createdCallback();
             }
 
             change(e){
