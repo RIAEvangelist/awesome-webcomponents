@@ -12,7 +12,6 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
                 const content=awesome.loadTemplate(this);
-                let modal = '';
 
                 this.innerHTML=`
                     <div>
