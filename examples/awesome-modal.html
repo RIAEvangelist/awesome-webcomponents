@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script src='../bower_components/document-register-element/build/document-register-element.js'></script>
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
+            awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+        </script>
+        <script>
+            'use strict';
+            function init() {
+                document.querySelector('.openModal').addEventListener(
+                    'click',
+                    openModal
+                )
+            }
+            function openModal(){
+                const modal=document.querySelector('awesome-modal')
+                modal.open();
+                modal.addEventListener(
+                    'click',
+                    closeModal
+                )
+            }
+            function closeModal(e){
+                if(e.target.tagName!=='BUTTON'){
+                    return;
+                }
+                document.querySelector('awesome-modal').close();
+            }
+            window.addEventListener(
+                'DOMContentLoaded',
+                init
+            );
+        </script>
+    </head>
+    <body>
+        <awesome-header
+            data-title = 'awesome-modal'
+        ></awesome-header>
+        <button class = 'openModal'>
+            Open Modal
+        </button>
+        <awesome-modal class='anAwesomeModal'>
+            <template>
+                <style>
+                    awesome-modal.anAwesomeModal h1{
+                        margin:2em;
+                        font-weight:lighter;
+                    }
+
+                    awesome-modal.anAwesomeModal button{
+                        margin-top:6em;
+                    }
+                </style>
+                <h1>
+                    awesome-modal is very flexible and can be filled with anything you'd like!
+                </h1>
+                <button>
+                    Close Modal
+                </button>
+            </template>
+        </awesome-modal>
+    </body>
+</html>

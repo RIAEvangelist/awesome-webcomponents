@@ -2,16 +2,20 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <title>awesome.js awesome-login-screen</title>
         <script src='../bower_components/document-register-element/build/document-register-element.js'></script>
         <script type='application/javascript' src='../awesome.js'></script>
         <script type='application/javascript'>
-            awesome.requireScript(`${awesome.path}screens/login/awesome-login-screen.js`);
-            awesome.requireScript(`${awesome.path}components/localization/awesome-languages.js`);
+            awesome.requireScript(`${awesome.path}components/icons/awesome-screen-icon.js`);
+            awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
         </script>
     </head>
-    <body data-start_screen='login'>
-        <awesome-languages></awesome-languages>
-        <awesome-login-screen></awesome-login-screen>
+    <body>
+        <awesome-header
+            data-title = 'awesome-screen-icon'
+        ></awesome-header>
+        <awesome-screen-icon
+            data-icon = 'img/ghoc.png'
+            data-text = 'octocat'
+        ></awesome-screen-icon>
     </body>
 </html>

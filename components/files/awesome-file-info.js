@@ -32,13 +32,11 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
 
                 let tableContent=`
                     <tr>
-                        <th>No files Selected.</th>
+                        <th>${awesome.language.current.noFilesSelected}</th>
                     </tr>
                 `;
 
                 let count=0;
-
-                console.log(state,fileInfo);
 
                 if(fileInfo && Array.isArray(fileInfo.files)){
                     tableContent=`<tr>
