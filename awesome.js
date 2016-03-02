@@ -373,7 +373,7 @@ class Awesome{
                 root=this._config;
             }
 
-            for (const key in newRoot) {
+            for (let key in newRoot) {
                 const newChild=newRoot[key];
                 let rootChild=root[key];
                 const newChildIsObject=(typeof newChild==='object');
