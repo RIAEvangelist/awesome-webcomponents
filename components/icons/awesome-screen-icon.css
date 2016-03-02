@@ -1,8 +1,10 @@
 awesome-screen-icon{
-    width:2.1em;
-    height:2.1em;
-    line-height:.5em;
+    width: 2.1em;
+    margin: 0 0 7em 7em;
+    height: 2.1em;
+    line-height: .5em;
     cursor: pointer;
+    display: inline-table;
 }
 
 awesome-screen-icon div{
