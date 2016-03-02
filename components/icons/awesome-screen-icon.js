@@ -7,7 +7,7 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
         const defaults={
             icon:'',
             text: '',
-            id: ''
+            screen_name: ''
         }
 
         class Component extends HTMLElement{
@@ -26,7 +26,7 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
 
                 this.innerHTML=`
                     <div
-                        id=${this.dataset.id}>
+                        data-screen_name=${this.dataset.screen_name}>
                         ${icon}
                         ${this.dataset.text}
                     </div>
@@ -34,7 +34,10 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
             }
 
             attachedCallback(){
-
+                this.addEventListener(
+                    'click',
+                    this.iconClicked
+                );
             }
 
             detachedCallback(){
@@ -43,6 +46,19 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
 
             attributeChangedCallback(key,oldValue,newValue){
                 this.createdCallback();
+            }
+
+            iconClicked(e){
+                e.stopPropagation();
+                const change = new Event(
+                    'change',
+                    {
+                        'bubbles':true,
+                        'cancelable':false
+                    }
+                );
+
+                this.dispatchEvent(change);
             }
         }
 

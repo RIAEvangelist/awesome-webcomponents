@@ -47,7 +47,7 @@ awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
 
             attachedCallback(){
                 this.addEventListener(
-                    'click',
+                    'change',
                     this.clicked
                 );
             }
@@ -64,7 +64,7 @@ awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
             clicked(e){
                 dispatcher.trigger(
                     action.ROUTE_REQUEST,
-                    e.target.id
+                    e.target.dataset.screen_name
                 );
             }
         }
