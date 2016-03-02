@@ -18,13 +18,17 @@ awesome-expandable-dialog{
 }
 
 awesome-expandable-dialog awesome-dialog{
+    position:relative;
     height:100%;
     width:100%;
+    top:0;
+    left:0;
+    border:solid 0em rgba(0,0,0,0);
     transition: width 300ms,
         height 300ms,
         top 300ms,
         left 300ms,
-        box-shadow 300ms;
+        border 300ms;
 }
 
 awesome-expandable-dialog.fullScreenView {
@@ -37,9 +41,7 @@ awesome-expandable-dialog.fullScreenView {
 awesome-expandable-dialog.fullScreenView awesome-dialog{
     height:calc(100% - 6em);
     width:calc(100% - 6em);
-    top:3em;
-    left:3em;
-    box-shadow:0 0 1em 6em rgba(0,0,0,.2);
+    border: 3em solid rgba(0,0,0,.2);
 }
 
 awesome-expandable-dialog.fullScreenView .content{
