@@ -9,6 +9,7 @@
             awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
         </script>
         <script>
+            'use strict';
             function init() {
                 document.querySelector('.openModal').addEventListener(
                     'click',
@@ -16,13 +17,17 @@
                 )
             }
             function openModal(){
-                document.querySelector('awesome-modal').open();
-                document.querySelector('.closeModal').addEventListener(
+                const modal=document.querySelector('awesome-modal')
+                modal.open();
+                modal.addEventListener(
                     'click',
                     closeModal
                 )
             }
-            function closeModal(){
+            function closeModal(e){
+                if(e.target.tagName!=='BUTTON'){
+                    return;
+                }
                 document.querySelector('awesome-modal').close();
             }
             window.addEventListener(
@@ -53,7 +58,7 @@
                 <h1>
                     awesome-modal is very flexible and can be filled with anything you'd like!
                 </h1>
-                <button class = 'closeModal'>
+                <button>
                     Close Modal
                 </button>
             </template>
