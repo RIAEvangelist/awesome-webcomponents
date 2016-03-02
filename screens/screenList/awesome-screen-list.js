@@ -9,23 +9,19 @@ awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
         let dispatcher=null;
         let constants = null;
         let action = null;
-        let defaults=null;
+        let defaults={
+            screen:'screenList'
+        };
 
         function init(e){
             dispatcher=awesome.dispatchers.component;
             constants = awesome.constants.component;
             action = awesome.constants.action;
 
-            defaults={
-                screen:'screenList'
-            };
-
             window.off(
                 'awesome-ready',
                 init
             );
-
-            // state=awesome.stores.auth.state;
 
             document.registerElement(
                 'awesome-screen-list',
@@ -43,12 +39,28 @@ awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
                         ${content}
                     </div>
                 `;
+
+                const appCount=this.querySelector('awesome-screen-icon').length;
+                //do something
             }
 
             attachedCallback(){
                 this.addEventListener(
                     'change',
                     this.clicked
+                );
+
+                window.addEventListener(
+                    'resize',
+                    this.resize.bind(this)
+                );
+
+                setTimeout(
+                    function(){
+                        const container=this.querySelector('.screensList-container');
+                        container.style.top=`calc(50% - ${container.offsetHeight/2}px)`;
+                    }.bind(this),
+                    1
                 );
             }
 
@@ -57,6 +69,9 @@ awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
+                if(key==='style'){
+                    return;
+                }
                 this.createdCallback();
             }
 
@@ -66,6 +81,13 @@ awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
                     action.ROUTE_REQUEST,
                     e.target.dataset.screen_name
                 );
+            }
+
+            resize(e){
+                const container=this.querySelector('.screensList-container');
+                container.style.top=`calc(50% - ${container.offsetHeight/2}px)`;
+
+                console.log(container,container.offsetHeight)
             }
         }
 

@@ -5,10 +5,10 @@ awesome-screen-list {
 }
 
 awesome-screen-list .screensList-container{
-    height:40em;
     width:calc(50% - 50px);
-    top:18em;
     margin:0 auto;
+    transition:top 300ms;
+    top:18em;
 }
 
 
