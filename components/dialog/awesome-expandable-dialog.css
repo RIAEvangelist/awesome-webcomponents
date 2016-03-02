@@ -37,6 +37,10 @@ awesome-expandable-dialog.fullScreenView awesome-dialog{
     box-shadow:0 0 6em 6em rgba(0,0,0,.2);
 }
 
+awesome-expandable-dialog.fullScreenView .content{
+    margin:1em;
+}
+
 /*******************************\
 Small desktop windows and mobile
 \*******************************/
