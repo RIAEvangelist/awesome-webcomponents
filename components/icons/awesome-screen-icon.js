@@ -14,22 +14,13 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
 
-                let icon='';
-                if(this.dataset.icon){
-                    icon=`
-                        <img
-                            class='icon'
-                            src=${this.dataset.icon}
-                        />
-                    `;
-                }
-
                 this.innerHTML=`
-                    <div
-                        data-screen_name=${this.dataset.screen_name}>
-                        ${icon}
-                        ${this.dataset.text}
-                    </div>
+                    <img
+                        class='icon'
+                        src=${this.dataset.icon}
+                    />
+                    <br/>
+                    ${this.dataset.text}
                 `;
             }
 

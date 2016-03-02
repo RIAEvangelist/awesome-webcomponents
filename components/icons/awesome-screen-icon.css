@@ -1,23 +1,15 @@
 awesome-screen-icon{
-    width: 2.1em;
-    margin: 0 0 7em 7em;
-    height: 2.1em;
-    line-height: .5em;
     cursor: pointer;
-    display: inline-table;
-}
-
-awesome-screen-icon div{
-    width: 4em;
-    height:4em;
-    margin:.5em;
+    display: inline-block;
+    line-height: .5em;
+    margin: 3.5em;
     text-align: center;
     line-height: 1em;
 }
 
 awesome-screen-icon img{
-    width: 100%;
-    height: 100%;
+    width: 4em;
+    height: 4em;
 }
 
 /*******************************\
