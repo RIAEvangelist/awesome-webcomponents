@@ -1132,6 +1132,7 @@ const awesome=new Awesome;
 awesome.requireCSS(`${awesome.path}css/component.css`);
 
 //libs
+awesome.requireScript(`${awesome.bower}document-register-element/build/document-register-element.js`);
 awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
 awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
 awesome.requireScript(`${awesome.bower}browser-error-classes/Errors.js`);
