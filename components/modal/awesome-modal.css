@@ -1,0 +1,43 @@
+awesome-modal{
+    top: 0;
+    left: 0;
+    height:0%;
+    width:0%;
+    background-color: rgba(154, 154, 154, 0);
+    display:block;
+    position:fixed;
+    transition:background-color 200ms;
+    z-index: 0;
+}
+
+awesome-modal.modalOn{
+    height:100%;
+    width:100%;
+    background-color: rgba(154, 154, 154, 0.95);
+    z-index: 19000;
+}
+
+awesome-modal div{
+    background: rgba(255, 255, 255, 0.65);
+    position:absolute;
+    left:0;
+    top: calc(50% - 12.5em);
+    width:100%;
+    height:25em;
+    box-shadow:0 0 1em rgba(0,0,0,.8);
+    overflow-x:hidden;
+    overflow-y:auto;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+    awesome-modal div{
+        height:80%;
+        top:10%;
+    }
+}
