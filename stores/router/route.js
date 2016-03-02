@@ -58,6 +58,8 @@
                         return;
                     }
 
+                    document.location.hash=`/${screenName}`;
+
                     if(
                         !data.isPop
                         && (history.state)
