@@ -88,12 +88,12 @@
                     };
 
                     for(let i=0; i<store.state.screens.length;i++){
-                        const screen=store.state.screens[i];
-                        if(!screen.dataset.screen===store.state.screen){
-                            screen.classList.remove('activeScreen');
+                        const screenEl=store.state.screens[i];
+                        if(screenEl.dataset.screen!==store.state.screen){
+                            screenEl.classList.remove('activeScreen');
                             continue;
                         }
-                        screen.classList.add('activeScreen');
+                        screenEl.classList.add('activeScreen');
                     }
                 }
             }
