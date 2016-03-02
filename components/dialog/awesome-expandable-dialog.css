@@ -1,8 +1,8 @@
-awesome-document-viewer{
+awesome-expandable-dialog{
     display:block;
 }
 
-awesome-document-viewer awesome-dialog{
+awesome-expandable-dialog awesome-dialog{
     width: 22.5em;
     height: 24em;
     border-radius: 0.15em;
@@ -10,13 +10,13 @@ awesome-document-viewer awesome-dialog{
     transition: all 0.55s;
 }
 
-awesome-document-viewer awesome-dialog .content{
+awesome-expandable-dialog awesome-dialog .content{
     margin:.25em;
     overflow:auto;
     height:calc(100% - 2.5em);
 }
 
-awesome-document-viewer .fullScreenView {
+awesome-expandable-dialog .fullScreenView {
     height: 49.25em;
     width: calc(100% - 6em);
     top: 1em;
