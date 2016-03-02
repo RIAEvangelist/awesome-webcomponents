@@ -6,7 +6,8 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
     function(){
         const defaults={
             icon:'',
-            text: ''
+            text: '',
+            id: ''
         }
 
         class Component extends HTMLElement{
@@ -24,7 +25,8 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
                 }
 
                 this.innerHTML=`
-                    <div>
+                    <div
+                        id=${this.dataset.id}>
                         ${icon}
                         ${this.dataset.text}
                     </div>
