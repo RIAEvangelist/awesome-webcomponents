@@ -6,15 +6,44 @@
         <script type='application/javascript' src='../awesome.js'></script>
         <script type='application/javascript'>
             awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
+            awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+        </script>
+        <script>
+            function load() {
+                document.querySelector('.openModal').addEventListener(
+                    'click',
+                    openModal
+                )
+            }
+            function openModal(){
+                document.querySelector('awesome-modal').open();
+                document.querySelector('.closeModal').addEventListener(
+                    'click',
+                    closeModal
+                )
+            }
+            function closeModal(){
+                document.querySelector('awesome-modal').close();
+            }
+            window.onload = load;
         </script>
     </head>
     <body>
+        <awesome-header
+            data-title = 'awesome-modal'
+        ></awesome-header>
         <button class = 'openModal'>
+            Open Modal
         </button>
         <awesome-modal>
             <template>
+                <ul>
+                    <li>
+                        awesome-modal is very flexible and can be filled with anything you'd like!
+                    </li>
+                </ul>
                 <button class = 'closeModal'>
-                    Close
+                    Close Modal
                 </button>
             </template>
         </awesome-modal>
