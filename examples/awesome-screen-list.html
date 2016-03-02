@@ -7,15 +7,11 @@
         <script type='application/javascript' src='../awesome.js'></script>
         <script type='application/javascript'>
             awesome.requireScript(`${awesome.path}screens/screenList/awesome-screen-list.js`);            awesome.requireScript(`${awesome.path}components/icons/awesome-screen-icon.js`);
-            awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+            awesome.requireScript(`${awesome.path}screens/login/awesome-login-screen.js`);
             // awesome.requireScript(`${awesome.path}components/localization/awesome-languages.js`);
         </script>
     </head>
     <body data-start_screen='screenList'>
-        <awesome-header
-            data-title = 'awesome-screen-list'
-        >
-        </awesome-header>
         <awesome-screen-list>
             <template>
                 <awesome-screen-icon
@@ -67,5 +63,7 @@
                 </awesome-screen-icon>
             </template>
         </awesome-screen-list>
+        <awesome-login-screen>
+        </awesome-login-screen>
     </body>
 </html>

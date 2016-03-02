@@ -48,7 +48,7 @@ awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
             attachedCallback(){
                 this.addEventListener(
                     'click',
-                    this.click
+                    this.clicked
                 );
             }
 
@@ -61,8 +61,7 @@ awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
             }
 
 
-            click(e){
-                console.log(e.target);
+            clicked(e){
                 dispatcher.trigger(
                     action.ROUTE_REQUEST,
                     'login'
