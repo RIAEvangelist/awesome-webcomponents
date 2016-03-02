@@ -40,20 +40,6 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
             open(){
                 this.classList.add('modalOn');
             }
-
-            change(e){
-                e.preventDefault();
-                e.stopPropagation();
-                const change = new Event(
-                    'click',
-                    {
-                        'bubbles':true,
-                        'cancelable':false
-                    }
-                );
-
-                this.dispatchEvent(change);
-            }
         }
 
         document.registerElement(
