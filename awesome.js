@@ -210,10 +210,10 @@ class Awesome{
                     writable:false,
                     value:{}
                 },
-                getTemplate:{
+                getTemplateTag:{
                     enumerable:true,
                     writable:false,
-                    value:getTemplate
+                    value:getTemplateTag
                 },
                 loadTemplate:{
                     enumerable:true,
