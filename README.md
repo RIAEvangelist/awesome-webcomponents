@@ -36,33 +36,6 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
 ---
 
 **Kind**: global namespace  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| awesome.path | <code>String</code> | Path to folder awesome.js is located in |
-| awesome.bower | <code>String</code> | path to bower components |
-| constants | <code>Object</code> | awesome constants |
-| constants.components | <code>ShallowMergeObject</code> | shallow merge for awesome.constants.components |
-| constants.stores | <code>ShallowMergeObject</code> | shallow merge for awesome.constants.stores |
-| constants.actions | <code>ShallowMergeObject</code> | shallow merge for awesome.constants.actions |
-| config | <code>DeepMergeObject</code> | deep recursive merge for awesome config object |
-| language | <code>Object</code> | awesome language objects |
-| language.default | <code>Object</code> | awesome default language object |
-| language.current | <code>Object</code> | awesome language object merged default and desiredLanguage |
-| language.* | <code>Object</code> | awesome language objects for specific languages like ` awesome.language.en ` or ` awesome.language.ru ` |
-| setLanguage | <code>function</code> | set the current language |
-| dynamicLanguageString | <code>function</code> | a way to pass variables to language strings. This is helpful when you support languages with a variety of grammatical structures |
-| dispatchers | <code>Object</code> | dispatchers for store/action/component messages |
-| stores | <code>Object</code> | registered awesome.Store instances. These are designed to support 1 way data flows for use by components |
-| Store | <code>Class</code> | Store class, used to create new stores |
-| loadTemplate | <code>function</code> | fetches nested template contents for inclusion in awesome-component |
-| requireScript | <code>function</code> | inject script tag into header |
-| requireCSS | <code>function</code> | inject stylesheet link tag into header |
-| mergeDataset | <code>function</code> | merges element's data-* attributes with the defaults for that component element |
-| updateAttributesFromData | <code>function</code> | maps data-* values to * attribute values |
-| uniqueEntries | <code>function</code> | ensures that keys and values of an object unique |
-
 
 * [awesome](#awesome) : <code>object</code>
     * [.Store](#awesome.Store)
@@ -73,6 +46,7 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
         * [.resetState(events)](#awesome.Store.resetState)
         * ["change"](#awesome.Store.event_change)
     * [.path](#awesome.path) : <code>String</code>
+    * [.requiresAuth](#awesome.requiresAuth) : <code>String</code>
     * [.constants](#awesome.constants) : <code>Object</code>
         * [.action](#awesome.constants.action) : <code>Object</code>
             * [.RESET_STORES](#awesome.constants.action.RESET_STORES) : <code>EventName</code>
@@ -229,6 +203,15 @@ Path to folder awesome.js is located in.
 //use awesome.path to reference the awesome-webcomponents directory
 awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
 awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
+```
+<a name="awesome.requiresAuth"></a>
+### awesome.requiresAuth : <code>String</code>
+requiresAuth requires the user to be authenticated for the app or page.
+
+**Kind**: static property of <code>[awesome](#awesome)</code>  
+**Example**  
+```javascript
+awesome.requiresAuth=true;
 ```
 <a name="awesome.constants"></a>
 ### awesome.constants : <code>Object</code>
@@ -764,7 +747,7 @@ awesome.requireScript(`${awesome.bower}bower-component/bower-component.js`);
 loadTemplate collects template element and returns element
 
 **Kind**: static method of <code>[awesome](#awesome)</code>  
-**Returns**: <code>Object</code> - contents of template element  
+**Returns**: <code>Object</code> - { content:"contents of template element", template:"Full Template String including tag"}  
 **Access:** protected  
 
 | Param | Type | Description |
@@ -812,8 +795,9 @@ const content=awesome.loadTemplate(this);
 
 this.innerHTML=`
     <ul>
-        ${content}
+        ${content.content}
     </ul>
+    ${content.template}
 `;
 ```
 <a name="awesome.requireScript"></a>

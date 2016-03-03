@@ -28,8 +28,9 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
                     <header>
                         ${icon}
                         ${this.dataset.title}
-                        ${content}
+                        ${content.content}
                     </header>
+                    ${content.template}
                 `;
             }
 
