@@ -106,6 +106,21 @@ class Awesome{
                     )
                 },
                 /**
+                 * requiresAuth requires the user to be authenticated for the app or page.
+                 *
+                 * @example
+                 *
+                 * awesome.requiresAuth=true;
+                 *
+                 * @member awesome.requiresAuth
+                 * @type {String}
+                 */
+                requiresAuth:{
+                    enumerable:true,
+                    writable:true,
+                    value:false
+                },
+                /**
                  * extensible/overwriteable constansts used in awesome apps
                  *
                  * @member awesome.constants

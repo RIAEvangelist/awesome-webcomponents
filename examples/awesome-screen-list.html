@@ -3,9 +3,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
         <title>awesome.js awesome-login-screen</title>
-        
+
         <script type='application/javascript' src='../awesome.js'></script>
         <script type='application/javascript'>
+            awesome.requiresAuth=true;
             awesome.requireScript(`${awesome.path}screens/screenList/awesome-screen-list.js`);            awesome.requireScript(`${awesome.path}components/icons/awesome-screen-icon.js`);
             awesome.requireScript(`${awesome.path}screens/login/awesome-login-screen.js`);
             awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
@@ -29,7 +30,7 @@
                 <awesome-screen-icon
                     data-icon='img/ghoc.png'
                     data-text='test'
-                    data-screen_name='login'
+                    data-screen_name='poop'
                 >
                 </awesome-screen-icon>
 
@@ -68,6 +69,18 @@
                 >
                 </awesome-screen-icon>
 
+                <awesome-screen-icon
+                    data-icon='img/ghoc.png'
+                    data-text='test'
+                    data-screen_name='login'
+                >
+                </awesome-screen-icon>
+            </template>
+        </awesome-screen-list>
+        <awesome-screen-list
+            data-screen='poop'
+        >
+            <template>
                 <awesome-screen-icon
                     data-icon='img/ghoc.png'
                     data-text='test'
