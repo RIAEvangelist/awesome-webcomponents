@@ -34,7 +34,7 @@ awesome.requireScript(`${awesome.path}stores/user/auth.js`);
                 function initAuth(){
                     window.off(
                         'awesome-ready',
-                        requireAuth
+                        initAuth
                     );
 
                     auth=awesome.stores.auth.state;
