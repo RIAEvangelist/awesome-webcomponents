@@ -26,9 +26,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                         }
                         data-title=${this.dataset.title}
                     >
-                        <template>
-                            ${content}
-                        </template>
+                        ${content}
                     </awesome-dialog>
                 `;
             }

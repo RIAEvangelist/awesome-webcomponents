@@ -210,6 +210,11 @@ class Awesome{
                     writable:false,
                     value:{}
                 },
+                getTemplate:{
+                    enumerable:true,
+                    writable:false,
+                    value:getTemplate
+                },
                 loadTemplate:{
                     enumerable:true,
                     writable:false,
@@ -713,7 +718,7 @@ class Awesome{
          * @return {Object}          contents of template element
          */
         function loadTemplate(instance){
-            const template=instance.querySelector('template');
+            const template=instance.querySelector(':scope > template');
             let content='';
             if(template){
                 content=`
@@ -722,6 +727,10 @@ class Awesome{
                 `;
             }
             return content;
+        }
+
+        function getTemplateTag(instance){
+            return instance.querySelector(':scope > template').outerHTML;
         }
 
         let remainingScriptCount=0;
