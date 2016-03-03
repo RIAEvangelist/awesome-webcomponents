@@ -12,8 +12,9 @@ awesome.requireCSS(`${awesome.path}components/list/awesome-list.css`);
 
                 this.innerHTML=`
                     <ul>
-                        ${content}
+                        ${content.content}
                     </ul>
+                    ${content.template}
                 `;
             }
 

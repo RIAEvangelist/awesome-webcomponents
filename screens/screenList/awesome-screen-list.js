@@ -36,8 +36,9 @@ awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
 
                 this.innerHTML=`
                     <div class='screensList-container'>
-                        ${content}
+                        ${content.content}
                     </div>
+                    ${content.template}
                 `;
 
                 const appCount=this.querySelector('awesome-screen-icon').length;

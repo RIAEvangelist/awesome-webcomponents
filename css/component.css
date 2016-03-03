@@ -17,6 +17,10 @@ body *{
     outline:none;
 }
 
+.hidden{
+    display:none;
+}
+
 [data-screen]{
     position:absolute;
     top:0;

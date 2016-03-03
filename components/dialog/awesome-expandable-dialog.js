@@ -15,7 +15,6 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
                 const content=awesome.loadTemplate(this);
-
                 this.innerHTML=`
                     <awesome-dialog
                         data-header=${this.dataset.header}
@@ -26,10 +25,9 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                         }
                         data-title=${this.dataset.title}
                     >
-                        <template>
-                            ${content}
-                        </template>
+                        ${content.template}
                     </awesome-dialog>
+                    ${content.template}
                 `;
             }
 
