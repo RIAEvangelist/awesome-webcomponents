@@ -134,9 +134,9 @@ input[type='button']:disabled.active{
 }
 
 input:not([type='range']):invalid{
-    background:rgb(255,255,200);
+    background:rgb(255,255,224);
 }
 
 input:required:not([type='range']):valid{
-    background:rgb(200,255,200);
+    background:rgb(224,255,224);
 }
