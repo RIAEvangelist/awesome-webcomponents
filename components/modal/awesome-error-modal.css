@@ -8,6 +8,15 @@ awesome-error-modal h1{
     font-size: 2em;
 }
 
+awesome-error-modal div{
+    margin-top: 2em;
+}
+
+awesome-error-modal .flaticon-signs:before{
+    font-size: 4em;
+    margin: 0;
+}
+
 awesome-error-modal button{
     margin-top:4em;
 }

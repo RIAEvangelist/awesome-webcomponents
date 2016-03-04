@@ -21,14 +21,16 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                             <h1>
                                 ${this.dataset.title}
                             </h1>
-                            <p>
-                                ${this.dataset.content}
-                            </p>
+
+                            <div>
+                                ${content.content}
+                            </div>
                             <button class = 'closeButton'>
                                 OK
                             </button>
                         </template>
                     </awesome-modal>
+                    ${content.template}
                 `;
             }
 

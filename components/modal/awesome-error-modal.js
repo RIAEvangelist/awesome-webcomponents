@@ -7,8 +7,6 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
     function(){
         const defaults={
             title: '',
-            icon: '',
-            content: '',
         };
 
         class Component extends HTMLElement{
@@ -19,21 +17,20 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                 this.innerHTML=`
                     <awesome-modal>
                         <template>
-                            <img
-                                class = 'icon'
-                                src = '${this.dataset.icon}'
-                            ></img>
+                            <div class = 'flaticon-signs'>
+
+                            </div>
                             <h1>
                                 ${this.dataset.title}
                             </h1>
-                            <p>
-                                ${this.dataset.content}
-                            </p>
+                            ${content.content}
+                            <br/>
                             <button class = 'closeButton'>
                                 OK
                             </button>
                         </template>
                     </awesome-modal>
+                    ${content.template}
                 `;
             }
 

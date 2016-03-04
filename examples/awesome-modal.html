@@ -92,7 +92,12 @@
             data-title = 'Notification Modal'
             data-content = 'This modal should be used to notify a user of an
                 occurence and can be dismissed with the OK button.'
-        ></awesome-notification-modal>
+        >
+            <template>
+                This modal should be used to notify a user of an
+                occurence and can be dismissed with the OK button
+            </template>
+        </awesome-notification-modal>
         <br/>
         <br/>
         <awesome-header
@@ -104,8 +109,11 @@
         <awesome-error-modal
             data-icon = './img/ghoc.png'
             data-title = 'Error Modal'
-            data-content = 'This modal should be used to notify a user of an
-            error.'
-        ></awesome-error-modal>
+        >
+            <template>
+                This modal should be used to notify a user of an
+                error
+            </template>
+        </awesome-error-modal>
     </body>
 </html>
