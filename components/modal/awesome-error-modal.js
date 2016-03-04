@@ -6,7 +6,7 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
 (
     function(){
         const defaults={
-            title: '',
+            title: ''
         };
 
         class Component extends HTMLElement{
@@ -17,10 +17,10 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                 this.innerHTML=`
                     <awesome-modal>
                         <template>
-                            <div class = 'flaticon-signs'>
-
-                            </div>
                             <h1>
+                                <span class = 'flaticon-signs'>
+
+                                </span>
                                 ${this.dataset.title}
                             </h1>
                             <div class = 'contentWrapper'>
