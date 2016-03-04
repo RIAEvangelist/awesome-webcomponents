@@ -6,8 +6,7 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
 (
     function(){
         const defaults={
-            title: '',
-            content: '',
+            title: ''
         };
 
         class Component extends HTMLElement{
@@ -21,8 +20,7 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                             <h1>
                                 ${this.dataset.title}
                             </h1>
-
-                            <div>
+                            <div class = 'contentWrapper'>
                                 ${content.content}
                             </div>
                             <button class = 'closeButton'>
@@ -37,7 +35,7 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
             attachedCallback(){
                 this.addEventListener(
                     'click',
-                    this.click.bind(this)
+                    this.clicked.bind(this)
                 );
             }
 
@@ -49,10 +47,11 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                 this.createdCallback();
             }
 
-            click(e){
-                if(e.target.classList.contains('closeButton')){
-                    this.querySelector('awesome-modal').close();
+            clicked(e){
+                if(!e.target.classList.contains('closeButton')){
+                    return;
                 }
+                this.querySelector('awesome-modal').close();
             }
 
             open(){

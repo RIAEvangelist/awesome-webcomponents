@@ -1,7 +1,12 @@
-awesome-notification-modal h1{
+awesome-notification-modal > h1{
     font-size: 3em;
 }
 
-awesome-notification-modal button{
-    margin-top:6em;
+awesome-notification-modal awesome-modal div button{
+    margin-top:2em;
+}
+
+awesome-notification-modal awesome-modal div .contentWrapper{
+    overflow: auto;
+    height: 13em;
 }

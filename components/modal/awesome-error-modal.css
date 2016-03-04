@@ -1,22 +1,16 @@
-awesome-error-modal img{
-    height: 6em;
-    width: 6em;
-    margin-top: 3em;
-}
 
-awesome-error-modal h1{
-    font-size: 2em;
-}
-
-awesome-error-modal div{
-    margin-top: 2em;
-}
-
-awesome-error-modal .flaticon-signs:before{
+awesome-error-modal awesome-modal div.flaticon-signs:before{
     font-size: 4em;
+    line-height: 2em;
     margin: 0;
 }
 
-awesome-error-modal button{
-    margin-top:4em;
+awesome-error-modal awesome-modal div .contentWrapper{
+    background-color: red;
+    overflow: auto;
+    height: 6em;
+}
+
+awesome-error-modal awesome-modal > div button{
+    margin-top:1em;
 }
