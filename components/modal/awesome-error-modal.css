@@ -1,0 +1,14 @@
+
+awesome-error-modal awesome-modal h1 span.flaticon-signs:before{
+    font-size: 1em;
+}
+
+awesome-error-modal awesome-modal div .contentWrapper{
+    overflow: auto;
+    height: 15em;
+}
+
+awesome-error-modal awesome-modal > div > .closeButton{
+    position: absolute;
+    bottom: 1em;
+}
