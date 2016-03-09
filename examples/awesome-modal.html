@@ -5,6 +5,8 @@
         <script type='application/javascript' src='../awesome.js'></script>
         <script type='application/javascript'>
             awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
+            awesome.requireScript(`${awesome.path}components/modal/awesome-notification-modal.js`);
+            awesome.requireScript(`${awesome.path}components/modal/awesome-error-modal.js`);
             awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
         </script>
         <script>
@@ -13,7 +15,15 @@
                 document.querySelector('.openModal').addEventListener(
                     'click',
                     openModal
-                )
+                );
+                document.querySelector('.openNotificationModal').addEventListener(
+                    'click',
+                    openNotificationModal
+                );
+                document.querySelector('.openErrorModal').addEventListener(
+                    'click',
+                    openErrorModal
+                );
             }
             function openModal(){
                 const modal=document.querySelector('awesome-modal')
@@ -22,6 +32,14 @@
                     'click',
                     closeModal
                 )
+            }
+            function openNotificationModal(){
+                const modal=document.querySelector('awesome-notification-modal')
+                modal.open();
+            }
+            function openErrorModal(){
+                const modal=document.querySelector('awesome-error-modal')
+                modal.open();
             }
             function closeModal(e){
                 if(e.target.tagName!=='BUTTON'){
@@ -62,5 +80,40 @@
                 </button>
             </template>
         </awesome-modal>
+        <br/>
+        <br/>
+        <awesome-header
+            data-title = 'awesome-notification-modal'
+        ></awesome-header>
+            <button class = 'openNotificationModal'>
+                    Open Notification Modal
+            </button>
+        <awesome-notification-modal
+            data-title = 'Notification Modal'
+            data-content = 'This modal should be used to notify a user of an
+                occurence and can be dismissed with the OK button.'
+        >
+            <template>
+                This modal should be used to notify a user of an
+                occurence and can be dismissed with the OK button
+            </template>
+        </awesome-notification-modal>
+        <br/>
+        <br/>
+        <awesome-header
+            data-title = 'awesome-error-modal'
+        ></awesome-header>
+            <button class = 'openErrorModal'>
+                    Open Error Modal
+            </button>
+        <awesome-error-modal
+            data-icon = './img/ghoc.png'
+            data-title = 'Error Modal'
+        >
+            <template>
+                This modal should be used to notify a user of an
+                error
+            </template>
+        </awesome-error-modal>
     </body>
 </html>

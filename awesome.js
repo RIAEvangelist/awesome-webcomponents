@@ -41,35 +41,6 @@ window.off=window.removeEventListener;
  * @class Awesome
  * @namespace awesome
  *
- * @prop awesome.path {String} Path to folder awesome.js is located in
- * @prop awesome.bower {String} path to bower components
- *
- *
- * @prop constants {Object} awesome constants
- * @prop constants.components {ShallowMergeObject} shallow merge for awesome.constants.components
- * @prop constants.stores {ShallowMergeObject} shallow merge for awesome.constants.stores
- * @prop constants.actions {ShallowMergeObject} shallow merge for awesome.constants.actions
- *
- * @prop config {DeepMergeObject} deep recursive merge for awesome config object
- *
- * @prop language {Object} awesome language objects
- * @prop language.default {Object} awesome default language object
- * @prop language.current {Object} awesome language object merged default and desiredLanguage
- * @prop language.* {Object} awesome language objects for specific languages like ` awesome.language.en ` or ` awesome.language.ru `
- * @prop setLanguage {Function} set the current language
- * @prop dynamicLanguageString {Function} a way to pass variables to language strings. This is helpful when you support languages with a variety of grammatical structures
- *
- * @prop dispatchers {Object} dispatchers for store/action/component messages
- * @prop stores {Object} registered awesome.Store instances. These are designed to support 1 way data flows for use by components
- *
- * @prop Store {Class} Store class, used to create new stores
- * @prop loadTemplate {Function} fetches nested template contents for inclusion in awesome-component
- * @prop requireScript {Function} inject script tag into header
- * @prop requireCSS {Function} inject stylesheet link tag into header
- *
- * @prop mergeDataset {Function} merges element's data-* attributes with the defaults for that component element
- * @prop updateAttributesFromData {Function} maps data-* values to * attribute values
- * @prop uniqueEntries {Function} ensures that keys and values of an object unique
  *
  */
 class Awesome{
@@ -209,11 +180,6 @@ class Awesome{
                     enumerable:true,
                     writable:false,
                     value:{}
-                },
-                getTemplateTag:{
-                    enumerable:true,
-                    writable:false,
-                    value:getTemplateTag
                 },
                 loadTemplate:{
                     enumerable:true,
@@ -708,29 +674,32 @@ class Awesome{
          *
          * this.innerHTML=`
         *     <ul>
-        *         ${content}
+        *         ${content.content}
         *     </ul>
+        *     ${content.template}
          *`;
          *
          * @method awesome.loadTemplate
          * @protected
          * @param  {Object} instance instance or scope of template element
-         * @return {Object}          contents of template element
+         * @return {Object}          { content:"contents of template element", template:"Full Template String including tag"}
          */
         function loadTemplate(instance){
             const template=instance.querySelector(':scope > template');
             let content='';
+            let templateTag='';
             if(template){
                 content=`
                     ${template.innerHTML}
+                `;
+                templateTag=`
                     ${template.outerHTML}
                 `;
             }
-            return content;
-        }
-
-        function getTemplateTag(instance){
-            return instance.querySelector(':scope > template').outerHTML;
+            return {
+                content:content,
+                template:templateTag
+            };
         }
 
         let remainingScriptCount=0;

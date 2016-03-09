@@ -15,8 +15,9 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
 
                 this.innerHTML=`
                     <div>
-                        ${content}
+                        ${content.content}
                     </div>
+                    ${content.template}
                 `;
             }
 

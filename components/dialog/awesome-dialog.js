@@ -15,7 +15,6 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
                 const content=awesome.loadTemplate(this);
-
                 let header='';
 
                 if(this.dataset.header==='true'){
@@ -30,8 +29,9 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
                 this.innerHTML=`
                     ${header}
                     <div class='content'>
-                        ${content}
+                        ${content.content}
                     </div>
+                    ${content.template}
                 `;
             }
 

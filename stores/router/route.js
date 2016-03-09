@@ -24,18 +24,20 @@ awesome.requireScript(`${awesome.path}stores/user/auth.js`);
                 //     );
                 // }
 
-                if(awesome.requiresAuth){
-                    window.on(
-                        'awesome-ready',
-                        initAuth
-                    );
-                }
+                window.on(
+                    'awesome-ready',
+                    initAuth
+                );
 
                 function initAuth(){
                     window.off(
                         'awesome-ready',
                         initAuth
                     );
+
+                    if(!awesome.requiresAuth){
+                        return;
+                    }
 
                     auth=awesome.stores.auth.state;
 
