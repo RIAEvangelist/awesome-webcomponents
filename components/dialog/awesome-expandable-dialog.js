@@ -52,6 +52,9 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             }
 
             change(e){
+                if(e.target.tagName == 'BUTTON'){
+                    return;
+                }
                 this.classList.toggle('fullScreenView');
             }
         }
