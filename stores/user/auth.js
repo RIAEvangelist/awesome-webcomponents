@@ -53,7 +53,8 @@
                     store.state={
                         authenticated:true,
                         token:data.token,
-                        username:data.username
+                        firstName:data.user.firstName,
+                        lastName: data.user.lastName
                     };
                 }
 
