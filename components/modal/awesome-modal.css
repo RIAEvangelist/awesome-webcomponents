@@ -32,6 +32,10 @@ awesome-modal > div{
     padding: 0;
 }
 
+awesome-modal pre{
+    text-align: left;
+}
+
 /*******************************\
 Small desktop windows and mobile
 \*******************************/
