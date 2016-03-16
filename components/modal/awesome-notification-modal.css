@@ -3,8 +3,7 @@ awesome-notification-modal > h1{
 }
 
 awesome-notification-modal awesome-modal > div > .closeButton{
-    position: absolute;
-    bottom: 1em;
+    bottom: 0;
 }
 
 awesome-notification-modal awesome-modal div .contentWrapper{
