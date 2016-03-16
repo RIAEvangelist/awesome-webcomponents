@@ -19,7 +19,9 @@
                     username:'',
                     token:'',
                     failedAttempts:0,
-                    authenticated:false
+                    authenticated:false,
+                    firstName:'',
+                    lastName:''
                 };
 
                 store.resetState();
@@ -36,12 +38,12 @@
 
                 dispatcher.on(
                     constants.LOGOUT_ERROR,
-                    loginError
+                    logoutError
                 );
 
                 dispatcher.on(
                     constants.LOGOUT_SUCCESS,
-                    loginError
+                    logoutSuccess
                 );
 
                 dispatcher.on(
