@@ -9,6 +9,7 @@ awesome.language.default={
     username:'username',
     password:'password',
 
+    search:'Search',
     chooseFile:'Choose file',
     chooseFiles:'Choose files',
     'filesSelectedCount':'${count} selected',
@@ -18,6 +19,7 @@ awesome.language.default={
     fileLastModified:'last modified',
     fileContent:'content',
     noFilesSelected:'No files Selected.',
+    scanSerial:'Please Scan Serial or Enter Manually',
 
     'awesome-login-screen-header':'Login'
 

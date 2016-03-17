@@ -5,6 +5,7 @@ awesome.language.ru={
     username:'Логин',
     password:'Пароль',
 
+    search:'Поиск',
     chooseFile:'добавить файл',
     chooseFiles:'добавить файлы',
     'filesSelectedCount':'${count} выбран',
@@ -14,6 +15,7 @@ awesome.language.ru={
     fileLastModified:'Последнее изменение',
     fileContent:'содержание',
     noFilesSelected:'Файлы не выбраны',
+    scanSerial:'Сканируйте или введите серийный номер',
 
     'awesome-login-screen-header':'Вход'
 };
