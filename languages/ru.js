@@ -7,6 +7,7 @@ awesome.language.ru={
 
     search:'Поиск',
     upload:'Загрузить',
+    print:'Распечатать',
     printQR:'Печать QR',
     clear:'Очистить',
     approve:'Одобрить',

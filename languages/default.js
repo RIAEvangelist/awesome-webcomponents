@@ -11,6 +11,7 @@ awesome.language.default={
 
     search:'Search',
     upload:'Upload',
+    print:'Print',
     printQR:'Print QR',
     clear:'Clear',
     approve:'Approve',

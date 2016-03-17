@@ -7,6 +7,7 @@ awesome.language.jp={
 
     search:'サーチ',
     upload:'アップロード',
+    print:'印刷',
     printQR:'プリントQR',
     clear:'クリア',
     approve:'承認します',
