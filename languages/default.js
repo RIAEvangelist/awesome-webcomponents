@@ -10,6 +10,11 @@ awesome.language.default={
     password:'password',
 
     search:'Search',
+    upload:'Upload',
+    printQR:'Print QR',
+    clear:'Clear',
+    approve:'Approve',
+    reject:'Reject',
     chooseFile:'Choose file',
     chooseFiles:'Choose files',
     'filesSelectedCount':'${count} selected',
@@ -19,7 +24,13 @@ awesome.language.default={
     fileLastModified:'last modified',
     fileContent:'content',
     noFilesSelected:'No files Selected.',
+
     scanSerial:'Please Scan Serial or Enter Manually',
+    serial:'Serial',
+    status:'Status',
+    createdBy:'Created By',
+    updatedBy:'Updated By',
+    on:'On',
 
     'awesome-login-screen-header':'Login'
 

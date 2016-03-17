@@ -6,6 +6,11 @@ awesome.language.ru={
     password:'Пароль',
 
     search:'Поиск',
+    upload:'Загрузить',
+    printQR:'Печать QR',
+    clear:'Очистить',
+    approve:'Одобрить',
+    reject:'отклонять',
     chooseFile:'добавить файл',
     chooseFiles:'добавить файлы',
     'filesSelectedCount':'${count} выбран',
@@ -15,7 +20,13 @@ awesome.language.ru={
     fileLastModified:'Последнее изменение',
     fileContent:'содержание',
     noFilesSelected:'Файлы не выбраны',
+
     scanSerial:'Сканируйте или введите серийный номер',
+    serial:'последовательный',
+    status:'Положение дел',
+    createdBy:'Сделано',
+    updatedBy:'Обновлено По',
+    on:'На',
 
     'awesome-login-screen-header':'Вход'
 };
