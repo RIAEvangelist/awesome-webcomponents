@@ -12,6 +12,7 @@ awesome.language.ru={
     clear:'Очистить',
     approve:'Одобрить',
     reject:'отклонять',
+    comments:'Комментарии',
     chooseFile:'добавить файл',
     chooseFiles:'добавить файлы',
     'filesSelectedCount':'${count} выбран',

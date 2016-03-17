@@ -12,6 +12,7 @@ awesome.language.jp={
     clear:'クリア',
     approve:'承認します',
     reject:'拒否する',
+    comments:'注釈',
     chooseFile:'ファイルを選ぶ',
     chooseFiles:'ファイルを選ぶ',
     'filesSelectedCount':'${count} ファイル',

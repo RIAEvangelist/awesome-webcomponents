@@ -16,6 +16,7 @@ awesome.language.default={
     clear:'Clear',
     approve:'Approve',
     reject:'Reject',
+    comments:'Comments',
     chooseFile:'Choose file',
     chooseFiles:'Choose files',
     'filesSelectedCount':'${count} selected',
