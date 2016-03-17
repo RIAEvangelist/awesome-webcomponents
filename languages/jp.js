@@ -1,6 +1,7 @@
 awesome.language.jp={
 
     login:'ログイン',
+    logout:'ログアウト',
     username:'ユーザーID',
     password:'パスワード',
 

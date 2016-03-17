@@ -1,6 +1,7 @@
 awesome.language.ru={
 
     login:'Войти',
+    logout:'Выйти',
     username:'Логин',
     password:'Пароль',
 

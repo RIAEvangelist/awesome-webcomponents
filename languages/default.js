@@ -5,6 +5,7 @@ awesome.language.default={
     japanese:'日本語',
 
     login:'login',
+    logout:'Logout',
     username:'username',
     password:'password',
 
