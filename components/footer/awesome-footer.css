@@ -5,6 +5,7 @@ awesome-footer{
     display:block;
     padding:.5em 0;
     background:rgb(230,230,230);
+    z-index: 19900;
 }
 
 awesome-footer footer{
