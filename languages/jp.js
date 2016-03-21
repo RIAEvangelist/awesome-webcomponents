@@ -5,6 +5,14 @@ awesome.language.jp={
     username:'ユーザーID',
     password:'パスワード',
 
+    search:'サーチ',
+    upload:'アップロード',
+    print:'印刷',
+    printQR:'プリントQR',
+    clear:'クリア',
+    approve:'承認します',
+    reject:'拒否する',
+    comments:'注釈',
     chooseFile:'ファイルを選ぶ',
     chooseFiles:'ファイルを選ぶ',
     'filesSelectedCount':'${count} ファイル',
@@ -15,5 +23,13 @@ awesome.language.jp={
     fileContent:'コンテンツ',
     noFilesSelected:'どのファイルが選択されていません',
 
+    scanSerial:'シリアルスキャンまたは手動で入力してください。',
+    serial:'シリアル',
+    status:'状態',
+    createdBy:'によって作成された',
+    updatedBy:'によって更新',
+    on:'に',
+
     'awesome-login-screen-header':'顧客ログイン'
+
 };
