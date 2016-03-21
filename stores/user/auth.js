@@ -19,9 +19,7 @@
                     username:'',
                     token:'',
                     failedAttempts:0,
-                    authenticated:false,
-                    firstName:'',
-                    lastName:''
+                    authenticated:false
                 };
 
                 store.resetState();
@@ -55,8 +53,7 @@
                     store.state={
                         authenticated:true,
                         token:data.token,
-                        firstName:data.user.firstName,
-                        lastName: data.user.lastName
+                        username: data.username
                     };
                 }
 
