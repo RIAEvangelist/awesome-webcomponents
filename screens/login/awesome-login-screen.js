@@ -44,6 +44,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
 
+
                 awesome.requireScript(this.dataset.action_path);
 
                 this.innerHTML=`
