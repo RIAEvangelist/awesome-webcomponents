@@ -15,5 +15,8 @@ awesome.language.ru={
     fileContent:'содержание',
     noFilesSelected:'Файлы не выбраны',
 
+    ok:'Хорошо',
+    cancel:'Отмена',
+
     'awesome-login-screen-header':'Вход'
 };

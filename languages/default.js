@@ -19,5 +19,8 @@ awesome.language.default={
     fileContent:'content',
     noFilesSelected:'No files Selected.',
 
+    ok:'OK',
+    cancel:'Cancel',
+
     'awesome-login-screen-header':'Login'
 };

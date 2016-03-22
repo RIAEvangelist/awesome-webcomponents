@@ -15,5 +15,8 @@ awesome.language.jp={
     fileContent:'コンテンツ',
     noFilesSelected:'どのファイルが選択されていません',
 
+    ok:'はい',
+    cancel:'キャンセル',
+
     'awesome-login-screen-header':'顧客ログイン'
 };
