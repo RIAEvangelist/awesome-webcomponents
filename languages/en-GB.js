@@ -1,1 +1,3 @@
-awesome.language['en-GB']=awesome.language.default;
+awesome.language={
+    'en-GB':awesome.language.default
+};
