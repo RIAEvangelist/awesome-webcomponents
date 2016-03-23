@@ -40,7 +40,7 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
                 this.innerHTML=`
                     <p>${this.dataset.something}</p>
                     <p>store.state.boilerplate=${store.state.boilerplate}</p>
-                    <div>${content}</div>
+                    <div>${content.content}</div>
 
                     <!-- preserve content template so it isn't lost on re-render -->
                     ${content.template}

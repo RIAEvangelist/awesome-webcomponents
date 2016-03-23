@@ -27,13 +27,14 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
 3. Submit a Pull Request
 4. Feel Awesome!
 
-# [See Full JS DOCS for awesome-webcomponents](https://github.com/RIAEvangelist/awesome-webcomponents/tree/master/docs/jsDocs)
+### [See Full JS DOCS for awesome-webcomponents core](https://github.com/RIAEvangelist/awesome-webcomponents/tree/master/docs/jsDocs)
 
 These are the documents generated from the code. It has a lot of detailed info.
 
 # Documentation Table Of Contents
 
 - [Getting started]('#getting-started')
+- [Creating Basic Components]('#creating-basic-components')
 
 # Getting started
 
@@ -48,7 +49,7 @@ These are the documents generated from the code. It has a lot of detailed info.
     <head>
         <meta charset="utf-8">
         <meta
-            name="viewport" 
+            name="viewport"
             content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
         >
         <title>awesome.js hello world</title>
@@ -79,6 +80,76 @@ These are the documents generated from the code. It has a lot of detailed info.
         </awesome-dialog>
     </body>
 </html>
+
+
+```
+
+# Creating Basic Components
+
+1. start with the component boilerplate
+2. customize it and give it a special name
+
+```javascript
+
+'use strict';
+
+//change this to your css
+awesome.requireCSS(`${awesome.path}components/_a_boilerplate/awesome-boilerplate.css`);
+
+(
+    function(){
+
+        //these will be the default data-* attributes
+        const defaults={
+            //makes data-something="Boilerplate"
+            something:'Boilerplate'
+        }
+
+        class Component extends HTMLElement{
+            createdCallback(){
+
+                //this does a shallow merge of the default data-* attributes and those specified on the element itself
+                //the ones specispecifedfied on the element will overwrite the defaults
+                awesome.mergeDataset(this,defaults);
+
+                //this will load a template tag from the body of the component
+                //it has both the contents and a copy of the template
+                const content=awesome.loadTemplate(this);
+
+                //render the component HTML as a template string
+                this.innerHTML=`
+
+                    <!-- use a data-attribute value -->
+                    <p>${this.dataset.something}</p>
+
+                    <!-- use the content passed by the user in the template tag -->
+                    <div>${content.content}</div>
+
+                    <!-- preserve content template so it isn't lost on re-render -->
+                    ${content.template}
+                `;
+            }
+
+            attachedCallback(){
+
+            }
+
+            detachedCallback(){
+
+            }
+
+            attributeChangedCallback(key,oldValue,newValue){
+                //basic re-render when any attribute is updated on this instance
+                this.createdCallback();
+            }
+        }
+
+        document.registerElement(
+            'awesome-boilerplate',
+            Component
+        );
+    }
+)();
 
 
 ```

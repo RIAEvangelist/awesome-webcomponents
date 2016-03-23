@@ -15,7 +15,7 @@ awesome.requireCSS(`${awesome.path}components/_a_boilerplate/awesome-boilerplate
 
                 this.innerHTML=`
                     <p>${this.dataset.something}</p>
-                    <div>${content}</div>
+                    <div>${content.content}</div>
 
                     <!-- preserve content template so it isn't lost on re-render -->
                     ${content.template}
