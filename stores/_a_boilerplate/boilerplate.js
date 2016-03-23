@@ -21,10 +21,6 @@
 
                 store.resetState();
 
-                /*******************************\
-                Put your private store functions
-                Here
-                \*******************************/
                 dispatcher.on(
                     constants.BOILERPLATE,
                     handleBoilerplate
@@ -32,7 +28,8 @@
 
                 function handleBoilerplate(){
                     store.state={
-                        boilerplate:(store.state)? false:true; //ternary just toggles true false when event recieved
+                        //ternary just toggles true false when event recieved
+                        boilerplate:(store.state)? false:true
                     };
                 }
             }
