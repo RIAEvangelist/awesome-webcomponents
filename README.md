@@ -39,9 +39,8 @@ These are the documents generated from the code. It has a lot of detailed info.
 
 1. Make sure you have bower installed ` npm install -g bower `
 1. install or update awesome-webcomponents ` bower install awesome-webcomponents ` ***or update if already installed*** ` bower update `
-1. set up your html as follows for a hello world
-
-[full hello world tutorial](https://github.com/RIAEvangelist/awesome-webcomponents/tree/master/tutorials/001-awesome-hello-world)
+1. set up your html as below for a hello world
+2. [see the full hello world tutorial](https://github.com/RIAEvangelist/awesome-webcomponents/tree/master/tutorials/001-awesome-hello-world)
 
 ```html
 
