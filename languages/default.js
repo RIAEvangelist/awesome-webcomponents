@@ -4,6 +4,7 @@ awesome.language={
         english:'english',
         russian:'русски',
         japanese:'日本語',
+        spanish:'español',
 
         login:'login',
         logout:'Logout',
