@@ -29,6 +29,11 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
                     'click',
                     this.iconClicked
                 );
+
+                window.on(
+                    'awesome-language-set',
+                    this.createdCallback.bind(this)
+                );
             }
 
             detachedCallback(){
