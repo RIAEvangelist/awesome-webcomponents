@@ -1,5 +1,10 @@
-awesome-boilerplate{
+awesome-boilerplate,
+awesome-boilerplate-advanced{
     display:block;
+}
+
+.awesome-boilerplate-state{
+    color:orange;
 }
 
 /*******************************\

@@ -1,6 +1,6 @@
 'use strict';
 
-awesome.requireCSS(`${awesome.path}components/boilerplate/awesome-boilerplate.css`);
+awesome.requireCSS(`${awesome.path}components/_a_boilerplate/awesome-boilerplate.css`);
 
 (
     function(){
@@ -11,10 +11,14 @@ awesome.requireCSS(`${awesome.path}components/boilerplate/awesome-boilerplate.cs
         class Component extends HTMLElement{
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
+                const content=awesome.loadTemplate(this);
 
                 this.innerHTML=`
                     <p>${this.dataset.something}</p>
-                    ${this.innerHTML}
+                    <div>${content}</div>
+
+                    <!-- preserve content template so it isn't lost on re-render -->
+                    ${content.template}
                 `;
             }
 
@@ -27,7 +31,8 @@ awesome.requireCSS(`${awesome.path}components/boilerplate/awesome-boilerplate.cs
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                
+                //basic re-render
+                this.createdCallback();
             }
         }
 

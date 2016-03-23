@@ -1,6 +1,9 @@
 'use strict';
 
 awesome.constants.store={
+    BOILERPLATE:'boilerplate.event',
+
+
     /**
      * all stores should reset their state
      * @member awesome.constants.store.RESET
