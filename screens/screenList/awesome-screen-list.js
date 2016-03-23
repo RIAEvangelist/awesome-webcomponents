@@ -10,7 +10,6 @@ awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
         let constants = null;
         let action = null;
         let defaults={
-            screen:'screenList'
         };
 
         function init(e){
