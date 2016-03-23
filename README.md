@@ -32,7 +32,8 @@ See the [DBAD license](https://github.com/philsturgeon/dbad) in your language or
 These are the documents generated from the code. It has a lot of detailed info.
 
 # Documentation Table Of Contents
-    - [Getting started]('#getting-started')
+
+- [Getting started]('#getting-started')
 
 # Getting started
 
