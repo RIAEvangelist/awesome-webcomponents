@@ -39,11 +39,7 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
 
                 this.innerHTML=`
                     <p>${this.dataset.something}</p>
-                    <p>
-                        store.state.boilerplate =
-                        <span class='awesome-boilerplate-state'>
-                            ${store.state.boilerplate}
-                        </span>
+                    <p>store.state.boilerplate=${store.state.boilerplate}</p>
                     <div>${content}</div>
 
                     <!-- preserve content template so it isn't lost on re-render -->
@@ -68,10 +64,8 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
             }
 
             update(){
-                //do something with store.state values here
-                this.querySelector('.awesome-boilerplate-state').innerHTML=store.state.boilerplate
-                //could also just re render this simple example
-                //this.createdCallback();
+                //just re render this simple example
+                this.createdCallback();
             }
         }
 
