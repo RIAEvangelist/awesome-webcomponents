@@ -54,7 +54,7 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
             attachedCallback(){
                 this.store.on(
                     'change',
-                    update
+                    update.bind(this)
                 )
             }
 
@@ -63,11 +63,15 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-
+                //just re-render for this simple example
+                this.createdCallback();
             }
 
             update(){
                 //do something with store.state values here
+                this.querySelector('.awesome-boilerplate-state').innerHTML=store.state.boilerplate
+                //could also just re render this simple example
+                //this.createdCallback();
             }
         }
 
