@@ -1,7 +1,9 @@
-awesome-screen-icon{
+awesome-screen-icon {
     cursor: pointer;
-    display: block;
     text-align: center;
+    width: 9em;
+    display: inline-flex;
+    margin: 2.5em;
 }
 
 awesome-screen-icon .contentWrapper{
