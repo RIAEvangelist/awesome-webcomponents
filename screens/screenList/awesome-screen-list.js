@@ -10,7 +10,6 @@ awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
         let constants = null;
         let action = null;
         let defaults={
-            screen:'screenList'
         };
 
         function init(e){
@@ -87,8 +86,6 @@ awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
             resize(e){
                 const container=this.querySelector('.screensList-container');
                 container.style.top=`calc(50% - ${container.offsetHeight/2}px)`;
-
-                console.log(container,container.offsetHeight)
             }
         }
 

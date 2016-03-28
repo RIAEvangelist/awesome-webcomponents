@@ -28,7 +28,7 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                             </div>
                             <br/>
                             <button class = 'closeButton'>
-                                OK
+                                ${awesome.language.current.ok}
                             </button>
                         </template>
                     </awesome-modal>
@@ -37,6 +37,11 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
             }
 
             attachedCallback(){
+                window.on(
+                    'awesome-language-set',
+                    this.createdCallback.bind(this)
+                );
+
                 this.addEventListener(
                     'click',
                     this.clicked.bind(this)

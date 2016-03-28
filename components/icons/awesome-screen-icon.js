@@ -15,12 +15,23 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
                 awesome.mergeDataset(this,defaults);
 
                 this.innerHTML=`
-                    <img
-                        class='icon'
-                        src=${this.dataset.icon}
-                    />
-                    <br/>
-                    ${this.dataset.text}
+                <div
+                    class = 'contentWrapper'
+                >
+                    <div
+                        class = 'iconImageWrapper'
+                    >
+                        <img
+                            class='icon'
+                            src=${this.dataset.icon}
+                        />
+                    </div>
+                    <div
+                        class = 'iconTextWrapper'
+                    >
+                        ${this.dataset.text}
+                    </div>
+                <div>
                 `;
             }
 
@@ -28,6 +39,11 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
                 this.addEventListener(
                     'click',
                     this.iconClicked
+                );
+
+                window.on(
+                    'awesome-language-set',
+                    this.createdCallback.bind(this)
                 );
             }
 

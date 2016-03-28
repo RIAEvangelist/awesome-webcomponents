@@ -2,9 +2,9 @@ awesome.language={
     ru:{
 
         login:'Войти',
+        logout:'Выйти',
         username:'Логин',
         password:'Пароль',
-
         chooseFile:'добавить файл',
         chooseFiles:'добавить файлы',
         'filesSelectedCount':'${count} выбран',
@@ -14,6 +14,8 @@ awesome.language={
         fileLastModified:'Последнее изменение',
         fileContent:'содержание',
         noFilesSelected:'Файлы не выбраны',
+        ok:'Хорошо',
+        cancel:'Отмена',
 
         'awesome-login-screen-header':'Вход'
     }

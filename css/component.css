@@ -146,6 +146,11 @@ Flaticon icon font: Flaticon
 Creation date: 04/03/2016 20:33
 */
 
+/*
+Flaticon icon font: Flaticon
+Creation date: 16/03/2016 05:11
+*/
+
 @font-face {
 font-family: "Flaticon";
 src: url("../fonts/flatIcon/Flaticon.eot");
@@ -166,10 +171,12 @@ src: url("../fonts/flatIcon/Flaticon.svg#Flaticon") format("svg");
 
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
-font-family: Flaticon;
+    font-family: Flaticon;
     font-size: 20px;
-font-style: normal;
-margin-left: 20px;
+    font-style: normal;
+    margin-left: 20px;
 }
 
-.flaticon-signs:before { content: "\f100"; }
+.flaticon-signs:before { content: "\f102"; }
+.flaticon-arrow:before { content: "\f100"; }
+.flaticon-circle:before { content: "\f101"; }

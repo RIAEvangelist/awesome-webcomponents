@@ -1,31 +1,28 @@
 'use strict';
 
-awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
+awesome.requireCSS(`${awesome.path}components/footer/awesome-footer.css`);
 
 (
     function(){
         const defaults={
 
-        };
+        }
 
         class Component extends HTMLElement{
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+                const content = awesome.loadTemplate(this);
 
                 this.innerHTML=`
-                    <div>
+                    <footer>
                         ${content.content}
-                    </div>
+                    </footer>
                     ${content.template}
                 `;
             }
 
             attachedCallback(){
-                window.on(
-                    'awesome-language-set',
-                    this.createdCallback.bind(this)
-                );
+
             }
 
             detachedCallback(){
@@ -35,18 +32,10 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
             attributeChangedCallback(key,oldValue,newValue){
                 this.createdCallback();
             }
-
-            close(){
-                this.classList.remove('modalOn');
-            }
-
-            open(){
-                this.classList.add('modalOn');
-            }
         }
 
         document.registerElement(
-            'awesome-modal',
+            'awesome-footer',
             Component
         );
     }

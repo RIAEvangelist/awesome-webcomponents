@@ -1,7 +1,7 @@
 awesome.language={
     jp:{
-
         login:'ログイン',
+        logout:'ログアウト',
         username:'ユーザーID',
         password:'パスワード',
 
@@ -15,7 +15,9 @@ awesome.language={
         fileContent:'コンテンツ',
         noFilesSelected:'どのファイルが選択されていません',
 
-        'awesome-login-screen-header':'顧客ログイン'
+        ok:'はい',
+        cancel:'キャンセル',
 
+        'awesome-login-screen-header':'顧客ログイン'
     }
 };

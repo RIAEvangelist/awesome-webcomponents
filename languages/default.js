@@ -4,8 +4,10 @@ awesome.language={
         english:'english',
         russian:'русски',
         japanese:'日本語',
+        spanish:'español',
 
         login:'login',
+        logout:'Logout',
         username:'username',
         password:'password',
 
@@ -18,6 +20,9 @@ awesome.language={
         fileLastModified:'last modified',
         fileContent:'content',
         noFilesSelected:'No files Selected.',
+
+        ok:'OK',
+        cancel:'Cancel',
 
         'awesome-login-screen-header':'Login'
     }
