@@ -1,0 +1,11 @@
+awesome-options-dropdown {
+    display:block;
+    height:2em;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}
