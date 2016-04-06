@@ -14,7 +14,7 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
                 const content=awesome.loadTemplate(this);
 
                 this.innerHTML=`
-                    <label>${this.dataset.label}</label>
+                    <label>${this.dataset.label} :</label>
                     <select name='${this.dataset.label}'>
                         ${content.content}
                     </select>
