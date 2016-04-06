@@ -4,8 +4,29 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
 
 (
     function(){
+        let store=null;
+        let dispatcher=null;
+        let constants = null;
+        let action = null;
+
         const defaults={
             label:''
+        }
+
+        function init(e){
+            window.off(
+                'awesome-ready',
+                init
+            );
+
+            dispatcher=awesome.dispatchers.component;
+            constants=awesome.constants.component;
+            action=awesome.constants.action;
+
+            document.registerElement(
+                'awesome-options-dropdown',
+                Component
+            );
         }
 
         class Component extends HTMLElement{
@@ -22,7 +43,16 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
             }
 
             attachedCallback(){
-
+                this.addEventListener(
+                    'change',
+                    function(e){
+                        console.log(e.srcElement.value);
+                        dispatcher.trigger(
+                            action.SELECTED_VALUE,
+                            e.srcElement.value
+                        );
+                    }
+                );
             }
 
             detachedCallback(){
@@ -35,9 +65,15 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
             }
         }
 
-        document.registerElement(
-            'awesome-options-dropdown',
-            Component
-        );
+        if(!awesome.ready){
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            return;
+        }
+
+        init();
     }
 )();
