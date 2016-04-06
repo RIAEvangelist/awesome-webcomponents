@@ -14,7 +14,7 @@ awesome.requireCSS(`${awesome.path}components/meter/awesome-meter.css`);
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
                 let divisions = ''
-                for (let i = 0; i < this.dataset.divisions; i++) {
+                for (let i = 0; i < Math.floor(this.dataset.divisions); i++) {
                     divisions += '<li></li>'
                 }
 
@@ -70,7 +70,7 @@ awesome.requireCSS(`${awesome.path}components/meter/awesome-meter.css`);
 
             sizeListElements(){
                 const listElements = this.querySelectorAll('li');
-                const divisions = this.dataset.divisions;
+                const divisions = Math.floor(this.dataset.divisions);
                 for (let i = 0; i < listElements.length; i++) {
                     listElements[i].style.height = `${100/divisions}%`;
                 }
