@@ -43,6 +43,7 @@ awesome.requireCSS(`${awesome.path}components/meter/awesome-meter.css`);
 
             attachedCallback(){
                 this.createdCallback();
+                this.changePercentage();
                 this.sizeListElements();
             }
 
