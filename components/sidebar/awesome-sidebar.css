@@ -10,8 +10,8 @@ awesome-sidebar {
     transition: width 1s;
 }
 
-awesome-sidebar div {
-    padding:2em;
+awesome-sidebar .sidebar-content {
+
 }
 
 awesome-sidebar.showSidebar {

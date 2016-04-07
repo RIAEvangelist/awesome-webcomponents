@@ -11,7 +11,7 @@ awesome.requireCSS(`${awesome.path}components/sidebar/awesome-sidebar.css`);
                 awesome.mergeDataset(this,defaults);
                 const content=awesome.loadTemplate(this);
                 this.innerHTML=`
-                    <div>${content.content}</div>
+                    <div class='sidebar-content'>${content.content}</div>
                     ${content.template}
                 `;
             }
