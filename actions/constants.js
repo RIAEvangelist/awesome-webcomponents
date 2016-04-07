@@ -30,11 +30,5 @@ awesome.constants.action={
 
     ROUTE_REQUEST:'router.navigate',
 
-    ROUTE_UPDATE_SCREENS:'router.find.screens',
-    /**
-     * select options dropdown value
-     * @member awesome.constants.action.SELECTED_VALUE
-     * @type {EventName}
-     */
-    SELECTED_VALUE:'selected.value'
+    ROUTE_UPDATE_SCREENS:'router.find.screens'
 };

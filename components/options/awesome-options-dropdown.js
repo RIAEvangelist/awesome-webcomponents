@@ -40,19 +40,15 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
                         ${content.content}
                     </select>
                 `;
+
+                this.querySelector('select').addEventListener(
+                    'change',
+                    this.change.bind(this)
+                );
             }
 
             attachedCallback(){
-                this.addEventListener(
-                    'change',
-                    function(e){
-                        console.log(e.srcElement.value);
-                        dispatcher.trigger(
-                            action.SELECTED_VALUE,
-                            e.srcElement.value
-                        );
-                    }
-                );
+
             }
 
             detachedCallback(){
@@ -62,6 +58,21 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
             attributeChangedCallback(key,oldValue,newValue){
                 //basic re-render
                 this.createdCallback();
+            }
+
+            change(e){
+                e.preventDefault();
+                e.stopPropagation();
+                this.value=e.target.value;
+                const change = new Event(
+                    'change',
+                    {
+                        'bubbles':true,
+                        'cancelable':false
+                    }
+                );
+
+                this.dispatchEvent(change);
             }
         }
 
