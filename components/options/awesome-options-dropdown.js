@@ -4,8 +4,29 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
 
 (
     function(){
+        let store=null;
+        let dispatcher=null;
+        let constants = null;
+        let action = null;
+
         const defaults={
             label:''
+        }
+
+        function init(e){
+            window.off(
+                'awesome-ready',
+                init
+            );
+
+            dispatcher=awesome.dispatchers.component;
+            constants=awesome.constants.component;
+            action=awesome.constants.action;
+
+            document.registerElement(
+                'awesome-options-dropdown',
+                Component
+            );
         }
 
         class Component extends HTMLElement{
@@ -19,6 +40,11 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
                         ${content.content}
                     </select>
                 `;
+
+                this.querySelector('select').addEventListener(
+                    'change',
+                    this.change.bind(this)
+                );
             }
 
             attachedCallback(){
@@ -33,11 +59,32 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
                 //basic re-render
                 this.createdCallback();
             }
+
+            change(e){
+                e.preventDefault();
+                e.stopPropagation();
+                this.value=e.target.value;
+                const change = new Event(
+                    'change',
+                    {
+                        'bubbles':true,
+                        'cancelable':false
+                    }
+                );
+
+                this.dispatchEvent(change);
+            }
         }
 
-        document.registerElement(
-            'awesome-options-dropdown',
-            Component
-        );
+        if(!awesome.ready){
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            return;
+        }
+
+        init();
     }
 )();
