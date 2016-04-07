@@ -11,14 +11,7 @@ awesome.requireCSS(`${awesome.path}components/sidebar/awesome-sidebar.css`);
                 awesome.mergeDataset(this,defaults);
                 const content=awesome.loadTemplate(this);
                 this.innerHTML=`
-                    <div class = '${
-                        (this.classList.contains('showSidebar'))
-                            ?'showContent'
-                            :''
-                        }
-                    '>
-                        ${content.content}
-                    </div>
+                    <div>${content.content}</div>
                     ${content.template}
                 `;
             }
