@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+            awesome.requireScript(`${awesome.path}components/sidebar/awesome-sidebar.js`);
+        </script>
+    </head>
+    <body>
+        <awesome-header
+            data-title='awesome-sidebar'
+        >
+        </awesome-header>
+        <awesome-sidebar>
+            <template>
+                <p style='color:white;'>
+                    <strong>This is an awesome-sidebar. Put any content you want in here.</strong>
+                </p>
+            </template>
+        </awesome-sidebar>
+        <p>Click on the dark gray stub on the right to bring out sidebar and hide!</p>
+    </body>
+</html>

@@ -31,4 +31,4 @@ awesome.constants.action={
     ROUTE_REQUEST:'router.navigate',
 
     ROUTE_UPDATE_SCREENS:'router.find.screens'
-}
+};
