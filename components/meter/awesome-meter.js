@@ -42,8 +42,8 @@ awesome.requireCSS(`${awesome.path}components/meter/awesome-meter.css`);
             }
 
             attachedCallback(){
-                this.sizeListElements();
                 this.createdCallback();
+                this.sizeListElements();
             }
 
             detachedCallback(){
