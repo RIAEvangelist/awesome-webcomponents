@@ -1,13 +1,13 @@
 awesome-sidebar {
     position: fixed;
     top: 3.25em;
-    right: 0;
-    background: rgba(0, 0, 0, 0.5);
-    width: 0.65em;
+    right: -29.1em;
+    background: rgba(0, 0, 0, 0.4);
+    width: 30em;
     height: 100%;
     border-radius: 0 0 0.313em 0;
     box-shadow: 0 0 0.25em rgba(0,0,0,.3);
-    transition: width 1s;
+    transition: right 0.5s;
 }
 
 awesome-sidebar .sidebar-content {
@@ -15,8 +15,8 @@ awesome-sidebar .sidebar-content {
 }
 
 awesome-sidebar.showSidebar {
-  width:30em;
-  transition: width 1s;
+  right:0;
+  transition: right 0.5s;
 }
 /*******************************\
 Small desktop windows and mobile
