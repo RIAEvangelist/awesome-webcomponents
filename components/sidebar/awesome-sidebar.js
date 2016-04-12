@@ -21,6 +21,11 @@ awesome.requireCSS(`${awesome.path}components/sidebar/awesome-sidebar.css`);
                     'click',
                     this.clicked
                 )
+
+                this.addEventListener(
+                    'touchstart',
+                    this.touched
+                )
             }
 
             detachedCallback(){
@@ -28,6 +33,14 @@ awesome.requireCSS(`${awesome.path}components/sidebar/awesome-sidebar.css`);
             }
 
             clicked(e){
+                if(e.target.localName == 'awesome-sidebar'){
+                    e.target.classList.toggle('showSidebar');
+                }
+            }
+
+            touched(e){
+                e.stopPropagation();
+                e.preventDefault();
                 if(e.target.localName == 'awesome-sidebar'){
                     e.target.classList.toggle('showSidebar');
                 }
