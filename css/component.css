@@ -180,3 +180,4 @@ src: url("../fonts/flatIcon/Flaticon.svg#Flaticon") format("svg");
 .flaticon-signs:before { content: "\f102"; }
 .flaticon-arrow:before { content: "\f100"; }
 .flaticon-circle:before { content: "\f101"; }
+.flaticon-three:before { content: "\f103"; }
