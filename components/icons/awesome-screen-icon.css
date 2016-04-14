@@ -17,9 +17,12 @@ awesome-screen-icon .iconImageWrapper{
     width: 4em;
 }
 
-awesome-screen-icon .iconImageWrapper img{
+awesome-screen-icon .iconImageWrapper img,
+awesome-screen-icon .screen-flaticon-class {
+    position: absolute;
     width: 100%;
     height: 100%;
+    right: -0.15em;
 }
 
 awesome-screen-icon .iconTextWrapper{

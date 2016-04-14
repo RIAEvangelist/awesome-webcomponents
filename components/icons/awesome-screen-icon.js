@@ -5,8 +5,9 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
 (
     function(){
         const defaults={
-            icon:'',
+            icon:'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
             text: '',
+            class:'',
             screen_name: ''
         }
 
@@ -21,6 +22,7 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
                     <div
                         class = 'iconImageWrapper'
                     >
+                        <div class='screen-flaticon-class ${this.dataset.class}'></div>
                         <img
                             class='icon'
                             src=${this.dataset.icon}
