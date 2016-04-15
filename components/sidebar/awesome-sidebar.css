@@ -1,13 +1,33 @@
 awesome-sidebar {
     position: fixed;
     top: 3.25em;
-    right: -29.1em;
+    right: -30em;
     background: rgba(0, 0, 0, 0.4);
     width: 30em;
     height: 100%;
     border-radius: 0 0 0.313em 0;
     box-shadow: 0 0 0.25em rgba(0,0,0,.3);
     transition: right 0.5s;
+}
+
+awesome-sidebar span.flaticon-three:before{
+    position: absolute;
+    font-size: 2.1em;
+    color:white;
+    top: 0.5em;
+    left: -0.1em;
+    height: 100%;
+    width: 100%;
+}
+
+awesome-sidebar .sidebar-stub{
+    height: 4.5em;
+    width: 4em;
+    left: -4em;
+    cursor:pointer;
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    background-color: rgb(147,147,147);
 }
 
 awesome-sidebar .sidebar-content {

@@ -5,7 +5,10 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
 
 (
     function(){
-
+        let store=null;
+        let dispatcher=null;
+        let constants = null;
+        let action = null;
         const defaults={
 
         }
@@ -34,7 +37,7 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                 awesome.mergeDataset(this,defaults);
 
                 this.innerHTML=`
-
+                    <p>Dynamic Form Component</p>
                 `;
             }
 

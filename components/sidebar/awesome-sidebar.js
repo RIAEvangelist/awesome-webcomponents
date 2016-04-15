@@ -11,26 +11,30 @@ awesome.requireCSS(`${awesome.path}components/sidebar/awesome-sidebar.css`);
                 awesome.mergeDataset(this,defaults);
                 const content=awesome.loadTemplate(this);
                 this.innerHTML=`
+                    <div class='sidebar-stub'>
+                        <span class = 'flaticon-three'>
+                        </span>
+                    </div>
                     <div class='sidebar-content'>${content.content}</div>
                     ${content.template}
                 `;
+
+                this.querySelector('.sidebar-stub').addEventListener(
+                    'click',
+                    this.clicked.bind(this)
+                )
             }
 
             attachedCallback(){
-                this.addEventListener(
-                    'click',
-                    this.clicked
-                )
+
             }
 
             detachedCallback(){
 
             }
 
-            clicked(e){
-                if(e.target.localName == 'awesome-sidebar'){
-                    e.target.classList.toggle('showSidebar');
-                }
+            clicked(){
+                this.classList.toggle('showSidebar');
             }
 
             attributeChangedCallback(key,oldValue,newValue){
