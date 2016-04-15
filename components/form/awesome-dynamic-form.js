@@ -1,7 +1,6 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
-// awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
 
 (
     function(){
@@ -58,10 +57,6 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
             }
 
             generate(formData){
-
-                for(const i in formData.actions){
-
-                }
                 console.log(formData,'your object!');
             }
 
