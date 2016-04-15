@@ -59,8 +59,13 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
 
             generate(formData){
 
+
+
+                for(const i in formData.actions){
+                    
+                }
             }
-            
+
             // update(){
             //     //just re render this simple example
             //     this.createdCallback();
