@@ -1,6 +1,14 @@
-awesome-boilerplate,
-awesome-boilerplate-advanced{
-    display:block;
+awesome-dynamic-form{
+    display: block;
+    width: 35em;
+    height: 35em;
+    margin: 0 auto;
+    top: 15em;
+}
+
+awesome-dynamic-form > *{
+    height:2.5em;
+    margin-top:1em;
 }
 
 /*******************************\

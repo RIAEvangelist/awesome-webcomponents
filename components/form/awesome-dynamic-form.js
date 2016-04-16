@@ -57,7 +57,19 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
             }
 
             generate(formData){
-                console.log(formData,'your object!');
+                const form = document.querySelector('awesome-dynamic-form');
+                if(formData.hasOwnProperty('fields')){
+                    for(const i in formData.fields){
+                        const newEl = document.createElement(formData.fields[i].type);
+                        for(const j in formData.fields[i]){
+                            if(j == 'type'){
+                                continue;
+                            }
+                            newEl.setAttribute(j,formData.fields[i][j]);
+                        }
+                        form.appendChild(newEl);
+                    }
+                }
             }
 
             // update(){

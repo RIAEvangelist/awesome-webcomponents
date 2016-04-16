@@ -19,20 +19,34 @@
                     },
                     fields:{
                         firstname:{
-                            'label':'Firstname',
-                            'placeholder': 'Walter',
-                            'type':'input'
+                            label:'Firstname',
+                            placeholder: 'Walter',
+                            type:'input',
+                            id:'firstname'
                         },
                         lastname:{
-                            'label':'Lastname',
-                            'placeholder': 'White',
-                            'type':'input'
+                            label:'Lastname',
+                            placeholder: 'White',
+                            type:'input',
+                            id:'lastname'
+                        },
+                        gender1:{
+                            name:'gender',
+                            type:'radio',
+                            value:'male',
+                            id:'gender1'
+                        },
+                        gender2:{
+                            name:'gender',
+                            type:'radio',
+                            value:'female',
+                            id:'gender2'
                         }
                     },
                     actions:{
                         save:{
-                            'label':'Save',
-                            'callback': function(){
+                            label:'Save',
+                            callback: function(){
                                 console.log('Saved!!');
                             }
                         }
