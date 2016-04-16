@@ -36,7 +36,15 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                 awesome.mergeDataset(this,defaults);
 
                 this.innerHTML=`
-                    <p>Dynamic Form Component</p>
+                    <p id = 'para1'
+                        data-wow = 'wow'
+                    >Dynamic Form Component</p>
+                    <input
+                        data-wat = 'wat'
+                        id = 'input1'
+                        value = 'hello'
+                    >
+                    </input>
                 `;
             }
 
@@ -57,7 +65,37 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
             }
 
             generate(formData){
-                console.log(formData,'your object!');
+                for(const i in formData.actions){
+                    const key = formData.actions[i].label;
+                    const actionTrigger = formData.actions[i].actionTrigger;
+
+                    this[key]=function(){
+                        const data = this.getElementData(this);
+                        console.log(data);
+                        // @TODO trigger data from here
+                        // dispatcher.trigger(
+                        //     actionTrigger,
+                        //     data
+                        //);
+                    }
+                }
+            }
+
+            getElementData(scope){
+                let data = {};
+                for(const j in scope.children){
+                    if(!scope.children[j].id){
+                        continue;
+                    };
+                    let id = scope.children[j].id;
+                    data[id] = {};
+                    data[id].value = scope.children[j].value;
+                    data[id].dataset = {};
+                    for(const k in scope.children[j].dataset){
+                        data[id].dataset[k] = scope.children[j].dataset[k];
+                    }
+                }
+                return(data);
             }
 
             // update(){
