@@ -60,14 +60,20 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                 const form = document.querySelector('awesome-dynamic-form');
                 if(formData.hasOwnProperty('fields')){
                     for(const i in formData.fields){
-                        const newEl = document.createElement(formData.fields[i].type);
-                        for(const j in formData.fields[i]){
-                            if(j == 'type'){
-                                continue;
+                        if(typeof formData.fields[i].type === 'object'){
+                            const nested = document.createElement('input');
+                            nested.setAttribute('type', formData.fields[i].type.input.type);
+                            nested.setAttribute('name', formData.fields[i].name);
+                            nested.setAttribute('value', formData.fields[i].value);
+                            nested.setAttribute('id', formData.fields[i].id);
+                            form.appendChild(nested);
+                        }else{
+                            const normal = document.createElement(formData.fields[i].type);
+                            for(const j in formData.fields[i]){
+                                normal.setAttribute(j,formData.fields[i][j])
                             }
-                            newEl.setAttribute(j,formData.fields[i][j]);
+                            form.appendChild(normal);
                         }
-                        form.appendChild(newEl);
                     }
                 }
             }
