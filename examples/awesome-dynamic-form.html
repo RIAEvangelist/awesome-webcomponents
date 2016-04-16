@@ -32,24 +32,35 @@
                             type:'input',
                             id:'lastname'
                         },
-                        gender1:{
+                        gender:{
+                            element:'div',
+                            label:'Gender'
+                        },
+                        male:{
                             label:'Male',
                             element: 'input',
+                            name:'gender',
                             type:'radio',
                             value:'male',
                             id:'gender1'
                         },
-                        gender2:{
+                        female:{
                             label:'Female',
                             element: 'input',
+                            name:'gender',
                             type:'radio',
                             value:'female',
                             id:'gender2'
+                        },
+                        genderEnd:{
+                            element:'div',
+                            label:''
                         }
                     },
                     actions:{
                         save:{
-                            label:'save',
+                            label:'Save',
+                            id:'save',
                             actionTrigger: 'saveAllFields'
                         }
                     }

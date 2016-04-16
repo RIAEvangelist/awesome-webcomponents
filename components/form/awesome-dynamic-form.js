@@ -61,17 +61,28 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
 
                 for(const i in formData.fields){
                     const element = document.createElement(formData.fields[i].element);
+                    const label = document.createElement('label');
+                    label.innerHTML = formData.fields[i].label;
                     for(const j in formData.fields[i]){
+                        if(j == 'element'){
+                            continue;
+                        }
                         element.setAttribute(j,formData.fields[i][j])
                     }
+                    form.appendChild(label);
                     form.appendChild(element);
                 }
 
                 for(const i in formData.actions){
-                    const key = formData.actions[i].label;
+                    const label = formData.actions[i].label;
+                    const id = formData.actions[i].id;
                     const actionTrigger = formData.actions[i].actionTrigger;
+                    const button = document.createElement('button');
 
-                    this[key]=function(){
+                    button.setAttribute('id', id);
+                    button.innerHTML = label;
+
+                    this[id]=function(){
                         const data = this.getElementData(this);
                         console.log(data);
                         // @TODO trigger data from here
@@ -80,6 +91,11 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                         //     data
                         //);
                     }
+                    button.addEventListener(
+                        'click',
+                        this[id].bind(this)
+                    )
+                    form.appendChild(button);
                 }
             }
 
