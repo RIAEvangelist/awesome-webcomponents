@@ -36,15 +36,7 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                 awesome.mergeDataset(this,defaults);
 
                 this.innerHTML=`
-                    <p id = 'para1'
-                        data-wow = 'wow'
-                    >Dynamic Form Component</p>
-                    <input
-                        data-wat = 'wat'
-                        id = 'input1'
-                        value = 'hello'
-                    >
-                    </input>
+
                 `;
             }
 
@@ -65,6 +57,16 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
             }
 
             generate(formData){
+                const form = document.querySelector('awesome-dynamic-form');
+
+                for(const i in formData.fields){
+                    const element = document.createElement(formData.fields[i].element);
+                    for(const j in formData.fields[i]){
+                        element.setAttribute(j,formData.fields[i][j])
+                    }
+                    form.appendChild(element);
+                }
+
                 for(const i in formData.actions){
                     const key = formData.actions[i].label;
                     const actionTrigger = formData.actions[i].actionTrigger;
@@ -89,6 +91,9 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                     };
                     let id = scope.children[j].id;
                     data[id] = {};
+                    if(scope.children[j].type == 'radio'){
+                        data[id].checked = scope.children[j].checked;
+                    }
                     data[id].value = scope.children[j].value;
                     data[id].dataset = {};
                     for(const k in scope.children[j].dataset){
