@@ -22,14 +22,14 @@
                             label:'Firstname',
                             placeholder: 'Walter',
                             element: 'input',
-                            type:'input',
+                            type: 'input',
                             id:'firstname'
                         },
                         lastname:{
                             label:'Lastname',
                             placeholder: 'White',
                             element: 'input',
-                            type:'input',
+                            type: 'input',
                             id:'lastname'
                         },
                         gender:{
@@ -42,7 +42,7 @@
                             name:'gender',
                             type:'radio',
                             value:'male',
-                            id:'gender1'
+                            id:'male'
                         },
                         female:{
                             label:'Female',
@@ -50,11 +50,7 @@
                             name:'gender',
                             type:'radio',
                             value:'female',
-                            id:'gender2'
-                        },
-                        genderEnd:{
-                            element:'div',
-                            label:''
+                            id:'female'
                         }
                     },
                     actions:{
@@ -62,6 +58,11 @@
                             label:'Save',
                             id:'save',
                             actionTrigger: 'saveAllFields'
+                        },
+                        clear:{
+                            label:'clear',
+                            id: 'clear',
+                            actionTrigger: 'clearAllFields'
                         }
                     }
                 }

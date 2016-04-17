@@ -4,14 +4,12 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
 
 (
     function(){
-        let store=null;
         let dispatcher=null;
         let constants = null;
         let action = null;
         const defaults={
 
         }
-
 
         function init(e){
             window.off(
@@ -23,8 +21,6 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
             constants=awesome.constants.component;
             action=awesome.constants.action;
 
-            // store=awesome.store.boilerplate;
-
             document.registerElement(
                 'awesome-dynamic-form',
                 Component
@@ -33,18 +29,9 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
 
         class Component extends HTMLElement{
             createdCallback(){
-                awesome.mergeDataset(this,defaults);
-
-                this.innerHTML=`
-
-                `;
             }
 
             attachedCallback(){
-                // this.store.on(
-                //     'change',
-                //     update.bind(this)
-                // )
             }
 
             detachedCallback(){
@@ -52,7 +39,6 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                //just re-render for this simple example
                 this.createdCallback();
             }
 
@@ -60,6 +46,13 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                 const form = document.querySelector('awesome-dynamic-form');
 
                 for(const i in formData.fields){
+
+                    //check for awesome or custom element here
+                    if(formData.fields[i].element.includes('awesome')){
+                        //include custom element here be it awesome, or custom
+                        // awesome.requireScript();
+                    }
+
                     const element = document.createElement(formData.fields[i].element);
                     const label = document.createElement('label');
                     label.innerHTML = formData.fields[i].label;
@@ -72,6 +65,9 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                     form.appendChild(label);
                     form.appendChild(element);
                 }
+
+                const separator = document.createElement('div');
+                form.appendChild(separator);
 
                 for(const i in formData.actions){
                     const label = formData.actions[i].label;
@@ -107,9 +103,12 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                     };
                     let id = scope.children[j].id;
                     data[id] = {};
+
+                    //this is a special case, if more should are added should be a switch case
                     if(scope.children[j].type == 'radio'){
                         data[id].checked = scope.children[j].checked;
                     }
+
                     data[id].value = scope.children[j].value;
                     data[id].dataset = {};
                     for(const k in scope.children[j].dataset){
@@ -118,11 +117,6 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                 }
                 return(data);
             }
-
-            // update(){
-            //     //just re render this simple example
-            //     this.createdCallback();
-            // }
         }
 
         if(!awesome.ready){
