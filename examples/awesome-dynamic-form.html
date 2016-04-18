@@ -7,7 +7,7 @@
             awesome.requireScript(`${awesome.path}components/form/awesome-dynamic-form.js`);
 
             window.on(
-                'awesome-ready',
+                'DOMContentLoaded',
                 init
             );
 
@@ -31,6 +31,16 @@
                             element: 'input',
                             type: 'input',
                             id:'lastname'
+                        },
+                        range:{ //here one could use ssmp.path or any custom path
+                            path:`${awesome.path}components/range/awesome-range.js`,
+                            element:'awesome-range',
+                            'data-max': 3,
+                            'data-step': 1,
+                            'data-value': 1,
+                            'data-disabled':'true',
+                            label:'Range',
+                            id:'range'
                         },
                         gender:{
                             element:'div',
@@ -61,13 +71,16 @@
                         },
                         clear:{
                             label:'clear',
-                            id: 'clear',
+                            id: 'Clear',
                             actionTrigger: 'clearAllFields'
                         }
                     }
                 }
-                form.generate(
-                    test
+                setTimeout(
+                    function(){
+                        form.generate(test);
+                    },
+                    200
                 );
             }
         </script>
