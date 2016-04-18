@@ -47,9 +47,7 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
 
                 for(const i in formData.fields){
 
-                    //check for awesome or custom element here
                     if(formData.fields[i].hasOwnProperty('path')){
-                        //include custom element here be it awesome, or custom
                         awesome.requireScript(formData.fields[i].path);
                     }
 
