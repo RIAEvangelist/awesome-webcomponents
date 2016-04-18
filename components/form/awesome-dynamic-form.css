@@ -13,11 +13,20 @@ awesome-dynamic-form > *{
     width: 100%;
 }
 
+awesome-dynamic-form h1{
+    text-align: center;
+}
+
 awesome-dynamic-form label{
     height: 1em;
 }
 awesome-dynamic-form div{
     height: .1em;
+}
+
+awesome-dynamic-form button{
+    width: auto;
+    flex-grow: 1;
 }
 
 awesome-dynamic-form input[type=input] {

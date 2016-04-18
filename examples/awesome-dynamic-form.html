@@ -32,7 +32,7 @@
                             type: 'input',
                             id:'lastname'
                         },
-                        range:{ //here one could use ssmp.path or any custom path
+                        range:{
                             path:`${awesome.path}components/range/awesome-range.js`,
                             element:'awesome-range',
                             'data-max': 3,
@@ -70,8 +70,8 @@
                             actionTrigger: 'saveAllFields'
                         },
                         clear:{
-                            label:'clear',
-                            id: 'Clear',
+                            label:'Clear',
+                            id: 'clear',
                             actionTrigger: 'clearAllFields'
                         }
                     }
@@ -80,7 +80,7 @@
                     function(){
                         form.generate(test);
                     },
-                    200
+                    100
                 );
             }
         </script>

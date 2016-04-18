@@ -45,6 +45,10 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
             generate(formData){
                 const form = document.querySelector('awesome-dynamic-form');
 
+                const title = document.createElement('h1');
+                title.innerHTML = formData.formDefinition.name;
+                form.appendChild(title);
+
                 for(const i in formData.fields){
 
                     if(formData.fields[i].hasOwnProperty('path')){
@@ -79,11 +83,10 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                     this[id]=function(){
                         const data = this.getElementData(this);
                         console.log(data);
-                        // @TODO trigger data from here
-                        // dispatcher.trigger(
-                        //     actionTrigger,
-                        //     data
-                        //);
+                        dispatcher.trigger(
+                            actionTrigger,
+                            data
+                        );
                     }
                     button.addEventListener(
                         'click',
