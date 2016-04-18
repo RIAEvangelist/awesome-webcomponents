@@ -1,16 +1,13 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
-// awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
 
 (
     function(){
-        let store=null;
         let dispatcher=null;
         let constants = null;
         let action = null;
         const defaults={};
-
 
         function init(e){
             window.off(
@@ -22,8 +19,6 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
             constants=awesome.constants.component;
             action=awesome.constants.action;
 
-            // store=awesome.store.boilerplate;
-
             document.registerElement(
                 'awesome-data-grid',
                 Component
@@ -32,31 +27,34 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
 
         class Component extends HTMLElement{
             createdCallback(){
-                awesome.mergeDataset(this,defaults);
-
-                this.innerHTML=`
-                `;
             }
 
             attachedCallback(){
-                this.store.on(
-                    'change',
-                    update.bind(this)
-                )
             }
 
             detachedCallback(){
-
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                //just re-render for this simple example
                 this.createdCallback();
             }
 
-            update(){
-                //just re render this simple example
-                this.createdCallback();
+            generate(gridData){
+                const grid = document.querySelector('awesome-data-grid');
+                const listItem = document.createElement('ul');
+
+                const title = document.createElement('h1');
+                title.innerHTML = gridData.gridDefinition.name;
+                grid.appendChild(title);
+
+                for(const i in gridData.data){
+                    if(typeof gridData.data[i]=='object'){
+                        for(const j in gridData.data[i]){
+                            listItem.innerHTML += `<li>${gridData.data[i][j].firstName}, ${gridData.data[i][j].lastName}</li>`;
+                            grid.appendChild(listItem);
+                        }
+                    }
+                }
             }
         }
 

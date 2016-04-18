@@ -1,5 +1,52 @@
 awesome-data-grid {
-    display:flex;
+    display: flex;
+    width: 45em;
+    height: 35em;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content:flex-start;
+    justify-content:flex-start;
+    overflow: auto;
+}
+
+awesome-data-grid > * {
+    width:100%;
+}
+
+awesome h1{
+    text-align: center;
+}
+
+awesome-data-grid .data-grid-list{
+    position: absolute;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+awesome-data-grid ul{
+    position: absolute;
+    left: 0;
+    top: 5em;
+    margin: 0;
+    padding: 0;
+}
+
+awesome-data-grid ul li{
+    width: auto;
+    height: 2em;
+    cursor:pointer;
+    font-size: 1.5em;
+    border: 0.1em solid #C1C1C1;
+    border-radius: 0.225em;
+    box-shadow: 0 0 .3em rgba(0, 0, 0, 0.55);
+}
+
+awesome-data-grid ul li:hover{
+    border: 0.15em solid #C1C1C1;
+    background-color:rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 0.75em rgba(244, 231, 231, 0.55);
+    font-weight: bold;
 }
 
 /*******************************\
