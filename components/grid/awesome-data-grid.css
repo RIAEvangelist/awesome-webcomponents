@@ -1,0 +1,10 @@
+awesome-data-grid {
+    display:flex;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}
