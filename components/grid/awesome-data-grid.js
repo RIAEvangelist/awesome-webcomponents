@@ -1,6 +1,7 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
+awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
 (
     function(){
@@ -30,6 +31,10 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
             }
 
             attachedCallback(){
+                this.addEventListener(
+                    'click',
+                    this.clicked
+                );
             }
 
             detachedCallback(){
@@ -37,6 +42,30 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
 
             attributeChangedCallback(key,oldValue,newValue){
                 this.createdCallback();
+            }
+
+            clicked(e){
+                if(e.target.localName !== 'li'){
+                    return;
+                }
+
+                this.dialog = document.createElement('awesome-dialog');
+                document.body.appendChild(this.dialog);
+                this.dialog.innerHTML=`
+                    <button class='closeButton'>
+                        Close
+                    </button>
+                    <button class='editButton'>
+                        Edit
+                    </button>
+                    <button class='saveButton'>
+                        Save
+                    </button>
+                `;
+                this.dialog.addEventListener(
+                   'click',
+                   this.generalRemoveDialog
+                );
             }
 
             generate(gridData){
@@ -56,6 +85,14 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                     }
                 }
             }
+
+            generalRemoveDialog(e){
+                if(!e.target.classList.contains('closeButton')){
+                    return;
+                }
+                document.body.removeChild(this);
+            }
+
         }
 
         if(!awesome.ready){
