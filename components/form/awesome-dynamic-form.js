@@ -68,7 +68,7 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
 
                     this[id]=function(){
                         const data = this.getElementData(this);
-                        console.log(data);
+                        console.log(JSON.stringify(data));
                         dispatcher.trigger(
                             actionTrigger,
                             data
@@ -127,6 +127,7 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                     for(const i in elementObject){
                         if(i == 'value'){
                             element.setAttribute('value', elementObject.value[j]);
+                            element.setAttribute('id', elementObject.value[j]);
                             continue;
                         }
                         element.setAttribute(i, elementObject[i]);
@@ -137,25 +138,24 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
 
             }
 
-            getElementData(scope){
+            getElementData(){
                 let data = {};
-                for(const j in scope.children){
-                    if(!scope.children[j].id){
+                for(const j in this.children){
+                    if(!this.children[j].id){
                         continue;
                     };
-                    let id = scope.children[j].id;
+                    if(this.children[j].localName == 'button'){
+                        continue;
+                    }
+                    let id = this.children[j].id;
                     data[id] = {};
 
                     //this is a special case, if more should are added should be a switch case
-                    if(scope.children[j].type == 'radio'){
-                        data[id].checked = scope.children[j].checked;
+                    if(this.children[j].type == 'radio'){
+                        data[id].checked = this.children[j].checked;
                     }
 
-                    data[id].value = scope.children[j].value;
-                    data[id].dataset = {};
-                    for(const k in scope.children[j].dataset){
-                        data[id].dataset[k] = scope.children[j].dataset[k];
-                    }
+                    data[id].value = this.children[j].value;
                 }
                 return(data);
             }
