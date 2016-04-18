@@ -49,23 +49,9 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                 title.innerHTML = formData.formDefinition.name;
                 form.appendChild(title);
 
+
                 for(const i in formData.fields){
-
-                    if(formData.fields[i].hasOwnProperty('path')){
-                        awesome.requireScript(formData.fields[i].path);
-                    }
-
-                    const element = document.createElement(formData.fields[i].element);
-                    const label = document.createElement('label');
-                    label.innerHTML = formData.fields[i].label;
-                    for(const j in formData.fields[i]){
-                        if(j == 'element'){
-                            continue;
-                        }
-                        element.setAttribute(j,formData.fields[i][j])
-                    }
-                    form.appendChild(label);
-                    form.appendChild(element);
+                    this.create(form, formData, i);
                 }
 
                 const separator = document.createElement('div');
@@ -94,6 +80,61 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                     )
                     form.appendChild(button);
                 }
+            }
+
+            create(form, formData, i){
+                if(formData.fields[i].hasOwnProperty('path')){
+                    awesome.requireScript(formData.fields[i].path);
+                }
+
+                const element = document.createElement(formData.fields[i].element);
+                const label = document.createElement('label');
+                label.innerHTML = formData.fields[i].label;
+
+
+                for(const j in formData.fields[i]){
+
+                    switch (j) {
+                        case 'element':
+                            continue;
+                            break;
+                        case 'dataAttr':
+                            for(const k in formData.fields[i][j]){
+                                element.setAttribute(k,formData.fields[i][j][k])
+                            }
+                            continue;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    if(j == 'value' && (typeof formData.fields[i][j] == 'object')){
+                        this.multipleElements(form,formData.fields[i]);
+                        return;
+                    }
+
+                    element.setAttribute(j,formData.fields[i][j])
+                }
+                form.appendChild(label);
+                form.appendChild(element);
+            }
+
+            multipleElements(form,elementObject){
+                for(const j in elementObject.value){
+                    const element = document.createElement(elementObject.element);
+                    const label = document.createElement('label');
+                    label.innerHTML = elementObject.value[j];
+                    for(const i in elementObject){
+                        if(i == 'value'){
+                            element.setAttribute('value', elementObject.value[j]);
+                            continue;
+                        }
+                        element.setAttribute(i, elementObject[i]);
+                    }
+                    form.appendChild(label);
+                    form.appendChild(element);
+                }
+
             }
 
             getElementData(scope){

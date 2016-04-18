@@ -35,10 +35,12 @@
                         range:{
                             path:`${awesome.path}components/range/awesome-range.js`,
                             element:'awesome-range',
-                            'data-max': 3,
-                            'data-step': 1,
-                            'data-value': 1,
-                            'data-disabled':'true',
+                            dataAttr:{
+                                'data-max': 3,
+                                'data-step': 1,
+                                'data-value': 1,
+                                'data-disabled':'false'
+                            },
                             label:'Range',
                             id:'range'
                         },
@@ -46,21 +48,14 @@
                             element:'div',
                             label:'Gender'
                         },
-                        male:{
-                            label:'Male',
-                            element: 'input',
+                        genderSelect:{
                             name:'gender',
                             type:'radio',
-                            value:'male',
-                            id:'male'
-                        },
-                        female:{
-                            label:'Female',
                             element: 'input',
-                            name:'gender',
-                            type:'radio',
-                            value:'female',
-                            id:'female'
+                            value:{
+                                male:'Male',
+                                female:'Female'
+                            }
                         }
                     },
                     actions:{

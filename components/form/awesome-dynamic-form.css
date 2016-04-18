@@ -30,6 +30,7 @@ awesome-dynamic-form button{
 }
 
 awesome-dynamic-form input[type=input] {
+    height: 2.5em;
     padding: .3em;
     border-radius: .3em;
     border: none;
