@@ -49,7 +49,6 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                 title.innerHTML = formData.formDefinition.name;
                 form.appendChild(title);
 
-
                 for(const i in formData.fields){
                     this.create(form, formData, i);
                 }
@@ -68,6 +67,8 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
 
                     this[id]=function(){
                         const data = this.getElementData(this);
+
+                        //send the data, just console logging for now
                         console.log(JSON.stringify(data));
                         dispatcher.trigger(
                             actionTrigger,
@@ -93,7 +94,6 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
 
 
                 for(const j in formData.fields[i]){
-
                     switch (j) {
                         case 'element':
                             continue;
@@ -120,7 +120,11 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
             }
 
             multipleElements(form,elementObject){
+                const multipleWrapper = document.createElement('form');
+                multipleWrapper.setAttribute('class', 'elementWrapper');
+
                 for(const j in elementObject.value){
+                    multipleWrapper.setAttribute('id', elementObject.name);
                     const element = document.createElement(elementObject.element);
                     const label = document.createElement('label');
                     label.innerHTML = elementObject.value[j];
@@ -130,32 +134,48 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                             element.setAttribute('id', elementObject.value[j]);
                             continue;
                         }
+                        if(i == 'element'){
+                            continue;
+                        }
                         element.setAttribute(i, elementObject[i]);
                     }
-                    form.appendChild(label);
-                    form.appendChild(element);
+                    multipleWrapper.appendChild(label);
+                    multipleWrapper.appendChild(element);
                 }
-
+                form.appendChild(multipleWrapper);
             }
 
             getElementData(){
                 let data = {};
                 for(const j in this.children){
-                    if(!this.children[j].id){
+
+                    if(!this.children[j].id || this.children[j].localName == 'button' || !isNaN(j)){
                         continue;
                     };
-                    if(this.children[j].localName == 'button'){
-                        continue;
-                    }
                     let id = this.children[j].id;
                     data[id] = {};
+                    data[id] = this.children[j].value;
 
-                    //this is a special case, if more should are added should be a switch case
-                    if(this.children[j].type == 'radio'){
-                        data[id].checked = this.children[j].checked;
+                    if(this.children[j].className == 'elementWrapper'){
+                        const wrapper =this.children[j];
+                        for(const k in wrapper.children){
+                            if(!isNaN(k)){
+                                continue;
+                            }
+                            switch (wrapper.children[k].type) {
+                                case 'radio':
+                                    if(wrapper.children[k].checked){
+                                        data[j] = wrapper.children[k].value;
+                                    }
+                                    break;
+                                default:
+                                    if(wrapper.children[k].value){
+                                        data[j] = wrapper.children[k].value;
+                                    }
+                                    break;
+                            }
+                        }
                     }
-
-                    data[id].value = this.children[j].value;
                 }
                 return(data);
             }
@@ -166,7 +186,6 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                 'awesome-ready',
                 init
             );
-
             return;
         }
 
