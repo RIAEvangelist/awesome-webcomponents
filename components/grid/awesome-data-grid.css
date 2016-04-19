@@ -13,18 +13,11 @@ awesome-data-grid > * {
     width:100%;
 }
 
-awesome h1{
+awesome-data-grid h1{
     text-align: center;
 }
 
-awesome-data-grid .data-grid-list{
-    position: absolute;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-awesome-data-grid ul{
+awesome-data-grid table{
     position: absolute;
     left: 0;
     top: 5em;
@@ -32,7 +25,7 @@ awesome-data-grid ul{
     padding: 0;
 }
 
-awesome-data-grid ul li{
+awesome-data-grid table td{
     width: auto;
     height: 2em;
     cursor:pointer;
@@ -42,7 +35,7 @@ awesome-data-grid ul li{
     box-shadow: 0 0 .3em rgba(0, 0, 0, 0.55);
 }
 
-awesome-data-grid ul li:hover{
+awesome-data-grid table tr td:hover{
     border: 0.15em solid #C1C1C1;
     background-color:rgba(255, 255, 255, 0.6);
     box-shadow: 0 0 0.75em rgba(244, 231, 231, 0.55);

@@ -45,7 +45,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             }
 
             clicked(e){
-                if(e.target.localName !== 'li'){
+                if(e.target.localName !== 'td'){
                     return;
                 }
 
@@ -70,7 +70,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
             generate(gridData){
                 const grid = document.querySelector('awesome-data-grid');
-                const listItem = document.createElement('ul');
+                const myTable = document.createElement('table');
 
                 const title = document.createElement('h1');
                 title.innerHTML = gridData.gridDefinition.name;
@@ -79,8 +79,8 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 for(const i in gridData.data){
                     if(typeof gridData.data[i]=='object'){
                         for(const j in gridData.data[i]){
-                            listItem.innerHTML += `<li>${gridData.data[i][j].firstName}, ${gridData.data[i][j].lastName}</li>`;
-                            grid.appendChild(listItem);
+                            myTable.insertRow(i).innerHTML = `<td>${gridData.data[i][j].firstName}, ${gridData.data[i][j].lastName}</td>`;
+                            grid.appendChild(myTable);
                         }
                     }
                 }
