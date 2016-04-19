@@ -69,21 +69,43 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             }
 
             generate(gridData){
-                const grid = document.querySelector('awesome-data-grid');
                 const myTable = document.createElement('table');
-
                 const title = document.createElement('h1');
-                title.innerHTML = gridData.gridDefinition.name;
-                grid.appendChild(title);
+                title.innerHTML = gridData.gridDefinition.title;
+                this.appendChild(title);
+                let tableHeaders = `<tr><th> </th>`;
+                let tableData = `<tr>`
+                for(const i in gridData.keys){
+                    tableHeaders += `<th> ${i} </th>`;
+
+                }
 
                 for(const i in gridData.data){
-                    if(typeof gridData.data[i]=='object'){
-                        for(const j in gridData.data[i]){
-                            myTable.insertRow(i).innerHTML = `<td>${gridData.data[i][j].firstName}, ${gridData.data[i][j].lastName}</td>`;
-                            grid.appendChild(myTable);
+                    tableData += `<td>${i}</td>`
+                    for(const j in gridData.keys){
+                        if(gridData.data[i][j]){
+                            tableData += `<td>${gridData.data[i][j]}</td>`;
+                            continue;
                         }
+                        tableData +=`<td></td>`;
                     }
+                    tableData += `</tr><tr>`;
                 }
+
+                tableHeaders += `</tr>`;
+                tableData += `</tr>`;
+                myTable.innerHTML = tableHeaders + tableData;
+
+                this.appendChild(myTable);
+
+                // for(const i in gridData.data){
+                //     if(typeof gridData.data[i]=='object'){
+                //         for(const j in gridData.data[i]){
+                //             myTable.insertRow(i).innerHTML = `<td>${gridData.data[i][j].firstName}</td>`;
+                //             this.appendChild(myTable);
+                //         }
+                //     }
+                // }
             }
 
             generalRemoveDialog(e){
