@@ -1,6 +1,6 @@
 awesome-data-grid {
     display: flex;
-    width: 45em;
+    width: 60em;
     height: 35em;
     flex-direction: row;
     flex-wrap: wrap;
@@ -25,13 +25,33 @@ awesome-data-grid table{
     padding: 0;
 }
 
+awesome-data-grid table tr:first-child{
+    background: rgba(95, 98, 103, 0.3);
+}
+
+awesome-data-grid table .arrow{
+    position: absolute;
+    top: 8px;
+    right:0;
+    width: 0;
+    height: 0;
+    cursor:pointer;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid rgba(136, 135, 135, 0.6);
+}
+
+awesome-data-grid .arrow.arrowUp{
+    border-top: none;
+    border-bottom: 8px solid rgba(136, 135, 135, 0.6);
+}
+
 awesome-data-grid table td{
     width: auto;
     height: 2em;
     cursor:pointer;
     font-size: 1.5em;
     border: 0.1em solid #C1C1C1;
-    border-radius: 0.225em;
     box-shadow: 0 0 .3em rgba(0, 0, 0, 0.55);
 }
 

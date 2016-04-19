@@ -45,27 +45,29 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             }
 
             clicked(e){
-                if(e.target.localName !== 'td'){
+                if(e.target.localName !== 'td' && e.target.className !== 'arrow'){
                     return;
                 }
 
-                this.dialog = document.createElement('awesome-dialog');
-                document.body.appendChild(this.dialog);
-                this.dialog.innerHTML=`
-                    <button class='closeButton'>
-                        Close
-                    </button>
-                    <button class='editButton'>
-                        Edit
-                    </button>
-                    <button class='saveButton'>
-                        Save
-                    </button>
-                `;
-                this.dialog.addEventListener(
-                   'click',
-                   this.generalRemoveDialog
-                );
+                if(e.target.localName == 'td'){
+                    this.dialog = document.createElement('awesome-dialog');
+                    document.body.appendChild(this.dialog);
+                    this.dialog.innerHTML=`
+                        <button class='closeButton'>
+                            Close
+                        </button>
+                        <button class='editButton'>
+                            Edit
+                        </button>
+                        <button class='saveButton'>
+                            Save
+                        </button>
+                    `;
+                    this.dialog.addEventListener(
+                       'click',
+                       this.generalRemoveDialog
+                    );
+                }
             }
 
             generate(gridData){
@@ -76,8 +78,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 let tableHeaders = `<tr><th> </th>`;
                 let tableData = `<tr>`
                 for(const i in gridData.keys){
-                    tableHeaders += `<th> ${i} </th>`;
-
+                    tableHeaders += `<th>${i}<span class='arrow'></span></th>`;
                 }
 
                 for(const i in gridData.data){
@@ -97,15 +98,6 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 myTable.innerHTML = tableHeaders + tableData;
 
                 this.appendChild(myTable);
-
-                // for(const i in gridData.data){
-                //     if(typeof gridData.data[i]=='object'){
-                //         for(const j in gridData.data[i]){
-                //             myTable.insertRow(i).innerHTML = `<td>${gridData.data[i][j].firstName}</td>`;
-                //             this.appendChild(myTable);
-                //         }
-                //     }
-                // }
             }
 
             generalRemoveDialog(e){
