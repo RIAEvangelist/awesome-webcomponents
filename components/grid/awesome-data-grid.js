@@ -45,7 +45,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             }
 
             clicked(e){
-                if(e.target.localName !== 'td' && e.target.className !== 'arrow'){
+                if(e.target.localName !== 'td' && !(e.target.classList.contains('arrow'))){
                     return;
                 }
 
@@ -68,9 +68,14 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                        this.generalRemoveDialog
                     );
                 }
+                if(e.target.classList.contains('arrow')){
+                    e.target.classList.toggle('arrowUp');
+                    this.sort(e.target.id);
+                }
             }
 
             generate(gridData){
+                this.data = gridData;
                 const myTable = document.createElement('table');
                 const title = document.createElement('h1');
                 title.innerHTML = gridData.gridDefinition.title;
@@ -78,7 +83,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 let tableHeaders = `<tr><th> </th>`;
                 let tableData = `<tr>`
                 for(const i in gridData.keys){
-                    tableHeaders += `<th>${i}<span class='arrow'></span></th>`;
+                    tableHeaders += `<th>${gridData.keys[i]}<span class='arrow ${i}' id='${i}'></span></th>`;
                 }
 
                 for(const i in gridData.data){
@@ -99,6 +104,21 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
                 this.appendChild(myTable);
             }
+
+            sort(key){
+                // firstname, lastname, age, ID, DOB are keys etc
+                const sortedList = [];
+                for(const i in this.data.data){
+                    if(typeof this.data.data[i][key] == 'string'){
+                        console.log(this.data.data[i][key],'string!');
+
+                    }
+                    if(typeof this.data.data[i][key] == 'number'){
+                        console.log(this.data.data[i][key],'number!');
+                    }
+                }
+            }
+
 
             generalRemoveDialog(e){
                 if(!e.target.classList.contains('closeButton')){
