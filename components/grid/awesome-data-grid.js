@@ -107,16 +107,24 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
             sort(key){
                 // firstname, lastname, age, ID, DOB are keys etc
-                const sortedList = [];
+                const original = [];
+                const stringList = [];
+                const numList = [];
                 for(const i in this.data.data){
                     if(typeof this.data.data[i][key] == 'string'){
-                        console.log(this.data.data[i][key],'string!');
-
+                        original.push(this.data.data[i][key]);
+                        stringList.push(this.data.data[i][key]);
                     }
                     if(typeof this.data.data[i][key] == 'number'){
-                        console.log(this.data.data[i][key],'number!');
+                        original.push(this.data.data[i][key]);
+                        numList.push(this.data.data[i][key]);
                     }
                 }
+
+                console.log('Original',original);
+                console.log('Strings sorted',stringList.sort());
+
+                console.log('Numbers sorted', numList.sort(function(a,b){return a-b}));
             }
 
 
