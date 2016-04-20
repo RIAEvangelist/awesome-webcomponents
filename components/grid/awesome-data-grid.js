@@ -1,7 +1,6 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
-awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
 (
     function(){
@@ -45,29 +44,10 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             }
 
             clicked(e){
-                if(e.target.localName !== 'td' && !(e.target.classList.contains('arrow'))){
+                if(!(e.target.classList.contains('arrow'))){
                     return;
                 }
 
-                if(e.target.localName == 'td'){
-                    this.dialog = document.createElement('awesome-dialog');
-                    document.body.appendChild(this.dialog);
-                    this.dialog.innerHTML=`
-                        <button class='closeButton'>
-                            Close
-                        </button>
-                        <button class='editButton'>
-                            Edit
-                        </button>
-                        <button class='saveButton'>
-                            Save
-                        </button>
-                    `;
-                    this.dialog.addEventListener(
-                       'click',
-                       this.generalRemoveDialog
-                    );
-                }
                 if(e.target.classList.contains('arrow')){
                     e.target.classList.toggle('arrowUp');
                     this.sort(e.target.id);
@@ -80,14 +60,13 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 const title = document.createElement('h1');
                 title.innerHTML = gridData.gridDefinition.title;
                 this.appendChild(title);
-                let tableHeaders = `<tr><th> </th>`;
+                let tableHeaders = `<tr>`;
                 let tableData = `<tr>`
                 for(const i in gridData.keys){
                     tableHeaders += `<th>${gridData.keys[i]}<span class='arrow ${i}' id='${i}'></span></th>`;
                 }
 
                 for(const i in gridData.data){
-                    tableData += `<td>${i}</td>`
                     for(const j in gridData.keys){
                         if(gridData.data[i][j]){
                             tableData += `<td>${gridData.data[i][j]}</td>`;
@@ -126,15 +105,6 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
                 console.log('Numbers sorted', numList.sort(function(a,b){return a-b}));
             }
-
-
-            generalRemoveDialog(e){
-                if(!e.target.classList.contains('closeButton')){
-                    return;
-                }
-                document.body.removeChild(this);
-            }
-
         }
 
         if(!awesome.ready){
