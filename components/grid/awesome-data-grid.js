@@ -49,8 +49,14 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                 }
 
                 if(e.target.classList.contains('arrow')){
-                    e.target.classList.toggle('arrowUp');
                     this.sort(e.target.id);
+
+                    const a = this.querySelectorAll('.arrow');
+                    for(let i=0; i<a.length; i++){
+                        if(a[i].classList.contains(e.target.id)){
+                            a[i].classList.toggle('arrowUp');
+                        }
+                    }
                 }
             }
 
@@ -93,17 +99,28 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
             }
 
             sort(key){
-                const sortedData = this.data.data.slice(0);
-                sortedData.sort(function(a,b){
-                    const x = a[key].toLowerCase();
-                    const y = b[key].toLowerCase();
-                    return x < y ? -1 : x > y ? 1 : 0;
-                });
+                for(const i in this.data.data){
+                    for(const j in this.data.keys){
+                        if(!(this.data.keys[j] in this.data.data[i])){
+                            if(this.data.data[i][j] == undefined){
+                                this.data.data[i][j] = '';
+                            }
+                        }
+                    }
+                }
 
+                const sortedData = this.data.data.slice(0);
+                sortedData.sort(
+                    function(a,b){
+                        const x = a[key].toLowerCase();
+                        const y = b[key].toLowerCase();
+
+                        return x < y ? -1 : x > y ? 1 : 0;
+                    }
+                );
                 this.data.data = sortedData;
 
                 const newObj = this.data;
-
                 this.generate(this.data, newObj);
             }
         }
