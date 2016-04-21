@@ -106,8 +106,16 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                                 this.data.data[i][j] = '';
                             }
                         }
+                        // if(typeof(this.data.data[i][j])=='string'){
+                        //     console.log('string')
+                        // }
+                        // if(typeof(this.data.data[i][j])=='number'){
+                        //     console.log('number')
+                        // }
                     }
                 }
+
+
 
                 const sortedData = this.data.data.slice(0);
                 sortedData.sort(
