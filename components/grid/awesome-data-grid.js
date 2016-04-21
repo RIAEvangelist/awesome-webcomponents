@@ -74,8 +74,16 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 }
             }
 
-            generate(gridData){
+            generate(gridData, newObj){
                 this.data = gridData;
+                if(newObj){
+                    const oldTable = this.querySelector('table');
+                    const oldTitle = this.querySelector('h1');
+                    this.removeChild(oldTable);
+                    this.removeChild(oldTitle);
+                    this.data = gridData;
+                }
+
                 const myTable = document.createElement('table');
                 const title = document.createElement('h1');
                 title.innerHTML = gridData.gridDefinition.title;
@@ -87,7 +95,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 }
 
                 for(const i in gridData.data){
-                    tableData += `<td>${i}</td>`
+                    tableData += `<td></td>`;
                     for(const j in gridData.keys){
                         if(gridData.data[i][j]){
                             tableData += `<td>${gridData.data[i][j]}</td>`;
@@ -106,27 +114,19 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             }
 
             sort(key){
-                // firstname, lastname, age, ID, DOB are keys etc
-                const original = [];
-                const stringList = [];
-                const numList = [];
-                for(const i in this.data.data){
-                    if(typeof this.data.data[i][key] == 'string'){
-                        original.push(this.data.data[i][key]);
-                        stringList.push(this.data.data[i][key]);
-                    }
-                    if(typeof this.data.data[i][key] == 'number'){
-                        original.push(this.data.data[i][key]);
-                        numList.push(this.data.data[i][key]);
-                    }
-                }
+                const sortedData = this.data.data.slice(0);
+                sortedData.sort(function(a,b){
+                    const x = a[key].toLowerCase();
+                    const y = b[key].toLowerCase();
+                    return x < y ? -1 : x > y ? 1 : 0;
+                })
 
-                console.log('Original',original);
-                console.log('Strings sorted',stringList.sort());
+                this.data.data = sortedData;
 
-                console.log('Numbers sorted', numList.sort(function(a,b){return a-b}));
+                const newObj = this.data;
+
+                this.generate(this.data, newObj);
             }
-
 
             generalRemoveDialog(e){
                 if(!e.target.classList.contains('closeButton')){
