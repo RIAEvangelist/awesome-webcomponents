@@ -77,7 +77,7 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                 let tableHeaders = `<tr>`;
                 let tableData = `<tr>`
                 for(const i in gridData.keys){
-                    tableHeaders += `<th>${gridData.keys[i]}<span class='arrow ${i}' id='${i}'></span></th>`;
+                    tableHeaders += `<th>${gridData.keys[i].label}<span class='arrow ${i}' id='${i}'></span></th>`;
                 }
 
                 for(const i in gridData.data){
