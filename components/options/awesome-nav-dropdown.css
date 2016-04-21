@@ -1,0 +1,56 @@
+awesome-nav-dropdown {
+    display: inline-table;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+awesome-nav-dropdown button.navButton{
+    width: 9em;
+    font-size: 1.5em;
+    border-radius: 0;
+    border:none;
+    box-shadow:none;
+    background:rgb(230,230,230);
+    cursor:pointer;
+}
+
+awesome-nav-dropdown button:hover {
+    background-color: rgb(120, 120, 120);
+    color: rgb(255, 255, 255);
+    transition: 375ms;
+}
+
+awesome-nav-dropdown .flaticon-icons-arrows {
+    padding-left: .5em;
+}
+
+awesome-nav-dropdown .content {
+    display: none;
+    position: absolute;
+    background-color: rgb(193, 193, 193);
+    min-width: 2.5em;
+    box-shadow: .1em .2em .75em rgba(0, 0, 0, .12);
+}
+
+awesome-nav-dropdown .content a {
+    color: black;
+    padding: .9em 1em;
+    text-decoration: none;
+    display: block;
+}
+
+awesome-nav-dropdown .content a:hover {
+    background-color: rgb(128, 128, 128);
+    transition: 150ms;
+}
+
+awesome-nav-dropdown:hover .content{
+    display:block;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}
