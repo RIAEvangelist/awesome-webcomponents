@@ -14,60 +14,92 @@
             function init(){
                 const form = document.querySelector('awesome-dynamic-form');
                 const test = {
-                    formDefinition:{
-                        name: 'User Data'
-                    },
-                    fields:{
-                        firstname:{
-                            label:'Firstname',
-                            placeholder: 'Walter',
-                            element: 'input',
-                            type: 'input',
-                            id:'firstname'
+                    elements:{
+                        nameLabel:{
+                            config:{
+                                element:'h1'
+                            },
+                            properties:{
+                                innerHTML:'User Info'
+                            }
                         },
-                        lastname:{
-                            label:'Lastname',
-                            placeholder: 'White',
-                            element: 'input',
-                            type: 'input',
-                            id:'lastname'
+                        firstname:{
+                            attributes:{
+                                type:'text',
+                                placeholder:'First Name',
+                                id:'firstName'
+                            },
+                            config:{
+                                element: 'input'
+                            }
+                        },
+                        lastName:{
+                            attributes:{
+                                type:'text',
+                                placeholder:'Last Name',
+                                id:'lastName'
+                            },
+                            config:{
+                                element: 'input'
+                            },
                         },
                         range:{
-                            path:`${awesome.path}components/range/awesome-range.js`,
-                            element:'awesome-range',
-                            dataAttr:{
-                                'data-max': 3,
-                                'data-step': 1,
-                                'data-value': 1,
-                                'data-disabled':'false'
+                            attributes:{
+                                id:'range'
                             },
-                            label:'Range',
-                            id:'range'
-                        },
-                        gender:{
-                            element:'div',
-                            label:'Gender'
-                        },
-                        genderSelect:{
-                            name:'gender',
-                            type:'radio',
-                            element: 'input',
-                            value:{
-                                male:'male',
-                                female:'female'
+                            dataset:{
+                                max: 3,
+                                step: 1,
+                                value: 1,
+                                disabled: false
+                            },
+                            config:{
+                                element:'awesome-range',
+                                path: `${awesome.path}components/range/awesome-range.js`
                             }
-                        }
-                    },
-                    actions:{
-                        save:{
-                            label:'Save',
-                            id:'save',
-                            actionTrigger: 'saveAllFields'
                         },
-                        clear:{
-                            label:'Clear',
-                            id: 'clear',
-                            actionTrigger: 'clearAllFields'
+                        male:{
+                            attributes:{
+                                name:'gender',
+                                value:'male',
+                                id:'male',
+                                type:'radio'
+                            },
+                            config:{
+                                element:'input'
+                            },
+                            eventHandlers:{}
+                        },
+                        female:{
+                            attributes:{
+                                name:'gender',
+                                value:'female',
+                                id:'female',
+                                type:'radio'
+                            },
+                            config:{
+                                element:'input',
+                            },
+                            eventHandlers:{}
+                        },
+                        submit:{
+                            attributes:{
+                                innerHTML:'submit',
+                                id:'submit',
+
+                            },
+                            properties:{
+                                innerHTML:'submit'
+                            },
+                            config:{
+                                element:'button'
+                            },
+                            eventHandlers:{
+                                event:'click',
+                                callback:function(){
+                                    console.log('wat')
+                                }
+                            }
                         }
                     }
                 }
