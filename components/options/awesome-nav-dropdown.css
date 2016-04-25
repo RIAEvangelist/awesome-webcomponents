@@ -27,8 +27,9 @@ awesome-nav-dropdown .flaticon-icons-arrows {
 awesome-nav-dropdown .content {
     display: none;
     position: absolute;
+
     background-color: rgb(193, 193, 193);
-    min-width: 2.5em;
+    min-width: 3.5em;
     box-shadow: .1em .2em .75em rgba(0, 0, 0, .12);
 }
 

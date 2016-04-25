@@ -203,9 +203,9 @@ src: url("../fonts/flatIcon/Flaticon.svg#Flaticon") format("svg");
 [class^="flaticon-icons-"]:before, [class*=" flaticon-icons-"]:before,
 [class^="flaticon-icons-"]:after, [class*=" flaticon-icons-"]:after {
   font-family: Flaticon-icons;
-        font-size: .6em;
+        font-size: .7em;
 font-style: normal;
-margin-left: 0em;
+margin-left: .5em;
 }
 
 .flaticon-icons-arrows:before { content: "\f100"; }
