@@ -30,13 +30,9 @@ awesome-sidebar .sidebar-stub{
     background-color: rgb(147,147,147);
 }
 
-awesome-sidebar .sidebar-content {
-
-}
-
 awesome-sidebar.showSidebar {
-  right:0;
-  transition: right 0.5s;
+    right:0;
+    transition: right 0.5s;
 }
 /*******************************\
 Small desktop windows and mobile

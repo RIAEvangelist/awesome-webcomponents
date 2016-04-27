@@ -41,67 +41,84 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
 
             generate(formData){
                 for(const i in formData.elements){
-                    const elements = formData.elements;
+                    const element = formData.element;
 
                     //lets handle the config first
-                    if(!elements[i].config){
-                        return false;
+                    if(!element.config){
+                        //should default in here
                     }
-                    if(elements[i].config.path){
-                        awesome.requireScript(elements[i].config.path);
+                    if(element.config.path){
+                        awesome.requireScript(element.config.path);
                     }
-                    const newElement = document.createElement(elements[i].config.element);
+                    const newElement = document.createElement(element.config.element);
 
-                    for(const j in elements[i]){
-                        const elementData = elements[i][j];
-                        switch(j) {
-                            case 'attributes':
-                                this.assignAttributes(newElement,elementData);
-                                break;
-                            case 'dataset':
-                                this.assignDataset(newElement,elementData);
-                                break;
-                            case 'properties':
-                                this.assignProperties(newElement,elementData);
-                                break;
-                            case 'eventHandlers':
-                                this.assignCallbacks(newElement,elementData);
-                                break;
-                            default:
-                                break;
-                        }
-                    }
+                    this.assignAttributes(newElement,element.attributes);
+                    this.assignProperties(newElement,element.properties);
+                    this.assignDataset(newElement,element.dataset);
+                    this.assignEventHandler(newElement,element.eventHandlers);
+
+                    // for(const j in element){
+                    //     const elementData = element[j];
+                    //     switch(j) {
+                    //         case 'attributes':
+                    //             this.assignAttributes(newElement,elementData);
+                    //             break;
+                    //         case 'dataset':
+                    //             this.assignDataset(newElement,elementData);
+                    //             break;
+                    //         case 'properties':
+                    //             this.assignProperties(newElement,elementData);
+                    //             break;
+                    //         case 'eventHandlers':
+                    //             this.assignCallbacks(newElement,elementData);
+                    //             break;
+                    //         default:
+                    //             break;
+                    //     }
+                    // }
                     this.appendChild(newElement);
                 }
             }
+        }
 
-            assignAttributes(el, attributes){
-                for(const i in attributes){
-                    el.setAttribute(i, attributes[i]);
-                }
+        assignAttributes(el, attributes){
+            for(const i in attributes){
+                el.setAttribute(i, attributes[i]);
+            }
+        }
+
+        assignProperties(el, properties){
+            for(const prop in properties){
+                el[prop] = properties[prop];
+            }
+        }
+
+        assignDataset(el, dataset){
+            for(const key in dataset){
+                el.dataset[key]=dataset[i];
+            }
+        }
+
+        assignEventHandler(el, event){
+            if(!event){
+                return false;
             }
 
-            assignProperties(el, attributes){
-                for(const i in attributes){
-                    el[i] = attributes[i];
-                }
+            if(Array.isArray(event)){
+                return this.assignEventHandlers(el,events);
             }
 
-            assignDataset(el, dataset){
-                for(const i in dataset){
-                    el.setAttribute(`data-${i}`, dataset[i]);
-                }
+            if(!eventData.event || !eventData.callback){
+                return false;
             }
+            el.addEventListener(
+                eventData.event,
+                eventData.callback
+            );
+        }
 
-            assignCallbacks(el, eventData){
-                if(!eventData.event || !eventData.callback){
-                    return false;
-                }
-                el.addEventListener(
-                    eventData.event,
-                    eventData.callback
-                );
-            }
+        assignEventHandlers(){
+
         }
 
         if(!awesome.ready){
