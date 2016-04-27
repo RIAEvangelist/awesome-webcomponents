@@ -18,6 +18,8 @@ awesome.language={
         ok:'De acuerdo',
         cancel:'Cancelar',
 
+        timeleft:'Tiempo Restante',
+
         'awesome-login-screen-header':'Iniciar sesión'
     }
 };

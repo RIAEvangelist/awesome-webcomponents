@@ -18,6 +18,8 @@ awesome.language={
         ok:'はい',
         cancel:'キャンセル',
 
+        timeleft:'残り時間',
+
         'awesome-login-screen-header':'顧客ログイン'
     }
 };

@@ -17,6 +17,8 @@ awesome.language={
         ok:'Хорошо',
         cancel:'Отмена',
 
+        timeleft:'Время вышло',
+
         'awesome-login-screen-header':'Вход'
     }
 };
