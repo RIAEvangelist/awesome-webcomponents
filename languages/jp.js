@@ -18,6 +18,7 @@ awesome.language={
         ok:'はい',
         cancel:'キャンセル',
 
+        languages:'言語',
         timeleft:'残り時間',
 
         'awesome-login-screen-header':'顧客ログイン'

@@ -18,6 +18,7 @@ awesome.language={
         ok:'De acuerdo',
         cancel:'Cancelar',
 
+        languages:'Idiomas',
         timeleft:'Tiempo Restante',
 
         'awesome-login-screen-header':'Iniciar sesión'
