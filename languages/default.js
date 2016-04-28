@@ -24,6 +24,9 @@ awesome.language={
         ok:'OK',
         cancel:'Cancel',
 
+        languages:'Languages',
+        timeleft:'Time Left',
+
         'awesome-login-screen-header':'Login'
     }
 };
