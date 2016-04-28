@@ -7,6 +7,7 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
         let dispatcher=null;
         let constants = null;
         let action = null;
+        let ascending = false;
         const defaults={};
 
         function init(e){
@@ -49,8 +50,7 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                 }
 
                 if(e.target.classList.contains('arrow')){
-                    this.sort(e.target.id);
-
+                    this.sort(e.target);
                     const a = this.querySelectorAll('.arrow');
                     for(let i=0; i<a.length; i++){
                         if(a[i].classList.contains(e.target.id)){
@@ -99,6 +99,7 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
             }
 
             sort(key){
+                // For loop adds empty string to any missing property
                 for(const i in this.data.data){
                     for(const j in this.data.keys){
                         if(!(this.data.keys[j] in this.data.data[i])){
@@ -106,30 +107,75 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                                 this.data.data[i][j] = '';
                             }
                         }
-                        // if(typeof(this.data.data[i][j])=='string'){
-                        //     console.log('string')
-                        // }
-                        // if(typeof(this.data.data[i][j])=='number'){
-                        //     console.log('number')
-                        // }
                     }
                 }
 
+                const ascendingData = this.data.data.slice(0);
+                const descendingData = this.data.data.slice(0);
+                const typeSort = this.data.keys[key.id].type;
+                switch(typeSort){
+                case 'string':
+                    if(key.classList.contains('arrowUp')){
+                        descendingData.sort(
+                            function(a,b){
+                                const x = b[key.id].toLowerCase();
+                                const y = a[key.id].toLowerCase();
 
+                                return x < y ? -1 : x > y ? 1 : 0;
+                            }
+                        );
 
-                const sortedData = this.data.data.slice(0);
-                sortedData.sort(
-                    function(a,b){
-                        const x = a[key].toLowerCase();
-                        const y = b[key].toLowerCase();
-
-                        return x < y ? -1 : x > y ? 1 : 0;
+                        this.data.data = descendingData;
+                        const numSortObj = this.data;
+                        this.generate(this.data, numSortObj);
+                        console.log('descendingData',descendingData);
+                        return;
                     }
-                );
-                this.data.data = sortedData;
+                    ascendingData.sort(
+                        function(a,b){
+                            const x = a[key.id].toLowerCase();
+                            const y = b[key.id].toLowerCase();
 
-                const newObj = this.data;
-                this.generate(this.data, newObj);
+                            return x < y ? -1 : x > y ? 1 : 0;
+                        }
+                    );
+
+                    this.data.data = ascendingData;
+
+                    const stringSortObj = this.data;
+                    this.generate(this.data, stringSortObj);
+                    break;
+                case 'number':
+                    if(key.classList.contains('arrowUp')){
+
+                        descendingData.sort(
+                            function(a,b){
+                                return b[key.id]-a[key.id];
+                            }
+                        );
+
+                        this.data.data = descendingData;
+                        const numSortObj = this.data;
+                        this.generate(this.data, numSortObj);
+                        console.log('descendingData',descendingData);
+                        return;
+                    }
+
+                    ascendingData.sort(
+                        function(a,b){
+                            return a[key.id]-b[key.id];
+                        }
+                    );
+
+                    this.data.data = ascendingData;
+                    const numSortObj = this.data;
+                    this.generate(this.data, numSortObj);
+                    console.log('ascendingData',ascendingData);
+                    break;
+                case 'date':
+                    console.log('date');
+                    break;
+                }
             }
         }
 
