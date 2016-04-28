@@ -14,8 +14,12 @@ awesome.language={
         fileLastModified:'Последнее изменение',
         fileContent:'содержание',
         noFilesSelected:'Файлы не выбраны',
+
         ok:'Хорошо',
         cancel:'Отмена',
+
+        languages:'Языки',
+        timeleft:'Время вышло',
 
         'awesome-login-screen-header':'Вход'
     }
