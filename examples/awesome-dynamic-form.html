@@ -14,7 +14,10 @@
             function init(){
                 const form = document.querySelector('awesome-dynamic-form');
                 const test = {
-                    elements:{
+                    formAttributes:{
+
+                    },
+                    formElements:{
                         nameLabel:{
                             config:{
                                 element:'h1'
@@ -31,7 +34,6 @@
                         },
                         lastName:{
                             attributes:{
-                                type:'text',
                                 placeholder:'Last Name',
                                 id:'lastName'
                             }
@@ -51,7 +53,7 @@
                                 path: `${awesome.path}components/range/awesome-range.js`
                             }
                         },
-                        male:{
+                        gender:{
                             attributes:{
                                 name:'gender',
                                 value:'male',

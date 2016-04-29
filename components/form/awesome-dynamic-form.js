@@ -26,9 +26,18 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
 
         class Component extends HTMLElement{
             createdCallback(){
+                awesome.mergeDataset(this);
+                const content = awesome.loadTemplate(this);
+                this.innerHTML= `
+                    <form>
+                        ${content.content}
+                    </form>
+                    ${content.template}
+                `
             }
 
             attachedCallback(){
+                this.formContents = '';
             }
 
             detachedCallback(){
@@ -40,12 +49,13 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
             }
 
             generate(formData){
+                const form = this.querySelector('form');
                 for(const i in formData.elements){
                     const element = formData.element;
 
                     //lets handle the config first
                     if(!element.config){
-                        //should default in here
+
                     }
                     if(element.config.path){
                         awesome.requireScript(element.config.path);
@@ -56,27 +66,7 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                     this.assignProperties(newElement,element.properties);
                     this.assignDataset(newElement,element.dataset);
                     this.assignEventHandler(newElement,element.eventHandlers);
-
-                    // for(const j in element){
-                    //     const elementData = element[j];
-                    //     switch(j) {
-                    //         case 'attributes':
-                    //             this.assignAttributes(newElement,elementData);
-                    //             break;
-                    //         case 'dataset':
-                    //             this.assignDataset(newElement,elementData);
-                    //             break;
-                    //         case 'properties':
-                    //             this.assignProperties(newElement,elementData);
-                    //             break;
-                    //         case 'eventHandlers':
-                    //             this.assignCallbacks(newElement,elementData);
-                    //             break;
-                    //         default:
-                    //             break;
-                    //     }
-                    // }
-                    this.appendChild(newElement);
+                    form.appendChild(newElement);
                 }
             }
         }
@@ -115,10 +105,6 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                 eventData.event,
                 eventData.callback
             );
-        }
-
-        assignEventHandlers(){
-
         }
 
         if(!awesome.ready){
