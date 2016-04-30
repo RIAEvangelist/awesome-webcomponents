@@ -115,7 +115,7 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                 const typeSort = this.data.keys[key.id].type;
                 switch(typeSort){
                 case 'string':
-                    if(key.classList.contains('arrowUp')){
+                    if(ascending){
                         descendingData.sort(
                             function(a,b){
                                 const x = b[key.id].toLowerCase();
@@ -128,7 +128,7 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                         this.data.data = descendingData;
                         const numSortObj = this.data;
                         this.generate(this.data, numSortObj);
-                        console.log('descendingData',descendingData);
+                        ascending = false;
                         return;
                     }
                     ascendingData.sort(
@@ -144,10 +144,10 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
 
                     const stringSortObj = this.data;
                     this.generate(this.data, stringSortObj);
+                    ascending = true;
                     break;
                 case 'number':
-                    if(key.classList.contains('arrowUp')){
-
+                    if(ascending){
                         descendingData.sort(
                             function(a,b){
                                 return b[key.id]-a[key.id];
@@ -157,7 +157,7 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                         this.data.data = descendingData;
                         const numSortObj = this.data;
                         this.generate(this.data, numSortObj);
-                        console.log('descendingData',descendingData);
+                        ascending = false;
                         return;
                     }
 
@@ -170,10 +170,47 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                     this.data.data = ascendingData;
                     const numSortObj = this.data;
                     this.generate(this.data, numSortObj);
-                    console.log('ascendingData',ascendingData);
+                    ascending = true;
                     break;
                 case 'date':
-                    console.log('date');
+                    if(ascending){
+                        console.log('inside descending')
+                        descendingData.sort(
+                            function(a,b){
+
+                                if((isNaN(new Date(a[key.id])) === true) || (isNaN(new Date(b[key.id]))=== true)){
+                                    a[key.id] = 0;
+                                    b[key.id] = 0;
+                                }
+
+                                return new Date(b[key.id]).getTime() - new Date(a[key.id]).getTime();
+                            }
+                        );
+
+                        this.data.data = descendingData;
+                        const dateSortObj = this.data;
+                        this.generate(this.data, dateSortObj);
+                        ascending = false;
+                        return;
+                    }
+                    console.log(this.data.data);
+                    ascendingData.sort(
+                        function(a,b){
+
+                            if((isNaN(new Date(a[key.id])) === true) || (isNaN(new Date(b[key.id]))=== true)){
+                                a[key.id] = '00/00/00';
+                                b[key.id] = '00/00/00';
+                            }
+
+                            return new Date(a[key.id]).getTime() - new Date(b[key.id]).getTime();
+                        }
+                    );
+
+                    this.data.data = ascendingData;
+                    const dateSortObj = this.data;
+                    this.generate(this.data, dateSortObj);
+                    console.log('ascending')
+                    ascending = true;
                     break;
                 }
             }
