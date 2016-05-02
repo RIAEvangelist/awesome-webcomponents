@@ -1,5 +1,5 @@
 awesome-sidebar {
-    position: fixed;
+    position:absolute;
     top: 3.25em;
     right: -30em;
     background: rgba(0, 0, 0, 0.4);
