@@ -11,6 +11,7 @@ awesome-sidebar {
 
 awesome-sidebar span.flaticon-three:before{
     position: absolute;
+    pointer-events:none;
     font-size: 2.1em;
     color:white;
     top: 0.5em;
