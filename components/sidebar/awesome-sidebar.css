@@ -1,17 +1,17 @@
 awesome-sidebar {
-    position: fixed;
+    position:absolute;
     top: 3.25em;
     right: -30em;
     background: rgba(0, 0, 0, 0.4);
     width: 30em;
     height: 100%;
-    border-radius: 0 0 0.313em 0;
     box-shadow: 0 0 0.25em rgba(0,0,0,.3);
     transition: right 0.5s;
 }
 
 awesome-sidebar span.flaticon-three:before{
     position: absolute;
+    pointer-events:none;
     font-size: 2.1em;
     color:white;
     top: 0.5em;
