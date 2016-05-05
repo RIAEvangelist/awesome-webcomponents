@@ -174,15 +174,8 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                     break;
                 case 'date':
                     if(ascending){
-                        console.log('inside descending')
                         descendingData.sort(
                             function(a,b){
-
-                                if((isNaN(new Date(a[key.id])) === true) || (isNaN(new Date(b[key.id]))=== true)){
-                                    a[key.id] = 0;
-                                    b[key.id] = 0;
-                                }
-
                                 return new Date(b[key.id]).getTime() - new Date(a[key.id]).getTime();
                             }
                         );
@@ -190,16 +183,19 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                         this.data.data = descendingData;
                         const dateSortObj = this.data;
                         this.generate(this.data, dateSortObj);
+                        // console.log('descending', this.data.data);
                         ascending = false;
                         return;
                     }
-                    console.log(this.data.data);
                     ascendingData.sort(
                         function(a,b){
 
-                            if((isNaN(new Date(a[key.id])) === true) || (isNaN(new Date(b[key.id]))=== true)){
-                                a[key.id] = '00/00/00';
-                                b[key.id] = '00/00/00';
+                            if((isNaN(new Date(a[key.id])) === true)){
+                                a[key.id] = 0;
+                            }
+
+                            if((isNaN(new Date(b[key.id])) === true)){
+                                b[key.id] = 0;
                             }
 
                             return new Date(a[key.id]).getTime() - new Date(b[key.id]).getTime();
@@ -209,7 +205,7 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                     this.data.data = ascendingData;
                     const dateSortObj = this.data;
                     this.generate(this.data, dateSortObj);
-                    console.log('ascending')
+                    // console.log('ascending',this.data.data)
                     ascending = true;
                     break;
                 }
