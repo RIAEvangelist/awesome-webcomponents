@@ -37,49 +37,30 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
             }
 
             detachedCallback(){
-
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
             }
 
             generate(formData){
+                this.createdCallback();
                 const form = this.querySelector('form');
-                form.innerHTML = null;
 
                 if(formData.formAttributes){
                     assignAttributes(form, formData.formAttributes);
                 }
-
                 for(let i = 0; i < formData.formElements.length; i++){
                     const element = formData.formElements[i];
                     if(element.children){
-                        generateNested(element, form);
+                        generateNested(form, element);
                         continue;
                     }
-
-                    //lets handle the config first
-                    if(!element.config){
-
-                    }
-
-
-                    if(element.config.path){
-                        awesome.requireScript(element.config.path);
-                    }
-                    const newElement = document.createElement(element.config.element);
-
-                    assignAttributes(newElement,element.attributes);
-                    assignProperties(newElement,element.properties);
-                    assignDataset(newElement,element.dataset);
-                    assignEventHandler(newElement,element.eventHandlers);
-                    form.appendChild(newElement);
+                    appendElement(form, element);
                 }
             }
         }
 
-        function generateNested(el, parent){
+        function generateNested(parent ,el){
             //default to fieldset
             let newElementSet = document.createElement('fieldset');
             if(el.config){
@@ -88,25 +69,34 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
             assignAttributes(newElementSet, el.attributes);
 
             for(var i = 0; i < el.children.length; i++) {
-                const childElementData = el.children[i];
-                //defualt to input
-                let newChildElement = document.createElement('input');
-                if(childElementData.config){
-                    if(childElementData.config.path){
-                        awesome.requireScript(childElementData.path);
-                    }
-                    if(childElementData.config.element){
-                        newChildElement = document.createElement(childElementData.config.element);
-                    }
+                const childElement = el.children[i];
+
+                if(childElement.children){
+                    generateNested(newElementSet, childElement);
+                    continue;
                 }
-                assignAttributes(newChildElement,childElementData.attributes);
-                assignProperties(newChildElement,childElementData.properties);
-                assignDataset(newChildElement,childElementData.dataset);
-                assignEventHandler(newChildElement,childElementData.eventHandlers);
-                newElementSet.appendChild(newChildElement);
+                appendElement(newElementSet, childElement);
             }
             parent.appendChild(newElementSet);
             return;
+        }
+
+        function appendElement(parentElement, childData){
+            //default to input
+            let newChildElement = document.createElement('input');
+            if(childData.config){
+                if(childData.config.path){
+                    awesome.requireScript(childData.path);
+                }
+                if(childData.config.element){
+                    newChildElement = document.createElement(childData.config.element);
+                }
+            }
+            assignAttributes(newChildElement,childData.attributes);
+            assignProperties(newChildElement,childData.properties);
+            assignDataset(newChildElement,childData.dataset);
+            assignEventHandler(newChildElement,childData.eventHandlers);
+            parentElement.appendChild(newChildElement);
         }
 
         function assignAttributes(el, attributes){
@@ -130,22 +120,16 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
             return;
         }
 
-        function assignEventHandler(el, event){
-            if(!event){
-                return false;
+        function assignEventHandler(el, events){
+            for (var i = 0; i < events.length; i++) {
+                if(!events[i].event || !events[i].callback){
+                    return false;
+                }
+                el.addEventListener(
+                    events[i].event,
+                    events[i].callback
+                );
             }
-
-            if(Array.isArray(event)){
-                return this.assignEventHandlers(el,events);
-            }
-
-            if(!event.event || !event.callback){
-                return false;
-            }
-            el.addEventListener(
-                event.event,
-                event.callback
-            );
             return;
         }
 
