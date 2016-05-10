@@ -1,0 +1,21 @@
+awesome-dynamic-form{
+    display: flex;
+    width: 35em;
+    height: 35em;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content:flex-start;
+    justify-content:flex-start;
+    overflow: auto;
+}
+
+awesome-dynamic-form > *{
+    width: 100%;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}
