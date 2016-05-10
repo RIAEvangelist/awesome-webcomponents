@@ -28,7 +28,19 @@
                             children:[
                                 {
                                     config:{
-
+                                        element:'legend'
+                                    },
+                                    properties:{
+                                        innerText:'legend'
+                                    },
+                                    attributes:{
+                                    },
+                                    eventHandlers:[
+                                    ]
+                                },
+                                {
+                                    config:{
+                                        label:'1'
                                     },
                                     properties:{
 
@@ -39,13 +51,12 @@
                                         type:'radio',
                                         name:'radioSet'
                                     },
-                                    eventHandlers:{
-
-                                    }
+                                    eventHandlers:[
+                                    ]
                                 },
                                 {
                                     config:{
-
+                                        label:'2'
                                     },
                                     properties:{
 
@@ -56,13 +67,12 @@
                                         type:'radio',
                                         name:'radioSet'
                                     },
-                                    eventHandlers:{
-
-                                    }
+                                    eventHandlers:[
+                                    ]
                                 },
                                 {
                                     config:{
-
+                                        label:'3'
                                     },
                                     properties:{
 
@@ -73,91 +83,30 @@
                                         type:'radio',
                                         name:'radioSet'
                                     },
-                                    eventHandlers:{
+                                    eventHandlers:[
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            config:{
 
+                            },
+                            properties:{
+
+                            },
+                            attributes:{
+                                type:'text',
+                                value:'wat!'
+                            },
+                            eventHandlers:[
+                                {
+                                    event:'click',
+                                    callback: function(){
                                     }
                                 }
                             ]
                         }
-
-                        // nameLabel:{
-                        //     config:{
-                        //         element:'h1'
-                        //     },
-                        //     properties:{
-                        //         innerHTML:'User Info'
-                        //     }
-                        // },
-                        // firstname:{
-                        //     attributes:{
-                        //         placeholder:'First Name',
-                        //         id:'firstName'
-                        //     }
-                        // },
-                        // lastName:{
-                        //     attributes:{
-                        //         placeholder:'Last Name',
-                        //         id:'lastName'
-                        //     }
-                        // },
-                        // range:{
-                        //     attributes:{
-                        //         id:'range'
-                        //     },
-                        //     dataset:{
-                        //         max: 3,
-                        //         step: 1,
-                        //         value: 1,
-                        //         disabled: false
-                        //     },
-                        //     config:{
-                        //         element:'awesome-range',
-                        //         path: `${awesome.path}components/range/awesome-range.js`
-                        //     }
-                        // },
-                        // gender:{
-                        //     attributes:{
-                        //         name:'gender',
-                        //         value:'male',
-                        //         id:'male',
-                        //         type:'radio'
-                        //     },
-                        //     config:{
-                        //         element:'input'
-                        //     },
-                        //     eventHandlers:{}
-                        // },
-                        // female:{
-                        //     attributes:{
-                        //         name:'gender',
-                        //         value:'female',
-                        //         id:'female',
-                        //         type:'radio'
-                        //     },
-                        //     config:{
-                        //         element:'input',
-                        //     },
-                        //     eventHandlers:{}
-                        // },
-                        // submit:{
-                        //     attributes:{
-                        //         innerHTML:'submit',
-                        //         id:'submit',
-                        //
-                        //     },
-                        //     properties:{
-                        //         innerHTML:'submit'
-                        //     },
-                        //     config:{
-                        //         element:'button'
-                        //     },
-                        //     eventHandlers:{
-                        //         event:'click',
-                        //         callback:function(){
-                        //             console.log('wat')
-                        //         }
-                        //     }
-                        // }
                     ]
                 }
                 setTimeout(

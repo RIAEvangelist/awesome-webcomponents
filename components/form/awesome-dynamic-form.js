@@ -57,6 +57,7 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                     }
                     appendElement(form, element);
                 }
+                return;
             }
         }
 
@@ -91,12 +92,22 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                 if(childData.config.element){
                     newChildElement = document.createElement(childData.config.element);
                 }
+                if(childData.config.label){
+                    const label = document.createElement('label');
+                    label.innerText = childData.config.label;
+
+                    if(childData.attributes.id){
+                        label.setAttribute('for', childData.attributes.id);
+                    }
+                    parentElement.appendChild(label);
+                }
             }
             assignAttributes(newChildElement,childData.attributes);
             assignProperties(newChildElement,childData.properties);
             assignDataset(newChildElement,childData.dataset);
             assignEventHandler(newChildElement,childData.eventHandlers);
             parentElement.appendChild(newChildElement);
+            return;
         }
 
         function assignAttributes(el, attributes){
@@ -107,14 +118,14 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
         }
 
         function assignProperties(el, properties){
-            for(const prop in properties){
+            for(let prop in properties){
                 el[prop] = properties[prop];
             }
             return;
         }
 
         function assignDataset(el, dataset){
-            for(const key in dataset){
+            for(let key in dataset){
                 el.dataset[key]=dataset[i];
             }
             return;
