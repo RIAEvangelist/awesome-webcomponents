@@ -103,10 +103,23 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                         _raw_state_dont_touch_:{
                             enumarable:false,
                             writable:true,
-                            value:{
-                                on:events.on.bind(events),
-                                off:events.on.bind(events)
-                            }
+                            value:{}
+                        }
+                    }
+                );
+                
+                Object.defineProperties(
+                    this._raw_state_dont_touch_,
+                    {
+                        on:{
+                            enumarable:false,
+                            writable:false,
+                            value:events.on.bind(events)
+                        },
+                        off:{
+                            enumarable:false,
+                            writable:false,
+                            value:events.on.bind(events)
                         }
                     }
                 );
