@@ -9,6 +9,16 @@ awesome-sidebar {
     transition: right 0.5s;
 }
 
+awesome-sidebar:after {
+    position: absolute;
+    content: '';
+    background: rgb(147, 147, 147);;
+    height:4.493em;
+    width:0.35em;
+    left:-0.125em;
+    top:0;
+}
+
 awesome-sidebar span.flaticon-three:before{
     position: absolute;
     pointer-events:none;
@@ -27,6 +37,7 @@ awesome-sidebar .sidebar-stub{
     cursor:pointer;
     border-top-left-radius: 0.25em;
     border-bottom-left-radius: 0.25em;
+    box-shadow: 0 0 0.25em rgba(0,0,0,.3);
     background-color: rgb(147,147,147);
 }
 
