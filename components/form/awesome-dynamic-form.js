@@ -26,7 +26,6 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
 
         class Component extends HTMLElement{
             createdCallback(){
-                awesome.mergeDataset(this);
                 this.innerHTML= `
                     <form>
                     </form>
@@ -65,11 +64,13 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
             //default to fieldset
             let newElementSet = document.createElement('fieldset');
             if(el.config){
-                newElementSet = document.createElement(el.config.element);
+                if(el.config.element){
+                    newElementSet = document.createElement(el.config.element);
+                }
             }
             assignAttributes(newElementSet, el.attributes);
 
-            for(var i = 0; i < el.children.length; i++) {
+            for(let i = 0; i < el.children.length; i++) {
                 const childElement = el.children[i];
 
                 if(childElement.children){
@@ -111,7 +112,7 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
         }
 
         function assignAttributes(el, attributes){
-            for(const i in attributes){
+            for(let i in attributes){
                 el.setAttribute(i, attributes[i]);
             }
             return;
@@ -132,7 +133,10 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
         }
 
         function assignEventHandler(el, events){
-            for (var i = 0; i < events.length; i++) {
+            if(!Array.isArray(events)){
+                return false;
+            }
+            for (let i = 0; i < events.length; i++) {
                 if(!events[i].event || !events[i].callback){
                     return false;
                 }

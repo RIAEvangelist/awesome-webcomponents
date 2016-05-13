@@ -1,7 +1,5 @@
 awesome-dynamic-form{
     display: flex;
-    width: 35em;
-    height: 35em;
     flex-direction: row;
     flex-wrap: wrap;
     align-content:flex-start;
@@ -9,8 +7,18 @@ awesome-dynamic-form{
     overflow: auto;
 }
 
-awesome-dynamic-form > *{
+awesome-dynamic-form form > *{
     width: 100%;
+}
+
+awesome-dynamic-form form{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+awesome-dynamic-form input{
+    height: 2em;
 }
 
 /*******************************\

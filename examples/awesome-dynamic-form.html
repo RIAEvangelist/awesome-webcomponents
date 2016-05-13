@@ -6,122 +6,149 @@
         <script type='application/javascript'>
             awesome.requireScript(`${awesome.path}components/form/awesome-dynamic-form.js`);
 
-            window.on(
+            window.addEventListener(
                 'DOMContentLoaded',
                 init
             );
 
             function init(){
-                const form = document.querySelector('awesome-dynamic-form');
-                const test = {
-                    formAttributes:{
+                let firstName = 'First Name';
+                let lastName = 'Last Name';
+                let phoneNumber = '###-###-####';
+                let info = 'Youre awesome (;'
+                const qStrings = window.location.href.split('?')[1];
 
+                if(qStrings.includes('=')){
+                    const params = qStrings.split('&');
+                    for (var i = 0; i < params.length; i++) {
+                        // alert or add the stuff back into the form here
+                    }
+                }
+
+                const form = document.querySelector('awesome-dynamic-form');
+                const formConfig = {
+                    formAttributes:{
+                        method:'post'
                     },
                     formElements:[
                         {
+                            //Header
                             config:{
-                                element:'fieldset'
-                            },
-                            attributes:{
-                                name:'radioSet'
-                            },
-                            children:[
-                                {
-                                    config:{
-                                        element:'legend'
-                                    },
-                                    properties:{
-                                        innerText:'legend'
-                                    },
-                                    attributes:{
-                                    },
-                                    eventHandlers:[
-                                    ]
-                                },
-                                {
-                                    config:{
-                                        label:'1'
-                                    },
-                                    properties:{
-
-                                    },
-                                    attributes:{
-                                        value:'option1',
-                                        id:'option1',
-                                        type:'radio',
-                                        name:'radioSet'
-                                    },
-                                    eventHandlers:[
-                                    ]
-                                },
-                                {
-                                    config:{
-                                        label:'2'
-                                    },
-                                    properties:{
-
-                                    },
-                                    attributes:{
-                                        value:'option2',
-                                        id:'option2',
-                                        type:'radio',
-                                        name:'radioSet'
-                                    },
-                                    eventHandlers:[
-                                    ]
-                                },
-                                {
-                                    config:{
-                                        label:'3'
-                                    },
-                                    properties:{
-
-                                    },
-                                    attributes:{
-                                        value:'option3',
-                                        id:'option3',
-                                        type:'radio',
-                                        name:'radioSet'
-                                    },
-                                    eventHandlers:[
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            config:{
-
+                                element:'h1'
                             },
                             properties:{
-
+                                innerText:'User Info'
+                            }
+                        },
+                        {
+                            //First Name
+                            config:{
+                                label:'First Name'
                             },
                             attributes:{
-                                type:'text',
-                                value:'wat!'
+                                placeholder: firstName,
+                                id:'firstName'
+                            }
+                        },
+                        {
+                            //Last Name
+                            config:{
+                                label:'Last Name'
+                            },
+                            attributes:{
+                                placeholder:lastName,
+                                id:'lastName'
+                            }
+                        },
+                        {
+                            //Phone Number
+                            config:{
+                                label:'Phone Number'
+                            },
+                            attributes:{
+                                type:'tel',
+                                id:'phoneNumber',
+                                placeholder:phoneNumber
+                            }
+                        },
+                        {
+                            //Extra information input
+                            config:{
+                                element:'textarea',
+                                label:'Extra Info'
+                            },
+                            attributes:{
+                                cols:'50',
+                                rows:'25',
+                                autocomplete:'on',
+                                id:'info',
+                                placeholder:info
+                            }
+                        },
+                        {
+                            attributes:{
+                                type:'button',
+                                value:'Submit'
                             },
                             eventHandlers:[
                                 {
                                     event:'click',
-                                    callback: function(){
+                                    callback:function(){
+                                        const form = document.querySelector('form');
+                                        form.action = `${awesome.path}examples/awesome-dynamic-form.html?q=hey`;
+                                        // form.action='https://google.com?q=wow'
+                                        form.submit();
                                     }
                                 }
                             ]
                         }
                     ]
                 }
+
                 setTimeout(
                     function(){
-                        form.generate(test);
+                        form.generate(formConfig);
                     },
                     200
                 );
             }
         </script>
+        <style>
+            awesome-dynamic-form h1{
+                margin: 0 0 0 0;
+                padding: 0 0 0 0;
+            }
+        </style>
+        <style>
+            body{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                overflow: auto;
+            }
 
+            .wrapper{
+                width: 40em;
+                height: 100%;
+                background: rgb(215, 215, 215);
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                box-shadow: 0 0 1em rgba(0,0,0,.7);
+            }
+
+            .wrapper > *{
+                margin: 0 1em 0 1em;
+            }
+
+        </style>
     </head>
     <body>
-        <awesome-dynamic-form>
+        <div class='wrapper'>
+            <awesome-dynamic-form>
 
-        </awesome-dynamic-form>
+            </awesome-dynamic-form>
+        </div>
     </body>
 </html>
