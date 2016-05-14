@@ -48,6 +48,9 @@ awesome.requireCSS(`${awesome.path}components/form/awesome-dynamic-form.css`);
                 if(formData.formAttributes){
                     assignAttributes(form, formData.formAttributes);
                 }
+                if(formData.formEventHandlers){
+                    assignEventHandler(form, formData.formEventHandlers);
+                }
                 for(let i = 0; i < formData.formElements.length; i++){
                     const element = formData.formElements[i];
                     if(element.children){

@@ -17,11 +17,16 @@
                 let phoneNumber = '###-###-####';
                 let info = 'Youre awesome (;'
                 const qStrings = window.location.href.split('?')[1];
-
-                if(qStrings.includes('=')){
-                    const params = qStrings.split('&');
-                    for (var i = 0; i < params.length; i++) {
-                        // alert or add the stuff back into the form here
+                if(qStrings){
+                    if(qStrings.includes('=')){
+                        const params = qStrings.split('&');
+                        let userInfo = '';
+                        for (var i = 0; i < params.length; i++) {
+                            const param = params[i].split('=')[0]
+                            const value = params[i].split('=')[1];
+                            userInfo = `${userInfo}\n${param}: ${atob(value)}\n`;
+                        }
+                        alert(userInfo);
                     }
                 }
 
@@ -30,6 +35,22 @@
                     formAttributes:{
                         method:'post'
                     },
+                    formEventHandlers:[
+                        {
+                            event:'submit',
+                            callback:function(){
+                                console.log('yooo');
+
+                                const firstName = btoa(document.querySelector('#firstName').value);
+                                const lastName = btoa(document.querySelector('#lastName').value);
+                                const phoneNumber = btoa(document.querySelector('#phoneNumber').value);
+                                const info = btoa(document.querySelector('#info').value);
+
+                                const form = document.querySelector('form');
+                                form.action = `${awesome.path}examples/awesome-dynamic-form.html?firstName=${firstName}&lastName=${lastName}&phoneNumber=${phoneNumber}&info=${info}`;
+                            }
+                        }
+                    ],
                     formElements:[
                         {
                             //Header
@@ -47,7 +68,8 @@
                             },
                             attributes:{
                                 placeholder: firstName,
-                                id:'firstName'
+                                id:'firstName',
+                                required:'true'
                             }
                         },
                         {
@@ -57,7 +79,8 @@
                             },
                             attributes:{
                                 placeholder:lastName,
-                                id:'lastName'
+                                id:'lastName',
+                                required:'true'
                             }
                         },
                         {
@@ -68,7 +91,8 @@
                             attributes:{
                                 type:'tel',
                                 id:'phoneNumber',
-                                placeholder:phoneNumber
+                                placeholder:phoneNumber,
+                                required:'true'
                             }
                         },
                         {
@@ -82,25 +106,14 @@
                                 rows:'25',
                                 autocomplete:'on',
                                 id:'info',
-                                placeholder:info
+                                placeholder:info,
+                                required:'true'
                             }
                         },
                         {
                             attributes:{
-                                type:'button',
-                                value:'Submit'
-                            },
-                            eventHandlers:[
-                                {
-                                    event:'click',
-                                    callback:function(){
-                                        const form = document.querySelector('form');
-                                        form.action = `${awesome.path}examples/awesome-dynamic-form.html?q=hey`;
-                                        // form.action='https://google.com?q=wow'
-                                        form.submit();
-                                    }
-                                }
-                            ]
+                                type:'submit'
+                            }
                         }
                     ]
                 }
