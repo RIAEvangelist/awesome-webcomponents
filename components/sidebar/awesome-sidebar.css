@@ -12,7 +12,7 @@ awesome-sidebar {
 awesome-sidebar:after {
     position: absolute;
     content: '';
-    background: rgb(147, 147, 147);;
+    background: transparent;;
     height:4.493em;
     width:0.35em;
     left:-0.125em;
