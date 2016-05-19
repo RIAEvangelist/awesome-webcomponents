@@ -22,10 +22,6 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
             }
 
             attachedCallback(){
-                window.on(
-                    'awesome-language-set',
-                    this.createdCallback.bind(this)
-                );
             }
 
             detachedCallback(){
