@@ -9,8 +9,6 @@ awesome-error-modal awesome-modal div .contentWrapper{
 }
 
 awesome-error-modal awesome-modal > div > .closeButton{
-    position: absolute;
-    bottom: 1em;
-    width: 8em;
-    left: calc(50% - 4em);
+    width: 5em;
+    margin-bottom: 1em;
 }
