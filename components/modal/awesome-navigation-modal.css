@@ -1,0 +1,20 @@
+awesome-navigation-modall{
+    display:block;
+}
+
+awesome-navigation-modal .buttonWrapper{
+    width: 12.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+awesome-navigation-modal .buttonWrapper button{
+    width: 5em;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}

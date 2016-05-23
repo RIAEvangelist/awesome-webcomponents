@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/modal/awesome-navigation-modal.js`);
+            awesome.requireScript(`${awesome.path}screens/login/awesome-login-screen.js`);
+            awesome.requireLanguage(`${awesome.path}languages/default.js`);
+
+            window.addEventListener(
+                'DOMContentLoaded',
+                init
+            );
+
+            function init(){
+                document.querySelector('button').addEventListener(
+                    'click',
+                    openModal
+                );
+            }
+
+            function openModal(){
+                document.querySelector('awesome-navigation-modal').open();
+            }
+
+        </script>
+    </head>
+    <body data-start_screen='home'>
+        <div data-screen = 'home'>
+            <h1>
+                Click 'Open' and 'Next' to navigate to a screen, or 'OK' to dismiss
+            </h1>
+            <button>
+                Open
+            </button>
+        </div>
+        <awesome-navigation-modal
+            data-title = 'awesome-navigation-modal'
+            data-screen_name='login'
+        >
+
+        </awesome-navigation-modal>
+
+        <awesome-login-screen>
+        </awesome-login-screen>
+
+    </body>
+</html>
