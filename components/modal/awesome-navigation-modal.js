@@ -1,9 +1,9 @@
 'use strict';
 
+awesome.requireCSS(`${awesome.path}components/modal/awesome-navigation-modal.css`);
 awesome.requireScript(`${awesome.path}actions/router/route.js`);
 awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
 awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
-awesome.requireCSS(`${awesome.path}components/modal/awesome-navigation-modal.css`);
 
 (
     function(){
@@ -53,7 +53,7 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-navigation-modal.css
                                     ${awesome.language.current.ok}
                                 </button>
                                 <button id = 'next'>
-                                    Next
+                                    ${awesome.language.current.next}
                                 </button>
                             </div>
 
@@ -66,7 +66,7 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-navigation-modal.css
             attachedCallback(){
                 window.on(
                     'awesome-language-set',
-                    this.updateLanguage.bind(this)
+                    this.createdCallback.bind(this)
                 );
 
                 this.addEventListener(
@@ -91,11 +91,10 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-navigation-modal.css
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-            }
-
-            updateLanguage(){
-                this.querySelector('#ok').innerText = awesome.language.current.ok;
-                this.querySelector('#next').innerText = awesome.language.current.next;
+                if(key != 'data-title' || key != 'data-screen_name'){
+                    return;
+                }
+                this.createdCallback();
             }
 
             clicked(e){
