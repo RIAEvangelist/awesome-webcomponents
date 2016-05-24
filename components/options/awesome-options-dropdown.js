@@ -39,6 +39,7 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
                     <select name='${this.dataset.label}'>
                         ${content.content}
                     </select>
+                    ${content.template}
                 `;
 
                 this.querySelector('select').addEventListener(
@@ -56,7 +57,9 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                //basic re-render
+                if(key != 'data-title'){
+                    return;
+                }
                 this.createdCallback();
             }
 
