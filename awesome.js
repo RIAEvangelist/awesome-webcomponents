@@ -130,11 +130,8 @@ class Awesome{
                  */
                 language:{
                     enumerable:true,
-                    writable:false,
-                    value:{
-                        default:{},
-                        current:{}
-                    }
+                    get:getLanguage,
+                    set:setLanguageKey
                 },
                 setLanguage:{
                     enumerable:true,
@@ -382,6 +379,26 @@ class Awesome{
             return this._config;
         }
 
+        const language={
+            default:{},
+            current:{}
+        };
+
+        function getLanguage(){
+            return language;
+        }
+
+        function setLanguageKey(newLanguage){
+            for(let code in newLanguage){
+                if(!language[code]){
+                    language[code]={};
+                }
+                Object.assign(language[code],newLanguage[code]);
+            }
+            return language;
+        }
+
+
         /**
          * Merge a specific language and the default languages. If the languageCode has not been populated on the awesome.language object, the awesome.language.default will be used.
          * @method setLanguage
@@ -446,7 +463,7 @@ class Awesome{
                 desiredLanguage
             );
 
-            this.language.current=Object.assign(
+            language.current=Object.assign(
                 {},
                 newLanguage
             );
@@ -922,7 +939,7 @@ class Awesome{
         }
 
         function hasLang(lang){
-            const hasLang=(document.head.querySelector(`[src$='${lang}.js']`))?
+            const hasLang=(document.head.querySelector(`[src$='/${lang}.js']`))?
                 true:false;
 
             /**

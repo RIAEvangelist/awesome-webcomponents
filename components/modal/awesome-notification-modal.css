@@ -1,0 +1,15 @@
+awesome-notification-modal > h1{
+    font-size: 3em;
+}
+
+awesome-notification-modal awesome-modal > div > .closeButton{
+    position: absolute;
+    bottom: 1em;
+    width: 8em;
+    left: calc(50% - 4em);
+}
+
+awesome-notification-modal awesome-modal div .contentWrapper{
+    overflow: auto;
+    height: 15em;
+}

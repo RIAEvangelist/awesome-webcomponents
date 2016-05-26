@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/options/awesome-options-dropdown.js`);
+            awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+        </script>
+    </head>
+    <body>
+        <awesome-header
+            data-title='awesome-options-dropdown'
+        >
+        </awesome-header>
+        <br>
+        <awesome-options-dropdown
+            data-label='Cars'
+        >
+            <template>
+                <option value='Infiniti'>Infiniti</option>
+                <option value='Lexus'>Lexus</option>
+                <option value='Mercedez'>Mercedez</option>
+                <option value='Honda'>Honda</option>
+            </template>
+        </awesome-options-dropdown>
+    </body>
+</html>

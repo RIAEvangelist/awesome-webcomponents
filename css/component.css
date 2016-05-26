@@ -22,7 +22,7 @@ body *{
 }
 
 [data-screen]{
-    position:absolute;
+    position:fixed;
     top:0;
     height:100%;
     width:100%;
@@ -134,9 +134,78 @@ input[type='button']:disabled.active{
 }
 
 input:not([type='range']):invalid{
-    background:rgb(255,255,200);
+    background:rgb(255,255,224);
 }
 
 input:required:not([type='range']):valid{
-    background:rgb(200,255,200);
+    background:rgb(224,255,224);
 }
+
+/*
+Flaticon icon font: Flaticon
+Creation date: 04/03/2016 20:33
+*/
+
+/*
+Flaticon icon font: Flaticon
+Creation date: 16/03/2016 05:11
+*/
+
+@font-face {
+font-family: "Flaticon";
+src: url("../fonts/flatIcon/Flaticon.eot");
+src: url("../fonts/flatIcon/Flaticon.eot?#iefix") format("embedded-opentype"),
+   url("../fonts/flatIcon/Flaticon.woff") format("woff"),
+   url("../fonts/flatIcon/Flaticon.ttf") format("truetype"),
+   url("../fonts/flatIcon/Flaticon.svg#Flaticon") format("svg");
+font-weight: normal;
+font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+@font-face {
+font-family: "Flaticon";
+src: url("../fonts/flatIcon/Flaticon.svg#Flaticon") format("svg");
+}
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+    font-family: Flaticon;
+    font-size: 20px;
+    font-style: normal;
+    margin-left: 20px;
+}
+
+.flaticon-signs:before { content: "\f102"; }
+.flaticon-arrows:before { content: "\f100"; }
+.flaticon-circle:before { content: "\f101"; }
+.flaticon-three:before { content: "\f103"; }
+
+@font-face {
+  font-family: "Flaticon-icons";
+  src: url("../icons/flaticon/Flaticon.eot");
+  src: url("../icons/flaticon/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("../icons/flaticon/Flaticon.woff") format("woff"),
+       url("../icons/flaticon/Flaticon.ttf") format("truetype"),
+       url("../icons/flaticon/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon-icons";
+    src: url("../icons/flaticon/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-icons-"]:before, [class*=" flaticon-icons-"]:before,
+[class^="flaticon-icons-"]:after, [class*=" flaticon-icons-"]:after {
+  font-family: Flaticon-icons;
+        font-size: .7em;
+font-style: normal;
+margin-left: .5em;
+}
+
+.flaticon-icons-arrows:before { content: "\f100"; }

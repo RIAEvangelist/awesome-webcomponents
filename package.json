@@ -1,6 +1,6 @@
 {
   "name": "awesome-webcomponents",
-  "version": "0.0.58",
+  "version": "0.0.59",
   "description": "awesome native js web components",
   "main": "awesome.js",
   "devDependencies": {
@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "jsdoc2md -h&& jsdoc2md -l javascript -g none -m none awesome.js dispatchers/*.js actions/*.js stores/*.js components/*.js   > README.md"
+    "docs": "jsdoc2md -h&& jsdoc2md -l javascript -g none -m none awesome.js dispatchers/*.js actions/*.js stores/*.js components/*.js   > docs/jsDocs/README.md"
   },
   "repository": {
     "type": "git",

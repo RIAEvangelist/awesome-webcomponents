@@ -36,12 +36,12 @@
 
                 dispatcher.on(
                     constants.LOGOUT_ERROR,
-                    loginError
+                    logoutError
                 );
 
                 dispatcher.on(
                     constants.LOGOUT_SUCCESS,
-                    loginError
+                    logoutSuccess
                 );
 
                 dispatcher.on(
@@ -53,7 +53,7 @@
                     store.state={
                         authenticated:true,
                         token:data.token,
-                        username:data.username
+                        username: data.username
                     };
                 }
 

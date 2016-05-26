@@ -1,14 +1,32 @@
-awesome-screen-icon{
+awesome-screen-icon {
     cursor: pointer;
-    display: inline-block;
-    margin: 3.5em;
     text-align: center;
-    line-height: 1em;
+    width: 9em;
+    display: inline-flex;
+    margin: 2.5em;
 }
 
-awesome-screen-icon img{
-    width: 4em;
+awesome-screen-icon .contentWrapper{
+    height: 8em;
+    width: 8em;
+    text-align: -webkit-center;
+}
+
+awesome-screen-icon .iconImageWrapper{
     height: 4em;
+    width: 4em;
+}
+
+awesome-screen-icon .iconImageWrapper img,
+awesome-screen-icon .screen-flaticon-class {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: -0.15em;
+}
+
+awesome-screen-icon .iconTextWrapper{
+    height: 50%;
 }
 
 /*******************************\

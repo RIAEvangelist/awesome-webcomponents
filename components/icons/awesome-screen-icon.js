@@ -5,8 +5,9 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
 (
     function(){
         const defaults={
-            icon:'',
+            icon:'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
             text: '',
+            class:'',
             screen_name: ''
         }
 
@@ -15,12 +16,24 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
                 awesome.mergeDataset(this,defaults);
 
                 this.innerHTML=`
-                    <img
-                        class='icon'
-                        src=${this.dataset.icon}
-                    />
-                    <br/>
-                    ${this.dataset.text}
+                <div
+                    class = 'contentWrapper'
+                >
+                    <div
+                        class = 'iconImageWrapper'
+                    >
+                        <div class='screen-flaticon-class ${this.dataset.class}'></div>
+                        <img
+                            class='icon'
+                            src=${this.dataset.icon}
+                        />
+                    </div>
+                    <div
+                        class = 'iconTextWrapper'
+                    >
+                        ${this.dataset.text}
+                    </div>
+                <div>
                 `;
             }
 
@@ -28,6 +41,11 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
                 this.addEventListener(
                     'click',
                     this.iconClicked
+                );
+
+                window.on(
+                    'awesome-language-set',
+                    this.createdCallback.bind(this)
                 );
             }
 

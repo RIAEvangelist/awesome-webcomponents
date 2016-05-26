@@ -12,11 +12,13 @@ awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
                 codes:[
                     'en',
                     'ru',
-                    'jp'
+                    'jp',
+                    'es'
                 ],
                 en:awesome.language.current.english,
                 ru:awesome.language.current.russian,
-                jp:awesome.language.current.japanese
+                jp:awesome.language.current.japanese,
+                es:awesome.language.current.spanish
             };
 
             window.off(

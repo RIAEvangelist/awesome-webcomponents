@@ -23,7 +23,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                             ? `data-icon=${this.dataset.icon}`
                             : ''
                         }
-                        data-title=${this.dataset.title}
+                        data-title='${this.dataset.title}'
                     >
                         ${content.template}
                     </awesome-dialog>

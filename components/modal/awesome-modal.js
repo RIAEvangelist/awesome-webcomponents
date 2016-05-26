@@ -22,7 +22,6 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
             }
 
             attachedCallback(){
-
             }
 
             detachedCallback(){

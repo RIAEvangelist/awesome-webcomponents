@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/timer/awesome-timer.js`);
+        </script>
+        <script>
+            window.on(
+                'DOMContentLoaded',
+                init
+            );
+
+            function init(){
+                const start = document.querySelector('.start');
+                const stop = document.querySelector('.stop');
+                const reset = document.querySelector('.reset');
+
+                window.addEventListener(
+                    'click',
+                    clickHandler
+                );
+            }
+
+            function clickHandler(el){
+                const timer = document.querySelector('awesome-timer');
+                switch (el.target.id) {
+                    case 'start':
+                            timer.start();
+                        break;
+                    case 'stop':
+                            timer.stop();
+                        break;
+                    case 'reset':
+                            timer.reset();
+                        break;
+                }
+            }
+        </script>
+        <style>
+            awesome-timer{
+                left: 40%;
+            }
+        </style>
+    </head>
+    <body>
+        <awesome-timer
+
+        >
+        </awesome-timer>
+
+        <button id = 'start'>
+            Start
+        </button>
+
+        <button id = 'stop'>
+            Stop
+        </button>
+
+        <button id = 'reset'>
+            Reset
+        </button>
+    </body>
+</html>
