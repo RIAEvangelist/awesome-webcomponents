@@ -39,9 +39,9 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
                                     ''
                             }
                         >${
-                            this.dataset[
-                                `b${i}`
-                            ]
+                            (awesome.language.current[this.dataset[`b${i}`]])
+                            ? awesome.language.current[this.dataset[`b${i}`]]
+                            : this.dataset[`b${i}`]
                         }</button>`
                     )
                 }
@@ -52,6 +52,11 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
             }
 
             attachedCallback(){
+                window.on(
+                    'awesome-language-set',
+                    this.createdCallback.bind(this)
+                );
+
                 this.value=this.dataset.index;
 
                 this.addEventListener(
@@ -68,7 +73,7 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
             }
 
             detachedCallback(){
-
+                
             }
 
             attributeChangedCallback(key,oldValue,newValue){
