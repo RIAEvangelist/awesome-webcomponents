@@ -36,6 +36,10 @@ awesome-modal > div{
     justify-content: space-around;
 }
 
+awesome-modal pre{
+    text-align: left;
+}
+
 /*******************************\
 Small desktop windows and mobile
 \*******************************/

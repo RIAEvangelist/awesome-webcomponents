@@ -44,11 +44,11 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                             >
                             </awesome-title>
 
-                            <div class = 'contentWrapper'>
+                            <content>
                                 ${content.content}
-                            </div>
+                            </content>
 
-                            <div class = 'buttonWrapper'>
+                            <div class = 'modalButtonControls'>
                                 <button id = 'ok'>
                                     ${awesome.language.current.ok}
                                 </button>
@@ -61,12 +61,14 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                         ${content.template}
                     </awesome-modal>
                 `;
+
+
             }
 
             attachedCallback(){
                 window.on(
                     'awesome-language-set',
-                    this.createdCallback.bind(this)
+                    this.updateLanguage.bind(this)
                 );
 
                 this.addEventListener(
@@ -109,6 +111,10 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                     );
                 }
                 this.close();
+            }
+
+            updateLanguage(){
+
             }
         }
 
