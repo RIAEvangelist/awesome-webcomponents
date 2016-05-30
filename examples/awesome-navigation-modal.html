@@ -21,7 +21,10 @@
             }
 
             function openModal(){
-                document.querySelector('awesome-navigation-modal').open();
+                const modal = document.createElement('awesome-navigation-modal');
+                modal.dataset.title = 'awesome-navigation-modal';
+                modal.dataset.screen_name = 'login';
+                document.body.appendChild(modal);
             }
 
         </script>
@@ -35,15 +38,7 @@
                 Open
             </button>
         </div>
-        <awesome-navigation-modal
-            data-title = 'awesome-navigation-modal'
-            data-screen_name='login'
-        >
-
-        </awesome-navigation-modal>
-
         <awesome-login-screen>
         </awesome-login-screen>
-
     </body>
 </html>

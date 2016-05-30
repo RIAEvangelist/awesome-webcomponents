@@ -9,6 +9,10 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
             title: ''
         };
 
+        const caresAbout = [
+            'data-title'
+        ];
+
         class Component extends HTMLElement{
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
@@ -34,25 +38,46 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                     </awesome-modal>
                     ${content.template}
                 `;
+                this.title = this.dataset.title;
+                this.ok = awesome.language.current.ok;
             }
 
             attachedCallback(){
                 window.on(
                     'awesome-language-set',
-                    this.createdCallback.bind(this)
+                    this.updateLanguage.bind(this)
                 );
 
                 this.addEventListener(
                     'click',
-                    this.clicked.bind(this)
+                    this.clicked
                 );
             }
 
             detachedCallback(){
-
+                window.off(
+                    'awesome-language-set',
+                    this.updateLanguage.bind(this)
+                );
             }
 
             attributeChangedCallback(key,oldValue,newValue){
+                if(!caresAbout.includes(key)){
+                   return;
+               }
+
+               if(this.title == newValue.trim()){
+                   return;
+               }
+
+                this.createdCallback();
+            }
+
+            updateLanguage(){
+                if(this.ok == awesome.language.current.ok){
+                    return;
+                }
+
                 this.createdCallback();
             }
 
@@ -61,12 +86,8 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                     return;
                 }
                 this.querySelector('awesome-modal').close();
+                this.parentElement.removeChild(this);
             }
-
-            open(){
-                this.querySelector('awesome-modal').open();
-            }
-
         }
         document.registerElement(
             'awesome-error-modal',

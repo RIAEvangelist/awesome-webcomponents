@@ -10,6 +10,11 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
         let action = null;
         let dispatcher = null;
 
+        const caresAbout =[
+            'data-title',
+            'data-screen_name'
+        ];
+
         const defaults={
             title:'',
             screen_name:''
@@ -38,7 +43,6 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                 this.innerHTML=`
                     <awesome-modal>
                         <template>
-
                             <awesome-title
                                 data-title = '${this.dataset.title}'
                             >
@@ -62,7 +66,9 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                     </awesome-modal>
                 `;
 
-
+                this.ok = awesome.language.current.ok.trim();
+                this.next = awesome.language.current.next.trim();
+                this.title = this.dataset.title.trim();
             }
 
             attachedCallback(){
@@ -74,29 +80,31 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                 this.addEventListener(
                     'click',
                     this.clicked
-                )
+                );
             }
 
             detachedCallback(){
                 window.off(
                     'awesome-language-set',
-                    this.updateLanguage
+                    this.updateLanguage.bind(this)
                 );
-            }
-
-            open(){
-                this.querySelector('awesome-modal').open();
             }
 
             close(){
                 this.querySelector('awesome-modal').close();
+                this.parentElement.removeChild(this);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                if(key != 'data-title' || key != 'data-screen_name'){
-                    return;
-                }
-                this.createdCallback();
+                if(!caresAbout.includes(key)){
+                   return;
+               }
+
+               if(this.title == newValue.trim()){
+                   return;
+               }
+
+               this.createdCallback();
             }
 
             clicked(e){
@@ -114,7 +122,12 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
             }
 
             updateLanguage(){
-
+                if(this.next == awesome.language.current.next.trim()
+                    && this.ok == awesome.language.current.ok.trim()
+                ){
+                    return;
+                }
+                this.createdCallback();
             }
         }
 

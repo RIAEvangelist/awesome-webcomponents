@@ -5,8 +5,11 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
 (
     function(){
         const defaults={
-
         };
+
+        const caresAbout = [
+
+        ];
 
         class Component extends HTMLElement{
             createdCallback(){
@@ -22,6 +25,7 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
             }
 
             attachedCallback(){
+                this.classList.add('modalOn');
             }
 
             detachedCallback(){
@@ -29,15 +33,15 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
+                if(!caresAbout.includes(key)){
+                   return;
+               }
                 this.createdCallback();
             }
 
             close(){
                 this.classList.remove('modalOn');
-            }
-
-            open(){
-                this.classList.add('modalOn');
+                this.parentElement.removeChild(this);
             }
         }
 
