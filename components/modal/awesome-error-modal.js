@@ -81,12 +81,16 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                 this.createdCallback();
             }
 
+            close(){
+                this.querySelector('awesome-modal').close();
+                this.parentElement.removeChild(this);
+            }
+
             clicked(e){
                 if(!e.target.classList.contains('closeButton')){
                     return;
                 }
-                this.querySelector('awesome-modal').close();
-                this.parentElement.removeChild(this);
+                this.close.bind(this);
             }
         }
         document.registerElement(

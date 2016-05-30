@@ -118,7 +118,7 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                         this.dataset.screen_name
                     );
                 }
-                this.close();
+                this.close.bind(this);
             }
 
             updateLanguage(){
