@@ -33,9 +33,6 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                if(!caresAbout.includes(key)){
-                   return;
-               }
                 this.createdCallback();
             }
 
