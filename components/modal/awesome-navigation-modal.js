@@ -97,8 +97,8 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
 
             attributeChangedCallback(key,oldValue,newValue){
                 if(!caresAbout.includes(key)){
-                   return;
-               }
+                    return;
+                }
 
                if(this.title == newValue.trim()){
                    return;
