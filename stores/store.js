@@ -107,7 +107,7 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                         }
                     }
                 );
-                
+
                 Object.defineProperties(
                     this._raw_state_dont_touch_,
                     {
