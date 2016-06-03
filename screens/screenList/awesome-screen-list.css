@@ -8,6 +8,7 @@ awesome-screen-list .screensList-container{
     width:calc(100% - 20em);
     margin:0 auto;
     transition:top 300ms;
+    text-align: center;
     top:25em;
 }
 
