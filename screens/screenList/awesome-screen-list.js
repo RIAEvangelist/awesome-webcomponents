@@ -61,6 +61,11 @@ awesome.requireScript(`${awesome.path}components/icons/awesome-screen-icon.js`);
                     ){
                         continue;
                     }
+
+                    if(!screen.dataset.icon){
+                        continue;
+                    }
+
                     content = `
                         ${content}
                         <awesome-screen-icon
