@@ -31,8 +31,8 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                                 ${awesome.language.current.ok}
                             </button>
                         </template>
+                        ${content.template}
                     </awesome-modal>
-                    ${content.template}
                 `;
 
                 this.title = this.dataset.title;
