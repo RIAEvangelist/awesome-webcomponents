@@ -79,7 +79,7 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
 
                 this.addEventListener(
                     'click',
-                    this.clicked
+                    this.clicked.bind(this)
                 );
             }
 
@@ -88,11 +88,6 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                     'awesome-language-set',
                     this.updateLanguage.bind(this)
                 );
-            }
-
-            close(){
-                this.querySelector('awesome-modal').close();
-                this.parentElement.removeChild(this);
             }
 
             attributeChangedCallback(key,oldValue,newValue){
@@ -118,7 +113,7 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                         this.dataset.screen_name
                     );
                 }
-                this.close.bind(this);
+                this.parentElement.removeChild(this);
             }
 
             updateLanguage(){
