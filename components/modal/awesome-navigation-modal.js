@@ -27,8 +27,6 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
 
                     this.content=this.querySelector('template');
 
-                    console.log(this.content);
-
                     if(!this.content){
                         return;
                     }
