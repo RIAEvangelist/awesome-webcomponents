@@ -1,100 +1,97 @@
 'use strict';
 
-awesome.requireCSS(`${awesome.path}components/modal/awesome-error-modal.css`);
+awesome.requireCSS(`${awesome.path}components/modal/awesome-notification-modal.css`);
 awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
 
 (
     function(){
-        const defaults={
-            title: ''
-        };
 
-        const caresAbout = [
-            'data-title'
-        ];
+        function init(){
+            window.off(
+                'awesome-ready',
+                init
+            );
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+            class AwesomeErrorModal extends awesome.component.AwesomeModal{
+                createdCallback(){
+                    this.defauts = {
+                        title:''
+                    }
 
-                this.innerHTML=`
-                    <awesome-modal>
-                        <template>
-                            <h1>
-                                <span class = 'flaticon-signs'>
+                    this.content = this.querySelector('template');
 
-                                </span>
-                                ${this.dataset.title}
-                            </h1>
-                            <div class = 'contentWrapper'>
-                                ${content.content}
-                            </div>
-                            <br/>
-                            <button class = 'closeButton'>
-                                ${awesome.language.current.ok}
-                            </button>
-                        </template>
-                        ${content.template}
-                    </awesome-modal>
-                `;
-                this.title = this.dataset.title;
-                this.ok = awesome.language.current.ok;
-            }
+                    if(!this.content){
+                        return;
+                    }
 
-            attachedCallback(){
-                window.on(
-                    'awesome-language-set',
-                    this.updateLanguage.bind(this)
-                );
+                    this.content.innerHTML = `
+                        <h1>
+                            <span class = 'flaticon-signs'>
 
-                this.addEventListener(
-                    'click',
-                    this.clicked.bind(this)
-                );
-            }
+                            </span>
+                            ${this.dataset.title}
+                        </h1>
+                        <div class = 'contentWrapper'>
+                            ${this.content.innerHTML}
+                        </div>
+                        <br/>
+                        <button class = 'closeButton'>
+                            ${awesome.language.current.ok}
+                        </button>
+                    `;
 
-            detachedCallback(){
-                window.off(
-                    'awesome-language-set',
-                    this.updateLanguage.bind(this)
-                );
-            }
+                    this.classList.add(AwesomeErrorModal.elementTagName);
 
-            attributeChangedCallback(key,oldValue,newValue){
-                if(!caresAbout.includes(key)){
-                   return;
-               }
+                    super.createdCallback();
+                    this.caresAbout.push('data-title');
 
-               if(this.title == newValue.trim()){
-                   return;
-               }
-
-                this.createdCallback();
-            }
-
-            updateLanguage(){
-                if(this.ok == awesome.language.current.ok){
-                    return;
+                    this.title = this.dataset.title;
+                    this.ok = awesome.language.current.ok;
                 }
 
-                this.createdCallback();
-            }
+                attachedCallback(){
+                    super.attachedCallback();
 
-            close(){
-                this.parentElement.removeChild(this);
-            }
-
-            clicked(e){
-                if(!e.target.classList.contains('closeButton')){
-                    return;
+                    window.on(
+                        'awesome-language-set',
+                        this.updateLanguage.bind(this)
+                    );
                 }
-                this.close();
+
+                detachedCallback(){
+                    super.detachedCallback();
+
+                    window.off(
+                        'awesome-language-set',
+                        this.updateLanguage.bind(this)
+                    );
+                }
+
+                updateLanguage(){
+                    if(this.ok == awesome.language.current.ok){
+                        return;
+                    }
+
+                    this.createdCallback();
+                }
             }
+
+            AwesomeErrorModal.elementTagName='awesome-error-modal';
+
+            awesome.register(
+                AwesomeErrorModal
+            );
         }
-        document.registerElement(
-            'awesome-error-modal',
-            Component
-        );
+
+        if(!awesome.ready){
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            return;
+        }
+
+        init();
     }
 )();

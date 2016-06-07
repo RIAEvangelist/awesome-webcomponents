@@ -7,125 +7,117 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
 
 (
     function(){
-        let action = null;
-        let dispatcher = null;
 
-        const caresAbout =[
-            'data-title',
-            'data-screen_name'
-        ];
-
-        const defaults={
-            title:'',
-            screen_name:''
-        }
-
-        function init(e){
+        function init(){
             window.off(
                 'awesome-ready',
                 init
             );
 
-            action=awesome.constants.action;
-            dispatcher=awesome.dispatchers.component;
+            const action=awesome.constants.action;
+            const dispatcher=awesome.dispatchers.component;
 
-            document.registerElement(
-                'awesome-navigation-modal',
-                Component
-            );
-        }
+            class AwesomeNavigationModal extends awesome.component.AwesomeModal{
+                createdCallback(){
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+                    this.defauts={
+                        title:'',
+                        screen_name:''
+                    }
 
-                this.innerHTML=`
-                    <awesome-modal>
-                        <template>
-                            <awesome-title
-                                data-title = '${this.dataset.title}'
-                            >
-                            </awesome-title>
+                    this.content=this.querySelector('template');
 
-                            <content>
-                                ${content.content}
-                            </content>
+                    console.log(this.content);
 
-                            <div class = 'modalButtonControls'>
-                                <button id = 'ok'>
-                                    ${awesome.language.current.ok}
-                                </button>
-                                <button id = 'next'>
-                                    ${awesome.language.current.next}
-                                </button>
-                            </div>
+                    if(!this.content){
+                        return;
+                    }
 
-                        </template>
-                        ${content.template}
-                    </awesome-modal>
-                `;
+                    this.content.innerHTML = `
+                        <awesome-title
+                            data-title = '${this.dataset.title}'
+                        >
+                        </awesome-title>
 
-                this.ok = awesome.language.current.ok.trim();
-                this.next = awesome.language.current.next.trim();
-                this.title = this.dataset.title.trim();
-            }
+                        <content>
+                            ${this.content.innerHTML}
+                        </content>
 
-            attachedCallback(){
-                window.on(
-                    'awesome-language-set',
-                    this.updateLanguage.bind(this)
-                );
+                        <div class = 'modalButtonControls'>
+                            <button id = 'ok'>
+                                ${awesome.language.current.ok}
+                            </button>
+                            <button id = 'next'>
+                                ${awesome.language.current.next}
+                            </button>
+                        </div>
+                    `;
 
-                this.addEventListener(
-                    'click',
-                    this.clicked.bind(this)
-                );
-            }
+                    this.classList.add(AwesomeNavigationModal.elementTagName);
 
-            detachedCallback(){
-                window.off(
-                    'awesome-language-set',
-                    this.updateLanguage.bind(this)
-                );
-            }
+                    super.createdCallback();
+                    this.caresAbout.push('data-title');
+                    this.caresAbout.push('data-screen_name');
 
-            attributeChangedCallback(key,oldValue,newValue){
-                if(!caresAbout.includes(key)){
-                    return;
+                    this.ok = awesome.language.current.ok.trim();
+                    this.next = awesome.language.current.next.trim();
+                    this.title = this.dataset.title.trim();
                 }
 
-               if(this.title == newValue.trim()){
-                   return;
-               }
+                attachedCallback(){
+                    window.on(
+                        'awesome-language-set',
+                        this.updateLanguage.bind(this)
+                    );
 
-               this.createdCallback();
-            }
-
-            clicked(e){
-                if(e.target.localName != 'button'){
-                    return;
-                }
-
-                if(e.target.id == 'next'){
-                    dispatcher.trigger(
-                        action.ROUTE_REQUEST,
-                        this.dataset.screen_name
+                    this.addEventListener(
+                        'click',
+                        this.clicked.bind(this)
                     );
                 }
-                this.parentElement.removeChild(this);
-            }
 
-            updateLanguage(){
-                if(this.next == awesome.language.current.next.trim()
-                    && this.ok == awesome.language.current.ok.trim()
-                ){
-                    return;
+                detachedCallback(){
+                    window.off(
+                        'awesome-language-set',
+                        this.updateLanguage.bind(this)
+                    );
+
+                    this.removeEventListener(
+                        'click',
+                        this.clicked.bind(this)
+                    );
                 }
-                this.createdCallback();
-            }
-        }
 
+                clicked(e){
+                    if(e.target.localName != 'button'){
+                        return;
+                    }
+
+                    if(e.target.id == 'next'){
+                        dispatcher.trigger(
+                            action.ROUTE_REQUEST,
+                            this.dataset.screen_name
+                        );
+                    }
+                    this.parentElement.removeChild(this);
+                }
+
+                updateLanguage(){
+                    if(this.next == awesome.language.current.next.trim()
+                        && this.ok == awesome.language.current.ok.trim()
+                    ){
+                        return;
+                    }
+                    this.createdCallback();
+                }
+            }
+
+            AwesomeNavigationModal.elementTagName='awesome-navigation-modal';
+
+            awesome.register(
+                AwesomeNavigationModal
+            );
+        }
         if(!awesome.ready){
             window.on(
                 'awesome-ready',
