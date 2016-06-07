@@ -17,6 +17,7 @@ awesome.language={
 
         ok:'はい',
         cancel:'キャンセル',
+        next:'次',
 
         languages:'言語',
         timeleft:'残り時間',

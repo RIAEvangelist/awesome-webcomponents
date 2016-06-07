@@ -23,6 +23,7 @@ awesome.language={
 
         ok:'OK',
         cancel:'Cancel',
+        next:'Next',
 
         languages:'Languages',
         timeleft:'Time Left',

@@ -17,6 +17,7 @@ awesome.language={
 
         ok:'De acuerdo',
         cancel:'Cancelar',
+        next:'Siguiente',
 
         languages:'Idiomas',
         timeleft:'Tiempo Restante',
