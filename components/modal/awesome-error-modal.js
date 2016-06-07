@@ -1,6 +1,6 @@
 'use strict';
 
-awesome.requireCSS(`${awesome.path}components/modal/awesome-notification-modal.css`);
+awesome.requireCSS(`${awesome.path}components/modal/awesome-error-modal.css`);
 awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
 
 (
@@ -35,7 +35,10 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                             ${this.content.innerHTML}
                         </div>
                         <br/>
-                        <button class = 'closeButton'>
+                        <button
+                            class = 'closeButton'
+                            data-action='close'
+                        >
                             ${awesome.language.current.ok}
                         </button>
                     `;

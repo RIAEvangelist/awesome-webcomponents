@@ -1205,6 +1205,9 @@ const awesome=new Awesome;
 //bootstrap css
 awesome.requireCSS(`${awesome.path}css/component.css`);
 
+//Font Icons
+awesome.requireCSS(`${awesome.path}fonts/flatIcon/flaticon.css`);
+
 //libs
 awesome.requireScript(`${awesome.bower}document-register-element/build/document-register-element.js`);
 awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
@@ -1239,8 +1242,6 @@ awesome.requireScript(`${awesome.path}stores/router/route.js`);
 
 //default actions
 awesome.requireScript(`${awesome.path}actions/router/route.js`);
-
-
 
 
 //polyfills

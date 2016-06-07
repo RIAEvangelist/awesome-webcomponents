@@ -1,9 +1,9 @@
-awesome-notification-modal awesome-modal div .contentWrapper{
+.awesome-notification-modal div .contentWrapper{
     overflow: auto;
     height: 15em;
 }
 
-awesome-notification-modal awesome-modal > div > .closeButton{
+.awesome-notification-modal > div > .closeButton{
     margin-bottom: 1em;
     width: 5em;
 }

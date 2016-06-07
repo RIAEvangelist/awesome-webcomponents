@@ -42,7 +42,7 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
 
             //If modal contains an element with the data-action of close, it will close
             clicked(e){
-                if(!e.target.dataset.action=='close'){
+                if(e.target.dataset.action!=='close'){
                     return;
                 }
                 this.close();

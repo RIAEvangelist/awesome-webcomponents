@@ -1,14 +1,14 @@
 
-awesome-error-modal awesome-modal h1 span.flaticon-signs:before{
-    font-size: 1em;
+.awesome-error-modal h1 span.flaticon-signs:before{
+    margin-left:0;
 }
 
-awesome-error-modal awesome-modal div .contentWrapper{
+.awesome-error-modal div .contentWrapper{
     overflow: auto;
     height: 15em;
 }
 
-awesome-error-modal awesome-modal > div > .closeButton{
+.awesome-error-modal > div > .closeButton{
     width: 5em;
     margin-bottom: 1em;
 }
