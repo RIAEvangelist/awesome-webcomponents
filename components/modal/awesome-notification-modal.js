@@ -5,94 +5,92 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
 
 (
     function(){
-        const defaults={
-            title: ''
-        };
 
-        const caresAbout = [
-            'data-title'
-        ];
+        function init(){
+            window.off(
+                'awesome-ready',
+                init
+            );
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+            class AwesomeNotificationModal extends awesome.component.AwesomeModal{
+                createdCallback(){
+                    this.defaults={
+                        title:''
+                    };
 
-                this.innerHTML=`
-                    <awesome-modal>
-                        <template>
-                            <h1>
-                                ${this.dataset.title}
-                            </h1>
-                            <div class = 'contentWrapper'>
-                                ${content.content}
-                            </div>
-                            <button class = 'closeButton'>
-                                ${awesome.language.current.ok}
-                            </button>
-                        </template>
-                        ${content.template}
-                    </awesome-modal>
-                `;
+                    this.content=this.querySelector('template');
 
-                this.title = this.dataset.title;
-                this.ok = awesome.language.current.ok;
-            }
+                    if(!this.content){
+                        return;
+                    }
 
-            attachedCallback(){
-                window.on(
-                    'awesome-language-set',
-                    this.updateLanguage.bind(this)
-                );
+                    this.content.innerHTML=`
+                        <h1>
+                            ${this.dataset.title}
+                        </h1>
+                        <div class='contentWrapper'>
+                            ${this.content.innerHTML}
+                        </div>
+                        <button
+                            class = 'closeButton'
+                            data-action='close'
+                        >
+                            ${awesome.language.current.ok}
+                        </button>
+                    `;
 
-                this.addEventListener(
-                    'click',
-                    this.clicked.bind(this)
-                );
-            }
+                    this.classList.add(AwesomeNotificationModal.elementTagName);
 
-            detachedCallback(){
-                window.off(
-                    'awesome-language-set',
-                    this.updateLanguage.bind(this)
-                );
-            }
+                    super.createdCallback();
+                    this.caresAbout.push('data-title');
 
-            attributeChangedCallback(key,oldValue,newValue){
-                if(!caresAbout.includes(key)){
-                   return;
-               }
-
-               if(this.title == newValue.trim()){
-                   return;
-               }
-
-                this.createdCallback();
-            }
-
-            updateLanguage(){
-                if(this.ok == awesome.language.current.ok){
-                    return;
+                    this.title = this.dataset.title;
+                    this.ok = awesome.language.current.ok;
                 }
 
-                this.createdCallback();
-            }
+                attachedCallback(){
+                    super.attachedCallback();
 
-            close(){
-                this.querySelector('awesome-modal').close();
-                this.parentElement.removeChild(this);
-            }
-
-            clicked(e){
-                if(!e.target.classList.contains('closeButton')){
-                    return;
+                    window.on(
+                        'awesome-language-set',
+                        this.updateLanguage.bind(this)
+                    );
                 }
-                this.close.bind(this);
+
+                detachedCallback(){
+                    super.detachedCallback();
+
+                    window.off(
+                        'awesome-language-set',
+                        this.updateLanguage.bind(this)
+                    );
+                }
+
+                updateLanguage(){
+                    if(this.ok == awesome.language.current.ok){
+                        return;
+                    }
+
+                    this.createdCallback();
+                }
             }
+
+            AwesomeNotificationModal.elementTagName='awesome-notification-modal';
+
+            awesome.register(
+                AwesomeNotificationModal
+            );
         }
-        document.registerElement(
-            'awesome-notification-modal',
-            Component
-        );
+
+        if(!awesome.ready){
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            return;
+        }
+
+        init();
     }
 )();

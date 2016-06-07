@@ -10,13 +10,35 @@
             awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             awesome.requireLanguage(`${awesome.path}languages/default.js`);
 
+            const modal = document.createElement('awesome-modal');
+            const template = document.createElement('template');
+            template.innerHTML = `
+                <h1>
+                    awesome-modal is very flexible and can be filled with anything you'd like!
+                </h1>
+                <button
+                    data-action='close'
+                >
+                    Close Modal
+                </button>
+            `;
+            modal.appendChild(template);
+
+
+
             function init(){
+                window.off(
+                    'awesome-ready',
+                    init
+                );
+
                 const open = document.querySelector('.openModal');
                 const openNotification = document.querySelector('.openNotificationModal');
                 const openError = document.querySelector('.openErrorModal');
+
                 open.addEventListener(
                     'click',
-                    openModal
+                    modal.open.bind(modal)
                 );
                 openNotification.addEventListener(
                     'click',
@@ -28,26 +50,6 @@
                 );
             }
 
-            function openModal(){
-                const modal = document.createElement('awesome-modal');
-                const template = document.createElement('template');
-                template.innerHTML = `
-                <h1>
-                    awesome-modal is very flexible and can be filled with anything you'd like!
-                </h1>
-                <button>
-                    Close Modal
-                </button>
-                `;
-                modal.appendChild(template);
-                document.body.appendChild(modal);
-
-                modal.addEventListener(
-                    'click',
-                    closeModal
-                )
-            }
-
             function openNotificationModal(){
                 const modal = document.createElement('awesome-notification-modal');
                 const template = document.createElement('template');
@@ -55,36 +57,19 @@
                 template.innerHTML = 'This modal should be used to notify a user of an occurence and can be dismissed with the OK button.';
                 modal.appendChild(template);
                 document.body.appendChild(modal);
-
-                modal.addEventListener(
-                    'click',
-                    closeModal
-                );
             }
 
             function openErrorModal(){
-                const modal = document.createElement('awesome-notification-modal');
+                const modal = document.createElement('awesome-error-modal');
                 const template = document.createElement('template');
                 modal.dataset.title = 'Error Modal';
                 template.innerHTML = 'This modal should be used to notify a user of an error';
                 modal.appendChild(template);
                 document.body.appendChild(modal);
-
-                modal.addEventListener(
-                    'click',
-                    closeModal
-                );
             }
 
-            function closeModal(e){
-                if(e.target.localName !='button'){
-                    return;
-                }
-                this.close();
-            }
-
-            window.addEventListener(
-                'DOMContentLoaded',
+            window.on(
+                'awesome-ready',
                 init
             );
 

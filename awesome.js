@@ -92,6 +92,19 @@ class Awesome{
                     value:false
                 },
                 /**
+                 * component classes scope, basically a list of the available components
+                 *
+                 * @member awesome.components
+                 *
+                 * @type {Object}
+                 *
+                 */
+                component:{
+                    enumerable:true,
+                    writable:false,
+                    value:{}
+                },
+                /**
                  * extensible/overwriteable constansts used in awesome apps
                  *
                  * @member awesome.constants
@@ -197,6 +210,11 @@ class Awesome{
                     enumerable:true,
                     writable:false,
                     value:requireCSS
+                },
+                register:{
+                    enumerable:true,
+                    writable:false,
+                    value:registerComponent
                 },
                 uniqueEntries:{
                     enumerable:true,
@@ -877,6 +895,52 @@ class Awesome{
             );
         }
 
+        /**
+         * register stores component Class in the awesome.component object and registers the element with the DOM
+         *
+         * @example
+         *
+         * //here we require the dispatcher to action and the constants to stores and actions
+         * awesome.register(MyComponent, 'my-awesome-component');
+         *
+         * @method awesome.register
+         * @protected
+         * @param  {Class} Component Class
+         * @param  {String} Component Element Name
+         * @return {Boolean}      true
+         */
+        function registerComponent(componentClass){
+            if(!componentClass.elementTagName){
+                console.warn(componentClass.name);
+                console.trace('awesome.register requires elementTagName property to be defined');
+            }
+
+            let component=awesome.component[componentClass.name];
+            if(
+                component
+                &&component!==componentClass
+            ){
+                console.warn(componentClass.name);
+                console.trace('awesome.register requested registration of previously existing component');
+                return;
+            }
+
+            if(
+                component
+                &&component.elementTagName===componentElement.elementTagName
+            ){
+                return;
+            }
+
+            awesome.component[componentClass.name]=componentClass;
+            component=awesome.component[componentClass.name];
+
+            document.registerElement(
+                component.elementTagName,
+                component
+            );
+        }
+
         function awesomeReady(){
             if(!this.ready){
                 return;
@@ -1146,6 +1210,9 @@ awesome.requireScript(`${awesome.bower}document-register-element/build/document-
 awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
 awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
 awesome.requireScript(`${awesome.bower}browser-error-classes/Errors.js`);
+
+//base components
+awesome.requireScript(`${awesome.path}components/_baseComponent/base.js`);
 
 //default language file
 awesome.requireScript(`${awesome.path}languages/default.js`);

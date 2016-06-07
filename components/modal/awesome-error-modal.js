@@ -50,7 +50,7 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
 
                 this.addEventListener(
                     'click',
-                    this.clicked
+                    this.clicked.bind(this)
                 );
             }
 
@@ -82,7 +82,6 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
             }
 
             close(){
-                this.querySelector('awesome-modal').close();
                 this.parentElement.removeChild(this);
             }
 
@@ -90,7 +89,7 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                 if(!e.target.classList.contains('closeButton')){
                     return;
                 }
-                this.close.bind(this);
+                this.close();
             }
         }
         document.registerElement(

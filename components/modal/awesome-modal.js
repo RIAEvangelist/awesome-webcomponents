@@ -4,47 +4,53 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
 
 (
     function(){
-        const defaults={
-        };
-
-        const caresAbout = [
-
-        ];
-
-        class Component extends HTMLElement{
+        class AwesomeModal extends awesome.component.BaseComponent{
             createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
-
+                super.createdCallback();
+                this.classList.add(AwesomeModal.elementTagName);
                 this.innerHTML=`
                     <div>
-                        ${content.content}
+                        ${this.content.content}
                     </div>
-                    ${content.template}
+                    ${this.content.template}
                 `;
             }
 
             attachedCallback(){
-                this.classList.add('modalOn');
+                super.attachedCallback();
+                this.addEventListener(
+                    'click',
+                    this.clicked.bind(this)
+                );
             }
 
-            detachedCallback(){
-
+            dettachedCallback(){
+                super.dettachedCallback();
+                this.removeEventListener(
+                    'click',
+                    this.clicked.bind(this)
+                );
             }
 
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
+            open(){
+                document.body.appendChild(this);
             }
 
             close(){
-                this.classList.remove('modalOn');
                 this.parentElement.removeChild(this);
+            }
+
+            //If modal contains an element with the data-action of close, it will close
+            clicked(e){
+                if(!e.target.dataset.action=='close'){
+                    return;
+                }
+                this.close();
             }
         }
 
-        document.registerElement(
-            'awesome-modal',
-            Component
-        );
+        AwesomeModal.elementTagName='awesome-modal';
+
+        awesome.register(AwesomeModal);
     }
 )();
