@@ -31,7 +31,11 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
                     <div
                         class = 'iconTextWrapper'
                     >
-                        ${this.dataset.text}
+                        ${
+                            (awesome.language.current[this.dataset.text])
+                            ? awesome.language.current[this.dataset.text]
+                            : this.dataset.text
+                        }
                     </div>
                 <div>
                 `;

@@ -5,68 +5,92 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
 
 (
     function(){
-        const defaults={
-            title: ''
-        };
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+        function init(){
+            window.off(
+                'awesome-ready',
+                init
+            );
 
-                this.innerHTML=`
-                    <awesome-modal>
-                        <template>
-                            <h1>
-                                ${this.dataset.title}
-                            </h1>
-                            <div class = 'contentWrapper'>
-                                ${content.content}
-                            </div>
-                            <button class = 'closeButton'>
-                                ${awesome.language.current.ok}
-                            </button>
-                        </template>
-                    </awesome-modal>
-                    ${content.template}
-                `;
-            }
+            class AwesomeNotificationModal extends awesome.component.AwesomeModal{
+                createdCallback(){
+                    this.defaults={
+                        title:''
+                    };
 
-            attachedCallback(){
-                window.on(
-                    'awesome-language-set',
-                    this.createdCallback.bind(this)
-                );
+                    this.content=this.querySelector('template');
 
-                this.addEventListener(
-                    'click',
-                    this.clicked.bind(this)
-                );
-            }
+                    if(!this.content){
+                        return;
+                    }
 
-            detachedCallback(){
+                    this.content.innerHTML=`
+                        <h1>
+                            ${this.dataset.title}
+                        </h1>
+                        <div class='contentWrapper'>
+                            ${this.content.innerHTML}
+                        </div>
+                        <button
+                            class = 'closeButton'
+                            data-action='close'
+                        >
+                            ${awesome.language.current.ok}
+                        </button>
+                    `;
 
-            }
+                    this.classList.add(AwesomeNotificationModal.elementTagName);
 
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
-            }
+                    super.createdCallback();
+                    this.caresAbout.push('data-title');
 
-            clicked(e){
-                if(!e.target.classList.contains('closeButton')){
-                    return;
+                    this.title = this.dataset.title;
+                    this.ok = awesome.language.current.ok;
                 }
-                this.querySelector('awesome-modal').close();
+
+                attachedCallback(){
+                    super.attachedCallback();
+
+                    window.on(
+                        'awesome-language-set',
+                        this.updateLanguage.bind(this)
+                    );
+                }
+
+                detachedCallback(){
+                    super.detachedCallback();
+
+                    window.off(
+                        'awesome-language-set',
+                        this.updateLanguage.bind(this)
+                    );
+                }
+
+                updateLanguage(){
+                    if(this.ok == awesome.language.current.ok){
+                        return;
+                    }
+
+                    this.createdCallback();
+                }
             }
 
-            open(){
-                this.querySelector('awesome-modal').open();
-            }
+            AwesomeNotificationModal.elementTagName='awesome-notification-modal';
 
+            awesome.register(
+                AwesomeNotificationModal
+            );
         }
-        document.registerElement(
-            'awesome-notification-modal',
-            Component
-        );
+
+        if(!awesome.ready){
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            return;
+        }
+
+        init();
     }
 )();

@@ -6,13 +6,13 @@ awesome-sidebar {
     width: 30em;
     height: 100%;
     box-shadow: 0 0 0.25em rgba(0,0,0,.3);
-    transition: right 0.5s;
+    transition: right 400ms, width 400ms;
 }
 
 awesome-sidebar:after {
     position: absolute;
     content: '';
-    background: transparent;;
+    background: transparent;
     height:4.493em;
     width:0.35em;
     left:-0.125em;
@@ -35,6 +35,7 @@ awesome-sidebar .sidebar-stub{
     width: 4em;
     left: -4em;
     cursor:pointer;
+    pointer-events: all;
     border-top-left-radius: 0.25em;
     border-bottom-left-radius: 0.25em;
     box-shadow: 0 0 0.25em rgba(0,0,0,.3);
@@ -47,7 +48,7 @@ awesome-sidebar .sidebar-content {
 
 awesome-sidebar.showSidebar {
   right:0;
-  transition: right 0.5s;
+  transition: right 400ms;
 }
 /*******************************\
 Small desktop windows and mobile
