@@ -6,11 +6,41 @@
         <script type='application/javascript'>
             awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
             awesome.requireLanguage(`${awesome.path}languages/default.js`);
+            let ball = null;
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            function init(){
+                ball = document.querySelector('awesome-ball');
+                document.querySelector('button').addEventListener(
+                    'click',
+                    clickHandler
+                );
+            }
+
+            function clickHandler(e){
+                ball.increment();
+            }
         </script>
+        <style>
+            body{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                background-color: rgb(80, 80, 80);
+            }
+        </style>
     </head>
     <body>
         <awesome-ball>
 
         </awesome-ball>
+
+        <button>
+            Increment!
+        </button>
     </body>
 </html>

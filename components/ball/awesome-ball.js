@@ -17,6 +17,7 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
                         value :'0'
                     }
                     super.createdCallback();
+                    this.caresAbout.push('data-value');
                     this.classList.add(AwesomeBall.elementTagName);
                     this.innerHTML=`
                         <div class='ballValue'>${this.dataset.value}</div>
