@@ -14,14 +14,23 @@
 
             function init(){
                 ball = document.querySelector('awesome-ball');
-                document.querySelector('button').addEventListener(
+                document.querySelector('#increment').addEventListener(
                     'click',
-                    clickHandler
+                    incrementHandler
+                );
+
+                document.querySelector('#decrement').addEventListener(
+                    'click',
+                    decrementHandler
                 );
             }
 
-            function clickHandler(e){
+            function incrementHandler(e){
                 ball.increment();
+            }
+
+            function decrementHandler(e){
+                ball.decrement();
             }
         </script>
         <style>
@@ -39,8 +48,18 @@
 
         </awesome-ball>
 
-        <button>
-            Increment!
-        </button>
+        <section>
+            <button
+                id = 'increment'
+            >
+                Increment!
+            </button>
+
+            <button
+                id = 'decrement'
+            >
+                Decrement!
+            </button>
+        </section>
     </body>
 </html>

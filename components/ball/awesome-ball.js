@@ -13,12 +13,12 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
 
             class AwesomeBall extends awesome.component.BaseComponent{
                 createdCallback(){
-                    this.defaults = {
-                        value :'0'
-                    }
+                    this.defaults=this.defaults||{};
+                    this.defaults.value = '0';
+                    this.defaults.units  = '';
                     super.createdCallback();
-                    this.caresAbout.push('data-value');
                     this.classList.add(AwesomeBall.elementTagName);
+                    this.caresAbout.push('data-value');
                     this.innerHTML=`
                         <div class='ballValue'>${this.dataset.value}</div>
                     `;
@@ -27,16 +27,26 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
 
                 increment(){
                     this.dataset.value++;
-                    this.ballValue.innerHTML = this.dataset.value;
-                    this.classList.add('increment');
+                    this.ballValue.innerHTML = `${this.dataset.value} ${this.dataset.units}`;
+                    this.classList.add('update');
                     setTimeout(
-                        this.incrementHandler.bind(this),
+                        this.updateValueHandler.bind(this),
                         200
                     );
                 }
 
-                incrementHandler(ballValue){
-                    this.classList.remove('increment');
+                decrement(){
+                    this.dataset.value--;
+                    this.ballValue.innerHTML = `${this.dataset.value} ${this.dataset.units}`;
+                    this.classList.add('update');
+                    setTimeout(
+                        this.updateValueHandler.bind(this),
+                        200
+                    );
+                }
+
+                updateValueHandler(ballValue){
+                    this.classList.remove('update');
                 }
             }
 

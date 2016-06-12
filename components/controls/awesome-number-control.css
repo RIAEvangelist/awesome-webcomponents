@@ -1,0 +1,48 @@
+.awesome-number-control{
+    background: rgb(220, 220, 220);
+    height: 6em;
+    width: 6em;
+    pointer-events: none;
+}
+
+.awesome-number-control .ballValue{
+    z-index: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: all;
+}
+
+.awesome-number-control .ballValue:active{
+    color: red;
+}
+
+.awesome-number-control section{
+    position: absolute;
+    height: 4em;
+    width: 14em;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    top: calc(50% - 2em);
+    left: calc(50% - 7em);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.awesome-number-control section button{
+    width: 3em;
+    pointer-events: all;
+}
+
+.awesome-number-control input[type='number']{
+    position: absolute;
+    width: 6em;
+    height: 2em;
+    top: calc(50% - 1em);
+    left: calc(50% - 1.3em);
+    pointer-events: all;
+    text-align: center;
+    font-size: 1.9em;
+     z-index: 3;
+}
