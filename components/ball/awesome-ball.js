@@ -27,16 +27,15 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
 
                 increment(){
                     this.dataset.value++;
-                    this.ballValue.innerHTML = `${this.dataset.value} ${this.dataset.units}`;
-                    this.classList.add('update');
-                    setTimeout(
-                        this.updateValueHandler.bind(this),
-                        200
-                    );
+                    this.update()
                 }
 
                 decrement(){
                     this.dataset.value--;
+                    this.update()
+                }
+
+                update(){
                     this.ballValue.innerHTML = `${this.dataset.value} ${this.dataset.units}`;
                     this.classList.add('update');
                     setTimeout(
