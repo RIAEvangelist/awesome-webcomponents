@@ -22,36 +22,36 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     }
                     super.createdCallback();
                     this.classList.add(AwesomeNumberControl.elementTagName);
-                    this.reset = awesome.language.current.reset;
-                    this.set = awesome.language.current.set;
                     this.innerHTML += `
                         <div
                             class = 'controlFront'
                         >
                         </div>
                         <section
-                            class = 'singleIncrementControls'
+                            class = 'singleIncrementControls awesomeNumberControlElement'
                         >
                             <button
-                                class = 'awesomeNumberControlElement'
+                                id = 'decrementButton'
                             >
                                 -
                             </button>
                             <button
-                                class = 'awesomeNumberControlElement'
+                                id = 'incrementButton'
                             >
                                 +
                             </button>
                         </section>
-                        <section class = 'setControls'>
+                        <section class = 'setControls awesomeNumberControlElement'>
                             <button
-                                class = 'resetButton awesomeNumberControlElement'
+                                id = 'resetButton'
+                                class = 'resetButton'
                             >
                                 ${this.reset}
                             </button>
 
                             <button
-                                class = 'setButton awesomeNumberControlElement'
+                                id = 'setButton'
+                                class = 'setButton'
                             >
                                 ${this.set}
                             </buton>
@@ -62,6 +62,14 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     this.input = this.querySelector('input');
                     this.setControls = this.querySelector('.setControls');
                     this.ballValue = this.querySelector('.ballValue');
+
+                    this.setButton = this.querySelector('.setButton');
+                    this.resetButton = this.querySelector('.resetButton');
+
+                    this.input.addEventListener(
+                        'change',
+                        this.changeHandler.bind(this)
+                    );
                 }
 
                 attachedCallback(){
@@ -84,6 +92,11 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                         this.clickHandler.bind(this)
                     );
 
+                    this.input.removeEventListener(
+                        'change',
+                        this.changeHandler.bind(this)
+                    );
+
                     window.off(
                         'awesome-language-set',
                         this.updateLanguage.bind(this)
@@ -91,20 +104,64 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                 }
 
                 clickHandler(e){
-                    if(e.target.id == 'ballValue' || e.target.classList.contains('awesomeNumberControlElement')){
+                    if(e.target.id == 'ballValue'
+                        || e.target.classList.contains('awesomeNumberControlElement')
+                        || e.target.parentElement.classList.contains('awesomeNumberControlElement')
+                    ){
                         this.displayExtraControls();
                         document.body.addEventListener(
                             'click',
                             this.optionsHandler
                         );
                     }
+                    switch (e.target.id) {
+                        case 'incrementButton':
+                            super.increment();
+                            this.input.value = this.dataset.value;
+                            break;
+                        case 'decrementButton':
+                            super.decrement();
+                            this.input.value = this.dataset.value;
+                            break;
+                        case 'setButton':
+                            if(!action[this.dataset.set_action]){
+                                console.warn('No action constant of data-set_action has been defined!');
+                                return;
+                            }
+                            dispatcher.trigger(
+                                action[this.dataset.set_action],
+                                true
+                            );
+                            break;
+                        case 'resetButton':
+                            if(!action[this.dataset.reset_action]){
+                                console.warn('No action constant of data-reset_action has been defined!');
+                                return;
+                            }
+                            dispatcher.trigger(
+                                action[this.dataset.reset_action],
+                                true
+                            );
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                changeHandler(e){
+                    this.dataset.value = this.input.value;
                 }
 
                 optionsHandler(e){
                     const numberControl = this.querySelector('awesome-number-control');
-                    if(e.target.id == 'ballValue' || e.target.classList.contains('awesomeNumberControlElement')){
+
+                    if(e.target.id == 'ballValue'
+                        || e.target.classList.contains('awesomeNumberControlElement')
+                        || e.target.parentElement.classList.contains('awesomeNumberControlElement')
+                    ){
                         return;
                     }
+
                     this.removeEventListener(
                         'click',
                         numberControl.optionsHandler
@@ -116,8 +173,8 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     this.input.value = this.dataset.value;
                     this.input.focus();
                     this.input.style.zIndex = 4;
-                    this.setControls.style.height = '12em';
-                    this.setControls.style.top = 'calc(50% - 6em)';
+                    this.setControls.style.height = '13em';
+                    this.setControls.style.top = 'calc(50% - 6.5em)';
                 }
 
                 hideExtraControls(){
@@ -129,13 +186,14 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                 }
 
                 updateLanguage(){
-                    if(this.reset == awesome.language.current.reset
-                        && this.set == awesome.language.current.set
+                    if(this.resetButton.innerHTML.trim() == awesome.language.current.reset
+                        && this.setButton.innerHTML.trim() == awesome.language.current.set
                     ){
-                        return
+                        return;
                     }
 
-                    this.createdCallback();
+                    this.setButton.innerHTML = awesome.language.current.set;
+                    this.resetButton.innerHTML = awesome.language.current.reset;
                 }
 
             }

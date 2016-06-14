@@ -26,7 +26,6 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
                 }
 
                 increment(){
-                    console.log(this.dataset.value);
                     this.dataset.value++;
                     this.update()
                 }
