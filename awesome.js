@@ -925,13 +925,6 @@ class Awesome{
                 return;
             }
 
-            if(
-                component
-                &&component.elementTagName===componentElement.elementTagName
-            ){
-                return;
-            }
-
             awesome.component[componentClass.name]=componentClass;
             component=awesome.component[componentClass.name];
 
@@ -1216,6 +1209,7 @@ awesome.requireScript(`${awesome.bower}browser-error-classes/Errors.js`);
 
 //base components
 awesome.requireScript(`${awesome.path}components/_baseComponent/base.js`);
+awesome.requireScript(`${awesome.path}screens/_baseScreen/base.js`);
 
 //default language file
 awesome.requireScript(`${awesome.path}languages/default.js`);
