@@ -13,6 +13,7 @@
             }
 
             attachedCallback(){
+                this.defaults = {};
                 this.createdCallback();
             }
 

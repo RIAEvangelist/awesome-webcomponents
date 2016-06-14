@@ -24,6 +24,8 @@ awesome.language={
         ok:'OK',
         cancel:'Cancel',
         next:'Next',
+        set:'Set',
+        reset:'Reset',
 
         languages:'Languages',
         timeleft:'Time Left',
