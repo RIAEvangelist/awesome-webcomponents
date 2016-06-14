@@ -1,7 +1,6 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}screens/login/awesome-login-screen.css`);
-awesome.requireScript(`${awesome.path}actions/user/auth.js`);
 awesome.requireScript(`${awesome.path}stores/user/auth.js`);
 awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
@@ -27,6 +26,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                         password_id:'awesome-login-screen-password'
                     }
                     super.createdCallback();
+                    awesome.requireScript(this.dataset.action_path);
                     this.LOGIN_ACTION = this.action.LOGIN_REQUEST;
                     this.classList.add(AwesomeLogin.elementTagName);
 
