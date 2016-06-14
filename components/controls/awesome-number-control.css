@@ -1,20 +1,28 @@
 .awesome-number-control{
-    background: rgb(220, 220, 220);
-    height: 6em;
-    width: 6em;
+    height: 8em;
+    width: 8em;
     pointer-events: none;
 }
 
 .awesome-number-control .ballValue{
-    z-index: 1;
+    z-index: 2;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     pointer-events: all;
 }
 
-.awesome-number-control .ballValue:active{
-    color: red;
+.awesome-number-control .controlFront{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: .15em solid rgb(185, 185, 185);
+    position: absolute;
+    background: rgb(220, 220, 220);
+    top: calc(0% - 0.15em);
+    left: calc(0% - 0.15em);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .awesome-number-control section{
@@ -35,14 +43,14 @@
     pointer-events: all;
 }
 
-.awesome-number-control input[type='number']{
+.awesome-number-control input{
     position: absolute;
     width: 6em;
     height: 2em;
     top: calc(50% - 1em);
-    left: calc(50% - 1.3em);
+    left: calc(50% - 1.85em);
     pointer-events: all;
     text-align: center;
-    font-size: 1.9em;
-     z-index: 3;
+    font-size: 1.85em;
+    z-index: -1;
 }

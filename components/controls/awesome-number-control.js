@@ -23,19 +23,26 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     super.createdCallback();
                     this.classList.add(AwesomeNumberControl.elementTagName);
                     this.innerHTML += `
+                        <div
+                            class = 'controlFront'
+                        >
+                        </div>
                         <section>
-                            <button>
+                            <button
+                                class = 'awesomeNumberControlElement'
+                            >
                                 -
                             </button>
-                            <button>
+                            <button
+                                class = 'awesomeNumberControlElement'
+                            >
                                 +
                             </button>
                         </section>
-                        <input
-                            type = 'number'
-                        >
+                        <input class = 'awesomeNumberControlElement'>
                     `;
-
+                    this.input = this.querySelector('input');
+                    this.ballValue = this.querySelector('.ballValue');
                 }
 
                 attachedCallback(){
@@ -55,7 +62,36 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                 }
 
                 clickHandler(e){
-                    console.log('clicked', e.target.tagName);
+                    if(e.target.id == 'ballValue' || e.target.classList.contains('awesomeNumberControlElement')){
+                        this.displayExtraControls();
+                        document.body.addEventListener(
+                            'click',
+                            this.optionsHandler
+                        );
+                    }
+                }
+
+                optionsHandler(e){
+                    const numberControl = this.querySelector('awesome-number-control');
+                    if(e.target.id == 'ballValue' || e.target.classList.contains('awesomeNumberControlElement')){
+                        return;
+                    }
+                    this.removeEventListener(
+                        'click',
+                        numberControl.optionsHandler
+                    );
+                    numberControl.hideExtraControls();
+                }
+
+                displayExtraControls(){
+                    this.input.value = this.dataset.value;
+                    this.input.style.zIndex = 4;
+                }
+
+                hideExtraControls(){
+                    this.dataset.value = this.input.value;
+                    super.update();
+                    this.input.style.zIndex = -1;
                 }
 
             }

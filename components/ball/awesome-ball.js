@@ -20,12 +20,13 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
                     this.classList.add(AwesomeBall.elementTagName);
                     this.caresAbout.push('data-value');
                     this.innerHTML=`
-                        <div class='ballValue'>${this.dataset.value}</div>
+                        <div id = 'ballValue' class='ballValue'>${this.dataset.value}</div>
                     `;
                     this.ballValue = this.querySelector('.ballValue');
                 }
 
                 increment(){
+                    console.log(this.dataset.value);
                     this.dataset.value++;
                     this.update()
                 }
