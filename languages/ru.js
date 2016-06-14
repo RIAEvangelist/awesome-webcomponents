@@ -18,6 +18,8 @@ awesome.language={
         ok:'Хорошо',
         cancel:'Отмена',
         next:'дальше',
+        set:'сет',
+        reset:'сброс',
 
         languages:'Языки',
         timeleft:'Время вышло',

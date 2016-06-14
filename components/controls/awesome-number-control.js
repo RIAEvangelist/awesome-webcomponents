@@ -22,12 +22,16 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     }
                     super.createdCallback();
                     this.classList.add(AwesomeNumberControl.elementTagName);
+                    this.reset = awesome.language.current.reset;
+                    this.set = awesome.language.current.set;
                     this.innerHTML += `
                         <div
                             class = 'controlFront'
                         >
                         </div>
-                        <section>
+                        <section
+                            class = 'singleIncrementControls'
+                        >
                             <button
                                 class = 'awesomeNumberControlElement'
                             >
@@ -39,9 +43,24 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                                 +
                             </button>
                         </section>
+                        <section class = 'setControls'>
+                            <button
+                                class = 'resetButton awesomeNumberControlElement'
+                            >
+                                ${this.reset}
+                            </button>
+
+                            <button
+                                class = 'setButton awesomeNumberControlElement'
+                            >
+                                ${this.set}
+                            </buton>
+                        </section>
+
                         <input class = 'awesomeNumberControlElement'>
                     `;
                     this.input = this.querySelector('input');
+                    this.setControls = this.querySelector('.setControls');
                     this.ballValue = this.querySelector('.ballValue');
                 }
 
@@ -51,6 +70,11 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                         'click',
                         this.clickHandler.bind(this)
                     );
+
+                    window.on(
+                        'awesome-language-set',
+                        this.updateLanguage.bind(this)
+                    );
                 }
 
                 detachedCallback(){
@@ -58,6 +82,11 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     this.removeEventListener(
                         'click',
                         this.clickHandler.bind(this)
+                    );
+
+                    window.off(
+                        'awesome-language-set',
+                        this.updateLanguage.bind(this)
                     );
                 }
 
@@ -85,13 +114,28 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
 
                 displayExtraControls(){
                     this.input.value = this.dataset.value;
+                    this.input.focus();
                     this.input.style.zIndex = 4;
+                    this.setControls.style.height = '12em';
+                    this.setControls.style.top = 'calc(50% - 6em)';
                 }
 
                 hideExtraControls(){
                     this.dataset.value = this.input.value;
-                    super.update();
+                    this.update();
                     this.input.style.zIndex = -1;
+                    this.setControls.style.height = '6em';
+                    this.setControls.style.top = 'calc(50% - 3em)';
+                }
+
+                updateLanguage(){
+                    if(this.reset == awesome.language.current.reset
+                        && this.set == awesome.language.current.set
+                    ){
+                        return
+                    }
+
+                    this.createdCallback();
                 }
 
             }

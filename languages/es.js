@@ -18,6 +18,8 @@ awesome.language={
         ok:'De acuerdo',
         cancel:'Cancelar',
         next:'Siguiente',
+        set:'Ajusto',
+        reset:'Reiniciar',
 
         languages:'Idiomas',
         timeleft:'Tiempo Restante',
