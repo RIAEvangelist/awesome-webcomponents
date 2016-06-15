@@ -5,20 +5,22 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
 (
     function(){
 
-        function init(){
-            window.off(
-                'awesome-ready',
-                init
-            );
+        const defaults={
+            value : '0',
+            units : ''
+        }
 
-            class AwesomeBall extends awesome.component.BaseComponent{
+        const component=new AwesomeComponent;
+        component.tagName='awesome-ball';
+        component.extends='BaseComponent';
+
+        component.create=function(){
+            return class AwesomeBall extends awesome.component.BaseComponent{
                 createdCallback(){
-                    this.defaults=this.defaults||{};
-                    this.defaults.value = '0';
-                    this.defaults.units  = '';
                     super.createdCallback();
+                    this.mergeDataset(defaults);
                     this.classList.add(AwesomeBall.elementTagName);
-                    this.caresAbout.push('data-value');
+                    this.careAbout('data-value');
                     this.innerHTML=`
                         <div id = 'ballValue' class='ballValue'>${this.dataset.value}</div>
                     `;
@@ -48,20 +50,8 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
                     this.classList.remove('update');
                 }
             }
-
-            AwesomeBall.elementTagName = 'awesome-ball';
-            awesome.register(AwesomeBall);
         }
 
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )()
