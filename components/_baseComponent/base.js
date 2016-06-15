@@ -30,7 +30,7 @@
                 }
 
                 attributeChangedCallback(key,oldValue,newValue){
-                    console.log(`${key}--${oldValue}--${newValue}--${this.caresAbout}`);
+                    //console.log(`${key}--${oldValue}--${newValue}--${this.caresAbout}`);
                     if(!this.caresAbout){
                         return;
                     }
@@ -42,7 +42,7 @@
                     if(this.getAttribute(key) === newValue){
                         return;
                     }
-                    console.log(3)
+                    //console.log(3)
 
                     this.createdCallback();
                 }

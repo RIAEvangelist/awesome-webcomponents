@@ -905,7 +905,8 @@ class Awesome{
                 console.trace('awesome.register requires elementTagName property to be defined');
             }
 
-            let component=awesome.component[componentClass.name];
+            const component=awesome.component[componentClass.name];
+
             if(
                 component
                 &&component!==componentClass
@@ -916,18 +917,21 @@ class Awesome{
             }
 
             awesome.component[componentClass.name]=componentClass;
-            component=awesome.component[componentClass.name];
-
-            document.registerElement(
-                component.elementTagName,
-                component
-            );
 
             const e=new CustomEvent(
-                'awesome-component-registered'
+                'awesome-component-registered',
+                {
+                    detail:componentClass.name
+                }
             );
 
             window.dispatchEvent(e);
+
+            document.registerElement(
+                componentClass.elementTagName,
+                componentClass
+            );
+
         }
 
         function awesomeReady(){
@@ -980,7 +984,7 @@ class Awesome{
             if(hashScreen){
                 startScreen=hashScreen;
             }
-
+            console.log(startScreen,activeScreen,hashScreen);
             if(activeScreen || !startScreen){
                 return;
             }
@@ -1201,13 +1205,17 @@ class AwesomeComponent{
         this.create=null;
     }
 
-    register(){
-        if(!this.extendsNative){
-            if(!awesome.component[this.extends]){
+    register(e){
+        if(!this.extendsNative && e){
+            if(
+                e.detail===this.tagName
+                ||!awesome.component[this.extends]
+                || e.detail!==this.extends
+            ){
                 return;
             }
         }
-        console.log(this)
+
         window.off(
             this.eventName,
             this.register.bind(this)
@@ -1216,13 +1224,14 @@ class AwesomeComponent{
         const componentClass=this.create();
 
         componentClass.elementTagName=this.tagName;
-        awesome.register(componentClass);
-
-        this.create=null;
         this.extends=null;
-        this.init=null;
-        this.register=null;
+        this.tagName=null;
+        this.extendsNative=null;
+        this.create=null;
+        awesome.register(componentClass);
     }
+
+
 
     init(){
         this.eventName='awesome-component-registered';
@@ -1234,7 +1243,7 @@ class AwesomeComponent{
         }
 
         if(!isReady){
-            console.log(isReady,this)
+            //console.log(isReady,this)
             window.on(
                 this.eventName,
                 this.register.bind(this)

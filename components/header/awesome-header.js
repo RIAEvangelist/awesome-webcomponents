@@ -9,47 +9,47 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
             title:''
         }
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+        const component=new AwesomeComponent;
+        component.tagName='awesome-header';
 
-                let icon='';
-                if(this.dataset.icon){
-                    icon=`
-                        <img
-                            class='icon'
-                            src=${this.dataset.icon}
-                        />
+        component.create=function createAwesomeHeader(e){
+            return class AwesomeHeader extends awesome.component.BaseComponent{
+                createdCallback(){
+                    let icon='';
+                    if(this.dataset.icon){
+                        icon=`
+                            <img
+                                class='icon'
+                                src=${this.dataset.icon}
+                            />
+                        `;
+                    }
+
+                    this.innerHTML=`
+                        <header>
+                            ${icon}
+                            ${this.dataset.title}
+                            ${content.content}
+                        </header>
+                        ${content.template}
                     `;
                 }
 
-                this.innerHTML=`
-                    <header>
-                        ${icon}
-                        ${this.dataset.title}
-                        ${content.content}
-                    </header>
-                    ${content.template}
-                `;
-            }
+                attachedCallback(){
 
-            attachedCallback(){
+                }
 
-            }
+                detachedCallback(){
 
-            detachedCallback(){
+                }
 
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
+                attributeChangedCallback(key,oldValue,newValue){
+                    this.createdCallback();
+                }
             }
         }
 
-        document.registerElement(
-            'awesome-header',
-            Component
-        );
+
+        component.init();
     }
 )();
