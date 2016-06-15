@@ -5,51 +5,44 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
 
 (
     function(){
+        const defaults={
+            title:''
+        }
 
-        function init(){
-            window.off(
-                'awesome-ready',
-                init
-            );
+        const component=new AwesomeComponent;
+        component.tagName='awesome-error-modal';
+        component.extends='AwesomeModal';
 
-            class AwesomeErrorModal extends awesome.component.AwesomeModal{
+        component.create=function createAwesomeErrorModal() {
+            return class AwesomeErrorModal extends awesome.component.AwesomeModal{
                 createdCallback(){
-                    this.defauts = {
-                        title:''
-                    }
-
-                    this.content = this.querySelector('template');
-
-                    if(!this.content){
-                        return;
-                    }
-
-                    this.content.innerHTML = `
-                        <h1>
-                            <span class = 'flaticon-signs'>
-
-                            </span>
-                            ${this.dataset.title}
-                        </h1>
-                        <div class = 'contentWrapper'>
-                            ${this.content.innerHTML}
-                        </div>
-                        <br/>
-                        <button
-                            class = 'closeButton'
-                            data-action='close'
-                        >
-                            ${awesome.language.current.ok}
-                        </button>
-                    `;
-
-                    this.classList.add(AwesomeErrorModal.elementTagName);
-
                     super.createdCallback();
+                    this.mergeDataset(defaults);
                     this.caresAbout.push('data-title');
-
-                    this.title = this.dataset.title;
+                    this.classList.add(AwesomeErrorModal.elementTagName);
                     this.ok = awesome.language.current.ok;
+
+                    this.innerHTML =`
+                        <div>
+                            <h1>
+                                <span class = 'flaticon-signs'>
+
+                                </span>
+                                ${this.dataset.title}
+                            </h1>
+                            <div class = 'contentWrapper'>
+                                ${this.content.content}
+                            </div>
+                            <br/>
+                            <button
+                                class = 'closeButton'
+                                data-action='close'
+                            >
+                                ${this.ok}
+                            </button>
+                        </div>
+                        ${this.content.template}
+                    `;
                 }
 
                 attachedCallback(){
@@ -78,23 +71,8 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                     this.createdCallback();
                 }
             }
-
-            AwesomeErrorModal.elementTagName='awesome-error-modal';
-
-            awesome.register(
-                AwesomeErrorModal
-            );
         }
 
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )();
