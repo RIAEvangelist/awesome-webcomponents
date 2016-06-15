@@ -8,40 +8,51 @@ awesome.requireCSS(`${awesome.path}components/title/awesome-title.css`);
             title:'Awesome Title'
         }
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
+        const component = new AwesomeComponent;
+        component.tagName = 'awesome-title';
+        component.extends = 'BaseComponent';
 
-                this.innerHTML=`
-                    <h1>
-                        ${
-                            (awesome.language.current[this.dataset.title])
-                            ? awesome.language.current[this.dataset.title]
-                            : this.dataset.title
-                        }
-                    </h1>
-                `;
-            }
+        component.create=function createAwesomeTitle(){
+            return class AwesomeTitle extends awesome.component.BaseComponent{
+                createdCallback(){
+                    super.createdCallback();
+                    this.mergeDataset(defaults);
+                    this.classList.add(AwesomeTitle.elementTagName)
+                    this.careAbout(
+                        'data-title'
+                    );
 
-            attachedCallback(){
-                window.on(
-                    'awesome-language-set',
-                    this.createdCallback.bind(this)
-                );
-            }
+                    this.innerHTML=`
+                        <h1>
+                            ${
+                                (awesome.language.current[this.dataset.title])
+                                ? awesome.language.current[this.dataset.title]
+                                : this.dataset.title
+                            }
+                        </h1>
+                    `;
+                }
 
-            detachedCallback(){
+                attachedCallback(){
+                    super.attachedCallback();
 
-            }
+                    window.on(
+                        'awesome-language-set',
+                        this.createdCallback.bind(this)
+                    );
+                }
 
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
+                detachedCallback(){
+                    super.detachedCallback();
+
+                    window.off(
+                        'awesome-language-set',
+                        this.createdCallback.bind(this)
+                    );
+                }
             }
         }
 
-        document.registerElement(
-            'awesome-title',
-            Component
-        );
+        component.init();
     }
 )();
