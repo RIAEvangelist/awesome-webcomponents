@@ -984,7 +984,7 @@ class Awesome{
             if(hashScreen){
                 startScreen=hashScreen;
             }
-            console.log(startScreen,activeScreen,hashScreen);
+
             if(activeScreen || !startScreen){
                 return;
             }

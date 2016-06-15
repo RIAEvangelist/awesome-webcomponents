@@ -1,16 +1,16 @@
-awesome-header{
+.awesome-header{
     display:block;
     padding:.5em 0;
     background:rgb(230,230,230);
 }
 
-awesome-header header{
+.awesome-header header{
     font-size: 1.5em;
     margin:0 .5em;
     min-height:1.5em;
 }
 
-awesome-header .icon{
+.awesome-header .icon{
     height:1em;
 }
 

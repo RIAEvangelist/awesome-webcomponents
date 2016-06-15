@@ -15,6 +15,9 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
         component.create=function createAwesomeHeader(e){
             return class AwesomeHeader extends awesome.component.BaseComponent{
                 createdCallback(){
+                    super.createdCallback();
+                    this.mergeDataset(defaults);
+                    this.classList.add(AwesomeHeader.elementTagName);
                     let icon='';
                     if(this.dataset.icon){
                         icon=`
@@ -29,9 +32,9 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
                         <header>
                             ${icon}
                             ${this.dataset.title}
-                            ${content.content}
+                            ${this.content.content}
                         </header>
-                        ${content.template}
+                        ${this.content.template}
                     `;
                 }
 

@@ -25,9 +25,9 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
             return class AwesomeLoginScreen extends awesome.component.BaseScreen{
                 createdCallback(){
+                    this.mergeDataset(defaults);
                     super.createdCallback();
                     defaults.loginEvent=this.actions.LOGIN_REQUEST;
-                    this.mergeDataset(defaults);
 
                     awesome.requireScript(this.dataset.action_path);
                     this.classList.add(AwesomeLoginScreen.elementTagName);

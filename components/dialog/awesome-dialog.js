@@ -18,8 +18,12 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             return class AwesomeDialog extends awesome.component.BaseComponent{
                 createdCallback(){
                     super.createdCallback();
+                    this.mergeDataset(defaults);
+
                     this.classList.add(AwesomeDialog.elementTagName);
                     let header='';
+
+                    console.log(this.dataset);
 
                     if(this.dataset.header==='true'){
                         header=`
