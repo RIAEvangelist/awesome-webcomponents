@@ -17,6 +17,7 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
 
         const component=new AwesomeComponent;
         component.tagName='awesome-boilerplate-example';
+        component.extends='BaseComponent';
 
         component.create=function createAwesomeDialog() {
             const dispatcher=awesome.dispatchers.component;
@@ -25,7 +26,7 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
 
             const store=awesome.store.boilerplate;
 
-            return class Component extends HTMLElement{
+            return class Component extends awesome.component.BaseComponent{
                 createdCallback(){
                     super.createdCallback();
                     this.mergeDataset(this,defaults);
