@@ -26,10 +26,11 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
 
             const store=awesome.store.boilerplate;
 
-            return class Component extends awesome.component.BaseComponent{
+            return class AwesomeBoilerPlateExample extends awesome.component.BaseComponent{
                 createdCallback(){
                     super.createdCallback();
                     this.mergeDataset(this,defaults);
+                    this.classList.add(AwesomeBoilerPlateExample.elementTagName);
 
                     this.innerHTML=`
                         <p>${this.dataset.something}</p>
