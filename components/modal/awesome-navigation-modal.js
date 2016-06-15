@@ -17,6 +17,9 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
         component.extends='AwesomeModal';
 
         component.create=function createAwesomeNavigationModal() {
+            const dispatcher=awesome.dispatchers.component;
+            const constants=awesome.constants.component;
+            const action=awesome.constants.action;
             return class AwesomeNavigationModal extends awesome.component.AwesomeModal{
                 createdCallback(){
                     super.createdCallback();
@@ -83,14 +86,13 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                 }
 
                 clicked(e){
-                    super.clicked();
                     if(e.target.id == 'next'){
                         dispatcher.trigger(
                             action.ROUTE_REQUEST,
                             this.dataset.screen_name
                         );
                     }
-                    this.parentElement.removeChild(this);
+                    this.close();
                 }
 
                 updateLanguage(){
