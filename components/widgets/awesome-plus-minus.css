@@ -1,10 +1,10 @@
-.awesome-number-control{
+.awesome-plus-minus{
     height: 8em;
     width: 8em;
     pointer-events: none;
 }
 
-.awesome-number-control .ballValue{
+.awesome-plus-minus .ballValue{
     z-index: 2;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -12,7 +12,7 @@
     pointer-events: all;
 }
 
-.awesome-number-control .controlFront{
+.awesome-plus-minus .controlFront{
     height: 100%;
     width: 100%;
     border-radius: 50%;
@@ -25,7 +25,7 @@
     pointer-events: none;
 }
 
-.awesome-number-control .singleIncrementControls{
+.awesome-plus-minus .singleIncrementControls{
     position: absolute;
     height: 4em;
     width: 14em;
@@ -38,12 +38,12 @@
     pointer-events: none;
 }
 
-.awesome-number-control .singleIncrementControls button{
+.awesome-plus-minus .singleIncrementControls button{
     width: 3em;
     pointer-events: all;
 }
 
-.awesome-number-control .setControls{
+.awesome-plus-minus .setControls{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -57,21 +57,21 @@
     z-index: 0;
 }
 
-.awesome-number-control .setControls button{
+.awesome-plus-minus .setControls button{
     pointer-events: all;
     width: 5em;
     height: 6em;
     vertical-align: top;
 }
 
-.awesome-number-control .setControls .resetButton{
+.awesome-plus-minus .setControls .resetButton{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
 }
 
-.awesome-number-control .setControls .setButton{
+.awesome-plus-minus .setControls .setButton{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,7 +79,7 @@
 }
 
 
-.awesome-number-control input{
+.awesome-plus-minus input{
     position: absolute;
     width: 6em;
     height: 2em;

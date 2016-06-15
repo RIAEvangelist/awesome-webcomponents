@@ -1,34 +1,39 @@
 'use strict';
 
-awesome.requireCSS(`${awesome.path}components/controls/awesome-number-control.css`);
+awesome.requireCSS(`${awesome.path}components/widgets/awesome-plus-minus.css`);
 awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
+
 (
     function(){
 
-        function init(){
-            window.off(
-                'awesome-ready',
-                init
-            );
+        const defaults = {
+            set_action: '',
+            reset_action: ''
+        }
+
+        const component=new AwesomeComponent;
+        component.tagName='awesome-plus-minus';
+        component.extends='AwesomeBall';
+
+        component.create=function creatAwesomePlusMinus(){
+
 
             const action=awesome.constants.action;
             const dispatcher=awesome.dispatchers.component;
 
-            class AwesomeNumberControl extends awesome.component.AwesomeBall{
+            return class AwesomePlusMinus extends awesome.component.AwesomeBall{
                 createdCallback(){
-                    this.defaults = {
-                        set_action: '',
-                        reset_action: ''
-                    }
                     super.createdCallback();
-                    this.classList.add(AwesomeNumberControl.elementTagName);
+                    this.mergeDataset(defaults)
+                    this.classList.add(AwesomePlusMinus.elementTagName);
+
                     this.innerHTML += `
                         <div
                             class = 'controlFront'
                         >
                         </div>
                         <section
-                            class = 'singleIncrementControls awesomeNumberControlElement'
+                            class = 'singleIncrementControls target'
                         >
                             <button
                                 id = 'decrementButton'
@@ -41,7 +46,7 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                                 +
                             </button>
                         </section>
-                        <section class = 'setControls awesomeNumberControlElement'>
+                        <section class = 'setControls target'>
                             <button
                                 id = 'resetButton'
                                 class = 'resetButton'
@@ -57,7 +62,7 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                             </buton>
                         </section>
 
-                        <input class = 'awesomeNumberControlElement'>
+                        <input class = 'target'>
                     `;
                     this.input = this.querySelector('input');
                     this.setControls = this.querySelector('.setControls');
@@ -104,27 +109,33 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                 }
 
                 clickHandler(e){
-                    if(e.target.id == 'ballValue'
-                        || e.target.classList.contains('awesomeNumberControlElement')
-                        || e.target.parentElement.classList.contains('awesomeNumberControlElement')
+                    if(e.target.id === 'ballValue'
+                        || e.target.classList.contains('target')
+                        || e.target.parentElement.classList.contains('target')
                     ){
                         this.displayExtraControls();
                         document.body.addEventListener(
                             'click',
-                            this.optionsHandler
+                            this.optionsHandler.bind(this)
                         );
                     }
+
+                    if(!e.target.id){
+                        return;
+                    }
+
                     switch (e.target.id) {
                         case 'incrementButton':
-                            super.increment();
+                            this.increment();
                             this.input.value = this.dataset.value;
                             break;
                         case 'decrementButton':
-                            super.decrement();
+                            this.decrement();
                             this.input.value = this.dataset.value;
                             break;
                         case 'setButton':
                             if(!action[this.dataset.set_action]){
+                                //@TODO : good these are here, but these warnings suck
                                 console.warn('No action constant of data-set_action has been defined!');
                                 return;
                             }
@@ -135,6 +146,7 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                             break;
                         case 'resetButton':
                             if(!action[this.dataset.reset_action]){
+                                //@TODO : good these are here, but these warnings suck
                                 console.warn('No action constant of data-reset_action has been defined!');
                                 return;
                             }
@@ -153,20 +165,19 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                 }
 
                 optionsHandler(e){
-                    const numberControl = this.querySelector('awesome-number-control');
-
                     if(e.target.id == 'ballValue'
-                        || e.target.classList.contains('awesomeNumberControlElement')
-                        || e.target.parentElement.classList.contains('awesomeNumberControlElement')
+                        || e.target.classList.contains('target')
+                        || e.target.parentElement.classList.contains('target')
                     ){
                         return;
                     }
 
-                    this.removeEventListener(
+                    document.querySelector('body').removeEventListener(
                         'click',
-                        numberControl.optionsHandler
+                        this.optionsHandler.bind(this)
                     );
-                    numberControl.hideExtraControls();
+
+                    this.hideExtraControls();
                 }
 
                 displayExtraControls(){
@@ -180,6 +191,7 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                 hideExtraControls(){
                     this.dataset.value = this.input.value;
                     this.update();
+                    //@TODO do CSS IN CSS! not javascript unless really needed in javascript. use 1 class on the parent and adjust the children with it
                     this.input.style.zIndex = -1;
                     this.setControls.style.height = '6em';
                     this.setControls.style.top = 'calc(50% - 3em)';
@@ -197,22 +209,8 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                 }
 
             }
-
-            AwesomeNumberControl.elementTagName='awesome-number-control';
-            awesome.register(
-                AwesomeNumberControl
-            );
         }
 
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )();

@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
         <script type='application/javascript' src='../awesome.js'></script>
         <script type='application/javascript'>
-            awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
-            awesome.requireScript(`${awesome.path}components/controls/awesome-number-control.js`);
+            awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+            awesome.requireScript(`${awesome.path}components/widgets/awesome-plus-minus.js`);
             awesome.requireLanguage(`${awesome.path}languages/default.js`);
         </script>
         <style>
-            body{
+            body section{
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
@@ -17,9 +17,13 @@
             }
         </style>
     </head>
-    <body>
-        <awesome-number-control>
-
-        </awesome-number-control>
+    <body data-start_screen='example'>
+        <awesome-header
+            data-title='awesome-plus-minus'
+        ></awesome-header>
+        <section data-screen='example'>
+            <awesome-plus-minus>
+            </awesome-plus-minus>
+        </section>
     </body>
 </html>

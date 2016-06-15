@@ -14,7 +14,7 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
         component.tagName='awesome-ball';
         component.extends='BaseComponent';
 
-        component.create=function(){
+        component.create=function createAwesomeBall(){
             return class AwesomeBall extends awesome.component.BaseComponent{
                 createdCallback(){
                     super.createdCallback();
