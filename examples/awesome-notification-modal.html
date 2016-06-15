@@ -15,31 +15,22 @@
                     'awesome-ready',
                     init
                 );
-                const open = document.querySelector('.openModal');
+                const openNotification = document.querySelector('.openNotificationModal');
 
-                open.addEventListener(
+                openNotification.addEventListener(
                     'click',
-                    openModal
+                    openNotificationModal
                 );
             }
 
-            function openModal(){
-                const modal = document.createElement('awesome-modal');
+            function openNotificationModal(){
+                const modal = document.createElement('awesome-notification-modal');
                 const template = document.createElement('template');
-                template.innerHTML = `
-                    <h1>
-                        awesome-modal is very flexible and can be filled with anything you'd like!
-                    </h1>
-                    <button
-                        data-action='close'
-                    >
-                        Close Modal
-                    </button>
-                `;
+                modal.dataset.title= 'Notification Modal';
+                template.innerHTML = 'This modal should be used to notify a user of an occurence and can be dismissed with the OK button.';
                 modal.appendChild(template);
-                modal.open();
+                document.body.appendChild(modal);
             }
-
 
             window.on(
                 'awesome-ready',
@@ -50,10 +41,10 @@
     </head>
     <body>
         <awesome-header
-            data-title = 'awesome-modal'
+            data-title = 'awesome-notification-modal'
         ></awesome-header>
-        <button class = 'openModal'>
-            Open Modal
+        <button class = 'openNotificationModal'>
+                Open Notification Modal
         </button>
     </body>
 </html>

@@ -8,21 +8,25 @@
             awesome.requireScript(`${awesome.path}screens/login/awesome-login-screen.js`);
             awesome.requireLanguage(`${awesome.path}languages/default.js`);
 
-            const modal = document.createElement('awesome-navigation-modal');
-            const template = document.createElement('template');
-            template.innerHTML = `
-                Click Next to Navigate
-            `;
-            modal.appendChild(template);
-            modal.dataset.title = 'awesome-navigation-modal';
-            modal.dataset.screen_name = 'login';
+            let modal = null;
+            let template = null;
 
             window.addEventListener(
-                'DOMContentLoaded',
+                'awesome-ready',
                 init
             );
 
             function init(){
+                modal = document.createElement('awesome-navigation-modal');
+                template = document.createElement('template');
+
+                template.innerHTML = `
+                    Click Next to Navigate
+                `;
+
+                modal.appendChild(template);
+                modal.dataset.title = 'awesome-navigation-modal';
+                modal.dataset.screen_name = 'login';
                 document.querySelector('button').addEventListener(
                     'click',
                     openModal
@@ -30,6 +34,7 @@
             }
 
             function openModal(){
+                console.log(modal);
                 modal.open();
             }
 

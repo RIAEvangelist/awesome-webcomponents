@@ -27,7 +27,7 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
                     super.attachedCallback();
                     this.addEventListener(
                         'click',
-                        this.clicked.bind(this)
+                        this.clicked
                     );
                 }
 
@@ -35,7 +35,7 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
                     super.dettachedCallback();
                     this.removeEventListener(
                         'click',
-                        this.clicked.bind(this)
+                        this.clicked
                     );
                 }
 
@@ -44,7 +44,7 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
                 }
 
                 close(){
-                    this.parentElement.removeChild(this);
+                    document.body.removeChild(this);
                 }
 
                 //If modal contains an element with the data-action of close, it will close

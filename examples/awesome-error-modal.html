@@ -15,31 +15,22 @@
                     'awesome-ready',
                     init
                 );
-                const open = document.querySelector('.openModal');
 
-                open.addEventListener(
+                const openError = document.querySelector('.openErrorModal');
+
+                openError.addEventListener(
                     'click',
-                    openModal
+                    openErrorModal
                 );
             }
-
-            function openModal(){
-                const modal = document.createElement('awesome-modal');
+            function openErrorModal(){
+                const modal = document.createElement('awesome-error-modal');
                 const template = document.createElement('template');
-                template.innerHTML = `
-                    <h1>
-                        awesome-modal is very flexible and can be filled with anything you'd like!
-                    </h1>
-                    <button
-                        data-action='close'
-                    >
-                        Close Modal
-                    </button>
-                `;
+                modal.dataset.title = 'Error Modal';
+                template.innerHTML = 'This modal should be used to notify a user of an error';
                 modal.appendChild(template);
-                modal.open();
+                document.body.appendChild(modal);
             }
-
 
             window.on(
                 'awesome-ready',
@@ -50,10 +41,10 @@
     </head>
     <body>
         <awesome-header
-            data-title = 'awesome-modal'
+            data-title = 'awesome-error-modal'
         ></awesome-header>
-        <button class = 'openModal'>
-            Open Modal
+        <button class = 'openErrorModal'>
+                Open Error Modal
         </button>
     </body>
 </html>

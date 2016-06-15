@@ -17,14 +17,15 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
         component.extends='AwesomeModal';
 
         component.create=function createAwesomeNavigationModal() {
-            const dispatcher=awesome.dispatchers.component;
-            const constants=awesome.constants.component;
-            const action=awesome.constants.action;
             return class AwesomeNavigationModal extends awesome.component.AwesomeModal{
                 createdCallback(){
                     super.createdCallback();
                     this.mergeDataset(defaults);
                     this.classList.add(AwesomeNavigationModal.elementTagName);
+                    this.careAbout(
+                        'data-title',
+                        'data-screen_name'
+                    );
                     this.ok = awesome.language.current.ok;
                     this.next = awesome.language.current.next;
 
@@ -42,13 +43,13 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                             <div class = 'modalButtonControls'>
                                 <button
                                     id = 'ok'
-                                    data-action = 'closeButton'
+                                    data-action = 'close'
                                 >
                                     ${this.ok}
                                 </button>
                                 <button
                                     id = 'next'
-                                    data-action = 'closeButton'
+                                    data-action = 'close'
                                 >
                                     ${this.next}
                                 </button>
@@ -56,43 +57,32 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                         </div>
                         ${this.content.template}
                     `;
-
-                    this.caresAbout.push('data-title');
-                    this.caresAbout.push('data-screen_name');
                 }
 
                 attachedCallback(){
+                    super.attachedCallback();
                     window.on(
                         'awesome-language-set',
                         this.updateLanguage.bind(this)
                     );
-
-                    this.addEventListener(
-                        'click',
-                        this.clicked.bind(this)
-                    );
                 }
 
                 detachedCallback(){
+                    super.detachedCallback();
                     window.off(
                         'awesome-language-set',
                         this.updateLanguage.bind(this)
                     );
-
-                    this.removeEventListener(
-                        'click',
-                        this.clicked.bind(this)
-                    );
                 }
 
                 clicked(e){
+                    super.clicked(e);
                     if(e.target.id == 'next'){
-                        dispatcher.trigger(
-                            action.ROUTE_REQUEST,
+                        this.dispatcher.trigger(
+                            this.actions.ROUTE_REQUEST,
                             this.dataset.screen_name
                         );
                     }
-                    this.close();
                 }
 
                 updateLanguage(){
