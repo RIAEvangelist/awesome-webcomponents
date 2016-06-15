@@ -39,12 +39,17 @@
                        return;
                     }
 
-                    if(this.getAttribute(key) === newValue){
+                    //changing very rapidly? skip it!
+                    if(this.getAttribute(key) !== newValue){
                         return;
                     }
-                    //console.log(3)
 
-                    this.createdCallback();
+                    clearTimeout(this.attributeChangedCallbackTimer);
+
+                    this.attributeChangedCallbackTimer=setTimeout(
+                        this.createdCallback.bind(this),
+                        10
+                    );
                 }
 
                 careAbout(){
