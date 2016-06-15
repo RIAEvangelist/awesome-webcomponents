@@ -745,7 +745,6 @@ class Awesome{
          * @return {Boolean}      true
          */
         function requireScript(path){
-            console.warn(path);
             const existingScript=document.head.querySelector(`script[src='${path}']`);
             if(existingScript){
                 return false;
@@ -887,7 +886,7 @@ class Awesome{
         }
 
         /**
-         * register stores component Class in the awesome.component object and registers the element with the DOM
+         * register creates component Class in the awesome.component object and registers the element with the DOM
          *
          * @example
          *
@@ -923,6 +922,12 @@ class Awesome{
                 component.elementTagName,
                 component
             );
+
+            const e=new CustomEvent(
+                'awesome-component-registered'
+            );
+
+            window.dispatchEvent(e);
         }
 
         function awesomeReady(){
@@ -1186,4 +1191,58 @@ if (!Array.prototype.includes) {
         }
         return false;
     };
+}
+
+class AwesomeComponent{
+    constructor(){
+        this.extends='BaseComponent';
+        this.tagName=null;
+        this.extendsNative=false;
+        this.create=null;
+    }
+
+    register(){
+        if(!this.extendsNative){
+            if(!awesome.component[this.extends]){
+                return;
+            }
+        }
+        console.log(this)
+        window.off(
+            this.eventName,
+            this.register.bind(this)
+        );
+
+        const componentClass=this.create();
+
+        componentClass.elementTagName=this.tagName;
+        awesome.register(componentClass);
+
+        this.create=null;
+        this.extends=null;
+        this.init=null;
+        this.register=null;
+    }
+
+    init(){
+        this.eventName='awesome-component-registered';
+        let isReady=awesome.component[this.extends];
+
+        if(this.extendsNative){
+            isReady=awesome.ready;
+            this.eventName='awesome-ready';
+        }
+
+        if(!isReady){
+            console.log(isReady,this)
+            window.on(
+                this.eventName,
+                this.register.bind(this)
+            );
+
+            return;
+        }
+
+        this.register();
+    }
 }

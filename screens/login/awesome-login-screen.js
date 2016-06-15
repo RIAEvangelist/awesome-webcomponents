@@ -6,30 +6,31 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
 (
     function(){
-        function init() {
-            window.off(
-                'awesome-ready',
-                init
-            );
+        const component=new AwesomeComponent;
+        component.tagName='awesome-login-screen';
+        component.extends='BaseScreen';
 
+        const defaults = {
+            screen:'login',
+            action_path:`${awesome.path}actions/user/auth.js`,
+
+            username_id:'awesome-login-screen-username',
+            username_pattern: awesome.config.validate.username,
+
+            password_id:'awesome-login-screen-password'
+        }
+
+        component.create=function createAwesomeLoginScreen() {
             const state = awesome.stores.auth.state;
-            const defaults = {
-                screen:'login',
-                action_path:`${awesome.path}actions/user/auth.js`,
-                loginEvent:this.actions.LOGIN_REQUEST,
 
-                username_id:'awesome-login-screen-username',
-                username_pattern: awesome.config.validate.username,
-
-                password_id:'awesome-login-screen-password'
-            }
-
-            class AwesomeLogin extends awesome.component.BaseScreen{
+            return class AwesomeLoginScreen extends awesome.component.BaseScreen{
                 createdCallback(){
-                    this.defaults=defaults;
                     super.createdCallback();
+                    defaults.loginEvent=this.actions.LOGIN_REQUEST;
+                    this.mergeDataset(defaults);
+
                     awesome.requireScript(this.dataset.action_path);
-                    this.classList.add(AwesomeLogin.elementTagName);
+                    this.classList.add(AwesomeLoginScreen.elementTagName);
 
                     this.innerHTML=`
                         <awesome-dialog data-title='${awesome.language.current['awesome-login-screen-header']}'>
@@ -97,10 +98,6 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                     );
                 }
 
-                attributeChangedCallback(key,oldValue,newValue){
-                    this.createdCallback();
-                }
-
                 update(){
                     if(state.authenticated!==true && state.failedAttempts===0){
                         return;
@@ -125,20 +122,8 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                     );
                 }
             }
+        };
 
-            AwesomeLogin.elementTagName = 'awesome-login-screen';
-            awesome.register(AwesomeLogin);
-        }
-
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )()

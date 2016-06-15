@@ -4,11 +4,14 @@ awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
 
 (
     function(){
-        let defaults=null;
         let langs=[];
 
-        function init(e){
-            defaults={
+        const component=new AwesomeComponent;
+        component.tagName='awesome-languages';
+        component.extends='AwesomeButtonSet';
+
+        component.create=function createAwesomeLanguages(e){
+            const defaults={
                 codes:[
                     'en',
                     'ru',
@@ -21,85 +24,42 @@ awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
                 es:awesome.language.current.spanish
             };
 
-            window.off(
-                'awesome-ready',
-                init
-            );
+            return class AwesomeLanguages extends awesome.component.AwesomeButtonSet{
+                createdCallback(){
+                    super.createdCallback();
 
-            document.registerElement(
-                'awesome-languages',
-                Component
-            );
-        }
+                    this.mergeDataset(defaults);
+                    this.classList.add(AwesomeLanguages.elementTagName);
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+                    langs=this.dataset.codes.split(',');
 
-                langs=this.dataset.codes.split(',');
-                const index=langs.indexOf(
-                    localStorage.getItem('language')
-                );
-                const buttons=[];
+                    const index=langs.indexOf(
+                        localStorage.getItem('language')
+                    );
 
-                for(let i=0; i<langs.length; i++){
-                    buttons.push(
-                        `
-                            data-b${i}='${
-                                this.dataset[
-                                    langs[i]
-                                ]
-                            }'
-                        `
+                    for(let i=0; i<langs.length; i++){
+                        this.dataset[`b${i}`]=this.dataset[
+                            langs[i]
+                        ]
+                    }
+
+                    this.index=index;
+                }
+
+                attachedCallback(){
+                    super.attachedCallback();
+                    this.addEventListener(
+                        'change',
+                        function languageChange(e){
+                            awesome.setLanguage(
+                                langs[e.target.value]
+                            );
+                        }
                     );
                 }
-
-                let langIndex='';
-                if(index>-1){
-                    langIndex=`data-index='${
-                        index
-                    }'`
-                }
-
-                this.innerHTML=`
-                    <awesome-buttonset
-                        ${langIndex}
-                        data-count=${langs.length}
-                        ${buttons.join('')}
-                    ></awesome-buttonset>
-                `;
-            }
-
-            attachedCallback(){
-                this.addEventListener(
-                    'change',
-                    function languageChange(e){
-                        awesome.setLanguage(
-                            langs[e.target.value]
-                        );
-                    }
-                );
-            }
-
-            detachedCallback(){
-                this.createdCallback();
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
             }
         }
 
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )();

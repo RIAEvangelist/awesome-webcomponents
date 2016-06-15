@@ -4,37 +4,24 @@ awesome.requireCSS(`${awesome.path}screens/_baseScreen/base.css`);
 
 (
     function(){
+        const defaults={
+            screen:''
+        }
 
-        function init(){
-            window.off(
-                'awesome-ready',
-                init
-            );
+        const component=new AwesomeComponent;
+        component.tagName='awesome-base-screen';
 
-            class BaseScreen extends awesome.component.BaseComponent{
+        component.create=function createBaseScreen(){
+            return class BaseScreen extends awesome.component.BaseComponent{
                 createdCallback(){
-                    this.defaults = this.defaults || {
-                        screen: ''
-                    }
                     super.createdCallback();
+                    this.mergeDataset(defaults);
 
                     this.classList.add(BaseScreen.elementTagName);
                 }
             }
-
-            BaseScreen.elementTagName = 'awesome-base-screen';
-            awesome.register(BaseScreen);
         }
 
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )()

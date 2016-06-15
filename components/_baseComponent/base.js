@@ -2,20 +2,16 @@
 
 (
     function(){
-        function init() {
-            window.off(
-                'awesome-ready',
-                init
-            );
+        const component=new AwesomeComponent;
+        component.extendsNative=true;
+        component.tagName='awesome-base-component';
 
-            class BaseComponent extends HTMLElement{
+        component.create=function createBaseComponent(){
+
+            return class BaseComponent extends HTMLElement{
                 createdCallback(){
-                    this.defaults=this.defaults||{};
-
                     this.caresAbout=[];
                     this.classList.add(BaseComponent.elementTagName);
-
-                    awesome.mergeDataset(this,this.defaults);
 
                     //these are constant, you can not change them, they will overwrite your values
                     this.dispatcher= awesome.dispatchers.component;
@@ -34,9 +30,11 @@
                 }
 
                 attributeChangedCallback(key,oldValue,newValue){
+                    console.log(`${key}--${oldValue}--${newValue}--${this.caresAbout}`);
                     if(!this.caresAbout){
                         return;
                     }
+
                     if(!this.caresAbout.includes(key)){
                        return;
                     }
@@ -44,8 +42,13 @@
                     if(this.getAttribute(key) === newValue){
                         return;
                     }
+                    console.log(3)
 
                     this.createdCallback();
+                }
+
+                careAbout(){
+                    Array.prototype.push.apply(this.caresAbout, arguments);
                 }
 
                 /**
@@ -72,7 +75,7 @@
                  * @method awesome.mergeDataset
                  * @param {Object} defaults        default dataset
                  */
-                function mergeDataset(defaults){
+                mergeDataset(defaults){
                     const data={};
                     Object.assign(
                         data,
@@ -81,25 +84,13 @@
                     );
 
                     Object.assign(
-                        dataset,
+                        this.dataset,
                         data
                     );
                 }
-            }
+            };
+        };
 
-            BaseComponent.elementTagName='awesome-base-component';
-            awesome.register(BaseComponent);
-        }
-
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )();

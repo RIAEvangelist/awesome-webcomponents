@@ -1,28 +1,28 @@
-awesome-buttonset{
+.awesome-buttonset{
     display:inline-block;
 }
 
-awesome-buttonset button{
+.awesome-buttonset button{
     padding:.5em 1em;
     min-height:1em;
     line-height:1.3em;
 }
 
-awesome-buttonset button:empty::before{
+.awesome-buttonset button:empty::before{
     content:' - '
 }
 
-awesome-buttonset button:first-of-type{
+.awesome-buttonset button:first-of-type{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-awesome-buttonset button:last-of-type{
+.awesome-buttonset button:last-of-type{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-awesome-buttonset button:not(:first-of-type):not(:last-of-type){
+.awesome-buttonset button:not(:first-of-type):not(:last-of-type){
     border-radius: 0;
 }
 

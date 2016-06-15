@@ -1,4 +1,4 @@
-awesome-dialog{
+.awesome-dialog{
     display:block;
     position:absolute;
     width:30em;
@@ -11,7 +11,7 @@ awesome-dialog{
     overflow:hidden;
 }
 
-awesome-dialog .content{
+.awesome-dialog .content{
     margin:.25em;
     overflow:auto;
     height:calc(100% - 2.5em);
@@ -21,7 +21,7 @@ awesome-dialog .content{
 Small desktop windows and mobile
 \*******************************/
 @media (max-width:800px), (max-height:700px){
-    awesome-dialog{
+    .awesome-dialog{
         width:100%;
         height:100%;
         left:0;
@@ -29,7 +29,7 @@ Small desktop windows and mobile
         border-radius:0;
     }
 
-    awesome-dialog header{
+    .awesome-dialog header{
         text-align:center;
     }
 }
