@@ -4,48 +4,37 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-sidebar.css`);
 
 (
     function(){
-        const defaults={};
+        const component=new AwesomeComponent;
+        component.tagName='awesome-sidebar';
+        component.extends='BaseComponent';
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
-                this.innerHTML=`
-                    <div class='sidebar-stub'>
-                        <span class = 'flaticon-three'>
-                        </span>
-                    </div>
-                    <div class='sidebar-content'>${content.content}</div>
-                    ${content.template}
-                `;
+        component.create=function createAwesomeList(){
+            return class AwesomeSidebar extends awesome.component.BaseComponent{
+                createdCallback(){
+                    super.createdCallback();
+                    this.classList.add(AwesomeSidebar.elementTagName)
 
-                this.querySelector('.sidebar-stub').addEventListener(
-                    'click',
-                    this.clicked.bind(this)
-                )
-            }
+                    this.innerHTML=`
+                        <div class='sidebar-stub'>
+                            <span class = 'flaticon-three'>
+                            </span>
+                        </div>
+                        <div class='sidebar-content'>${this.content.content}</div>
+                        ${this.content.template}
+                    `;
 
-            attachedCallback(){
+                    this.querySelector('.sidebar-stub').addEventListener(
+                        'click',
+                        this.clicked.bind(this)
+                    )
+                }
 
-            }
-
-            detachedCallback(){
-
-            }
-
-            clicked(){
-                this.classList.toggle('showSidebar');
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                //basic re-render
-                this.createdCallback();
+                clicked(){
+                    this.classList.toggle('showSidebar');
+                }
             }
         }
 
-        document.registerElement(
-            'awesome-sidebar',
-            Component
-        );
+        component.init();
     }
 )();
