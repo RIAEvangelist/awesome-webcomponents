@@ -1,6 +1,7 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}components/_a_boilerplate/awesome-boilerplate.css`);
+awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
 
 (
     function(){
@@ -8,37 +9,35 @@ awesome.requireCSS(`${awesome.path}components/_a_boilerplate/awesome-boilerplate
             something:'Boilerplate'
         }
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+        const component=new AwesomeComponent;
+        component.tagName='awesome-boilerplate-example';
+        component.extends='BaseComponent';
 
-                this.innerHTML=`
-                    <p>${this.dataset.something}</p>
-                    <div>${content.content}</div>
+        component.create=function createAwesomeDialog() {
+            const dispatcher=awesome.dispatchers.component;
+            const constants=awesome.constants.component;
+            const action=awesome.constants.action;
 
-                    <!-- preserve content template so it isn't lost on re-render -->
-                    ${content.template}
-                `;
-            }
+            const store=awesome.store.boilerplate;
 
-            attachedCallback(){
+            return class AwesomeBoilerPlateExample extends awesome.component.BaseComponent{
+                createdCallback(){
+                    super.createdCallback();
+                    this.mergeDataset(this,defaults);
+                    this.classList.add(AwesomeBoilerPlateExample.elementTagName);
 
-            }
+                    this.innerHTML=`
+                        <p>${this.dataset.something}</p>
+                        <p>store.state.boilerplate=${store.state.boilerplate}</p>
+                        <div>${this.content.content}</div>
 
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                //basic re-render
-                this.createdCallback();
+                        <!-- preserve content template so it isn't lost on re-render -->
+                        ${this.content.template}
+                    `;
+                }
             }
         }
 
-        document.registerElement(
-            'awesome-boilerplate',
-            Component
-        );
+        component.init();
     }
 )();
