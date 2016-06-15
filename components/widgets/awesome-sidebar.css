@@ -1,4 +1,4 @@
-awesome-sidebar {
+.awesome-sidebar {
     position:absolute;
     top: 3.25em;
     right: -30em;
@@ -9,7 +9,7 @@ awesome-sidebar {
     transition: right 400ms, width 400ms;
 }
 
-awesome-sidebar:after {
+.awesome-sidebar:after {
     position: absolute;
     content: '';
     background: transparent;
@@ -19,7 +19,7 @@ awesome-sidebar:after {
     top:0;
 }
 
-awesome-sidebar span.flaticon-three:before{
+.awesome-sidebar span.flaticon-three:before{
     position: absolute;
     pointer-events:none;
     font-size: 2.1em;
@@ -30,7 +30,7 @@ awesome-sidebar span.flaticon-three:before{
     width: 100%;
 }
 
-awesome-sidebar .sidebar-stub{
+.awesome-sidebar .sidebar-stub{
     height: 4.5em;
     width: 4em;
     left: -4em;
@@ -42,11 +42,11 @@ awesome-sidebar .sidebar-stub{
     background-color: rgb(147,147,147);
 }
 
-awesome-sidebar .sidebar-content {
+.awesome-sidebar .sidebar-content {
 
 }
 
-awesome-sidebar.showSidebar {
+.awesome-sidebar.showSidebar {
   right:0;
   transition: right 400ms;
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-awesome.requireCSS(`${awesome.path}components/sidebar/awesome-sidebar.css`);
+awesome.requireCSS(`${awesome.path}components/widgets/awesome-sidebar.css`);
 
 (
     function(){

@@ -4,36 +4,26 @@ awesome.requireCSS(`${awesome.path}components/list/awesome-list.css`);
 
 (
     function(){
-        const defaults={}
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+        const component=new AwesomeComponent;
+        component.tagName='awesome-list';
+        component.extends='BaseComponent';
 
-                this.innerHTML=`
-                    <ul>
-                        ${content.content}
-                    </ul>
-                    ${content.template}
-                `;
-            }
+        component.create=function createAwesomeList(){
+            return class AwesomeList extends awesome.component.BaseComponent{
+                createdCallback(){
+                    super.createdCallback();
+                    this.classList.add(AwesomeList.elementTagName)
 
-            attachedCallback(){
-
-            }
-
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-
+                    this.innerHTML=`
+                        <ul>
+                            ${this.content.content}
+                        </ul>
+                        ${this.content.template}
+                    `;
+                }
             }
         }
 
-        document.registerElement(
-            'awesome-list',
-            Component
-        );
+        component.init();
     }
 )();
