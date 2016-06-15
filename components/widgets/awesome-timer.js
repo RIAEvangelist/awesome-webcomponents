@@ -61,7 +61,7 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-timer.css`);
                 }
 
                 start(){
-                    if(this.dataset.current_time == 0){
+                    if(this.dataset.current_time < 1){
                         return false;
                     }
                     clearTimeout(this.timeout);
@@ -73,7 +73,8 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-timer.css`);
 
                 decreaseTime(){
                     this.dataset.current_time -= this.dataset.delay;
-                    if(this.dataset.current_time == 0){
+                    if(this.dataset.current_time < 1){
+                        this.dataset.current_time=0;
                         this.stop();
                     }
                     this.start();

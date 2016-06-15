@@ -23,8 +23,6 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
                     this.classList.add(AwesomeDialog.elementTagName);
                     let header='';
 
-                    console.log(this.dataset);
-
                     if(this.dataset.header==='true'){
                         header=`
                             <awesome-header
