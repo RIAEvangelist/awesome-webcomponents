@@ -11,73 +11,87 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
             screen_name: ''
         }
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
+        const component=new AwesomeComponent;
+        component.tagName='awesome-screen-icon';
 
-                this.innerHTML=`
-                <div
-                    class = 'contentWrapper'
-                >
-                    <div
-                        class = 'iconImageWrapper'
-                    >
-                        <div class='screen-flaticon-class ${this.dataset.class}'></div>
-                        <img
-                            class='icon'
-                            src=${this.dataset.icon}
-                        />
-                    </div>
-                    <div
-                        class = 'iconTextWrapper'
-                    >
-                        ${
-                            (awesome.language.current[this.dataset.text])
-                            ? awesome.language.current[this.dataset.text]
-                            : this.dataset.text
+        component.create=function createAwesomeScreenIcon(){
+            return class AwesomeScreenIcon extends awesome.component.BaseComponent{
+
+                createdCallback(){
+                    super.createdCallback();
+                    this.mergeDataset(defaults);
+                    this.classList.add(AwesomeScreenIcon.elementTagName);
+                    this.careAbout(
+                        'data-icon',
+                        'data-text',
+                        'data-class',
+                        'data-screen_name'
+                    );
+
+                    this.innerHTML=`
+                        <div
+                            class = 'contentWrapper'
+                        >
+                            <div
+                                class = 'iconImageWrapper'
+                            >
+                                <div class='screen-flaticon-class ${this.dataset.class}'></div>
+                                <img
+                                    class='icon'
+                                    src=${this.dataset.icon}
+                                />
+                            </div>
+                            <div
+                                class = 'iconTextWrapper'
+                            >
+                                ${
+                                    (awesome.language.current[this.dataset.text])
+                                    ? awesome.language.current[this.dataset.text]
+                                    : this.dataset.text
+                                }
+                            </div>
+                        <div>
+                    `;
+                }
+
+                attachedCallback(){
+                    super.attachedCallback();
+
+                    this.addEventListener(
+                        'click',
+                        this.iconClicked
+                    );
+
+                    window.on(
+                        'awesome-language-set',
+                        this.createdCallback.bind(this)
+                    );
+                }
+
+                detachedCallback(){
+                    super.detachedCallback();
+
+                    window.off(
+                        'awesome-language-set',
+                        this.createdCallback.bind(this)
+                    );
+                }
+
+                iconClicked(e){
+                    e.stopPropagation();
+                    const change = new Event(
+                        'change',
+                        {
+                            'bubbles':true,
+                            'cancelable':false
                         }
-                    </div>
-                <div>
-                `;
-            }
+                    );
 
-            attachedCallback(){
-                this.addEventListener(
-                    'click',
-                    this.iconClicked
-                );
-
-                window.on(
-                    'awesome-language-set',
-                    this.createdCallback.bind(this)
-                );
-            }
-
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
-            }
-
-            iconClicked(e){
-                e.stopPropagation();
-                const change = new Event(
-                    'change',
-                    {
-                        'bubbles':true,
-                        'cancelable':false
-                    }
-                );
-
-                this.dispatchEvent(change);
+                    this.dispatchEvent(change);
+                }
             }
         }
 
-        document.registerElement(
-            'awesome-screen-icon',
-            Component
-        );
+        component.init();
     }
 )();

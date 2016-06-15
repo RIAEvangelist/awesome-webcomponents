@@ -15,7 +15,7 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-meter.css`);
         component.tagName='awesome-meter';
         component.extends='BaseComponent';
 
-        component.create=function createAwesomeList(){
+        component.create=function createAwesomeMeter(){
             return class AwesomeMeter extends awesome.component.BaseComponent{
                 createdCallback(){
                     super.createdCallback();

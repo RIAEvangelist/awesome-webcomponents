@@ -8,7 +8,7 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-sidebar.css`);
         component.tagName='awesome-sidebar';
         component.extends='BaseComponent';
 
-        component.create=function createAwesomeList(){
+        component.create=function createAwesomeSidebar(){
             return class AwesomeSidebar extends awesome.component.BaseComponent{
                 createdCallback(){
                     super.createdCallback();
