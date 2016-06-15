@@ -12,65 +12,63 @@ awesome.requireCSS(`${awesome.path}components/range/awesome-range.css`);
             disabled: false
         }
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
+        const component = new AwesomeComponent;
+        component.tagName = 'awesome-range';
+        component.extends= 'BaseComponent';
 
-                this.innerHTML=`
-                    <input
-                        type = 'range'
-                        min = '${this.dataset.min}'
-                        max = '${this.dataset.max}'
-                        step = '${this.dataset.step}'
-                        value = '${this.dataset.value}'
-                        ${
-                            (this.dataset.disabled==='true')?
-                                'disabled'
-                                    :
-                                ''
+        component.create=function createAwesomeRange() {
+            return class AwesomeRange extends awesome.component.BaseComponent {
+                createdCallback(){
+                    super.createdCallback();
+                    this.mergeDataset(defaults);
+                    this.classList.add(AwesomeRange.elementTagName)
+                    this.careAbout(
+                        'data-min',
+                        'data-max',
+                        'data-step',
+                        'data-value',
+                        'data-disabled'
+                    );
+
+                    this.innerHTML=`
+                        <input
+                            type = 'range'
+                            min = '${this.dataset.min}'
+                            max = '${this.dataset.max}'
+                            step = '${this.dataset.step}'
+                            value = '${this.dataset.value}'
+                            ${
+                                (this.dataset.disabled==='true')?
+                                    'disabled'
+                                        :
+                                    ''
+                            }
+                        ></input>
+                    `;
+
+                    this.querySelector('input').addEventListener(
+                        'change',
+                        this.change.bind(this)
+                    );
+                }
+
+                change(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.value=e.target.value;
+                    const change = new Event(
+                        'change',
+                        {
+                            'bubbles':true,
+                            'cancelable':false
                         }
-                    ></input>
-                `;
+                    );
 
-                this.querySelector('input').addEventListener(
-                    'change',
-                    this.change.bind(this)
-                );
-            }
-
-            attachedCallback(){
-
-            }
-
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
-
-
-            }
-
-            change(e){
-                e.preventDefault();
-                e.stopPropagation();
-                this.value=e.target.value;
-                const change = new Event(
-                    'change',
-                    {
-                        'bubbles':true,
-                        'cancelable':false
-                    }
-                );
-
-                this.dispatchEvent(change);
+                    this.dispatchEvent(change);
+                }
             }
         }
 
-        document.registerElement(
-            'awesome-range',
-            Component
-        );
+        component.init();
     }
 )();

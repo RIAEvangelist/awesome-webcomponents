@@ -1,14 +1,14 @@
-awesome-options-dropdown {
+.awesome-options-dropdown {
     display:block;
     height:2em;
 }
 
-awesome-options-dropdown label{
+.awesome-options-dropdown label{
     padding: 0 1.25em 0 1.25em;
     font-size: 1.25em;
 }
 
-awesome-options-dropdown select {
+.awesome-options-dropdown select {
     padding: .5em;
     border-radius: .3em;
     border: none;
