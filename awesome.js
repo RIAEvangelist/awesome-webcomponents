@@ -220,16 +220,6 @@ class Awesome{
                     enumerable:true,
                     writable:false,
                     value:uniqueEntries
-                },
-                mergeDataset:{
-                    enumerable:true,
-                    writable:false,
-                    value:mergeDataset
-                },
-                updateAttributesFromData:{
-                    enumerable:true,
-                    writable:false,
-                    value:updateAttributesFromData
                 }
             }
         );
@@ -755,6 +745,7 @@ class Awesome{
          * @return {Boolean}      true
          */
         function requireScript(path){
+            console.warn(path);
             const existingScript=document.head.querySelector(`script[src='${path}']`);
             if(existingScript){
                 return false;
@@ -920,7 +911,7 @@ class Awesome{
                 component
                 &&component!==componentClass
             ){
-                console.warn(componentClass.name);
+                // console.warn(componentClass.name);
                 console.trace('awesome.register requested registration of previously existing component');
                 return;
             }
@@ -1047,87 +1038,6 @@ class Awesome{
         }
 
         /**
-         * mergeDataset merges element's dataset to current default dataset of document
-         *
-         * @example
-         *
-         * defaultElementDataset = {
-         *  	property1: 'one',
-         *  	property2: 'two'
-         * }
-         *
-         * function componentCreatedCallback(componentDataset){
-         * 		mergeDataset(myElement, componentDataset);
-         * }
-         *
-         * //after the component is created it will contain
-         * //ElementDataset
-         *  {
-         *  	property1 : 'newProp1',
-         *  	property2 : 'newProp2'
-         *  }
-         *
-         * @method awesome.mergeDataset
-         * @param {HTMLElement} el         element with dataset to be merged
-         * @param {Object} defaults        default dataset
-         */
-        function mergeDataset(el,defaults){
-            const data={};
-            Object.assign(
-                data,
-                defaults,
-                el.dataset
-            );
-
-            Object.assign(
-                el.dataset,
-                data
-            );
-        }
-
-        /**
-         * updateAttributesFromData updates an element's attributes
-         *
-         * @example
-         * //orginal element attributes
-         * {
-         *  	attribute1 : 'green',
-         *  	attribute2 : 'red',
-         *  	attribute3 : 'white'
-         * }
-         *
-         * yourElementAttributeUpdater(element, attribute3, black);
-         *
-         * function yourElementAttributeUpdater(element, elementKey,newValue){
-         *  	awesome.updateAttributesFromData(element, elementKey, newValue);
-         * }
-         *
-         * //resulting element attributes
-         * {
-         *  	attribute1 : 'green',
-         *  	attribute2 : 'red',
-         *  	attribute3 : 'black'
-         * }
-         *
-         * @method awesome.updateAttributesFromData
-         * @param  {HTMLElement}    el      element object
-         * @param  {String}         key     key of element
-         * @param  {String}         value   value to update data to
-         * @return {HTMLElement}            updated element object
-         */
-        function updateAttributesFromData(el,key,value){
-            if(key.indexOf('data-')!==0){
-                return el;
-            }
-
-            el[
-                key.replace('data-','')
-            ]=value;
-
-            return el;
-        }
-
-        /**
          * uniqueEntries ensures that keys and values of data array are unique
          *
          * @example
@@ -1210,6 +1120,7 @@ awesome.requireScript(`${awesome.bower}browser-error-classes/Errors.js`);
 //base components
 awesome.requireScript(`${awesome.path}components/_baseComponent/base.js`);
 awesome.requireScript(`${awesome.path}screens/_baseScreen/base.js`);
+
 
 //default language file
 awesome.requireScript(`${awesome.path}languages/default.js`);

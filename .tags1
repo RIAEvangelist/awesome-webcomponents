@@ -1,0 +1,31 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+constructor	/home/mario/git/awesome-webcomponents/awesome.js	/^    constructor(){$/;"	function	line:47
+configMerge	/home/mario/git/awesome-webcomponents/awesome.js	/^        function configMerge(root,newRoot){$/;"	function	line:361
+getConfigs	/home/mario/git/awesome-webcomponents/awesome.js	/^        function getConfigs(){$/;"	function	line:386
+getLanguage	/home/mario/git/awesome-webcomponents/awesome.js	/^        function getLanguage(){$/;"	function	line:395
+setLanguageKey	/home/mario/git/awesome-webcomponents/awesome.js	/^        function setLanguageKey(newLanguage){$/;"	function	line:399
+setLanguage	/home/mario/git/awesome-webcomponents/awesome.js	/^        function setLanguage(languageCode){$/;"	function	line:440
+dynamicLanguageString	/home/mario/git/awesome-webcomponents/awesome.js	/^        function dynamicLanguageString(key,params){$/;"	function	line:496
+getActionConstants	/home/mario/git/awesome-webcomponents/awesome.js	/^        function getActionConstants(){$/;"	function	line:523
+setActionConstants	/home/mario/git/awesome-webcomponents/awesome.js	/^        function setActionConstants(constants){$/;"	function	line:557
+getStoreConstants	/home/mario/git/awesome-webcomponents/awesome.js	/^        function getStoreConstants(){$/;"	function	line:569
+setStoreConstants	/home/mario/git/awesome-webcomponents/awesome.js	/^        function setStoreConstants(constants){$/;"	function	line:604
+getComponentConstants	/home/mario/git/awesome-webcomponents/awesome.js	/^        function getComponentConstants(){$/;"	function	line:616
+setComponentConstants	/home/mario/git/awesome-webcomponents/awesome.js	/^        function setComponentConstants(constants){$/;"	function	line:652
+loadTemplate	/home/mario/git/awesome-webcomponents/awesome.js	/^        function loadTemplate(instance){$/;"	function	line:712
+requireScript	/home/mario/git/awesome-webcomponents/awesome.js	/^        function requireScript(path){$/;"	function	line:747
+requireLanguage	/home/mario/git/awesome-webcomponents/awesome.js	/^        function requireLanguage(path){$/;"	function	line:774
+scriptLoaded	/home/mario/git/awesome-webcomponents/awesome.js	/^        function scriptLoaded(path){$/;"	function	line:794
+scriptError	/home/mario/git/awesome-webcomponents/awesome.js	/^        function scriptError(path){$/;"	function	line:831
+languageLoaded	/home/mario/git/awesome-webcomponents/awesome.js	/^        function languageLoaded(path){$/;"	function	line:856
+registerComponent	/home/mario/git/awesome-webcomponents/awesome.js	/^        function registerComponent(componentClass){$/;"	function	line:903
+awesomeReady	/home/mario/git/awesome-webcomponents/awesome.js	/^        function awesomeReady(){$/;"	function	line:928
+hasLang	/home/mario/git/awesome-webcomponents/awesome.js	/^        function hasLang(lang){$/;"	function	line:989
+requireCSS	/home/mario/git/awesome-webcomponents/awesome.js	/^        function requireCSS(path){$/;"	function	line:1027
+uniqueEntries	/home/mario/git/awesome-webcomponents/awesome.js	/^        function uniqueEntries(data){$/;"	function	line:1061
+includes	/home/mario/git/awesome-webcomponents/awesome.js	/^    Array.prototype.includes = function(searchElement) {$/;"	function	line:1155

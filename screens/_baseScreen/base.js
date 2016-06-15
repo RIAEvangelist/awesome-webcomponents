@@ -13,10 +13,6 @@ awesome.requireCSS(`${awesome.path}screens/_baseScreen/base.css`);
 
             class BaseScreen extends awesome.component.BaseComponent{
                 createdCallback(){
-                    this.dispatcher= awesome.dispatchers.component;
-                    this.constants = awesome.constants.component;
-                    this.action = awesome.constants.action;
-                    
                     this.defaults = this.defaults || {
                         screen: ''
                     }

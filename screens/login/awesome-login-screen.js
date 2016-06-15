@@ -13,21 +13,22 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
             );
 
             const state = awesome.stores.auth.state;
+            const defaults = {
+                screen:'login',
+                action_path:`${awesome.path}actions/user/auth.js`,
+                loginEvent:this.actions.LOGIN_REQUEST,
+
+                username_id:'awesome-login-screen-username',
+                username_pattern: awesome.config.validate.username,
+
+                password_id:'awesome-login-screen-password'
+            }
 
             class AwesomeLogin extends awesome.component.BaseScreen{
                 createdCallback(){
-                    this.defaults = {
-                        screen:'login',
-                        action_path:`${awesome.path}actions/user/auth.js`,
-
-                        username_id:'awesome-login-screen-username',
-                        username_pattern: awesome.config.validate.username,
-
-                        password_id:'awesome-login-screen-password'
-                    }
+                    this.defaults=defaults;
                     super.createdCallback();
                     awesome.requireScript(this.dataset.action_path);
-                    this.LOGIN_ACTION = this.action.LOGIN_REQUEST;
                     this.classList.add(AwesomeLogin.elementTagName);
 
                     this.innerHTML=`
@@ -116,7 +117,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                     const password=this.querySelector(`#${this.dataset.password_id}`);
 
                     this.dispatcher.trigger(
-                        this.LOGIN_ACTION,
+                        this.loginEvent,
                         {
                             username:username.value,
                             password:password.value
