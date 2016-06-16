@@ -17,6 +17,13 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
                 createdCallback(){
                     super.createdCallback();
                     this.mergeDataset(defaults);
+                    this.careAbout(
+                        'data-icon',
+                        'data-title'
+                    );
+                    this.localize(
+                        this.dataset.title
+                    );
                     this.classList.add(AwesomeHeader.elementTagName);
                     let icon='';
                     if(this.dataset.icon){
@@ -27,27 +34,15 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
                             />
                         `;
                     }
-
+                    
                     this.innerHTML=`
                         <header>
                             ${icon}
-                            ${this.dataset.title}
+                            ${this.local[this.dataset.title]}
                             ${this.content.content}
                         </header>
                         ${this.content.template}
                     `;
-                }
-
-                attachedCallback(){
-
-                }
-
-                detachedCallback(){
-
-                }
-
-                attributeChangedCallback(key,oldValue,newValue){
-                    this.createdCallback();
                 }
             }
         }

@@ -10,6 +10,8 @@
 
             return class BaseComponent extends HTMLElement{
                 createdCallback(){
+                    this.noAutoLocalization=false;
+                    this.local={};
                     this.caresAbout=[];
                     this.classList.add(BaseComponent.elementTagName);
 
@@ -23,10 +25,18 @@
 
                 attachedCallback(){
                     this.createdCallback();
+
+                    window.on(
+                        'awesome-language-set',
+                        this.localization.bind(this)
+                    );
                 }
 
                 detachedCallback(){
-
+                    window.off(
+                        'awesome-language-set',
+                        this.localization.bind(this)
+                    );
                 }
 
                 attributeChangedCallback(key,oldValue,newValue){
@@ -50,6 +60,35 @@
                         this.createdCallback.bind(this),
                         10
                     );
+                }
+
+                localize(){
+                    for(let i in arguments){
+                        const key=arguments[i];
+                        this.local[key]=awesome.language.current[key]||key
+                    }
+                }
+
+                localization(){
+                    let shouldUpdate=false;
+
+                    for(let key in this.local){
+                        if(
+                            !awesome.language.current[key]
+                            ||this.local[key]===awesome.language.current[key]
+                        ){
+                            continue;
+                        }
+
+                        shouldUpdate=true;
+                        this.local[key]=awesome.language.current[key];
+                    }
+
+                    if(!this.noAutoLocalization && shouldUpdate){
+                        this.createdCallback();
+                    }
+
+                    return shouldUpdate;
                 }
 
                 careAbout(){
