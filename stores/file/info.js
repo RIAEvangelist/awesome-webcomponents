@@ -30,8 +30,8 @@
                 );
 
                 function receivedFiles(list){
-                    store.state = list;
                     console.log('STORE', store.state);
+                    store.state = list;
                 }
             }
         }
