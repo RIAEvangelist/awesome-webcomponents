@@ -5,47 +5,41 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
 
 (
     function(){
+        const defaults={
+            title:''
+        }
 
-        function init(){
-            window.off(
-                'awesome-ready',
-                init
-            );
+        const component=new AwesomeComponent;
+        component.tagName='awesome-notification-modal';
+        component.extends='AwesomeModal';
 
-            class AwesomeNotificationModal extends awesome.component.AwesomeModal{
+        component.create=function createAwesomeNotificationModal() {
+            return class AwesomeNotificationModal extends awesome.component.AwesomeModal{
                 createdCallback(){
-                    this.defaults={
-                        title:''
-                    };
+                    super.createdCallback();
+                    this.mergeDataset(defaults);
+                    this.classList.add(AwesomeNotificationModal.elementTagName);
+                    this.ok = awesome.language.current.ok;
 
-                    this.content=this.querySelector('template');
-
-                    if(!this.content){
-                        return;
-                    }
-
-                    this.content.innerHTML=`
-                        <h1>
-                            ${this.dataset.title}
-                        </h1>
-                        <div class='contentWrapper'>
-                            ${this.content.innerHTML}
+                    this.innerHTML=`
+                        <div>
+                            <h1>
+                                ${this.dataset.title}
+                            </h1>
+                            <div class='contentWrapper'>
+                                ${this.content.content}
+                            </div>
+                            <button
+                                class = 'closeButton'
+                                data-action='close'
+                            >
+                                ${this.ok}
+                            </button>
                         </div>
-                        <button
-                            class = 'closeButton'
-                            data-action='close'
-                        >
-                            ${awesome.language.current.ok}
-                        </button>
+                        ${this.content.template}
                     `;
 
-                    this.classList.add(AwesomeNotificationModal.elementTagName);
-
-                    super.createdCallback();
                     this.caresAbout.push('data-title');
-
-                    this.title = this.dataset.title;
-                    this.ok = awesome.language.current.ok;
                 }
 
                 attachedCallback(){
@@ -74,23 +68,8 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                     this.createdCallback();
                 }
             }
-
-            AwesomeNotificationModal.elementTagName='awesome-notification-modal';
-
-            awesome.register(
-                AwesomeNotificationModal
-            );
         }
 
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )();
