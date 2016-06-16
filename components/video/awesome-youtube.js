@@ -1,6 +1,7 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}components/video/awesome-youtube.css`);
+awesome.requireScript(`${awesome.path}components/video/_baseVideo.js`);
 
 (
     function(){
@@ -13,11 +14,11 @@ awesome.requireCSS(`${awesome.path}components/video/awesome-youtube.css`);
             cc_load_policy: 0,
             controls: 1,
             color: 'white',
-            disablekb: 0,
+            disabled: 0,
             enablejsapi: 1,
             end: -1,
             fs: 1,
-            h1: '',
+            h1: 'en',
             iv_load_policy: 0,
             modestbranding: 1,
             loop: 0,
@@ -26,46 +27,40 @@ awesome.requireCSS(`${awesome.path}components/video/awesome-youtube.css`);
             start: 0
         }
 
-        class Component extends HTMLElement{
+        const component=new AwesomeComponent;
+        component.tagName='awesome-youtube';
+        component.extends='BaseVideo';
 
-            createdCallback(){
-
-                defaults.h1 = localStorage.getItem('language');
-                awesome.mergeDataset(this,defaults);
-
-                let youTubeURL = `https://www.youtube.com/embed/${this.dataset.video_id}?`;
-                for(const i in this.dataset){
-                    if(i == 'video_id' || i == 'allow_fullscreen'){
-                        continue;
-                    }
-                    youTubeURL = youTubeURL.concat(`${i}=${this.dataset[i]}&`);
+        component.create=function createAwesomeYouTube() {
+            return class AwesomeYouTube extends awesome.component.BaseVideo{
+                createdCallback(){
+                    this.url = 'https://www.youtube.com/embed';
+                    super.createdCallback();
+                    this.mergeDataset(defaults);
+                    this.classList.add(AwesomeYouTube.elementTagName);
+                    this.careAbout(
+                        'data-video_id',
+                        'data-allow_fullscreen',
+                        'data-autoplay',
+                        'data-cc_load_policy',
+                        'data-controls',
+                        'data-color',
+                        'data-disabled',
+                        'data-enablejsapi',
+                        'data-end',
+                        'data-fs',
+                        'data-h1',
+                        'data-iv_load_policy',
+                        'data-modestbranding',
+                        'data-loop',
+                        'data-rel',
+                        'data-showinfo',
+                        'data-start'
+                    );
                 }
-
-                this.innerHTML=`
-                    <iframe
-                        src = '${youTubeURL}'
-                        allowfullscreen = '${this.dataset.allow_fullscreen}'
-                    ></iframe>
-                `;
-
-            }
-
-            attachedCallback(){
-
-            }
-
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
             }
         }
 
-        document.registerElement(
-            'awesome-youtube',
-            Component
-        );
+        component.init();
     }
 )();

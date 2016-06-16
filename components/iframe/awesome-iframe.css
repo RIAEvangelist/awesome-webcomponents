@@ -1,0 +1,10 @@
+.awesome-base-video{
+    display:block;
+    height: 18em; /* 16:9 apect ratio */
+    width: 32em;
+}
+
+.awesome-base-video iframe{
+    height: 100%;
+    width: 100%;
+}
