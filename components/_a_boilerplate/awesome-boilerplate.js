@@ -14,11 +14,7 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
         component.extends='BaseComponent';
 
         component.create=function createAwesomeDialog() {
-            const dispatcher=awesome.dispatchers.component;
-            const constants=awesome.constants.component;
-            const action=awesome.constants.action;
-
-            const store=awesome.store.boilerplate;
+            const store=awesome.store.boilerplate.state;
 
             return class AwesomeBoilerPlateExample extends awesome.component.BaseComponent{
                 createdCallback(){
@@ -28,7 +24,7 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
 
                     this.innerHTML=`
                         <p>${this.dataset.something}</p>
-                        <p>store.state.boilerplate=${store.state.boilerplate}</p>
+                        <p>store.state.boilerplate=${store.boilerplate}</p>
                         <div>${this.content.content}</div>
 
                         <!-- preserve content template so it isn't lost on re-render -->

@@ -107,6 +107,8 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
         component.extends='BaseComponent';
 
         component.create=function createAwesomeDialog() {
+            const store=awesome.store.boilerplate.state;
+
             return class AwesomeBoilerPlateExample extends awesome.component.BaseComponent{
                 createdCallback(){
                     super.createdCallback();
@@ -114,9 +116,12 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
                     this.classList.add(AwesomeBoilerPlateExample.elementTagName);
 
                     this.innerHTML=`
-                        <button>
-                            ${this.dataset.something}
-                        </button>
+                        <p>${this.dataset.something}</p>
+                        <p>store.state.boilerplate=${store.boilerplate}</p>
+                        <div>${this.content.content}</div>
+
+                        <!-- preserve content template so it isn't lost on re-render -->
+                        ${this.content.template}
                     `;
                 }
             }
@@ -125,7 +130,6 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
         component.init();
     }
 )();
-
 
 
 ```
