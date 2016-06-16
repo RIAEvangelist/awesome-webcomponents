@@ -28,6 +28,10 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                         'data-multiple',
                         'data-id'
                     );
+                    this.localize(
+                        'chooseFile',
+                        'chooseFiles'
+                    );
 
                     let multiple = '';
                     if(this.dataset.multiple === 'true'){
@@ -39,8 +43,8 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                         <button>
                             ${
                                 (!multiple)
-                                ? awesome.language.current.chooseFile
-                                : awesome.language.current.chooseFiles
+                                ? this.local.chooseFile
+                                : this.local.chooseFiles
                             }
                         </button>
                         <input
@@ -70,42 +74,15 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                         'click',
                         this.chooseFile.bind(this)
                     );
-
-                    this.chooseFileText=awesome.language.current.chooseFile;
-                    this.chooseFilesText=awesome.language.current.chooseFiles;
                 }
 
                 attachedCallback(){
                     super.attachedCallback();
 
-                    window.on(
-                        'awesome-language-set',
-                        this.localize.bind(this)
-                    );
-
                     this.addEventListener(
                         'change',
                         this.update.bind(this)
                     );
-                }
-
-                detachedCallback(){
-                    super.detachedCallback();
-
-                    window.off(
-                        'awesome-language-set',
-                        this.localize.bind(this)
-                    );
-                }
-
-                localize(){
-                    if(
-                        this.chooseFileText===awesome.language.current.chooseFile
-                        &&this.chooseFilesText===awesome.language.current.chooseFiles
-                    ){
-                        return;
-                    }
-                    this.createdCallback();
                 }
 
                 update(e){
