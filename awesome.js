@@ -1206,18 +1206,32 @@ class AwesomeComponent{
     }
 
     register(e){
-        if(!this.extendsNative && e){
+        if(!awesome.ready){
+            return;
+        }
+        if(!this.extendsNative){
+            if(!e){
+                e={};
+            }
             if(
                 e.detail===this.tagName
                 ||!awesome.component[this.extends]
-                || e.detail!==this.extends
+                || (
+                    e.detail
+                    && e.detail!==this.extends
+                )
             ){
                 return;
             }
         }
 
         window.off(
-            this.eventName,
+            'awesome-component-registered',
+            this.register.bind(this)
+        );
+
+        window.off(
+            'awesome-ready',
             this.register.bind(this)
         );
 
@@ -1234,18 +1248,17 @@ class AwesomeComponent{
 
 
     init(){
-        this.eventName='awesome-component-registered';
         let isReady=awesome.component[this.extends];
-
-        if(this.extendsNative){
-            isReady=awesome.ready;
-            this.eventName='awesome-ready';
-        }
 
         if(!isReady){
             //console.log(isReady,this)
             window.on(
-                this.eventName,
+                'awesome-component-registered',
+                this.register.bind(this)
+            );
+
+            window.on(
+                'awesome-ready',
                 this.register.bind(this)
             );
 
