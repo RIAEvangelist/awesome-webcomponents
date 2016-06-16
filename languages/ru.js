@@ -20,6 +20,7 @@ awesome.language={
         next:'дальше',
         set:'сет',
         reset:'сброс',
+        home:'главное',
 
         languages:'Языки',
         timeleft:'Время вышло',

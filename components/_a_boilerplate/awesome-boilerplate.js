@@ -19,7 +19,7 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
             return class AwesomeBoilerPlateExample extends awesome.component.BaseComponent{
                 createdCallback(){
                     super.createdCallback();
-                    this.mergeDataset(this,defaults);
+                    this.mergeDataset(defaults);
                     this.classList.add(AwesomeBoilerPlateExample.elementTagName);
                     this.careAbout(
                         //will care if this attribute is updated and rerender, otherwise it will ignore the attr change.

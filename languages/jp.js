@@ -1,6 +1,6 @@
 awesome.language={
     jp:{
-        login:'ログイン',
+        login:'入る',
         logout:'ログアウト',
         username:'ユーザーID',
         password:'パスワード',
@@ -20,6 +20,7 @@ awesome.language={
         next:'次',
         set:'セット',
         reset:'リセット',
+        home:'ホーム',
 
         languages:'言語',
         timeleft:'残り時間',

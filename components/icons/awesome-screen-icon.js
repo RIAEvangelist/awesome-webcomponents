@@ -28,6 +28,10 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
                         'data-screen_name'
                     );
 
+                    this.localize(
+                        this.dataset.text
+                    );
+
                     this.innerHTML=`
                         <div
                             class = 'contentWrapper'
@@ -44,11 +48,7 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
                             <div
                                 class = 'iconTextWrapper'
                             >
-                                ${
-                                    (awesome.language.current[this.dataset.text])
-                                    ? awesome.language.current[this.dataset.text]
-                                    : this.dataset.text
-                                }
+                                ${this.local[this.dataset.text]}
                             </div>
                         <div>
                     `;
@@ -59,34 +59,31 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
 
                     this.addEventListener(
                         'click',
-                        this.iconClicked
-                    );
-
-                    window.on(
-                        'awesome-language-set',
-                        this.createdCallback.bind(this)
+                        this.clicked
                     );
                 }
 
                 detachedCallback(){
                     super.detachedCallback();
 
-                    window.off(
-                        'awesome-language-set',
-                        this.createdCallback.bind(this)
+                    this.removeEventListener(
+                        'click',
+                        this.clicked
                     );
                 }
 
-                iconClicked(e){
-                    e.stopPropagation();
-                    const change = new Event(
-                        'change',
+                clicked(e){
+                    const change = new CustomEvent(
+                        'screen-selected',
                         {
                             'bubbles':true,
-                            'cancelable':false
+                            'cancelable':false,
+                            'detail':{
+                                screen:this.dataset.screen_name
+                            }
                         }
                     );
-
+                    console.log(change);
                     this.dispatchEvent(change);
                 }
             }
