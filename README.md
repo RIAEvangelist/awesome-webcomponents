@@ -93,63 +93,39 @@ These are the documents generated from the code. It has a lot of detailed info.
 
 'use strict';
 
-//change this to your css
 awesome.requireCSS(`${awesome.path}components/_a_boilerplate/awesome-boilerplate.css`);
+awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
 
 (
     function(){
-
-        //these will be the default data-* attributes
         const defaults={
-            //makes data-something="Boilerplate"
             something:'Boilerplate'
         }
 
-        class Component extends HTMLElement{
-            createdCallback(){
+        const component=new AwesomeComponent;
+        component.tagName='awesome-boilerplate-example';
+        component.extends='BaseComponent';
 
-                //this does a shallow merge of the default data-* attributes and those specified on the element itself
-                //the ones specispecifedfied on the element will overwrite the defaults
-                awesome.mergeDataset(this,defaults);
+        component.create=function createAwesomeDialog() {
+            return class AwesomeBoilerPlateExample extends awesome.component.BaseComponent{
+                createdCallback(){
+                    super.createdCallback();
+                    this.mergeDataset(this,defaults);
+                    this.classList.add(AwesomeBoilerPlateExample.elementTagName);
 
-                //this will load a template tag from the body of the component
-                //it has both the contents and a copy of the template
-                const content=awesome.loadTemplate(this);
-
-                //render the component HTML as a template string
-                this.innerHTML=`
-
-                    <!-- use a data-attribute value -->
-                    <p>${this.dataset.something}</p>
-
-                    <!-- use the content passed by the user in the template tag -->
-                    <div>${content.content}</div>
-
-                    <!-- preserve content template so it isn't lost on re-render -->
-                    ${content.template}
-                `;
-            }
-
-            attachedCallback(){
-
-            }
-
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                //basic re-render when any attribute is updated on this instance
-                this.createdCallback();
+                    this.innerHTML=`
+                        <button>
+                            ${this.dataset.something}
+                        </button>
+                    `;
+                }
             }
         }
 
-        document.registerElement(
-            'awesome-boilerplate',
-            Component
-        );
+        component.init();
     }
 )();
+
 
 
 ```
