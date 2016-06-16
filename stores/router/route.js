@@ -82,7 +82,7 @@ awesome.requireScript(`${awesome.path}stores/user/auth.js`);
                         screens : screens
                     };
                 }
-                
+
                 function handleAuthChange(){
                     if(!auth.authenticated){
                         handleScreenChange(

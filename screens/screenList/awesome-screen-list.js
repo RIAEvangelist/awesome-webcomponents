@@ -13,16 +13,22 @@ awesome.requireScript(`${awesome.path}components/icons/awesome-screen-icon.js`);
         const defaults={
             screen:'app-list',
             icon:'flaticon-show-apps-button',
-            link_text:'Home',
+            link_text:'home',
             show_all:true
         };
 
         component.create = function createAwesomeScreenList(){
             return class AwesomeScreenList extends awesome.component.BaseScreen{
                 createdCallback(){
-                    console.log('wtff');
                     super.createdCallback();
                     this.mergeDataset(defaults);
+
+                    this.careAbout(
+                        'data-icon',
+                        'data-link_text',
+                        'data-show_all'
+                    );
+
                     this.classList.add(AwesomeScreenList.elementTagName);
                     this.route = awesome.stores.route.state;
 
@@ -76,7 +82,7 @@ awesome.requireScript(`${awesome.path}components/icons/awesome-screen-icon.js`);
                     super.attachedCallback();
 
                     this.addEventListener(
-                        'change',
+                        'screen-selected',
                         this.clicked
                     );
 
@@ -88,7 +94,7 @@ awesome.requireScript(`${awesome.path}components/icons/awesome-screen-icon.js`);
                 }
 
                 detachedCallback(){
-                    super.attachedCallback();
+                    super.detachedCallback();
 
                     this.removeEventListener(
                         'change',
@@ -106,7 +112,6 @@ awesome.requireScript(`${awesome.path}components/icons/awesome-screen-icon.js`);
                         return;
                     }
                     this.screenCount=this.route.screens.length;
-                    console.log(this.screenCount,this.route.screens.length)
                     this.createdCallback();
                 }
 
@@ -121,7 +126,7 @@ awesome.requireScript(`${awesome.path}components/icons/awesome-screen-icon.js`);
                 clicked(e){
                     this.dispatcher.trigger(
                         this.actions.ROUTE_REQUEST,
-                        e.target.dataset.screen_name
+                        e.detail.screen
                     );
                 }
             }

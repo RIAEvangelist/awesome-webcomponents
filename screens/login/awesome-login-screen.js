@@ -10,24 +10,26 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
         component.tagName='awesome-login-screen';
         component.extends='BaseScreen';
 
-        const defaults = {
-            screen:'login',
-            action_path:`${awesome.path}actions/user/auth.js`,
-
-            username_id:'awesome-login-screen-username',
-            username_pattern: awesome.config.validate.username,
-
-            password_id:'awesome-login-screen-password'
-        }
-
         component.create=function createAwesomeLoginScreen() {
             const state = awesome.stores.auth.state;
 
+            const defaults = {
+                screen:'login',
+                action_path:`${awesome.path}actions/user/auth.js`,
+
+                username_id:'awesome-login-screen-username',
+                username_pattern: awesome.config.validate.username,
+
+                password_id:'awesome-login-screen-password',
+
+                login_event:awesome.constants.action.LOGIN_REQUEST
+            }
+
             return class AwesomeLoginScreen extends awesome.component.BaseScreen{
                 createdCallback(){
-                    this.mergeDataset(defaults);
                     super.createdCallback();
-                    defaults.loginEvent=this.actions.LOGIN_REQUEST;
+                    defaults.login_event=this.actions.LOGIN_REQUEST;
+                    this.mergeDataset(defaults);
 
                     awesome.requireScript(this.dataset.action_path);
                     this.classList.add(AwesomeLoginScreen.elementTagName);
@@ -114,7 +116,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                     const password=this.querySelector(`#${this.dataset.password_id}`);
 
                     this.dispatcher.trigger(
-                        this.loginEvent,
+                        this.dataset.login_event,
                         {
                             username:username.value,
                             password:password.value
