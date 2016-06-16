@@ -1,10 +1,18 @@
-.awesome-base-video{
+.awesome-iframe{
     display:block;
     height: 18em; /* 16:9 apect ratio */
     width: 32em;
+    border-radius: .4em;
+    border: solid .2em rgb(200,200,200);
+    overflow: hidden;
 }
 
-.awesome-base-video iframe{
+.awesome-iframe iframe{
     height: 100%;
     width: 100%;
+    border: 0;
+}
+
+.awesome-iframe iframe body{
+    margin: 0;
 }

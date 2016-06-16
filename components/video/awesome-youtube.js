@@ -1,7 +1,7 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}components/video/awesome-youtube.css`);
-awesome.requireScript(`${awesome.path}components/video/_baseVideo.js`);
+awesome.requireScript(`${awesome.path}components/iframe/awesome-iframe.js`);
 
 (
     function(){
@@ -29,15 +29,25 @@ awesome.requireScript(`${awesome.path}components/video/_baseVideo.js`);
 
         const component=new AwesomeComponent;
         component.tagName='awesome-youtube';
-        component.extends='BaseVideo';
+        component.extends='AwesomeIFrame';
 
         component.create=function createAwesomeYouTube() {
-            return class AwesomeYouTube extends awesome.component.BaseVideo{
+            return class AwesomeYouTube extends awesome.component.AwesomeIFrame{
                 createdCallback(){
-                    this.url = 'https://www.youtube.com/embed';
                     super.createdCallback();
                     this.mergeDataset(defaults);
                     this.classList.add(AwesomeYouTube.elementTagName);
+
+                    this.source = `https://www.youtube.com/embed/${this.dataset.video_id}?`;
+                    for(const videoSetting in this.dataset){
+                        if(videoSetting == 'video_id' || videoSetting == 'allow_fullscreen' || videoSetting == 'source'){
+                            continue;
+                        }
+                        this.source = `${this.source}${videoSetting}=${this.dataset[videoSetting]}&`;
+                    }
+
+                    this.dataset.source = this.source;
+
                     this.careAbout(
                         'data-video_id',
                         'data-allow_fullscreen',

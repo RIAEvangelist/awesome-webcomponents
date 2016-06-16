@@ -1,42 +1,36 @@
 'use strict';
 
-awesome.requireCSS(`${awesome.path}components/video/_baseVideo.css`);
+awesome.requireCSS(`${awesome.path}components/iframe/awesome-iframe.css`);
 
 (
     function(){
         const defaults={
+            source: '',
+            allow_fullscreen:true
         }
         const component=new AwesomeComponent;
-        component.tagName='awesome-base-video';
+        component.tagName='awesome-iframe';
         component.extends='BaseComponent';
 
-        component.create=function createBaseVideo() {
-            return class BaseVideo extends awesome.component.BaseComponent{
+        component.create=function createAwesomeIFrame() {
+            return class AwesomeIFrame extends awesome.component.BaseComponent{
                 createdCallback(){
                     super.createdCallback();
                     this.mergeDataset(defaults);
-                    this.classList.add(BaseVideo.elementTagName);
-
-                    this.url = this.url || '';
-
-                    this.url = `${this.url}/${this.dataset.video_id}?`;
-                    for(const videoSetting in this.dataset){
-                        if(videoSetting == 'video_id' || videoSetting == 'allow_fullscreen'){
-                            continue;
-                        }
-                        this.url = `${this.url}${videoSetting}=${this.dataset[videoSetting]}&`;
-                    }
-
+                    this.classList.add(AwesomeIFrame.elementTagName);
+                    this.careAbout(
+                        'data-source',
+                        'data-allow_fullscreen'
+                    );
                     this.innerHTML=`
                         <iframe
-                            src = '${this.url}'
+                            src = '${this.dataset.source}'
                             allowfullscreen = ${this.dataset.allow_fullscreen}
                         ></iframe>
                     `;
                 }
             }
         }
-
         component.init();
     }
 )();
