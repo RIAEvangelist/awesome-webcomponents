@@ -114,12 +114,20 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
                     super.createdCallback();
                     this.mergeDataset(this,defaults);
                     this.classList.add(AwesomeBoilerPlateExample.elementTagName);
-
+                    this.careAbout(
+                        //will care if this attribute is updated and rerender, otherwise it will ignore the attr change.
+                        'data-something'
+                    );
+                    this.localize(
+                        //this is a key in the language file so it will auto localize
+                        'login',
+                        this.dataset.something
+                    );
                     this.innerHTML=`
                         <p>${this.dataset.something}</p>
                         <p>store.state.boilerplate=${store.boilerplate}</p>
                         <div>${this.content.content}</div>
-
+                        <p>localized login</p>
                         <!-- preserve content template so it isn't lost on re-render -->
                         ${this.content.template}
                     `;
