@@ -27,7 +27,6 @@ awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
             return class AwesomeLanguages extends awesome.component.AwesomeButtonSet{
                 createdCallback(){
                     super.createdCallback();
-
                     this.mergeDataset(defaults);
                     this.classList.add(AwesomeLanguages.elementTagName);
 
@@ -43,7 +42,7 @@ awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
                         ]
                     }
 
-                    this.index=index;
+                    this.dataset.index=index;
                 }
 
                 attachedCallback(){

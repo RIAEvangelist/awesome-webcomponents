@@ -12,6 +12,10 @@ body,
     overflow:hidden;
 }
 
+body.overflow{
+    overflow:auto;
+}
+
 body *{
     position:relative;
     outline:none;
