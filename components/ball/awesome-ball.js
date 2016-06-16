@@ -21,6 +21,9 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
                     this.mergeDataset(defaults);
                     this.classList.add(AwesomeBall.elementTagName);
                     this.careAbout('data-value');
+                    this.localize(
+                        this.dataset.units
+                    );
                     this.innerHTML=`
                         <div id = 'ballValue' class='ballValue'>${this.dataset.value}</div>
                     `;

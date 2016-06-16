@@ -26,10 +26,17 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                     this.careAbout(
                         'data-file_id'
                     );
+                    this.localize(
+                        'fileName',
+                        'fileSize',
+                        'fileLastModified',
+                        'fileContent',
+                        'noFilesSelected'
+                    );
 
                     let tableContent=`
                         <tr>
-                            <th>${awesome.language.current.noFilesSelected}</th>
+                            <th>${this.local.noFilesSelected}</th>
                         </tr>
                     `;
 
@@ -38,10 +45,10 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
 
                     if(fileInfo && Array.isArray(fileInfo.files)){
                         tableContent=`<tr>
-                            <th>${awesome.language.current.fileName}</th>
-                            <th>${awesome.language.current.fileSize}</th>
-                            <th>${awesome.language.current.fileLastModified}</th>
-                            <th>${awesome.language.current.fileContent}</th>
+                        <th>${this.local.fileName}</th>
+                        <th>${this.local.fileSize}</th>
+                        <th>${this.local.fileLastModified}</th>
+                        <th>${this.local.fileContent}</th>
                         </tr>`;
 
                         count=fileInfo.files.length;
@@ -70,24 +77,10 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                         </table>
                     `;
 
-                    this.noFilesText=awesome.language.current.noFilesSelected;
-
-                }
-
-                localize(){
-                    if(this.noFilesText===awesome.language.current.noFilesSelected){
-                        return;
-                    }
-                    this.createdCallback();
                 }
 
                 attachedCallback(){
                     super.attachedCallback();
-
-                    window.on(
-                        'awesome-language-set',
-                        this.createdCallback.bind(this)
-                    );
 
                     state.on(
                         'change',
@@ -97,11 +90,6 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
 
                 detachedCallback(){
                     super.detachedCallback();
-
-                    window.off(
-                        'awesome-language-set',
-                        this.createdCallback.bind(this)
-                    );
 
                     state.off(
                         'change',
