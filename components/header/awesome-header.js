@@ -34,7 +34,7 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
                             />
                         `;
                     }
-                    
+
                     this.innerHTML=`
                         <header>
                             ${icon}

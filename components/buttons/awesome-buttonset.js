@@ -26,10 +26,7 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
                         'data-index',
                         'data-count',
                         'data-disabled',
-                        'data-multi_select',
-                        'data-b0',
-                        'data-b1',
-                        'data-b2'
+                        'data-multi_select'
                     );
 
                     this.mergeDataset(defaults);
@@ -39,6 +36,13 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
                     const indexs=this.dataset.index.split(',');
 
                     for(let i=0; i<count; i++){
+                        this.careAbout(
+                            `data-b${i}`
+                        );
+                        this.localize(
+                            this.dataset[`b${i}`]
+                        );
+
                         buttons.push(
                             `<button
                                 data-index='${i}'
@@ -55,9 +59,9 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
                                         ''
                                 }
                             >${
-                                (awesome.language.current[this.dataset[`b${i}`]])
-                                ? awesome.language.current[this.dataset[`b${i}`]]
-                                : this.dataset[`b${i}`]
+                                this.local[
+                                    this.dataset[`b${i}`]
+                                ]
                             }</button>`
                         )
                     }
@@ -67,19 +71,8 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
                     `;
                 }
 
-
-
-                attributeChangedCallback(){
-                    //this component should explicitly reload!
-                    this.createdCallback();
-                }
-
                 attachedCallback(){
                     super.attachedCallback();
-                    window.on(
-                        'awesome-language-set',
-                        this.createdCallback.bind(this)
-                    );
 
                     this.value=this.dataset.index;
 
