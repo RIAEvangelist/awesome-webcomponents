@@ -29,8 +29,6 @@ awesome.language={
         home:'Home',
 
         languages:'Languages',
-        timeleft:'Time Left',
-
-        'awesome-login-screen-header':'Login'
+        timeleft:'Time Left'
     }
 };

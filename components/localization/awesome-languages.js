@@ -42,6 +42,9 @@ awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
                         ]
                     }
 
+                    if(index < 0 || index > langs.length - 1){
+                        return;
+                    }
                     this.dataset.index=index;
                 }
 

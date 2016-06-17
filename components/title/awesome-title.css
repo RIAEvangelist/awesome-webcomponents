@@ -1,3 +1,7 @@
-awesome-title {
+.awesome-title {
     display: flex;
+}
+
+.awesome-title[data-title]::first-letter {
+    text-transform: capitalize;
 }

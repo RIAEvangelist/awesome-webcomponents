@@ -23,8 +23,6 @@ awesome.language={
         home:'Hogar',
 
         languages:'Idiomas',
-        timeleft:'Tiempo Restante',
-
-        'awesome-login-screen-header':'Iniciar sesión'
+        timeleft:'Tiempo Restante'
     }
 };

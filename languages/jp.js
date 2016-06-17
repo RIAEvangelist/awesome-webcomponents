@@ -23,8 +23,6 @@ awesome.language={
         home:'ホーム',
 
         languages:'言語',
-        timeleft:'残り時間',
-
-        'awesome-login-screen-header':'顧客ログイン'
+        timeleft:'残り時間'
     }
 };
