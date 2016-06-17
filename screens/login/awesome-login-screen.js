@@ -15,6 +15,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
             const defaults = {
                 screen:'login',
+                title:'login',
                 action_path:`${awesome.path}actions/user/auth.js`,
 
                 username_id:'awesome-login-screen-username',
@@ -33,8 +34,15 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                     awesome.requireScript(this.dataset.action_path);
                     this.classList.add(AwesomeLoginScreen.elementTagName);
 
+                    this.localize(
+                        this.dataset.login,
+                        'username',
+                        'password',
+                        'login'
+                    );
+
                     this.innerHTML=`
-                        <awesome-dialog data-title='${awesome.language.current['awesome-login-screen-header']}'>
+                        <awesome-dialog data-title='${this.local[this.dataset.login]}'>
                             <template>
                                 <form>
                                     <input
@@ -45,18 +53,18 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                                         maxlength=30
                                         pattern='${this.dataset.username_pattern}'
                                         class=''
-                                        placeholder='${awesome.language.current.username}'
+                                        placeholder='${this.local.username}'
                                     />
                                     <input
                                         id='${this.dataset.password_id}'
                                         value=''
                                         required='true'
                                         type='password'
-                                        placeholder='${awesome.language.current.password}'
+                                        placeholder='${this.local.password}'
                                     />
                                     <div class='button-wrapper'>
                                         <button>
-                                            ${awesome.language.current.login}
+                                            ${this.local.login}
                                         </button>
                                     </div>
                                 </form>
@@ -66,11 +74,6 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 }
 
                 attachedCallback(){
-                    window.on(
-                        'awesome-language-set',
-                        this.createdCallback.bind(this)
-                    );
-
                     state.on(
                         'change',
                         this.update.bind(this)
@@ -83,11 +86,6 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 }
 
                 detachedCallback(){
-                    window.off(
-                        'awesome-language-set',
-                        this.createdCallback.bind(this)
-                    );
-
                     state.off(
                         'change',
                         this.update
