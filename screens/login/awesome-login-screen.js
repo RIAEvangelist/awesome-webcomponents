@@ -86,7 +86,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 }
 
                 detachedCallback(){
-                    super.dettachedCallback();
+                    super.detachedCallback();
                     state.off(
                         'change',
                         this.update
