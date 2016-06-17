@@ -42,7 +42,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                     );
 
                     this.innerHTML=`
-                        <awesome-dialog data-title='${this.local[this.dataset.login]}'>
+                        <awesome-dialog data-title='${this.local[this.dataset.title]}'>
                             <template>
                                 <form>
                                     <input
@@ -74,6 +74,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 }
 
                 attachedCallback(){
+                    super.attachedCallback();
                     state.on(
                         'change',
                         this.update.bind(this)
@@ -86,6 +87,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                 }
 
                 detachedCallback(){
+                    super.dettachedCallback();
                     state.off(
                         'change',
                         this.update
