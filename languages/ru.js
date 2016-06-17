@@ -23,8 +23,6 @@ awesome.language={
         home:'главное',
 
         languages:'Языки',
-        timeleft:'Время вышло',
-
-        'awesome-login-screen-header':'Вход'
+        timeleft:'Время вышло'
     }
 };
