@@ -15,8 +15,8 @@ awesome.requireCSS(`${awesome.path}components/title/awesome-title.css`);
         component.create=function createAwesomeTitle(){
             return class AwesomeTitle extends awesome.component.BaseComponent{
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.classList.add(AwesomeTitle.elementTagName)
                     this.careAbout(
                         'data-title'

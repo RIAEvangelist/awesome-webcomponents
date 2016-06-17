@@ -23,8 +23,8 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
 
             return class AwesomePlusMinus extends awesome.component.AwesomeBall{
                 createdCallback(){
+                    this.mergeDataset(defaults);
                     super.createdCallback();
-                    this.mergeDataset(defaults)
                     this.classList.add(AwesomePlusMinus.elementTagName);
 
                     this.localize(

@@ -19,8 +19,8 @@ awesome.requireCSS(`${awesome.path}components/range/awesome-range.css`);
         component.create=function createAwesomeRange() {
             return class AwesomeRange extends awesome.component.BaseComponent {
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.classList.add(AwesomeRange.elementTagName)
                     this.careAbout(
                         'data-min',

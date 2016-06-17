@@ -26,8 +26,8 @@ awesome.requireScript(`${awesome.path}components/iframe/awesome-iframe.js`);
         component.create=function createAwesomeVimeo() {
             return class AwesomeVimeo extends awesome.component.AwesomeIFrame{
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.classList.add(AwesomeVimeo.elementTagName);
                     this.source = `https://player.vimeo.com/video/${this.dataset.video_id}?`;
                     for(const videoSetting in this.dataset){

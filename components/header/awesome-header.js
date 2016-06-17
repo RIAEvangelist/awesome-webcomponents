@@ -15,8 +15,8 @@ awesome.requireCSS(`${awesome.path}components/header/awesome-header.css`);
         component.create=function createAwesomeHeader(e){
             return class AwesomeHeader extends awesome.component.BaseComponent{
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.careAbout(
                         'data-icon',
                         'data-title'

@@ -18,8 +18,8 @@ awesome.requireCSS(`${awesome.path}components/icons/awesome-screen-icon.css`);
             return class AwesomeScreenIcon extends awesome.component.BaseComponent{
 
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.classList.add(AwesomeScreenIcon.elementTagName);
                     this.careAbout(
                         'data-icon',

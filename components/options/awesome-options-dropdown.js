@@ -15,8 +15,8 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
         component.create=function createAwesomeOptionsDropdown(){
             return class AwesomeOptionsDropdown extends awesome.component.BaseComponent{
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.classList.add(AwesomeOptionsDropdown.elementTagName)
                     this.careAbout(
                         'data-label'

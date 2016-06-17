@@ -16,8 +16,8 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
         component.create=function createAwesomeErrorModal() {
             return class AwesomeErrorModal extends awesome.component.AwesomeModal{
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.caresAbout.push('data-title');
                     this.classList.add(AwesomeErrorModal.elementTagName);
 

@@ -20,6 +20,7 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
         component.create=function createAwesomeButtonSet() {
             return class AwesomeButtonSet extends awesome.component.BaseComponent{
                 createdCallback(){
+                    this.mergeDataset(defaults);
                     super.createdCallback();
                     this.classList.add(AwesomeButtonSet.elementTagName);
                     this.careAbout(
@@ -28,8 +29,6 @@ awesome.requireCSS(`${awesome.path}components/buttons/awesome-buttonset.css`);
                         'data-disabled',
                         'data-multi_select'
                     );
-
-                    this.mergeDataset(defaults);
 
                     const count=Number(this.dataset.count);
                     const buttons=[];

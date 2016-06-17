@@ -20,8 +20,8 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                 createdCallback(){
                     console.warn('AwesomeFileInfo IS NOT STABLE!! IT NEEDS FIXING!');
                     //@TODO figure this out!
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.classList.add(AwesomeFileInfo.elementTagName);
                     this.careAbout(
                         'data-file_id'

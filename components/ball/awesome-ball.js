@@ -17,8 +17,8 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
         component.create=function createAwesomeBall(){
             return class AwesomeBall extends awesome.component.BaseComponent{
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.classList.add(AwesomeBall.elementTagName);
                     this.careAbout('data-value');
                     this.localize(

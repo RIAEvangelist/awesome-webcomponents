@@ -19,8 +19,8 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-timer.css`);
             return class AwesomeTimer extends awesome.component.BaseComponent{
 
                 createdCallback(){
+                    this.mergeDataset(defaults)
                     super.createdCallback();
-                    this.mergeDataset(defaults);
                     this.classList.add(AwesomeTimer.elementTagName);
                     this.careAbout(
                         'data-initial_time',

@@ -20,8 +20,8 @@ awesome.requireScript(`${awesome.path}components/icons/awesome-screen-icon.js`);
         component.create = function createAwesomeScreenList(){
             return class AwesomeScreenList extends awesome.component.BaseScreen{
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
 
                     this.careAbout(
                         'data-icon',

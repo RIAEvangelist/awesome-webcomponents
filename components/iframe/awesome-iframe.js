@@ -15,8 +15,8 @@ awesome.requireCSS(`${awesome.path}components/iframe/awesome-iframe.css`);
         component.create=function createAwesomeIFrame() {
             return class AwesomeIFrame extends awesome.component.BaseComponent{
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.classList.add(AwesomeIFrame.elementTagName);
                     this.careAbout(
                         'data-source',

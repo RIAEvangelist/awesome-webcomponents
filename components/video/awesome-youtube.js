@@ -34,8 +34,8 @@ awesome.requireScript(`${awesome.path}components/iframe/awesome-iframe.js`);
         component.create=function createAwesomeYouTube() {
             return class AwesomeYouTube extends awesome.component.AwesomeIFrame{
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.classList.add(AwesomeYouTube.elementTagName);
 
                     this.source = `https://www.youtube.com/embed/${this.dataset.video_id}?`;

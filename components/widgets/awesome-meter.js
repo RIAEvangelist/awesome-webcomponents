@@ -18,8 +18,8 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-meter.css`);
         component.create=function createAwesomeMeter(){
             return class AwesomeMeter extends awesome.component.BaseComponent{
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.careAbout('data-text');
                     this.classList.add(AwesomeMeter.elementTagName);
                     this.localize(

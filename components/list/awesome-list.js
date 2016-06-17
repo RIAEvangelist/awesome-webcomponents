@@ -11,6 +11,7 @@ awesome.requireCSS(`${awesome.path}components/list/awesome-list.css`);
         component.create=function createAwesomeList(){
             return class AwesomeList extends awesome.component.BaseComponent{
                 createdCallback(){
+                    this.mergeDataset(defaults);
                     super.createdCallback();
                     this.classList.add(AwesomeList.elementTagName)
 

@@ -17,8 +17,8 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
         component.create=function createAwesomeDialog() {
             return class AwesomeDialog extends awesome.component.BaseComponent{
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.localize(
                         this.dataset.title
                     );

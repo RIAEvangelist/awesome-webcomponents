@@ -19,8 +19,8 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
         component.create=function createAwesomeNavigationModal() {
             return class AwesomeNavigationModal extends awesome.component.AwesomeModal{
                 createdCallback(){
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.classList.add(AwesomeNavigationModal.elementTagName);
                     this.careAbout(
                         'data-title',

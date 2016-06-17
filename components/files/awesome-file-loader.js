@@ -21,8 +21,8 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
                 createdCallback(){
                     console.warn('AwesomeFileLoader IS NOT STABLE!! IT NEEDS FIXING!');
                     //@TODO figure out whats up!
-                    super.createdCallback();
                     this.mergeDataset(defaults);
+                    super.createdCallback();
                     this.classList.add(AwesomeFileLoader.elementTagName)
                     this.careAbout(
                         'data-multiple',
