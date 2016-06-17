@@ -10,9 +10,14 @@
     min-height:1.5em;
 }
 
+.awesome-header[data-title]::first-letter {
+    text-transform: capitalize;
+}
+
 .awesome-header .icon{
     height:1em;
 }
+
 
 /*******************************\
 Small desktop windows and mobile
