@@ -21,9 +21,12 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
                     this.careAbout(
                         'data-label'
                     );
+                    this.localize(
+                        this.dataset.label
+                    )
 
                     this.innerHTML=`
-                        <label>${this.dataset.label} :</label>
+                        <label>${this.local[this.dataset.label]} :</label>
                         <select name='${this.dataset.label}'>
                             ${this.content.content}
                         </select>

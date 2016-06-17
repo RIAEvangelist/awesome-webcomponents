@@ -27,6 +27,11 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     this.mergeDataset(defaults)
                     this.classList.add(AwesomePlusMinus.elementTagName);
 
+                    this.localize(
+                        'set',
+                        'reset'
+                    );
+
                     this.innerHTML += `
                         <div
                             class = 'controlFront'
@@ -51,14 +56,14 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                                 id = 'resetButton'
                                 class = 'resetButton'
                             >
-                                ${this.reset}
+                                ${this.local.reset}
                             </button>
 
                             <button
                                 id = 'setButton'
                                 class = 'setButton'
                             >
-                                ${this.set}
+                                ${this.local.set}
                             </buton>
                         </section>
 
@@ -83,11 +88,6 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                         'click',
                         this.clickHandler.bind(this)
                     );
-
-                    window.on(
-                        'awesome-language-set',
-                        this.updateLanguage.bind(this)
-                    );
                 }
 
                 detachedCallback(){
@@ -100,11 +100,6 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     this.input.removeEventListener(
                         'change',
                         this.changeHandler.bind(this)
-                    );
-
-                    window.off(
-                        'awesome-language-set',
-                        this.updateLanguage.bind(this)
                     );
                 }
 
@@ -196,18 +191,6 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     this.setControls.style.height = '6em';
                     this.setControls.style.top = 'calc(50% - 3em)';
                 }
-
-                updateLanguage(){
-                    if(this.resetButton.innerHTML.trim() == awesome.language.current.reset
-                        && this.setButton.innerHTML.trim() == awesome.language.current.set
-                    ){
-                        return;
-                    }
-
-                    this.setButton.innerHTML = awesome.language.current.set;
-                    this.resetButton.innerHTML = awesome.language.current.reset;
-                }
-
             }
         }
 

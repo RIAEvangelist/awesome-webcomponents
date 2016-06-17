@@ -7,7 +7,7 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-meter.css`);
         const defaults={
             value:'50',
             //@TODO LOCALIZE THIS
-            text: 'Awesome Meter!',
+            text: '',
             divisions: '2'
         }
 
@@ -19,9 +19,12 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-meter.css`);
             return class AwesomeMeter extends awesome.component.BaseComponent{
                 createdCallback(){
                     super.createdCallback();
-                    this.careAbout('data-text');
                     this.mergeDataset(defaults);
+                    this.careAbout('data-text');
                     this.classList.add(AwesomeMeter.elementTagName);
+                    this.localize(
+                        this.dataset.text
+                    );
 
                     let divisions = ''
                     for (let i = 0; i < Math.floor(this.dataset.divisions); i++) {
@@ -31,7 +34,7 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-meter.css`);
                     this.innerHTML=`
                         <div>
                             <p>
-                                ${this.dataset.text}
+                                ${this.local[this.dataset.text]}
                             </p>
                             <div
                                 class = 'bottomWrapper'
@@ -62,9 +65,9 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-meter.css`);
                 }
 
                 attributeChangedCallback(key,oldValue,newValue){
-                    super.attributeChangedCallback();
                     this.changePercentage();
                     this.sizeListElements();
+                    super.attributeChangedCallback();
                 }
 
                 changePercentage(){

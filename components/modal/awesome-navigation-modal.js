@@ -26,13 +26,17 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                         'data-title',
                         'data-screen_name'
                     );
-                    this.ok = awesome.language.current.ok;
-                    this.next = awesome.language.current.next;
+
+                    this.localize(
+                        'ok',
+                        'next',
+                        this.dataset.title
+                    );
 
                     this.innerHTML=`
                         <div>
                             <awesome-title
-                                data-title = '${this.dataset.title}'
+                                data-title = '${this.local[this.dataset.title]}'
                             >
                             </awesome-title>
 
@@ -45,34 +49,18 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                                     id = 'ok'
                                     data-action = 'close'
                                 >
-                                    ${this.ok}
+                                    ${this.local.ok}
                                 </button>
                                 <button
                                     id = 'next'
                                     data-action = 'close'
                                 >
-                                    ${this.next}
+                                    ${this.local.next}
                                 </button>
                             </div>
                         </div>
                         ${this.content.template}
                     `;
-                }
-
-                attachedCallback(){
-                    super.attachedCallback();
-                    window.on(
-                        'awesome-language-set',
-                        this.updateLanguage.bind(this)
-                    );
-                }
-
-                detachedCallback(){
-                    super.detachedCallback();
-                    window.off(
-                        'awesome-language-set',
-                        this.updateLanguage.bind(this)
-                    );
                 }
 
                 clicked(e){
@@ -83,15 +71,6 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
                             this.dataset.screen_name
                         );
                     }
-                }
-
-                updateLanguage(){
-                    if(this.next == awesome.language.current.next
-                        && this.ok == awesome.language.current.ok
-                    ){
-                        return;
-                    }
-                    this.createdCallback();
                 }
             }
         }

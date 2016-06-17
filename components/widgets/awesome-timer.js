@@ -40,12 +40,7 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-timer.css`);
 
                 attachedCallback(){
                     super.attachedCallback();
-
-                    window.on(
-                        'awesome-language-set',
-                        this.createdCallback.bind(this)
-                    );
-
+                    clearTimeout(this.timeout);
                     this.timeout = null;
                     this.dataset.current_time = this.dataset.initial_time;
                 }

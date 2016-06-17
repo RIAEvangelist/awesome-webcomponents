@@ -19,12 +19,18 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                     super.createdCallback();
                     this.mergeDataset(defaults);
                     this.classList.add(AwesomeNotificationModal.elementTagName);
-                    this.ok = awesome.language.current.ok;
+
+                    this.careAbout('data-title');
+
+                    this.localize(
+                        'ok',
+                        this.dataset.title
+                    );
 
                     this.innerHTML=`
                         <div>
                             <h1>
-                                ${this.dataset.title}
+                                ${this.local[this.dataset.title]}
                             </h1>
                             <div class='contentWrapper'>
                                 ${this.content.content}
@@ -33,13 +39,11 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                                 class = 'closeButton'
                                 data-action='close'
                             >
-                                ${this.ok}
+                                ${this.local.ok}
                             </button>
                         </div>
                         ${this.content.template}
                     `;
-
-                    this.caresAbout.push('data-title');
                 }
 
                 attachedCallback(){

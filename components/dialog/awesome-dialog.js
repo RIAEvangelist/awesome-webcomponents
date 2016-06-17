@@ -19,7 +19,9 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
                 createdCallback(){
                     super.createdCallback();
                     this.mergeDataset(defaults);
-
+                    this.localize(
+                        this.dataset.title
+                    );
                     this.classList.add(AwesomeDialog.elementTagName);
                     let header='';
 
@@ -27,7 +29,7 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
                         header=`
                             <awesome-header
                                 data-icon='${this.dataset.icon}'
-                                data-title='${this.dataset.title}'
+                                data-title='${this.local[this.dataset.title]}'
                             ></awesome-header>
                         `;
                     }

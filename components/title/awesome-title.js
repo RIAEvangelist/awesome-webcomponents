@@ -21,34 +21,14 @@ awesome.requireCSS(`${awesome.path}components/title/awesome-title.css`);
                     this.careAbout(
                         'data-title'
                     );
-
+                    this.localize(
+                        this.dataset.title
+                    );
                     this.innerHTML=`
                         <h1>
-                            ${
-                                (awesome.language.current[this.dataset.title])
-                                ? awesome.language.current[this.dataset.title]
-                                : this.dataset.title
-                            }
+                            ${this.local[this.dataset.title]}
                         </h1>
                     `;
-                }
-
-                attachedCallback(){
-                    super.attachedCallback();
-
-                    window.on(
-                        'awesome-language-set',
-                        this.createdCallback.bind(this)
-                    );
-                }
-
-                detachedCallback(){
-                    super.detachedCallback();
-
-                    window.off(
-                        'awesome-language-set',
-                        this.createdCallback.bind(this)
-                    );
                 }
             }
         }

@@ -20,7 +20,11 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                     this.mergeDataset(defaults);
                     this.caresAbout.push('data-title');
                     this.classList.add(AwesomeErrorModal.elementTagName);
-                    this.ok = awesome.language.current.ok;
+
+                    this.localize(
+                        this.dataset.title,
+                        'ok'
+                    );
 
                     this.innerHTML =`
                         <div>
@@ -28,7 +32,7 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                                 <span class = 'flaticon-signs'>
 
                                 </span>
-                                ${this.dataset.title}
+                                ${this.local[this.dataset.title]}
                             </h1>
                             <div class = 'contentWrapper'>
                                 ${this.content.content}
@@ -38,37 +42,11 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
                                 class = 'closeButton'
                                 data-action='close'
                             >
-                                ${this.ok}
+                                ${this.local.ok}
                             </button>
                         </div>
                         ${this.content.template}
                     `;
-                }
-
-                attachedCallback(){
-                    super.attachedCallback();
-
-                    window.on(
-                        'awesome-language-set',
-                        this.updateLanguage.bind(this)
-                    );
-                }
-
-                detachedCallback(){
-                    super.detachedCallback();
-
-                    window.off(
-                        'awesome-language-set',
-                        this.updateLanguage.bind(this)
-                    );
-                }
-
-                updateLanguage(){
-                    if(this.ok == awesome.language.current.ok){
-                        return;
-                    }
-
-                    this.createdCallback();
                 }
             }
         }
