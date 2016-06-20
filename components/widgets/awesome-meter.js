@@ -85,12 +85,6 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-meter.css`);
                     this.percentage.innerHTML=`${this.dataset.value}%`
                     this.dropDown.style.height = `calc(100% - ${this.dataset.value}%)`;
 
-                    if(this.dataset.value < 10){
-                        this.percentage.classList.add('belowTenPercent');
-                    }else{
-                        this.percentage.classList.remove('belowTenPercent');
-                    }
-
                     this.localize(this.dataset.text);
                     this.text.innerHTML = this.local[this.dataset.text];
                 }
