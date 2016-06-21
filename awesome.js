@@ -1206,33 +1206,19 @@ class AwesomeComponent{
     }
 
     register(e){
-        if(!awesome.ready){
+        if(!this.extendsNative && !awesome.component[this.extends]){
+            console.log(awesome.component[this.extends],this.extends,this.tagName);
             return;
-        }
-        if(!this.extendsNative){
-            if(!e){
-                e={};
-            }
-            if(
-                e.detail===this.tagName
-                ||!awesome.component[this.extends]
-                || (
-                    e.detail
-                    && e.detail!==this.extends
-                )
-            ){
-                return;
-            }
         }
 
         window.off(
             'awesome-component-registered',
-            this.register.bind(this)
+            this.registerHandler
         );
 
         window.off(
             'awesome-ready',
-            this.register.bind(this)
+            this.registerHandler
         );
 
         const componentClass=this.create();
@@ -1249,22 +1235,26 @@ class AwesomeComponent{
 
     init(){
         let isReady=awesome.component[this.extends];
-
+        console.log(this);
         if(!isReady){
-            //console.log(isReady,this)
+            this.registerHandler=this.register.bind(this);
             window.on(
                 'awesome-component-registered',
-                this.register.bind(this)
+                this.registerHandler
             );
 
             window.on(
                 'awesome-ready',
-                this.register.bind(this)
+                this.registerHandler
             );
 
             return;
         }
 
-        this.register();
+        this.register(
+            {
+                detail:this.extends
+            }
+        );
     }
 }
