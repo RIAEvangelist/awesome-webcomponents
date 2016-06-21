@@ -53,5 +53,21 @@ awesome.constants.component={
      * @memeber awesome.constansts.component.VALIDATE_URL
      * @type {EventName}
      */
-    VALIDATE_URL:'^(https?:\/\/)?([\da-z\.-]+)\.(.{2,100})$'
+    VALIDATE_URL:'^(https?:\/\/)?([\da-z\.-]+)\.(.{2,100})$',
+    /**
+     * regular expression for validating url
+     *
+     * @example
+     *
+     * const constanst = awesome.constansts.components;
+     *
+     * //input pattern for a valid currency
+     * <input
+     *  	pattern = constansts.VALIDATE_CURRENCY
+     * ></input>
+     *
+     * @memeber awesome.constansts.component.VALIDATE_CURRENCY
+     * @type {EventName}
+     */
+    VALIDATE_CURRENCY:'([0-9]){1,}|([0-9]{1,}\.[0-9]{2})'
 };

@@ -43,23 +43,21 @@
     width: 85%;
     margin: 0.5em 1em 0.5em 0.5em;
     height: 96%;
+    overflow: hidden;
 }
 
 .awesome-meter .colorBlocker{
     background-color: rgb(125, 125, 125);
     height:0%;
-    transition:height 300ms;
+    transition: height 500ms;
 }
 
 .awesome-meter .percent{
+    width: 100%;
     text-align: center;
     font-size: 1.5em;
-}
-
-.awesome-meter  .percent.belowTenPercent{
     position: absolute;
-    top: 11em;
-    left: 1.5em;
+    bottom: 0;
 }
 
 /*******************************\

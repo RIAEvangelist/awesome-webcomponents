@@ -21,6 +21,8 @@ awesome.language={
         set:'Ajusto',
         reset:'Reiniciar',
         home:'Hogar',
+        yes:'Si',
+        no:'No',
 
         languages:'Idiomas',
         timeleft:'Tiempo Restante'

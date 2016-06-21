@@ -21,6 +21,8 @@ awesome.language={
         set:'セット',
         reset:'リセット',
         home:'ホーム',
+        yes:'はい',
+        no:'いいえ',
 
         languages:'言語',
         timeleft:'残り時間'

@@ -12,7 +12,6 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
         component.create=function createAwesomeModal() {
             return class AwesomeModal extends awesome.component.BaseComponent{
                 createdCallback(){
-                    this.mergeDataset(defaults);
                     super.createdCallback();
                     this.classList.add(AwesomeModal.elementTagName);
 
@@ -32,8 +31,8 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
                     );
                 }
 
-                dettachedCallback(){
-                    super.dettachedCallback();
+                detachedCallback(){
+                    super.detachedCallback();
                     this.removeEventListener(
                         'click',
                         this.clicked
