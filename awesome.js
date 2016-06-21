@@ -1234,7 +1234,6 @@ class AwesomeComponent{
 
     init(){
         let isReady=awesome.component[this.extends];
-        console.log(this);
         if(!isReady){
             this.registerHandler=this.register.bind(this);
             window.on(
