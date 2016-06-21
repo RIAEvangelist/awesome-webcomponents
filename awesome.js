@@ -1207,7 +1207,6 @@ class AwesomeComponent{
 
     register(e){
         if(!this.extendsNative && !awesome.component[this.extends]){
-            console.log(awesome.component[this.extends],this.extends,this.tagName);
             return;
         }
 
