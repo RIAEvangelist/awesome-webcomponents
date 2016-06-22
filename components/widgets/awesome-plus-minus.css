@@ -1,7 +1,6 @@
 .awesome-plus-minus.awesome-ball{
     height: 8em;
     width: 8em;
-    pointer-events: none;
 }
 
 .awesome-plus-minus .ballValue{
@@ -9,7 +8,6 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    pointer-events: all;
 }
 
 .awesome-plus-minus .controlFront{
@@ -22,7 +20,6 @@
     top: calc(0% - 0.15em);
     left: calc(0% - 0.15em);
     z-index: 1;
-    pointer-events: none;
 }
 
 .awesome-plus-minus .singleIncrementControls{
@@ -35,12 +32,10 @@
     top: calc(50% - 2em);
     left: calc(50% - 7em);
     z-index: 0;
-    pointer-events: all;
 }
 
 .awesome-plus-minus .singleIncrementControls button{
     width: 3em;
-    pointer-events: all;
 }
 
 .awesome-plus-minus .setControls{
@@ -58,7 +53,6 @@
 }
 
 .awesome-plus-minus .setControls button{
-    pointer-events: all;
     width: 5em;
     height: 6em;
     vertical-align: top;
@@ -78,6 +72,11 @@
     justify-content: flex-end;
 }
 
+.awesome-plus-minus .setControls.showControls{
+    height: 13em;
+    top: calc(50% - 6.5em);
+}
+
 
 .awesome-plus-minus input{
     position: absolute;
@@ -85,8 +84,11 @@
     height: 2em;
     top: calc(50% - 1em);
     left: calc(50% - 1.85em);
-    pointer-events: all;
     text-align: center;
     font-size: 1.85em;
     z-index: -1;
+}
+
+.awesome-plus-minus input.showInput{
+    z-index: 4;
 }
