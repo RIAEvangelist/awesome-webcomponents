@@ -1082,7 +1082,9 @@ class Awesome{
                     key
                 ];
                 const duplicateKeyIndex=duplicateKeyArray.indexOf(key);
-                const duplicateIndex=duplicateCheckArray.indexOf(entry);
+                const duplicateIndex=(typeof entry=='string')
+                    ?duplicateCheckArray.indexOf(entry)
+                    :-1;
 
                 if(duplicateKeyIndex>-1){
                     const error=[
