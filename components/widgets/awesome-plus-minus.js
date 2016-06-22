@@ -34,7 +34,7 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
 
                     this.innerHTML += `
                         <div
-                            class = 'controlFront'
+                            class = 'controlFront target'
                         >
                         </div>
                         <section
@@ -130,8 +130,7 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                             break;
                         case 'setButton':
                             if(!action[this.dataset.set_action]){
-                                //@TODO : good these are here, but these warnings suck
-                                console.warn('No action constant of data-set_action has been defined!');
+                                console.warn('No set_action has been defined!');
                                 return;
                             }
                             dispatcher.trigger(
@@ -141,8 +140,7 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                             break;
                         case 'resetButton':
                             if(!action[this.dataset.reset_action]){
-                                //@TODO : good these are here, but these warnings suck
-                                console.warn('No action constant of data-reset_action has been defined!');
+                                console.warn('No reset_action has been defined!');
                                 return;
                             }
                             dispatcher.trigger(
@@ -178,18 +176,14 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                 displayExtraControls(){
                     this.input.value = this.dataset.value;
                     this.input.focus();
-                    this.input.style.zIndex = 4;
-                    this.setControls.style.height = '13em';
-                    this.setControls.style.top = 'calc(50% - 6.5em)';
+                    this.input.classList.add('showInput')
+                    this.setControls.classList.add('showControls');
                 }
 
                 hideExtraControls(){
                     this.dataset.value = this.input.value;
-                    this.update();
-                    //@TODO do CSS IN CSS! not javascript unless really needed in javascript. use 1 class on the parent and adjust the children with it
-                    this.input.style.zIndex = -1;
-                    this.setControls.style.height = '6em';
-                    this.setControls.style.top = 'calc(50% - 3em)';
+                    this.input.classList.remove('showInput')
+                    this.setControls.classList.remove('showControls');
                 }
             }
         }
