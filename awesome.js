@@ -960,7 +960,11 @@ class Awesome{
             }
 
             // if language is geographically specific like 'en-US' and not present try the non-specific version like 'en'
-            if(!this.language[lang] && lang.length>2){
+            if(
+                lang!='default'
+                && !this.language[lang]
+                && lang.length>2
+            ){
                 lang=lang.slice(0,2);
                 localStorage.setItem('language',lang);
             }
