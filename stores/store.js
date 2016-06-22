@@ -89,6 +89,16 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                             writable:false,
                             value:resetState.bind(this,events)
                         },
+                        getStateHandler:{
+                            enumerable:true,
+                            writable:false,
+                            value:getState.bind(this)
+                        },
+                        deepMerge:{
+                            enumerable:true,
+                            writable:true,
+                            value:false
+                        },
                         expose:{
                             enumerable:true,
                             writable:false,
@@ -147,8 +157,8 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                         {
                             state:{
                                 enumerable:true,
-                                get:getState.bind(this),
-                                set:getState.bind(this)
+                                get:this.getStateHandler,
+                                set:this.getStateHandler
                             }
                         }
                     );
@@ -201,7 +211,13 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                  * @fires awesome.store.change
                  */
                 function setState(newState){
-                    Object.assign(this._raw_state_dont_touch_,newState);
+                    let merge=Object.assign
+                    if(this.deepState){
+                        merge=this.mergeDeep;
+                    }
+
+                    merge(this._raw_state_dont_touch_,newState);
+
 
                     /**
                      * Store.state change event used to notify component that the store state has changed.
@@ -209,6 +225,33 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                      */
                     events.trigger('change');
                 }
+            }
+
+            isObject(item) {
+                return (
+                    item
+                    && typeof item === 'object'
+                    && !Array.isArray(item)
+                    && item !== null
+                );
+            }
+
+            mergeDeep(target, source) {
+                if (isObject(target) && isObject(source)) {
+                    Object.keys(source).forEach(
+                        function recursiveMerge(key){
+                            if (isObject(source[key])) {
+                                if (!target[key]){
+                                     Object.assign(target, { [key]: {} });
+                                }
+                                mergeDeep(target[key], source[key]);
+                            } else {
+                                Object.assign(target, { [key]: source[key] });
+                            }
+                        }
+                    );
+                }
+                return target;
             }
         }
 
