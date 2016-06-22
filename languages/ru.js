@@ -24,6 +24,9 @@ awesome.language={
         yes:'да',
         no:'нет',
 
+        min:'ми',
+        max:'макс',
+
         languages:'Языки',
         timeleft:'Время вышло'
     }

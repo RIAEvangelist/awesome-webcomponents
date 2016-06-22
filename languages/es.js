@@ -24,6 +24,9 @@ awesome.language={
         yes:'Si',
         no:'No',
 
+        min:'Mín',
+        max:'Máx',
+
         languages:'Idiomas',
         timeleft:'Tiempo Restante'
     }
