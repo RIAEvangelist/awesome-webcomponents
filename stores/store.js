@@ -210,50 +210,53 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                  * @param {Object} newState object to be merged into existing state
                  * @fires awesome.store.change
                  */
-                function setState(newState){
-                    let merge=Object.assign
-                    if(this.deepMerge){
-                        merge=this.mergeDeep;
-                    }
+                 function setState(newState){
+                     let merge=Object.assign;
+                     if(this.deepMerge){
+                         merge=this.mergeDeep.bind(this);
+                     }
 
-                    merge(this._raw_state_dont_touch_,newState);
+                     console.log(merge)
+
+                     merge(this._raw_state_dont_touch_,newState);
 
 
-                    /**
-                     * Store.state change event used to notify component that the store state has changed.
-                     * @event awesome.Store.change
-                     */
-                    events.trigger('change');
-                }
-            }
+                     /**
+                      * Store.state change event used to notify component that the store state has changed.
+                      * @event awesome.Store.change
+                      */
+                     events.trigger('change');
+                 }
+             }
 
-            isObject(item) {
-                return (
-                    item
-                    && typeof item === 'object'
-                    && !Array.isArray(item)
-                    && item !== null
-                );
-            }
+             isObject(item) {
+                 const isObject=(
+                     item
+                     && typeof item === 'object'
+                     && !Array.isArray(item)
+                     && item !== null
+                 );
 
-            mergeDeep(target, source) {
-                if (isObject(target) && isObject(source)) {
-                    Object.keys(source).forEach(
-                        function recursiveMerge(key){
-                            if (isObject(source[key])) {
-                                if (!target[key]){
-                                     Object.assign(target, { [key]: {} });
-                                }
-                                mergeDeep(target[key], source[key]);
-                            } else {
-                                Object.assign(target, { [key]: source[key] });
-                            }
-                        }
-                    );
-                }
-                return target;
-            }
-        }
+                 return isObject;
+             }
+
+             mergeDeep(state,newState) {
+                 if (
+                     this.isObject(state)
+                     && this.isObject(newState)
+                 ) {
+                     for(let key in newState){
+                         state[key]=this.mergeDeep(
+                             state[key],
+                             newState[key]
+                         );
+                     }
+                 }else{
+                     state=newState;
+                 }
+                 return state;
+             }
+         }
 
         Object.defineProperty(
             awesome,
