@@ -212,7 +212,7 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                  */
                 function setState(newState){
                     let merge=Object.assign
-                    if(this.deepState){
+                    if(this.deepMerge){
                         merge=this.mergeDeep;
                     }
 
