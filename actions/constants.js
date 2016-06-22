@@ -30,5 +30,12 @@ awesome.constants.action={
 
     ROUTE_REQUEST:'router.navigate',
 
-    ROUTE_UPDATE_SCREENS:'router.find.screens'
+    ROUTE_UPDATE_SCREENS:'router.find.screens',
+
+    /**
+     * play a tone
+     * @memeber awesome.constants.action.LOGIN_REQUEST
+     * @type {EventName}
+     */
+    TONE_PLAY:'play.tone'
 };

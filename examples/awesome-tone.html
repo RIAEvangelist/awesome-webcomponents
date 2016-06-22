@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}actions/tone/awesome-tone.js`);
+            awesome.requireScript(`${awesome.path}dispatchers/action.js`);
+            awesome.requireScript(`${awesome.path}actions/constants.js`);
+            awesome.requireLanguage(`${awesome.path}languages/default.js`);
+
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            function init(){
+                window.off(
+                    'awesome-ready',
+                    init
+                );
+
+                const playButton = document.body.querySelector('button');
+
+                playButton.addEventListener(
+                    'click',
+                    playTone
+                );
+            }
+
+            function playTone(){
+
+                const buttons = document.body.querySelectorAll('input');
+                awesome.dispatchers.component.trigger(
+                    awesome.constants.action.TONE_PLAY,
+                    {
+                        frequency:buttons[0].value,
+                        duration:buttons[1].value,
+                        gain:buttons[2].value
+                    }
+                )
+            }
+        </script>
+        <style>
+            body{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            body section{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                width: 14em;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <input placeholder='frequency'>
+            </input>
+
+            <input placeholder='duration (ms)'>
+            </input>
+
+            <input placeholder='gain'>
+            </input>
+        </section>
+        <button>
+            Play Tone
+        </button>
+    </body>
+</html>
