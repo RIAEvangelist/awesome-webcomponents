@@ -1,4 +1,4 @@
-.awesome-plus-minus{
+.awesome-plus-minus.awesome-ball{
     height: 8em;
     width: 8em;
     pointer-events: none;
@@ -35,7 +35,7 @@
     top: calc(50% - 2em);
     left: calc(50% - 7em);
     z-index: 0;
-    pointer-events: none;
+    pointer-events: all;
 }
 
 .awesome-plus-minus .singleIncrementControls button{

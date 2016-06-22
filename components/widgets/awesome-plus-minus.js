@@ -185,7 +185,6 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
 
                 hideExtraControls(){
                     this.dataset.value = this.input.value;
-                    this.update();
                     //@TODO do CSS IN CSS! not javascript unless really needed in javascript. use 1 class on the parent and adjust the children with it
                     this.input.style.zIndex = -1;
                     this.setControls.style.height = '6em';
