@@ -21,7 +21,7 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
         class Store{
             constructor(){
                 const events=new pubsub;
-
+                this._events=events;
                 Object.defineProperties(
                     this,
                     {
