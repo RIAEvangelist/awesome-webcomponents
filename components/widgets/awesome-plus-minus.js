@@ -154,7 +154,6 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                 }
 
                 changeHandler(e){
-                    console.log(e);
                     this.dataset.value = this.input.value;
                 }
 
