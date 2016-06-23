@@ -72,9 +72,12 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     this.setButton = this.querySelector('.setButton');
                     this.resetButton = this.querySelector('.resetButton');
 
+                    this.clickHandlerPtr = this.clickHandler.bind(this);
+                    this.changeHandlerPtr = this.changeHandler.bind(this);
+
                     this.input.addEventListener(
                         'change',
-                        this.changeHandler.bind(this)
+                        this.changeHandlerPtr
                     );
                 }
 
@@ -82,7 +85,7 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     super.attachedCallback();
                     this.addEventListener(
                         'click',
-                        this.clickHandler.bind(this)
+                        this.clickHandlerPtr
                     );
                 }
 
@@ -90,12 +93,12 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     super.detachedCallback();
                     this.removeEventListener(
                         'click',
-                        this.clickHandler.bind(this)
+                        this.clickHandlerPtr
                     );
 
                     this.input.removeEventListener(
                         'change',
-                        this.changeHandler.bind(this)
+                        this.changeHandlerPtr
                     );
                 }
 
@@ -114,7 +117,7 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     if(!e.target.id){
                         return;
                     }
-
+                    console.log(this.dataset);
                     switch (e.target.id) {
                         case 'incrementButton':
                             this.increment();
@@ -125,22 +128,22 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                             this.input.value = this.dataset.value;
                             break;
                         case 'setButton':
-                            if(!this.dataset.actions.hasOwnProperty(this.dataset.set_action)){
+                            if(!this.actions.hasOwnProperty(this.dataset.set_action)){
                                 console.warn('You set_action has not been defined!');
                                 return;
                             }
-                            dispatcher.trigger(
-                                this.dataset.set_action,
+                            this.dispatcher.trigger(
+                                this.actions[this.dataset.set_action],
                                 true
                             );
                             break;
                         case 'resetButton':
-                            if(!this.dataset.actions.hasOwnProperty(this.dataset.reset_action)){
+                            if(!this.actions.hasOwnProperty(this.dataset.reset_action)){
                                 console.warn('No reset_action has not been defined!');
                                 return;
                             }
-                            dispatcher.trigger(
-                                this.dataset.reset_action,
+                            this.dispatcher.trigger(
+                                this.actions[this.dataset.reset_action],
                                 true
                             );
                             break;
