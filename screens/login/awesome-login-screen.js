@@ -34,7 +34,7 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
                     this.classList.add(AwesomeLoginScreen.elementTagName);
 
                     this.localize(
-                        this.dataset.login,
+                        this.dataset.title,
                         'username',
                         'password',
                         'login'
