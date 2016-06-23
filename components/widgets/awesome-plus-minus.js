@@ -128,7 +128,7 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                             break;
                         case 'setButton':
                             if(!this.actions.hasOwnProperty(this.dataset.set_action)){
-                                console.warn('You set_action has not been defined!');
+                                console.warn('Your set_action has not been defined!');
                                 return;
                             }
                             this.dispatcher.trigger(
@@ -138,7 +138,7 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                             break;
                         case 'resetButton':
                             if(!this.actions.hasOwnProperty(this.dataset.reset_action)){
-                                console.warn('No reset_action has not been defined!');
+                                console.warn('Your reset_action has not been defined!');
                                 return;
                             }
                             this.dispatcher.trigger(
