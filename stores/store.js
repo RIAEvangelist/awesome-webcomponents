@@ -86,7 +86,7 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                         },
                         resetState:{
                             enumarable:true,
-                            writable:false,
+                            writable:true,
                             value:resetState.bind(this,events)
                         },
                         getStateHandler:{
