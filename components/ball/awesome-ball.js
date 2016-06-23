@@ -37,8 +37,8 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
                     this.dataset.value--;
                 }
 
-                attributeChangedCallback(){
-                    super.attributeChangedCallback();
+                attributeChangedCallback(key,oldValue,newValue){
+                    super.attributeChangedCallback(key,oldValue,newValue);
                     this.ballValue.innerHTML = `${this.dataset.value} ${this.dataset.units}`;
                 }
             }

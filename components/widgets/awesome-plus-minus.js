@@ -154,6 +154,7 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                 }
 
                 changeHandler(e){
+                    console.log(e);
                     this.dataset.value = this.input.value;
                 }
 
@@ -184,6 +185,19 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     this.dataset.value = this.input.value;
                     this.input.classList.remove('showInput')
                     this.setControls.classList.remove('showControls');
+                }
+
+                attributeChangedCallback(key,oldValue,newValue){
+                    super.attributeChangedCallback(key,oldValue,newValue);
+                    const plusMinusChange = new Event(
+                        'change',
+                        {
+                            'view':'window',
+                            'bubbles':'true',
+                            'cancelable':'false',
+                        }
+                    );
+                    this.dispatchEvent(plusMinusChange);
                 }
             }
         }
