@@ -960,7 +960,11 @@ class Awesome{
             }
 
             // if language is geographically specific like 'en-US' and not present try the non-specific version like 'en'
-            if(!this.language[lang] && lang.length>2){
+            if(
+                lang!='default'
+                && !this.language[lang]
+                && lang.length>2
+            ){
                 lang=lang.slice(0,2);
                 localStorage.setItem('language',lang);
             }
@@ -1078,7 +1082,9 @@ class Awesome{
                     key
                 ];
                 const duplicateKeyIndex=duplicateKeyArray.indexOf(key);
-                const duplicateIndex=duplicateCheckArray.indexOf(entry);
+                const duplicateIndex=(typeof entry=='string')
+                    ?duplicateCheckArray.indexOf(entry)
+                    :-1;
 
                 if(duplicateKeyIndex>-1){
                     const error=[
@@ -1206,33 +1212,18 @@ class AwesomeComponent{
     }
 
     register(e){
-        if(!awesome.ready){
+        if(!this.extendsNative && !awesome.component[this.extends]){
             return;
-        }
-        if(!this.extendsNative){
-            if(!e){
-                e={};
-            }
-            if(
-                e.detail===this.tagName
-                ||!awesome.component[this.extends]
-                || (
-                    e.detail
-                    && e.detail!==this.extends
-                )
-            ){
-                return;
-            }
         }
 
         window.off(
             'awesome-component-registered',
-            this.register.bind(this)
+            this.registerHandler
         );
 
         window.off(
             'awesome-ready',
-            this.register.bind(this)
+            this.registerHandler
         );
 
         const componentClass=this.create();
@@ -1249,22 +1240,25 @@ class AwesomeComponent{
 
     init(){
         let isReady=awesome.component[this.extends];
-
         if(!isReady){
-            //console.log(isReady,this)
+            this.registerHandler=this.register.bind(this);
             window.on(
                 'awesome-component-registered',
-                this.register.bind(this)
+                this.registerHandler
             );
 
             window.on(
                 'awesome-ready',
-                this.register.bind(this)
+                this.registerHandler
             );
 
             return;
         }
 
-        this.register();
+        this.register(
+            {
+                detail:this.extends
+            }
+        );
     }
 }

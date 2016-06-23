@@ -20,7 +20,6 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-meter.css`);
                 createdCallback(){
                     this.mergeDataset(defaults);
                     super.createdCallback();
-                    this.careAbout('data-text');
                     this.classList.add(AwesomeMeter.elementTagName);
                     this.localize(
                         this.dataset.text
@@ -52,7 +51,7 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-meter.css`);
                             </div>
                         </div>
                     `;
-
+                    this.text = this.querySelector('p');
                     this.percentage = this.querySelector('.percent');
                     this.dropDown = this.querySelector('.colorBlocker');
                     this.LIs= this.querySelectorAll('li');
@@ -70,6 +69,11 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-meter.css`);
                     super.attributeChangedCallback();
                 }
 
+                attributeChangedCallback(){
+                    super.attributeChangedCallback();
+                    this.changePercentage();
+                }
+
                 changePercentage(){
                     if(this.dataset.value < 0){
                         this.dataset.value=0;
@@ -81,9 +85,8 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-meter.css`);
                     this.percentage.innerHTML=`${this.dataset.value}%`
                     this.dropDown.style.height = `calc(100% - ${this.dataset.value}%)`;
 
-                    if(this.dataset.value < 10){
-                        this.percentage.classList.add('belowTenPercent');
-                    }
+                    this.localize(this.dataset.text);
+                    this.text.innerHTML = this.local[this.dataset.text];
                 }
 
                 sizeListElements(){

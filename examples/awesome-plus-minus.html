@@ -7,6 +7,29 @@
             awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             awesome.requireScript(`${awesome.path}components/widgets/awesome-plus-minus.js`);
             awesome.requireLanguage(`${awesome.path}languages/default.js`);
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            function init(){
+                window.off(
+                    'awesome-ready',
+                    init
+                );
+
+                const plusMinus = document.body.querySelector('awesome-plus-minus');
+
+                plusMinus.addEventListener(
+                    'change',
+                    plusMinusChanged
+                );
+            }
+
+            function plusMinusChanged(e){
+                console.info(`awesome-plus-minus changed and dispatched 'change'! the value is ${e.target.dataset.value}`);
+            }
+
         </script>
         <style>
             body section{

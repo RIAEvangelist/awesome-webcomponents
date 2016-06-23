@@ -36,6 +36,8 @@ awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
                         localStorage.getItem('language')
                     );
 
+                    this.dataset.count=langs.length;
+
                     for(let i=0; i<langs.length; i++){
                         this.dataset[`b${i}`]=this.dataset[
                             langs[i]

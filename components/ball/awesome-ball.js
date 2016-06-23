@@ -20,7 +20,6 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
                     this.mergeDataset(defaults);
                     super.createdCallback();
                     this.classList.add(AwesomeBall.elementTagName);
-                    this.careAbout('data-value');
                     this.localize(
                         this.dataset.units
                     );
@@ -32,25 +31,15 @@ awesome.requireCSS(`${awesome.path}components/ball/awesome-ball.css`);
 
                 increment(){
                     this.dataset.value++;
-                    this.update()
                 }
 
                 decrement(){
                     this.dataset.value--;
-                    this.update()
                 }
 
-                update(){
+                attributeChangedCallback(key,oldValue,newValue){
+                    super.attributeChangedCallback(key,oldValue,newValue);
                     this.ballValue.innerHTML = `${this.dataset.value} ${this.dataset.units}`;
-                    this.classList.add('update');
-                    setTimeout(
-                        this.updateValueHandler.bind(this),
-                        200
-                    );
-                }
-
-                updateValueHandler(ballValue){
-                    this.classList.remove('update');
                 }
             }
         }

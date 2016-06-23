@@ -21,7 +21,7 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
         class Store{
             constructor(){
                 const events=new pubsub;
-
+                this._events=events;
                 Object.defineProperties(
                     this,
                     {
@@ -86,8 +86,18 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                         },
                         resetState:{
                             enumarable:true,
-                            writable:false,
+                            writable:true,
                             value:resetState.bind(this,events)
+                        },
+                        getStateHandler:{
+                            enumerable:true,
+                            writable:false,
+                            value:getState.bind(this)
+                        },
+                        deepMerge:{
+                            enumerable:true,
+                            writable:true,
+                            value:false
                         },
                         expose:{
                             enumerable:true,
@@ -119,7 +129,7 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                         off:{
                             enumarable:false,
                             writable:false,
-                            value:events.on.bind(events)
+                            value:events.off.bind(events)
                         }
                     }
                 );
@@ -147,8 +157,8 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                         {
                             state:{
                                 enumerable:true,
-                                get:getState.bind(this),
-                                set:getState.bind(this)
+                                get:this.getStateHandler,
+                                set:this.getStateHandler
                             }
                         }
                     );
@@ -200,17 +210,51 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                  * @param {Object} newState object to be merged into existing state
                  * @fires awesome.store.change
                  */
-                function setState(newState){
-                    Object.assign(this._raw_state_dont_touch_,newState);
+                 function setState(newState){
+                     let merge=Object.assign;
+                     if(this.deepMerge){
+                         merge=this.mergeDeep.bind(this);
+                     }
 
-                    /**
-                     * Store.state change event used to notify component that the store state has changed.
-                     * @event awesome.Store.change
-                     */
-                    events.trigger('change');
-                }
-            }
-        }
+                     merge(this._raw_state_dont_touch_,newState);
+
+
+                     /**
+                      * Store.state change event used to notify component that the store state has changed.
+                      * @event awesome.Store.change
+                      */
+                     events.trigger('change');
+                 }
+             }
+
+             isObject(item) {
+                 const isObject=(
+                     item
+                     && typeof item === 'object'
+                     && !Array.isArray(item)
+                     && item !== null
+                 );
+
+                 return isObject;
+             }
+
+             mergeDeep(state,newState) {
+                 if (
+                     this.isObject(state)
+                     && this.isObject(newState)
+                 ) {
+                     for(let key in newState){
+                         state[key]=this.mergeDeep(
+                             state[key],
+                             newState[key]
+                         );
+                     }
+                 }else{
+                     state=newState;
+                 }
+                 return state;
+             }
+         }
 
         Object.defineProperty(
             awesome,

@@ -8,7 +8,7 @@ awesome.requireCSS(`${awesome.path}components/footer/awesome-footer.css`);
         component.tagName='awesome-footer';
         component.extends='BaseComponent';
 
-        component.create=function createAwesomeList(){
+        component.create=function createAwesomeFooter(){
             return class AwesomeFooter extends awesome.component.BaseComponent{
                 createdCallback(){
                     super.createdCallback();
