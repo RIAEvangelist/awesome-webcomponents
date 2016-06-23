@@ -129,7 +129,7 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                         off:{
                             enumarable:false,
                             writable:false,
-                            value:events.on.bind(events)
+                            value:events.off.bind(events)
                         }
                     }
                 );
