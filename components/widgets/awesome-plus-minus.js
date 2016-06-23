@@ -185,6 +185,19 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     this.input.classList.remove('showInput')
                     this.setControls.classList.remove('showControls');
                 }
+
+                attributeChangedCallback(key,oldValue,newValue){
+                    super.attributeChangedCallback(key,oldValue,newValue);
+                    const plusMinusChange = new Event(
+                        'change',
+                        {
+                            'view':'window',
+                            'bubbles':'true',
+                            'cancelable':'false',
+                        }
+                    );
+                    this.dispatchEvent(plusMinusChange);
+                }
             }
         }
 

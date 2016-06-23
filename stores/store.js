@@ -216,8 +216,6 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
                          merge=this.mergeDeep.bind(this);
                      }
 
-                     console.log(merge)
-
                      merge(this._raw_state_dont_touch_,newState);
 
 
