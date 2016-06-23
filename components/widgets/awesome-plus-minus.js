@@ -117,7 +117,6 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                     if(!e.target.id){
                         return;
                     }
-                    console.log(this.dataset);
                     switch (e.target.id) {
                         case 'incrementButton':
                             this.increment();
