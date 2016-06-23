@@ -17,10 +17,6 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
 
         component.create=function creatAwesomePlusMinus(){
 
-
-            const action=awesome.constants.action;
-            const dispatcher=awesome.dispatchers.component;
-
             return class AwesomePlusMinus extends awesome.component.AwesomeBall{
                 createdCallback(){
                     this.mergeDataset(defaults);
@@ -129,22 +125,22 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                             this.input.value = this.dataset.value;
                             break;
                         case 'setButton':
-                            if(!action[this.dataset.set_action]){
-                                console.warn('No set_action has been defined!');
+                            if(!this.dataset.actions.hasOwnProperty(this.dataset.set_action)){
+                                console.warn('You set_action has not been defined!');
                                 return;
                             }
                             dispatcher.trigger(
-                                action[this.dataset.set_action],
+                                this.dataset.set_action,
                                 true
                             );
                             break;
                         case 'resetButton':
-                            if(!action[this.dataset.reset_action]){
-                                console.warn('No reset_action has been defined!');
+                            if(!this.dataset.actions.hasOwnProperty(this.dataset.reset_action)){
+                                console.warn('No reset_action has not been defined!');
                                 return;
                             }
                             dispatcher.trigger(
-                                action[this.dataset.reset_action],
+                                this.dataset.reset_action,
                                 true
                             );
                             break;
