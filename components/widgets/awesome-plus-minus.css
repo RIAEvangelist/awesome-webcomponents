@@ -14,7 +14,7 @@
     height: 100%;
     width: 100%;
     border-radius: 50%;
-    border: .15em solid rgb(185, 185, 185);
+    border: .2em solid rgb(185, 185, 185);
     position: absolute;
     background: rgb(220, 220, 220);
     top: calc(0% - 0.15em);
