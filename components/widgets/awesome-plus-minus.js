@@ -133,7 +133,7 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                             }
                             this.dispatcher.trigger(
                                 this.actions[this.dataset.set_action],
-                                true
+                                this.dataset.value
                             );
                             break;
                         case 'resetButton':
