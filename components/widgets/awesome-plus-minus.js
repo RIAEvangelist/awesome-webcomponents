@@ -179,7 +179,6 @@ awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
                 }
 
                 hideExtraControls(){
-                    this.dataset.value = this.input.value;
                     this.input.classList.remove('showInput')
                     this.setControls.classList.remove('showControls');
                 }
