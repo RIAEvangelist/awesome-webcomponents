@@ -23,7 +23,6 @@ Small desktop windows and mobile
 @media (max-width:800px), (max-height:700px){
     .awesome-dialog{
         width:100%;
-        height:100%;
         left:0;
         top:0;
         border-radius:0;
