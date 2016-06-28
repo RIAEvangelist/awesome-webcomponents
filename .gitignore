@@ -1,3 +1,5 @@
 node_modules/
 nmp-debug.log
-tags
+.tags
+.tags1
+.tags_swap

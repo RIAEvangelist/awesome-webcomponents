@@ -1,14 +1,5 @@
-awesome-youtube{
-    display:block;
-    height: 18em; /* 16:9 apect ratio */
-    width: 32em;
+.awesome-youtube{
 }
-
-awesome-youtube iframe{
-    height: 100%;
-    width: 100%;
-}
-
 /*******************************\
 Small desktop windows and mobile
 \*******************************/

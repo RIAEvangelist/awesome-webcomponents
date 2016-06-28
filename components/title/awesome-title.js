@@ -8,40 +8,31 @@ awesome.requireCSS(`${awesome.path}components/title/awesome-title.css`);
             title:'Awesome Title'
         }
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
+        const component = new AwesomeComponent;
+        component.tagName = 'awesome-title';
+        component.extends = 'BaseComponent';
 
-                this.innerHTML=`
-                    <h1>
-                        ${
-                            (awesome.language.current[this.dataset.title])
-                            ? awesome.language.current[this.dataset.title]
-                            : this.dataset.title
-                        }
-                    </h1>
-                `;
-            }
-
-            attachedCallback(){
-                window.on(
-                    'awesome-language-set',
-                    this.createdCallback.bind(this)
-                );
-            }
-
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
+        component.create=function createAwesomeTitle(){
+            return class AwesomeTitle extends awesome.component.BaseComponent{
+                createdCallback(){
+                    this.mergeDataset(defaults);
+                    super.createdCallback();
+                    this.classList.add(AwesomeTitle.elementTagName)
+                    this.careAbout(
+                        'data-title'
+                    );
+                    this.localize(
+                        this.dataset.title
+                    );
+                    this.innerHTML=`
+                        <h1>
+                            ${this.local[this.dataset.title]}
+                        </h1>
+                    `;
+                }
             }
         }
 
-        document.registerElement(
-            'awesome-title',
-            Component
-        );
+        component.init();
     }
 )();

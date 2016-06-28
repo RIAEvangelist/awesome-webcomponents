@@ -4,12 +4,26 @@
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
         <script type='application/javascript' src='../awesome.js'></script>
         <script type='application/javascript'>
-            awesome.requireScript(`${awesome.path}components/meter/awesome-meter.js`);
+            awesome.requireScript(`${awesome.path}components/widgets/awesome-meter.js`);
+
+            window.on(
+                'DOMContentLoaded',
+                init
+            );
+
+            function init(){
+                setInterval(
+                    update,
+                    500
+                );
+            }
+
+            function update(){
+                document.querySelector('awesome-meter').dataset.value=Math.round(Math.random()*100);
+            }
         </script>
     </head>
-    <body>
-        <awesome-meter>
-
-        </awesome-meter>
+    <body class='overflow'>
+        <awesome-meter></awesome-meter>
     </body>
 </html>

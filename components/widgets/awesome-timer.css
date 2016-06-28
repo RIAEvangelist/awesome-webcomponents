@@ -1,0 +1,27 @@
+.awesome-timer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 6em;
+    width: 12.5em;
+}
+
+.awesome-timer > *{
+    width: 100%;
+}
+
+.awesome-timer > div{
+    margin: 0 0 0 0.5em;
+}
+
+.awesome-timer > p{
+    font-size: 4.5em;
+    margin: 0 0 0 0.15em;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}

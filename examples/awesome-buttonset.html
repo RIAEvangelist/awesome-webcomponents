@@ -8,9 +8,10 @@
         <script type='application/javascript'>
             awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
+            awesome.requireScript(`${awesome.path}components/localization/awesome-languages.js`);
         </script>
     </head>
-    <body>
+    <body class='overflow'>
         <awesome-header
             data-title='awesome-buttonset'>
         </awesome-header>
@@ -90,5 +91,21 @@
             data-b3='You'
             data-b4='Like'
         ></awesome-buttonset>
+        <br />
+        <br />
+        <awesome-header
+            data-title='Localized Buttonset'>
+        </awesome-header>
+        <br />
+        <awesome-buttonset
+            data-index=1
+            data-count=2
+            data-b0='ok'
+            data-b1='cancel'
+        ></awesome-buttonset>
+        <awesome-languages>
+        </awesome-languages>
+        <br />
+        <br />
     </body>
 </html>

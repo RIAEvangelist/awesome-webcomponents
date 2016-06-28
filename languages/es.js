@@ -18,10 +18,16 @@ awesome.language={
         ok:'De acuerdo',
         cancel:'Cancelar',
         next:'Siguiente',
+        set:'Ajusto',
+        reset:'Reiniciar',
+        home:'Hogar',
+        yes:'Si',
+        no:'No',
+
+        min:'Mín',
+        max:'Máx',
 
         languages:'Idiomas',
-        timeleft:'Tiempo Restante',
-
-        'awesome-login-screen-header':'Iniciar sesión'
+        timeleft:'Tiempo Restante'
     }
 };

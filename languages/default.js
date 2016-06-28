@@ -24,10 +24,16 @@ awesome.language={
         ok:'OK',
         cancel:'Cancel',
         next:'Next',
+        set:'Set',
+        reset:'Reset',
+        home:'Home',
+        yes:'Yes',
+        no:'No',
+
+        min:'Min',
+        max:'Max',
 
         languages:'Languages',
-        timeleft:'Time Left',
-
-        'awesome-login-screen-header':'Login'
+        timeleft:'Time Left'
     }
 };

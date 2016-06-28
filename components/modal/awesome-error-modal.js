@@ -5,96 +5,52 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
 
 (
     function(){
+        const defaults={
+            title:''
+        }
 
-        function init(){
-            window.off(
-                'awesome-ready',
-                init
-            );
+        const component=new AwesomeComponent;
+        component.tagName='awesome-error-modal';
+        component.extends='AwesomeModal';
 
-            class AwesomeErrorModal extends awesome.component.AwesomeModal{
+        component.create=function createAwesomeErrorModal() {
+            return class AwesomeErrorModal extends awesome.component.AwesomeModal{
                 createdCallback(){
-                    this.defauts = {
-                        title:''
-                    }
-
-                    this.content = this.querySelector('template');
-
-                    if(!this.content){
-                        return;
-                    }
-
-                    this.content.innerHTML = `
-                        <h1>
-                            <span class = 'flaticon-signs'>
-
-                            </span>
-                            ${this.dataset.title}
-                        </h1>
-                        <div class = 'contentWrapper'>
-                            ${this.content.innerHTML}
-                        </div>
-                        <br/>
-                        <button
-                            class = 'closeButton'
-                            data-action='close'
-                        >
-                            ${awesome.language.current.ok}
-                        </button>
-                    `;
-
-                    this.classList.add(AwesomeErrorModal.elementTagName);
-
+                    this.mergeDataset(defaults);
                     super.createdCallback();
                     this.caresAbout.push('data-title');
+                    this.classList.add(AwesomeErrorModal.elementTagName);
 
-                    this.title = this.dataset.title;
-                    this.ok = awesome.language.current.ok;
-                }
-
-                attachedCallback(){
-                    super.attachedCallback();
-
-                    window.on(
-                        'awesome-language-set',
-                        this.updateLanguage.bind(this)
+                    this.localize(
+                        this.dataset.title,
+                        'ok'
                     );
-                }
 
-                detachedCallback(){
-                    super.detachedCallback();
+                    this.innerHTML =`
+                        <div>
+                            <h1>
+                                <span class = 'flaticon-signs'>
 
-                    window.off(
-                        'awesome-language-set',
-                        this.updateLanguage.bind(this)
-                    );
-                }
-
-                updateLanguage(){
-                    if(this.ok == awesome.language.current.ok){
-                        return;
-                    }
-
-                    this.createdCallback();
+                                </span>
+                                ${this.local[this.dataset.title]}
+                            </h1>
+                            <div class = 'contentWrapper'>
+                                ${this.content.content}
+                            </div>
+                            <br/>
+                            <button
+                                class = 'closeButton'
+                                data-action='close'
+                            >
+                                ${this.local.ok}
+                            </button>
+                        </div>
+                        ${this.content.template}
+                    `;
                 }
             }
-
-            AwesomeErrorModal.elementTagName='awesome-error-modal';
-
-            awesome.register(
-                AwesomeErrorModal
-            );
         }
 
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )();

@@ -1,26 +1,26 @@
-awesome-login-screen{
+.awesome-login-screen{
     width:100%;
     height:100%;
     display:block;
 }
 
-awesome-login-screen awesome-dialog{
+.awesome-login-screen awesome-dialog{
     height:auto;
 }
 
-awesome-login-screen input[type='password'],
-awesome-login-screen input[type='text'],
-awesome-login-screen input:not([type]){
+.awesome-login-screen input[type='password'],
+.awesome-login-screen input[type='text'],
+.awesome-login-screen input:not([type]){
     width:calc(100% - 1em);
     margin:.5em;
 }
 
-awesome-login-screen .button-wrapper {
+.awesome-login-screen .button-wrapper {
     text-align:center;
     margin: .3em 0;
 }
 
-awesome-login-screen button{
+.awesome-login-screen button{
     width:5em;
 }
 
@@ -29,21 +29,21 @@ Small desktop windows and mobile
 \*******************************/
 @media (max-width:800px), (max-height:700px){
 
-    awesome-login-screen input[type='password'],
-    awesome-login-screen input[type='text'],
-    awesome-login-screen input:not([type]){
+    .awesome-login-screen input[type='password'],
+    .awesome-login-screen input[type='text'],
+    .awesome-login-screen input:not([type]){
         text-align:center;
     }
 
-    awesome-login-screen awesome-dialog{
+    .awesome-login-screen awesome-dialog{
         height:100%;
     }
 
-    awesome-login-screen .button-wrapper {
+    .awesome-login-screen .button-wrapper {
         margin: 1em 0;
     }
 
-    awesome-login-screen button {
+    .awesome-login-screen button {
         width:50%;
         padding:1em;
     }

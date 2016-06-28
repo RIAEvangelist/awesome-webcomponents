@@ -4,69 +4,40 @@
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
         <script type='application/javascript' src='../awesome.js'></script>
         <script type='application/javascript'>
-            awesome.requireScript(`${awesome.path}components/modal/awesome-notification-modal.js`);
             awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
-            awesome.requireScript(`${awesome.path}components/modal/awesome-error-modal.js`);
             awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             awesome.requireLanguage(`${awesome.path}languages/default.js`);
-
-            const modal = document.createElement('awesome-modal');
-            const template = document.createElement('template');
-            template.innerHTML = `
-                <h1>
-                    awesome-modal is very flexible and can be filled with anything you'd like!
-                </h1>
-                <button
-                    data-action='close'
-                >
-                    Close Modal
-                </button>
-            `;
-            modal.appendChild(template);
-
-
 
             function init(){
                 window.off(
                     'awesome-ready',
                     init
                 );
-
                 const open = document.querySelector('.openModal');
-                const openNotification = document.querySelector('.openNotificationModal');
-                const openError = document.querySelector('.openErrorModal');
 
                 open.addEventListener(
                     'click',
-                    modal.open.bind(modal)
-                );
-                openNotification.addEventListener(
-                    'click',
-                    openNotificationModal
-                );
-                openError.addEventListener(
-                    'click',
-                    openErrorModal
+                    openModal
                 );
             }
 
-            function openNotificationModal(){
-                const modal = document.createElement('awesome-notification-modal');
+            function openModal(){
+                const modal = document.createElement('awesome-modal');
                 const template = document.createElement('template');
-                modal.dataset.title= 'Notification Modal';
-                template.innerHTML = 'This modal should be used to notify a user of an occurence and can be dismissed with the OK button.';
+                template.innerHTML = `
+                    <h1>
+                        awesome-modal is very flexible and can be filled with anything you'd like!
+                    </h1>
+                    <button
+                        data-action='close'
+                    >
+                        Close Modal
+                    </button>
+                `;
                 modal.appendChild(template);
-                document.body.appendChild(modal);
+                modal.open();
             }
 
-            function openErrorModal(){
-                const modal = document.createElement('awesome-error-modal');
-                const template = document.createElement('template');
-                modal.dataset.title = 'Error Modal';
-                template.innerHTML = 'This modal should be used to notify a user of an error';
-                modal.appendChild(template);
-                document.body.appendChild(modal);
-            }
 
             window.on(
                 'awesome-ready',
@@ -75,28 +46,12 @@
 
         </script>
     </head>
-    <body>
+    <body class='overflow'>
         <awesome-header
             data-title = 'awesome-modal'
         ></awesome-header>
         <button class = 'openModal'>
             Open Modal
         </button>
-        <br/>
-        <br/>
-        <awesome-header
-            data-title = 'awesome-notification-modal'
-        ></awesome-header>
-            <button class = 'openNotificationModal'>
-                    Open Notification Modal
-            </button>
-        <br/>
-        <br/>
-        <awesome-header
-            data-title = 'awesome-error-modal'
-        ></awesome-header>
-            <button class = 'openErrorModal'>
-                    Open Error Modal
-            </button>
     </body>
 </html>

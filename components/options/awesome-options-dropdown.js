@@ -4,90 +4,58 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
 
 (
     function(){
-        let store=null;
-        let dispatcher=null;
-        let constants = null;
-        let action = null;
-
         const defaults={
             label:''
         }
 
-        function init(e){
-            window.off(
-                'awesome-ready',
-                init
-            );
+        const component = new AwesomeComponent;
+        component.tagName = 'awesome-options-dropdown';
+        component.extends = 'BaseComponent';
 
-            dispatcher=awesome.dispatchers.component;
-            constants=awesome.constants.component;
-            action=awesome.constants.action;
+        component.create=function createAwesomeOptionsDropdown(){
+            return class AwesomeOptionsDropdown extends awesome.component.BaseComponent{
+                createdCallback(){
+                    this.mergeDataset(defaults);
+                    super.createdCallback();
+                    this.classList.add(AwesomeOptionsDropdown.elementTagName)
+                    this.careAbout(
+                        'data-label'
+                    );
+                    this.localize(
+                        this.dataset.label
+                    )
 
-            document.registerElement(
-                'awesome-options-dropdown',
-                Component
-            );
-        }
+                    this.innerHTML=`
+                        <label>${this.local[this.dataset.label]} :</label>
+                        <select name='${this.dataset.label}'>
+                            ${this.content.content}
+                        </select>
+                        ${this.content.template}
+                    `;
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
-
-                this.innerHTML=`
-                    <label>${this.dataset.label} :</label>
-                    <select name='${this.dataset.label}'>
-                        ${content.content}
-                    </select>
-                    ${content.template}
-                `;
-
-                this.querySelector('select').addEventListener(
-                    'change',
-                    this.change.bind(this)
-                );
-            }
-
-            attachedCallback(){
-
-            }
-
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                if(key != 'data-title'){
-                    return;
+                    this.querySelector('select').addEventListener(
+                        'change',
+                        this.change.bind(this)
+                    );
                 }
-                this.createdCallback();
-            }
 
-            change(e){
-                e.preventDefault();
-                e.stopPropagation();
-                this.value=e.target.value;
-                const change = new Event(
-                    'change',
-                    {
-                        'bubbles':true,
-                        'cancelable':false
-                    }
-                );
+                change(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.value=e.target.value;
+                    const change = new Event(
+                        'change',
+                        {
+                            'bubbles':true,
+                            'cancelable':false
+                        }
+                    );
 
-                this.dispatchEvent(change);
-            }
-        }
+                    this.dispatchEvent(change);
+                }
+            };
+        };
 
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )();

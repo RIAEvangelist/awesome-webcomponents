@@ -5,104 +5,100 @@ awesome.requireScript(`${awesome.path}stores/file/info.js`);
 
 (
     function(){
-        let state=null;
         const defaults={
             file_id:'default'
         }
 
-        function init(e){
-            state=awesome.stores.fileInfo.state;
+        const component = new AwesomeComponent;
+        component.tagName = 'awesome-file-info';
+        component.extends= 'BaseComponent';
 
-            window.off(
-                'awesome-ready',
-                init
-            );
+        component.create=function createAwesomeFileInfo(){
+            const state=awesome.stores.fileInfo.state;
 
-            document.registerElement(
-                'awesome-file-info',
-                Component
-            );
-        }
+            return class AwesomeFileInfo extends awesome.component.BaseComponent{
+                createdCallback(){
+                    console.warn('AwesomeFileInfo IS NOT STABLE!! IT NEEDS FIXING!');
+                    //@TODO figure this out!
+                    this.mergeDataset(defaults);
+                    super.createdCallback();
+                    this.classList.add(AwesomeFileInfo.elementTagName);
+                    this.careAbout(
+                        'data-file_id'
+                    );
+                    this.localize(
+                        'fileName',
+                        'fileSize',
+                        'fileLastModified',
+                        'fileContent',
+                        'noFilesSelected'
+                    );
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
-                const fileInfo=state[this.dataset.file_id];
+                    let tableContent=`
+                        <tr>
+                            <th>${this.local.noFilesSelected}</th>
+                        </tr>
+                    `;
 
-                let tableContent=`
-                    <tr>
-                        <th>${awesome.language.current.noFilesSelected}</th>
-                    </tr>
-                `;
+                    let count=0;
+                    const fileInfo=state[this.dataset.file_id];
 
-                let count=0;
+                    if(fileInfo && Array.isArray(fileInfo.files)){
+                        tableContent=`<tr>
+                        <th>${this.local.fileName}</th>
+                        <th>${this.local.fileSize}</th>
+                        <th>${this.local.fileLastModified}</th>
+                        <th>${this.local.fileContent}</th>
+                        </tr>`;
 
-                if(fileInfo && Array.isArray(fileInfo.files)){
-                    tableContent=`<tr>
-                        <th>${awesome.language.current.fileName}</th>
-                        <th>${awesome.language.current.fileSize}</th>
-                        <th>${awesome.language.current.fileLastModified}</th>
-                        <th>${awesome.language.current.fileContent}</th>
-                    </tr>`;
-
-                    count=fileInfo.files.length;
-                    for(let i=0; i<fileInfo.files.length; i++){
-                        const file=fileInfo.files[i];
-                        tableContent+=`
-                            <tr class='${
-                                (i%2)
-                                ? ''
-                                : 'oddRow'
-                            }'>
-                                <td>${file.name}</td>
-                                <td>${file.size}kb</td>
-                                <td>${file.lastModifiedDate}</td>
-                                <td>${file.content}</td>
-                            </tr>
-                        `;
+                        count=fileInfo.files.length;
+                        for(let i=0; i<fileInfo.files.length; i++){
+                            const file=fileInfo.files[i];
+                            tableContent+=`
+                                <tr class='${
+                                    (i%2)
+                                    ? ''
+                                    : 'oddRow'
+                                }'>
+                                    <td>${file.name}</td>
+                                    <td>${file.size}kb</td>
+                                    <td>${file.lastModifiedDate}</td>
+                                    <td>${file.content}</td>
+                                </tr>
+                            `;
+                        }
                     }
+
+                    this.innerHTML=`
+                        <table data-count='${count}'>
+                            <tbody>
+                                ${tableContent}
+                            </tbody>
+                        </table>
+                    `;
+
                 }
 
-                this.innerHTML=`
-                    <table data-count='${count}'>
-                        <tbody>
-                            ${tableContent}
-                        </tbody>
-                    </table>
-                `;
-            }
+                attachedCallback(){
+                    super.attachedCallback();
 
-            attachedCallback(){
-                window.on(
-                    'awesome-language-set',
-                    this.createdCallback.bind(this)
-                );
+                    state.on(
+                        'change',
+                        this.createdCallback.bind(this)
+                    );
+                }
 
-                state.on(
-                    'change',
-                    this.createdCallback.bind(this)
-                );
-            }
+                detachedCallback(){
+                    super.detachedCallback();
 
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
+                    state.off(
+                        'change',
+                        this.createdCallback.bind(this)
+                    );
+                }
             }
         }
 
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )();

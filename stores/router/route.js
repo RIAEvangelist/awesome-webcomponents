@@ -131,7 +131,7 @@ awesome.requireScript(`${awesome.path}stores/user/auth.js`);
 
                     document.location.hash=`/${screenName}`;
 
-                    if(!data.pop){
+                    if(!data.pop && store.state.screen){
                         return;
                     }
 

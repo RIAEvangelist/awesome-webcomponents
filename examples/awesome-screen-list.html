@@ -10,6 +10,8 @@
             awesome.requireScript(`${awesome.path}screens/screenList/awesome-screen-list.js`);            awesome.requireScript(`${awesome.path}components/icons/awesome-screen-icon.js`);
             awesome.requireScript(`${awesome.path}screens/login/awesome-login-screen.js`);
             awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+            awesome.requireScript(`${awesome.path}actions/user/auth.js`);
+            awesome.requireScript(`${awesome.path}actions/router/route.js`);
             awesome.requireScript(`${awesome.path}components/localization/awesome-languages.js`);
         </script>
     </head>
@@ -34,7 +36,7 @@
         <awesome-login-screen
             data-screen='login'
             data-icon='img/ghoc.png'
-            data-link_text='languages'
+            data-link_text='login'
         >
         </awesome-login-screen>
     </body>

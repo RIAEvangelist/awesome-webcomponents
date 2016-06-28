@@ -7,124 +7,74 @@ awesome.requireScript(`${awesome.path}components/title/awesome-title.js`);
 
 (
     function(){
+        const defaults={
+            title:'',
+            screen_name:''
+        }
 
-        function init(){
-            window.off(
-                'awesome-ready',
-                init
-            );
+        const component=new AwesomeComponent;
+        component.tagName='awesome-navigation-modal';
+        component.extends='AwesomeModal';
 
-            const action=awesome.constants.action;
-            const dispatcher=awesome.dispatchers.component;
-
-            class AwesomeNavigationModal extends awesome.component.AwesomeModal{
+        component.create=function createAwesomeNavigationModal() {
+            return class AwesomeNavigationModal extends awesome.component.AwesomeModal{
                 createdCallback(){
-
-                    this.defauts={
-                        title:'',
-                        screen_name:''
-                    }
-
-                    this.content=this.querySelector('template');
-
-                    if(!this.content){
-                        return;
-                    }
-
-                    this.content.innerHTML = `
-                        <awesome-title
-                            data-title = '${this.dataset.title}'
-                        >
-                        </awesome-title>
-
-                        <content>
-                            ${this.content.innerHTML}
-                        </content>
-
-                        <div class = 'modalButtonControls'>
-                            <button id = 'ok'>
-                                ${awesome.language.current.ok}
-                            </button>
-                            <button id = 'next'>
-                                ${awesome.language.current.next}
-                            </button>
-                        </div>
-                    `;
-
-                    this.classList.add(AwesomeNavigationModal.elementTagName);
-
+                    this.mergeDataset(defaults);
                     super.createdCallback();
-                    this.caresAbout.push('data-title');
-                    this.caresAbout.push('data-screen_name');
-
-                    this.ok = awesome.language.current.ok.trim();
-                    this.next = awesome.language.current.next.trim();
-                    this.title = this.dataset.title.trim();
-                }
-
-                attachedCallback(){
-                    window.on(
-                        'awesome-language-set',
-                        this.updateLanguage.bind(this)
+                    this.classList.add(AwesomeNavigationModal.elementTagName);
+                    this.careAbout(
+                        'data-title',
+                        'data-screen_name'
                     );
 
-                    this.addEventListener(
-                        'click',
-                        this.clicked.bind(this)
-                    );
-                }
-
-                detachedCallback(){
-                    window.off(
-                        'awesome-language-set',
-                        this.updateLanguage.bind(this)
+                    this.localize(
+                        'ok',
+                        'next',
+                        this.dataset.title
                     );
 
-                    this.removeEventListener(
-                        'click',
-                        this.clicked.bind(this)
-                    );
+                    this.innerHTML=`
+                        <div>
+                            <awesome-title
+                                data-title = '${this.local[this.dataset.title]}'
+                            >
+                            </awesome-title>
+
+                            <content>
+                                ${this.content.content}
+                            </content>
+
+                            <div class = 'modalButtonControls'>
+                                <button
+                                    id = 'ok'
+                                    data-action = 'close'
+                                >
+                                    ${this.local.ok}
+                                </button>
+                                <button
+                                    id = 'next'
+                                    data-action = 'close'
+                                >
+                                    ${this.local.next}
+                                </button>
+                            </div>
+                        </div>
+                        ${this.content.template}
+                    `;
                 }
 
                 clicked(e){
-                    if(e.target.localName != 'button'){
-                        return;
-                    }
-
+                    super.clicked(e);
                     if(e.target.id == 'next'){
-                        dispatcher.trigger(
-                            action.ROUTE_REQUEST,
+                        this.dispatcher.trigger(
+                            this.actions.ROUTE_REQUEST,
                             this.dataset.screen_name
                         );
                     }
-                    this.parentElement.removeChild(this);
-                }
-
-                updateLanguage(){
-                    if(this.next == awesome.language.current.next.trim()
-                        && this.ok == awesome.language.current.ok.trim()
-                    ){
-                        return;
-                    }
-                    this.createdCallback();
                 }
             }
-
-            AwesomeNavigationModal.elementTagName='awesome-navigation-modal';
-
-            awesome.register(
-                AwesomeNavigationModal
-            );
-        }
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
         }
 
-        init();
+        component.init();
     }
 )();

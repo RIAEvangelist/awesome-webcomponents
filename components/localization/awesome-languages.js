@@ -4,11 +4,14 @@ awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
 
 (
     function(){
-        let defaults=null;
         let langs=[];
 
-        function init(e){
-            defaults={
+        const component=new AwesomeComponent;
+        component.tagName='awesome-languages';
+        component.extends='AwesomeButtonSet';
+
+        component.create=function createAwesomeLanguages(e){
+            const defaults={
                 codes:[
                     'en',
                     'ru',
@@ -21,85 +24,46 @@ awesome.requireScript(`${awesome.path}components/buttons/awesome-buttonset.js`);
                 es:awesome.language.current.spanish
             };
 
-            window.off(
-                'awesome-ready',
-                init
-            );
+            return class AwesomeLanguages extends awesome.component.AwesomeButtonSet{
+                createdCallback(){
+                    this.mergeDataset(defaults);
+                    super.createdCallback();
+                    this.classList.add(AwesomeLanguages.elementTagName);
 
-            document.registerElement(
-                'awesome-languages',
-                Component
-            );
-        }
+                    langs=this.dataset.codes.split(',');
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+                    const index=langs.indexOf(
+                        localStorage.getItem('language')
+                    );
 
-                langs=this.dataset.codes.split(',');
-                const index=langs.indexOf(
-                    localStorage.getItem('language')
-                );
-                const buttons=[];
+                    this.dataset.count=langs.length;
 
-                for(let i=0; i<langs.length; i++){
-                    buttons.push(
-                        `
-                            data-b${i}='${
-                                this.dataset[
-                                    langs[i]
-                                ]
-                            }'
-                        `
+                    for(let i=0; i<langs.length; i++){
+                        this.dataset[`b${i}`]=this.dataset[
+                            langs[i]
+                        ]
+                    }
+
+                    if(index < 0 || index > langs.length - 1){
+                        return;
+                    }
+                    this.dataset.index=index;
+                }
+
+                attachedCallback(){
+                    super.attachedCallback();
+                    this.addEventListener(
+                        'change',
+                        function languageChange(e){
+                            awesome.setLanguage(
+                                langs[e.target.value]
+                            );
+                        }
                     );
                 }
-
-                let langIndex='';
-                if(index>-1){
-                    langIndex=`data-index='${
-                        index
-                    }'`
-                }
-
-                this.innerHTML=`
-                    <awesome-buttonset
-                        ${langIndex}
-                        data-count=${langs.length}
-                        ${buttons.join('')}
-                    ></awesome-buttonset>
-                `;
-            }
-
-            attachedCallback(){
-                this.addEventListener(
-                    'change',
-                    function languageChange(e){
-                        awesome.setLanguage(
-                            langs[e.target.value]
-                        );
-                    }
-                );
-            }
-
-            detachedCallback(){
-                this.createdCallback();
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
             }
         }
 
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )();

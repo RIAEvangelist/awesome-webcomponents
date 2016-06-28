@@ -1,0 +1,27 @@
+.awesome-ball {
+    display: flex;
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    border: .15em solid rgb(185, 185, 185);
+    background-color: rgba(106, 106, 106, 0.1);
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 100ms;
+}
+
+.awesome-ball .ballValue {
+    height: 100%;
+    width: 100%;
+    color: inherit;
+    font-size: 1.75em;
+    border-radius: 50%;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.awesome-ball.update{
+    box-shadow: 0 0 2em rgb(255, 255, 255);
+}
