@@ -15,8 +15,6 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-print.css`);
                 createdCallback(){
                     super.createdCallback();
                     this.classList.add(AwesomePrint.elementTagName);
-                    this.printBody = document.querySelectorAll('body > *');
-                    this.printHandler = this.printDone.bind(this);
                 }
 
                 print(element){
@@ -24,6 +22,7 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-print.css`);
                         console.warn('Must pass an HTML Element to print.');
                         return;
                     }
+                    this.printBody = document.querySelectorAll('body > *');
                     this.elementToPrint = element.cloneNode(true);
                     for (let i = 0; i < this.printBody.length; i++) {
                         this.printBody[i].classList.add('hidden');
@@ -33,7 +32,7 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-print.css`);
 
                     //this is necessary for electron since it does not provide a 'printDone' event of any kind, unlike chrome or firefox
                     setTimeout(
-                        this.printHandler,
+                        this.printDone.bind(this),
                         10
                     );
                 }
@@ -44,6 +43,7 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-print.css`);
                     }
                     document.body.removeChild(this.elementToPrint);
                     this.elementToPrint = null;
+                    this.printBody  = null;
                 }
             }
         }
