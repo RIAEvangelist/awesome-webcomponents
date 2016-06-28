@@ -1,0 +1,14 @@
+{
+  "name": "js-queue",
+  "homepage": "https://github.com/RIAEvangelist/js-queue",
+  "version": "1.0.1",
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.1",
+    "commit": "c163f52da1f86cbc2de38280232634432d995ab6"
+  },
+  "_source": "https://github.com/RIAEvangelist/js-queue.git",
+  "_target": "*",
+  "_originalSource": "js-queue"
+}
