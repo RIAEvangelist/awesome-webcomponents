@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/widgets/awesome-print.js`);
+            awesome.requireLanguage(`${awesome.path}languages/default.js`);
+            let awesomePrint = null;
+
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            function init(){
+                window.off(
+                    'awesome-ready',
+                    init
+                );
+
+                awesomePrint = document.body.querySelector('awesome-print');
+
+                document.body.addEventListener(
+                    'click',
+                    clickHandler
+                )
+            }
+
+            function clickHandler(e){
+                console.log(e.target, typeof(e.target));
+                awesomePrint.print(e.target);
+            }
+
+        </script>
+        <style>
+            body{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            img{
+                max-height: 10em;
+            }
+        </style>
+    </head>
+    <body class='overflow'>
+        <awesome-print>
+
+        </awesome-print>
+        <h1>
+            Click on elements to print them!
+        </h1>
+
+        <section>
+            Hello World!
+        </section>
+
+        <img src = 'http://i.imgur.com/EUy4Wgs.png'>
+    </body>
+</html>
