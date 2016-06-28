@@ -1133,8 +1133,8 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
 awesome.requireScript(`${awesome.bower}browser-error-classes/Errors.js`);
 
 //base components
-awesome.requireScript(`${awesome.path}components/_baseComponent/base.js`);
-awesome.requireScript(`${awesome.path}screens/_baseScreen/base.js`);
+awesome.requireScript(`${awesome.path}components/baseComponent/base.js`);
+awesome.requireScript(`${awesome.path}screens/baseScreen/base.js`);
 
 
 //default language file

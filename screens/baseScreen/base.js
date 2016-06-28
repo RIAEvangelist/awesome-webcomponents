@@ -1,6 +1,6 @@
 'use strict';
 
-awesome.requireCSS(`${awesome.path}screens/_baseScreen/base.css`);
+awesome.requireCSS(`${awesome.path}screens/baseScreen/base.css`);
 
 (
     function(){
