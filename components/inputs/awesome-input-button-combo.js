@@ -35,7 +35,7 @@ awesome.requireCSS(`${awesome.path}components/inputs/awesome-input-button-combo.
 
                     this.input=document.createElement('input');
                     for(let key in this.dataset){
-                        input.setAttribute(key,this.dataset[key]);
+                        this.input.setAttribute(key,this.dataset[key]);
                     }
 
                     this.innerHTML=`
