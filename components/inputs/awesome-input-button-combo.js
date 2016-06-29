@@ -48,7 +48,7 @@ awesome.requireCSS(`${awesome.path}components/inputs/awesome-input-button-combo.
 
                 attachedCallback(){
                     super.attachedCallback();
-                    this.on(
+                    this.addEventListener(
                         'click',
                         this.onClick
                     );
@@ -56,7 +56,7 @@ awesome.requireCSS(`${awesome.path}components/inputs/awesome-input-button-combo.
 
                 detachedCallback(){
                     super.detachedCallback();
-                    this.off(
+                    this.removeEventListener(
                         'click',
                         this.onClick
                     );
