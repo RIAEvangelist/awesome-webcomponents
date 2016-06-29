@@ -7,7 +7,8 @@ awesome.requireCSS(`${awesome.path}components/inputs/awesome-input-button-combo.
         const defaults = {
             placeholder:'',
             button_text:'',
-            position:'left'
+            position:'left',
+            type='text'
         };
 
         const component = new AwesomeComponent;
@@ -31,15 +32,17 @@ awesome.requireCSS(`${awesome.path}components/inputs/awesome-input-button-combo.
                         this.dataset.placeholder
                     );
 
+                    const input=document.createElement('input');
+                    for(let key in this.dataset){
+                        input.setAttribute(key,this.dataset[key]);
+                    }
+
                     this.innerHTML=`
                         <button>
                             ${this.local[this.dataset.button_text]}
                         </button>
-                        <input
-                            type='text'
-                            placeholder='${this.local[this.dataset.placeholder]}'
-                        />
                     `;
+                    this.appendChild(input);
                 }
             }
         }
