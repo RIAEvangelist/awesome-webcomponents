@@ -8,7 +8,8 @@ awesome.requireCSS(`${awesome.path}components/inputs/awesome-input-button-combo.
             placeholder:'',
             button_text:'',
             position:'left',
-            type='text'
+            type:'text',
+            event:''
         };
 
         const component = new AwesomeComponent;
@@ -43,6 +44,33 @@ awesome.requireCSS(`${awesome.path}components/inputs/awesome-input-button-combo.
                         </button>
                     `;
                     this.appendChild(input);
+                }
+
+                attachedCallback(){
+                    super.attachedCallback();
+                    this.on(
+                        'click',
+                        this.onClick
+                    );
+                }
+
+                detachedCallback(){
+                    super.detachedCallback();
+                    this.off(
+                        'click',
+                        this.onClick
+                    );
+                }
+
+                onClick(e){
+                    if(!this.dataset.event||e.target.localName!=='button'){
+                        return;
+                    }
+                    this.dispatcher.trigger(
+                        awesome.constants.action[this.dataset.event]
+                        ||this.dataset.event,
+                        this.input.value
+                    )
                 }
             }
         }
