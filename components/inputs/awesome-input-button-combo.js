@@ -33,7 +33,7 @@ awesome.requireCSS(`${awesome.path}components/inputs/awesome-input-button-combo.
                         this.dataset.placeholder
                     );
 
-                    const input=document.createElement('input');
+                    this.input=document.createElement('input');
                     for(let key in this.dataset){
                         input.setAttribute(key,this.dataset[key]);
                     }
@@ -43,7 +43,7 @@ awesome.requireCSS(`${awesome.path}components/inputs/awesome-input-button-combo.
                             ${this.local[this.dataset.button_text]}
                         </button>
                     `;
-                    this.appendChild(input);
+                    this.appendChild(this.input);
                 }
 
                 attachedCallback(){
