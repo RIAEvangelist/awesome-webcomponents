@@ -10,6 +10,7 @@ html.print,
 html.print body.print{
     overflow:auto!important;
     background:rgb(255,255,255)!important;
+    background-image: none;
     height:auto!important;
     word-break: break-all!important;
     word-wrap: break-word!important;
