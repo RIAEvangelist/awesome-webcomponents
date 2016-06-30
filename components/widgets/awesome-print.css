@@ -11,6 +11,7 @@ html.print body.print{
     overflow:auto!important;
     background:rgb(255,255,255)!important;
     height:auto!important;
-    word-break: break-all;
-    word-wrap: break-word;
+    word-break: break-all!important;
+    word-wrap: break-word!important;
+    color:black!important;
 }
