@@ -750,7 +750,6 @@ class Awesome{
                 return false;
             }
             const script=document.createElement('script');
-            script.setAttribute('crossorigin','anonymous');
             remainingScriptCount++;
             this.ready=false;
 
