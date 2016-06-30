@@ -5,3 +5,12 @@
     top: 0;
     left: 0;
 }
+
+html.print,
+html.print body.print{
+    overflow:auto!important;
+    background:rgb(255,255,255)!important;
+    height:auto!important;
+    word-break: break-all;
+    word-wrap: break-word;
+}

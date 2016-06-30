@@ -27,6 +27,8 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-print.css`);
                     for (let i = 0; i < this.printBody.length; i++) {
                         this.printBody[i].classList.add('hidden');
                     }
+                    document.querySelector('html').add('print');
+                    document.body.classList.add('print');
                     document.body.appendChild(this.elementToPrint);
                     window.print();
 
@@ -41,6 +43,8 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-print.css`);
                     for (let i = 0; i < this.printBody.length; i++) {
                         this.printBody[i].classList.remove('hidden');
                     }
+                    document.querySelector('html').remove('print');
+                    document.body.classList.remove('print');
                     document.body.removeChild(this.elementToPrint);
                     this.elementToPrint = null;
                     this.printBody  = null;
