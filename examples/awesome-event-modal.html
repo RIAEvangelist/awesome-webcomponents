@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/modal/awesome-event-modal.js`);
+            awesome.requireScript(`${awesome.path}actions/constants.js`);
+            awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+            awesome.requireLanguage(`${awesome.path}languages/default.js`);
+
+            let modal = null;
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            function init(){
+                modal = document.createElement('awesome-event-modal');
+                modal.dataset.event = 'BOILERPLATE';
+                const template = document.createElement('template');
+                template.innerHTML = `
+                    <h1>
+                        awesome-event-modal
+                    </h1>
+                    <p>
+                        This modal will close when a designated event is fired!
+                    </p>
+                `;
+                modal.appendChild(template);
+                const button = document.body.querySelector('button');
+                button.addEventListener(
+                    'click',
+                    openModal
+                );
+            }
+
+            function openModal(){
+                console.log(modal);
+                modal.open();
+                let timeout = document.body.querySelector('input').value;
+                setTimeout(
+                    function(timeout){
+                        awesome.dispatchers.component.trigger(
+                            awesome.constants.action.BOILERPLATE
+                        );
+                    },
+                    timeout
+                );
+            }
+        </script>
+        <style>
+            section{
+                height: 15em;
+                top: calc(50% - 7.5em);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body class='overflow'>
+        <awesome-header
+            data-title = 'awesome-event-modal'
+        >
+        </awesome-header>
+        <section>
+            <button>
+                Open
+            </button>
+            <input
+                type = 'number'
+                step = '500'
+                min = '1000'
+                value = '1000'
+            >
+            </input>
+        </section>
+    </body>
+</html>
