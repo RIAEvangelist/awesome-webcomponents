@@ -4,6 +4,7 @@ awesome.language={
         logout:'ログアウト',
         username:'ユーザーID',
         password:'パスワード',
+        error:'エラー',
 
         chooseFile:'ファイルを選ぶ',
         chooseFiles:'ファイルを選ぶ',

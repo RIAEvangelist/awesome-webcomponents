@@ -5,6 +5,7 @@ awesome.language={
         logout:'Выйти',
         username:'Логин',
         password:'Пароль',
+        error:'ошибка',
         chooseFile:'добавить файл',
         chooseFiles:'добавить файлы',
         'filesSelectedCount':'${count} выбран',
