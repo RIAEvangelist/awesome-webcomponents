@@ -25,6 +25,10 @@ body *{
     display:none !important;
 }
 
+[data-screen]:not(.activeScreen) *:focus{
+    display: none !important;
+}
+
 [data-screen]{
     position:fixed;
     top:0;

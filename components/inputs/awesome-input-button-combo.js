@@ -7,7 +7,9 @@ awesome.requireCSS(`${awesome.path}components/inputs/awesome-input-button-combo.
         const defaults = {
             placeholder:'',
             button_text:'',
-            position:'left'
+            position:'left',
+            type:'text',
+            event:''
         };
 
         const component = new AwesomeComponent;
@@ -31,15 +33,44 @@ awesome.requireCSS(`${awesome.path}components/inputs/awesome-input-button-combo.
                         this.dataset.placeholder
                     );
 
+                    this.input=document.createElement('input');
+                    for(let key in this.dataset){
+                        this.input.setAttribute(key,this.dataset[key]);
+                    }
+
                     this.innerHTML=`
                         <button>
                             ${this.local[this.dataset.button_text]}
                         </button>
-                        <input
-                            type='text'
-                            placeholder='${this.local[this.dataset.placeholder]}'
-                        />
                     `;
+                    this.appendChild(this.input);
+                }
+
+                attachedCallback(){
+                    super.attachedCallback();
+                    this.addEventListener(
+                        'click',
+                        this.onClick
+                    );
+                }
+
+                detachedCallback(){
+                    super.detachedCallback();
+                    this.removeEventListener(
+                        'click',
+                        this.onClick
+                    );
+                }
+
+                onClick(e){
+                    if(!this.dataset.event||e.target.localName!=='button'){
+                        return;
+                    }
+                    this.dispatcher.trigger(
+                        awesome.constants.action[this.dataset.event]
+                        ||this.dataset.event,
+                        this.input.value
+                    )
                 }
             }
         }

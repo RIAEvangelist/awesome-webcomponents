@@ -44,6 +44,9 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
                 }
 
                 close(){
+                    if(this.parentElement != document.body){
+                        return;
+                    }
                     document.body.removeChild(this);
                 }
 

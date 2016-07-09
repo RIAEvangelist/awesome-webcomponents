@@ -151,6 +151,7 @@ docs	package.json	/^    "docs": "jsdoc2md -h&& jsdoc2md -l javascript -g none -m
 document-register-element	bower.json	/^    "document-register-element": "latest"$/;"	f
 enablejsapi	components/video/awesome-youtube.js	/^            disabled: 0,$/;"	p
 end	components/video/awesome-youtube.js	/^            enablejsapi: 1,$/;"	p
+event	components/inputs/awesome-input-button-combo.js	/^            type:'text',$/;"	p
 event-pubsub	bower.json	/^    "event-pubsub": "latest",$/;"	f
 example	package.json	/^    "example": "examples"$/;"	f
 expose	stores/store.js	/^                function expose(instance,name){$/;"	f
@@ -267,6 +268,7 @@ title	components/modal/awesome-navigation-modal.js	/^        const defaults={$/;
 title	components/modal/awesome-notification-modal.js	/^        const defaults={$/;"	p
 title	components/title/awesome-title.js	/^        const defaults={$/;"	p
 title	components/video/awesome-vimeo.js	/^            portrait: 0,$/;"	p
+type	components/inputs/awesome-input-button-combo.js	/^            position:'left',$/;"	p
 type	package.json	/^    "type": "git",$/;"	f
 units	components/ball/awesome-ball.js	/^            value : '0',$/;"	p
 update	examples/awesome-meter.html	/^            function update(){$/;"	f
