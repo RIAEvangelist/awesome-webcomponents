@@ -1,4 +1,4 @@
-awesome-dynamic-form{
+.awesome-dynamic-form{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -7,17 +7,17 @@ awesome-dynamic-form{
     overflow: auto;
 }
 
-awesome-dynamic-form form > *{
+.awesome-dynamic-form form > *{
     width: 100%;
 }
 
-awesome-dynamic-form form{
+.awesome-dynamic-form form{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-awesome-dynamic-form input{
+.awesome-dynamic-form input{
     height: 2em;
 }
 
