@@ -131,6 +131,10 @@ awesome.requireScript(`${awesome.path}stores/user/auth.js`);
 
                     document.location.hash=`/${screenName}`;
 
+                    if(!data.pop && store.state.screen){
+                        return;
+                    }
+
                     //TODO : handle if Chrome and file: <- chrome chokes with that
                     // if(
                     //     !data.isPop

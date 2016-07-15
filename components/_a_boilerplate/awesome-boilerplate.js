@@ -1,6 +1,7 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}components/_a_boilerplate/awesome-boilerplate.css`);
+awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
 
 (
     function(){
@@ -8,37 +9,39 @@ awesome.requireCSS(`${awesome.path}components/_a_boilerplate/awesome-boilerplate
             something:'Boilerplate'
         }
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+        const component=new AwesomeComponent;
+        component.tagName='awesome-boilerplate-example';
+        component.extends='BaseComponent';
 
-                this.innerHTML=`
-                    <p>${this.dataset.something}</p>
-                    <div>${content.content}</div>
+        component.create=function createAwesomeDialog() {
+            const store=awesome.store.boilerplate.state;
 
-                    <!-- preserve content template so it isn't lost on re-render -->
-                    ${content.template}
-                `;
-            }
-
-            attachedCallback(){
-
-            }
-
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                //basic re-render
-                this.createdCallback();
+            return class AwesomeBoilerPlateExample extends awesome.component.BaseComponent{
+                createdCallback(){
+                    this.mergeDataset(defaults);
+                    super.createdCallback();
+                    this.classList.add(AwesomeBoilerPlateExample.elementTagName);
+                    this.careAbout(
+                        //will care if this attribute is updated and rerender, otherwise it will ignore the attr change.
+                        'data-something'
+                    );
+                    this.localize(
+                        //this is a key in the language file so it will auto localize
+                        'login',
+                        this.dataset.something
+                    );
+                    this.innerHTML=`
+                        <p>${this.dataset.something}</p>
+                        <p>store.state.boilerplate=${store.boilerplate}</p>
+                        <div>${this.content.content}</div>
+                        <p>localized login</p>
+                        <!-- preserve content template so it isn't lost on re-render -->
+                        ${this.content.template}
+                    `;
+                }
             }
         }
 
-        document.registerElement(
-            'awesome-boilerplate',
-            Component
-        );
+        component.init();
     }
 )();

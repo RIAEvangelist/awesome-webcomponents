@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/modal/awesome-notification-modal.js`);
+            awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+            awesome.requireLanguage(`${awesome.path}languages/default.js`);
+
+            function init(){
+                window.off(
+                    'awesome-ready',
+                    init
+                );
+                const openNotification = document.querySelector('.openNotificationModal');
+
+                openNotification.addEventListener(
+                    'click',
+                    openNotificationModal
+                );
+            }
+
+            function openNotificationModal(){
+                const modal = document.createElement('awesome-notification-modal');
+                const template = document.createElement('template');
+                modal.dataset.title= 'Notification Modal';
+                template.innerHTML = 'This modal should be used to notify a user of an occurence and can be dismissed with the OK button.';
+                modal.appendChild(template);
+                document.body.appendChild(modal);
+            }
+
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+        </script>
+    </head>
+    <body class='overflow'>
+        <awesome-header
+            data-title = 'awesome-notification-modal'
+        ></awesome-header>
+        <button class = 'openNotificationModal'>
+                Open Notification Modal
+        </button>
+    </body>
+</html>

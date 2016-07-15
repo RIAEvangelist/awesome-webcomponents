@@ -25,6 +25,11 @@ awesome-screen-icon .screen-flaticon-class {
     right: -0.15em;
 }
 
+awesome-screen-icon .screen-flaticon-class:before{
+    font-size: 3.5em;
+    margin: 0;
+}
+
 awesome-screen-icon .iconTextWrapper{
     height: 50%;
 }

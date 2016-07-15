@@ -4,50 +4,62 @@ awesome.requireCSS(`${awesome.path}components/modal/awesome-modal.css`);
 
 (
     function(){
-        const defaults={
 
-        };
+        const component= new AwesomeComponent;
+        component.tagName='awesome-modal';
+        component.extends='BaseComponent';
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+        component.create=function createAwesomeModal() {
+            return class AwesomeModal extends awesome.component.BaseComponent{
+                createdCallback(){
+                    super.createdCallback();
+                    this.classList.add(AwesomeModal.elementTagName);
 
-                this.innerHTML=`
-                    <div>
-                        ${content.content}
-                    </div>
-                    ${content.template}
-                `;
-            }
+                    this.innerHTML=`
+                        <div>
+                            ${this.content.content}
+                        </div>
+                        ${this.content.template}
+                    `;
+                }
 
-            attachedCallback(){
-                window.on(
-                    'awesome-language-set',
-                    this.createdCallback.bind(this)
-                );
-            }
+                attachedCallback(){
+                    super.attachedCallback();
+                    this.addEventListener(
+                        'click',
+                        this.clicked
+                    );
+                }
 
-            detachedCallback(){
+                detachedCallback(){
+                    super.detachedCallback();
+                    this.removeEventListener(
+                        'click',
+                        this.clicked
+                    );
+                }
 
-            }
+                open(){
+                    document.body.appendChild(this);
+                }
 
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
-            }
+                close(){
+                    if(this.parentElement != document.body){
+                        return;
+                    }
+                    document.body.removeChild(this);
+                }
 
-            close(){
-                this.classList.remove('modalOn');
-            }
-
-            open(){
-                this.classList.add('modalOn');
+                //If modal contains an element with the data-action of close, it will close
+                clicked(e){
+                    if(e.target.dataset.action!=='close'){
+                        return;
+                    }
+                    this.close();
+                }
             }
         }
 
-        document.registerElement(
-            'awesome-modal',
-            Component
-        );
+        component.init();
     }
 )();

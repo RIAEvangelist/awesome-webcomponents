@@ -1,23 +1,22 @@
-awesome-modal{
+.awesome-modal{
     top: 0;
     left: 0;
-    height:0%;
-    width:0%;
     background-color: rgba(154, 154, 154, 0);
     display:block;
     position:fixed;
     transition:background-color 200ms;
-    z-index: 0;
-}
-
-awesome-modal.modalOn{
     height:100%;
     width:100%;
     background-color: rgba(154, 154, 154, 0.95);
     z-index: 19000;
 }
 
-awesome-modal > div{
+.awesome-modal .modalOff{
+    height:0px;
+    width:0px;
+}
+
+.awesome-modal > div{
     background: rgba(255, 255, 255, 0.65);
     position:absolute;
     left:0;
@@ -30,9 +29,13 @@ awesome-modal > div{
     text-align: center;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
-awesome-modal pre{
+.awesome-modal pre{
     text-align: left;
 }
 
@@ -40,7 +43,7 @@ awesome-modal pre{
 Small desktop windows and mobile
 \*******************************/
 @media (max-width:800px), (max-height:700px){
-    awesome-modal div{
+    .awesome-modal div{
         height:80%;
         top:10%;
     }

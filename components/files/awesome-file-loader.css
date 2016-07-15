@@ -1,33 +1,33 @@
-awesome-file-loader {
+.awesome-file-loader {
     display: inline-block;
     margin-bottom:1em;
 }
 
-awesome-file-loader > input[type='file']{
+.awesome-file-loader > input[type='file']{
     display:none;
 }
 
-awesome-file-loader > button{
+.awesome-file-loader > button{
     float:left;
     border-top-right-radius:0;
     border-bottom-right-radius:0;
 }
 
-awesome-file-loader > input[type='text']{
+.awesome-file-loader > input[type='text']{
     border-top-left-radius:0;
     border-bottom-left-radius:0;
     cursor:pointer;
 }
 
-awesome-file-loader > button,
-awesome-file-loader > input[type='text']{
+.awesome-file-loader > button,
+.awesome-file-loader > input[type='text']{
     line-height: 1.4em;
     padding: .4em;
     font-size: 1.4em;
     z-index:101;
 }
 
-awesome-file-loader > awesome-file-info{
+.awesome-file-loader > .awesome-file-info{
     position:absolute;
     height:1.3em;
     overflow:hidden;

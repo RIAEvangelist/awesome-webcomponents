@@ -6,71 +6,51 @@ awesome.requireScript(`${awesome.path}components/modal/awesome-modal.js`);
 (
     function(){
         const defaults={
-            title: ''
-        };
+            title:''
+        }
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+        const component=new AwesomeComponent;
+        component.tagName='awesome-error-modal';
+        component.extends='AwesomeModal';
 
-                this.innerHTML=`
-                    <awesome-modal>
-                        <template>
+        component.create=function createAwesomeErrorModal() {
+            return class AwesomeErrorModal extends awesome.component.AwesomeModal{
+                createdCallback(){
+                    this.mergeDataset(defaults);
+                    super.createdCallback();
+                    this.caresAbout.push('data-title');
+                    this.classList.add(AwesomeErrorModal.elementTagName);
+
+                    this.localize(
+                        this.dataset.title,
+                        'ok'
+                    );
+
+                    this.innerHTML =`
+                        <div>
                             <h1>
                                 <span class = 'flaticon-signs'>
 
                                 </span>
-                                ${this.dataset.title}
+                                ${this.local[this.dataset.title]}
                             </h1>
                             <div class = 'contentWrapper'>
-                                ${content.content}
+                                ${this.content.content}
                             </div>
                             <br/>
-                            <button class = 'closeButton'>
-                                ${awesome.language.current.ok}
+                            <button
+                                class = 'closeButton'
+                                data-action='close'
+                            >
+                                ${this.local.ok}
                             </button>
-                        </template>
-                    </awesome-modal>
-                    ${content.template}
-                `;
-            }
-
-            attachedCallback(){
-                window.on(
-                    'awesome-language-set',
-                    this.createdCallback.bind(this)
-                );
-
-                this.addEventListener(
-                    'click',
-                    this.clicked.bind(this)
-                );
-            }
-
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
-            }
-
-            clicked(e){
-                if(!e.target.classList.contains('closeButton')){
-                    return;
+                        </div>
+                        ${this.content.template}
+                    `;
                 }
-                this.querySelector('awesome-modal').close();
             }
-
-            open(){
-                this.querySelector('awesome-modal').open();
-            }
-
         }
-        document.registerElement(
-            'awesome-error-modal',
-            Component
-        );
+
+        component.init();
     }
 )();

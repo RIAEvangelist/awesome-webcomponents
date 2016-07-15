@@ -1,6 +1,7 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}components/video/awesome-vimeo.css`);
+awesome.requireScript(`${awesome.path}components/iframe/awesome-iframe.js`);
 
 (
     function(){
@@ -8,7 +9,6 @@ awesome.requireCSS(`${awesome.path}components/video/awesome-vimeo.css`);
         //https://developer.vimeo.com/player/embedding
         const defaults={
             video_id:'',
-            allow_fullscreen: true,
             autopause: 1,
             autoplay: 0,
             badge: 0,
@@ -19,42 +19,42 @@ awesome.requireCSS(`${awesome.path}components/video/awesome-vimeo.css`);
             title:1
         }
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
+        const component=new AwesomeComponent;
+        component.tagName='awesome-vimeo';
+        component.extends='AwesomeIFrame';
 
-                let vimeoURL = `https://player.vimeo.com/video/${this.dataset.video_id}?`;
-                for(const i in this.dataset){
-                    if(i == 'video_id' || i == 'allow_fullscreen'){
-                        continue;
+        component.create=function createAwesomeVimeo() {
+            return class AwesomeVimeo extends awesome.component.AwesomeIFrame{
+                createdCallback(){
+                    this.mergeDataset(defaults);
+                    super.createdCallback();
+                    this.classList.add(AwesomeVimeo.elementTagName);
+                    this.source = `https://player.vimeo.com/video/${this.dataset.video_id}?`;
+                    for(const videoSetting in this.dataset){
+                        if(videoSetting == 'video_id' || videoSetting == 'allow_fullscreen' || videoSetting == 'source'){
+                            continue;
+                        }
+                        this.source = `${this.source}${videoSetting}=${this.dataset[videoSetting]}&`;
                     }
-                    vimeoURL = vimeoURL.concat(`${i}=${this.dataset[i]}&`);
+
+                    this.dataset.source = this.source;
+
+                    this.careAbout(
+                        'data-video_id',
+                        'data-allow_fullscreen',
+                        'data-autopause',
+                        'data-autoplay',
+                        'data-badge',
+                        'data-byline',
+                        'data-color',
+                        'data-loop',
+                        'data-portrait',
+                        'data-title'
+                    );
                 }
-
-                this.innerHTML=`
-                    <iframe
-                        src = '${vimeoURL}'
-                        allowfullscreen = ${this.dataset.allow_fullscreen}
-                    ></iframe>
-                `;
-            }
-
-            attachedCallback(){
-
-            }
-
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
             }
         }
 
-        document.registerElement(
-            'awesome-vimeo',
-            Component
-        );
+        component.init();
     }
 )();

@@ -6,141 +6,124 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
 (
     function(){
-        let state=null;
-        let dispatcher=null;
-        let constants = null;
-        let action = null;
-        let defaults=null;
+        const component=new AwesomeComponent;
+        component.tagName='awesome-login-screen';
+        component.extends='BaseScreen';
 
-        function init(e){
-            dispatcher=awesome.dispatchers.component;
-            constants = awesome.constants.component;
-            action = awesome.constants.action;
+        component.create=function createAwesomeLoginScreen() {
+            const state = awesome.stores.auth.state;
 
-            defaults={
+            const defaults = {
                 screen:'login',
+                title:'login',
                 action_path:`${awesome.path}actions/user/auth.js`,
 
                 username_id:'awesome-login-screen-username',
                 username_pattern: awesome.config.validate.username,
 
-                password_id:'awesome-login-screen-password'
-            };
+                password_id:'awesome-login-screen-password',
 
-            window.off(
-                'awesome-ready',
-                init
-            );
-
-            state=awesome.stores.auth.state;
-
-            document.registerElement(
-                'awesome-login-screen',
-                Component
-            );
-        }
-
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-
-
-                awesome.requireScript(this.dataset.action_path);
-
-                this.innerHTML=`
-                    <awesome-dialog data-title='${awesome.language.current['awesome-login-screen-header']}'>
-                        <template>
-                            <form>
-                                <input
-                                    id='${this.dataset.username_id}'
-                                    value=''
-                                    required='true'
-                                    minlength=6
-                                    maxlength=30
-                                    pattern='${this.dataset.username_pattern}'
-                                    class=''
-                                    placeholder='${awesome.language.current.username}'
-                                />
-                                <input
-                                    id='${this.dataset.password_id}'
-                                    value=''
-                                    required='true'
-                                    type='password'
-                                    placeholder='${awesome.language.current.password}'
-                                />
-                                <div class='button-wrapper'>
-                                    <button>
-                                        ${awesome.language.current.login}
-                                    </button>
-                                </div>
-                            </form>
-                        </template>
-                    </awesome-dialog>
-                `;
+                login_event:awesome.constants.action.LOGIN_REQUEST
             }
 
-            attachedCallback(){
-                window.on(
-                    'awesome-language-set',
-                    this.createdCallback.bind(this)
-                );
+            return class AwesomeLoginScreen extends awesome.component.BaseScreen{
+                createdCallback(){
+                    this.mergeDataset(defaults);
+                    super.createdCallback();
+                    awesome.requireScript(this.dataset.action_path);
+                    this.classList.add(AwesomeLoginScreen.elementTagName);
 
-                state.on(
-                    'change',
-                    this.update.bind(this)
-                );
+                    this.localize(
+                        this.dataset.title,
+                        'username',
+                        'password',
+                        'login'
+                    );
 
-                this.addEventListener(
-                    'submit',
-                    this.submit
-                );
-            }
-
-            detachedCallback(){
-                state.off(
-                    'change',
-                    this.update
-                );
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
-            }
-
-            update(){
-                if(state.authenticated!==true && state.failedAttempts===0){
-                    return;
+                    this.innerHTML=`
+                        <awesome-dialog data-title='${this.local[this.dataset.title]}'>
+                            <template>
+                                <form>
+                                    <input
+                                        id='${this.dataset.username_id}'
+                                        value=''
+                                        required='true'
+                                        minlength=6
+                                        maxlength=30
+                                        pattern='${this.dataset.username_pattern}'
+                                        class=''
+                                        placeholder='${this.local.username}'
+                                    />
+                                    <input
+                                        id='${this.dataset.password_id}'
+                                        value=''
+                                        required='true'
+                                        type='password'
+                                        placeholder='${this.local.password}'
+                                    />
+                                    <div class='button-wrapper'>
+                                        <button>
+                                            ${this.local.login}
+                                        </button>
+                                    </div>
+                                </form>
+                            </template>
+                        </awesome-dialog>
+                    `;
                 }
 
-                this.querySelector(`#${this.dataset.username_id}`).value='';
-                this.querySelector(`#${this.dataset.password_id}`).value='';
-            }
+                attachedCallback(){
+                    super.attachedCallback();
+                    state.on(
+                        'change',
+                        this.update.bind(this)
+                    );
 
-            submit(e){
-                e.preventDefault();
-                e.stopPropagation();
-                const username=this.querySelector(`#${this.dataset.username_id}`);
-                const password=this.querySelector(`#${this.dataset.password_id}`);
+                    this.addEventListener(
+                        'submit',
+                        this.submit
+                    );
+                }
 
-                dispatcher.trigger(
-                    action.LOGIN_REQUEST,
-                    {
-                        username:username.value,
-                        password:password.value
+                detachedCallback(){
+                    super.detachedCallback();
+                    state.off(
+                        'change',
+                        this.update
+                    );
+
+                    this.addEventListener(
+                        'submit',
+                        this.submit
+                    );
+                }
+
+                update(){
+                    if(state.authenticated!==true && state.failedAttempts===0){
+                        return;
                     }
-                );
+
+                    this.querySelector(`#${this.dataset.username_id}`).value='';
+                    this.querySelector(`#${this.dataset.password_id}`).value='';
+                }
+
+                submit(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const username=this.querySelector(`#${this.dataset.username_id}`);
+                    const password=this.querySelector(`#${this.dataset.password_id}`);
+
+                    this.dispatcher.trigger(
+                        this.dataset.login_event,
+                        {
+                            username:username.value,
+                            password:password.value
+                        }
+                    );
+                }
             }
-        }
+        };
 
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
-)();
+)()

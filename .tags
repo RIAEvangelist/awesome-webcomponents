@@ -1,0 +1,284 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+allow_fullscreen	components/iframe/awesome-iframe.js	/^            source: '',$/;"	p
+allow_fullscreen	components/video/awesome-youtube.js	/^            video_id:'',$/;"	p
+author	package.json	/^  "author": "",$/;"	f
+authors	bower.json	/^  "authors": [$/;"	f
+authors	tutorials/001-awesome-hello-world/bower.json	/^  "authors": [$/;"	f
+autopause	components/video/awesome-vimeo.js	/^            video_id:'',$/;"	p
+autoplay	components/video/awesome-vimeo.js	/^            autopause: 1,$/;"	p
+autoplay	components/video/awesome-youtube.js	/^            allow_fullscreen: true,$/;"	p
+awesome.config.validate	configs/default.js	/^awesome.config={$/;"	p
+awesome.constants.action.FILE_LOADED	actions/constants.js	/^    RESET_STORES:'app.reset.all.stores',$/;"	p
+awesome.constants.action.LOGIN_REQUEST	actions/constants.js	/^    LOGOUT_REQUEST:'logout.request',$/;"	p
+awesome.constants.action.LOGOUT_REQUEST	actions/constants.js	/^    FILE_LOADED:'file.loaded',$/;"	p
+awesome.constants.action.RESET_STORES	actions/constants.js	/^awesome.constants.action={$/;"	p
+awesome.constants.action.ROUTE_REQUEST	actions/constants.js	/^    LOGIN_REQUEST:'login.request',$/;"	p
+awesome.constants.action.ROUTE_UPDATE_SCREENS	actions/constants.js	/^    ROUTE_REQUEST:'router.navigate',$/;"	p
+awesome.constants.component.VALIDATE_CURRENCY	components/constants.js	/^    VALIDATE_URL:'^(https?:\\\/\\\/)?([\\da-z\\.-]+)\\.(.{2,100})$',$/;"	p
+awesome.constants.component.VALIDATE_EMAIL	components/constants.js	/^    VALIDATE_USERNAME:'[a-zA-Z0-9\\\\@\\\\.\\\\-\\\\_]{6,30}',$/;"	p
+awesome.constants.component.VALIDATE_URL	components/constants.js	/^    VALIDATE_EMAIL:'([a-zA-Z0-9\\.\\-\\_]{1,20})\\@([a-zA-Z0-9\\.\\-\\_]{2,50})\\.([a-zA-Z]{2,10})',$/;"	p
+awesome.constants.component.VALIDATE_USERNAME	components/constants.js	/^awesome.constants.component={$/;"	p
+awesome.constants.store.BOILERPLATE	stores/constants.js	/^awesome.constants.store={$/;"	p
+awesome.constants.store.FILE_LIST	stores/constants.js	/^    LOGOUT_SUCCESS:'logout.success',$/;"	p
+awesome.constants.store.LOGIN_ERROR	stores/constants.js	/^    RESET:'global.store.reset',$/;"	p
+awesome.constants.store.LOGIN_SUCCESS	stores/constants.js	/^    LOGOUT_ERROR:'logout.error',$/;"	p
+awesome.constants.store.LOGOUT_ERROR	stores/constants.js	/^    LOGIN_ERROR:'login.error',$/;"	p
+awesome.constants.store.LOGOUT_SUCCESS	stores/constants.js	/^    LOGIN_SUCCESS:'login.success',$/;"	p
+awesome.constants.store.RESET	stores/constants.js	/^    BOILERPLATE:'boilerplate.event',$/;"	p
+awesome.constants.store.ROUTER_SCREEN_CHANGE	stores/constants.js	/^    FILE_LIST:'file.list',$/;"	p
+awesome.constants.store.ROUTER_SCREEN_LIST	stores/constants.js	/^    ROUTER_SCREEN_CHANGE:'router.screen.change',$/;"	p
+awesome.language.default	languages/default.js	/^awesome.language={$/;"	p
+awesome.language.en	languages/en.js	/^awesome.language={$/;"	p
+awesome.language.en-GB	languages/en-GB.js	/^awesome.language={$/;"	p
+awesome.language.en-US	languages/en-US.js	/^awesome.language={$/;"	p
+awesome.language.es	languages/es.js	/^awesome.language={$/;"	p
+awesome.language.jp	languages/jp.js	/^awesome.language={$/;"	p
+awesome.language.ru	languages/ru.js	/^awesome.language={$/;"	p
+b0	components/buttons/awesome-buttonset.js	/^            multi_select:false,$/;"	p
+b1	components/buttons/awesome-buttonset.js	/^            'b0':0,$/;"	p
+b2	components/buttons/awesome-buttonset.js	/^            'b1':1,$/;"	p
+badge	components/video/awesome-vimeo.js	/^            autoplay: 0,$/;"	p
+bower	package.json	/^      "bower": "^1.7.7",$/;"	f
+browser-error-classes	bower.json	/^    "browser-error-classes": "latest",$/;"	f
+bugs	package.json	/^  "bugs": {$/;"	f
+button_text	components/inputs/awesome-input-button-combo.js	/^            placeholder:'',$/;"	p
+buttonsetChange	examples/awesome-buttonset.html	/^                function buttonsetChange(e){$/;"	f
+byline	components/video/awesome-vimeo.js	/^            badge: 0,$/;"	p
+careAbout	components/baseComponent/base.js	/^                }$/;"	c
+careAbout.push	components/baseComponent/base.js	/^                    Array.prototype.push.apply(this.caresAbout, arguments);$/;"	m
+cc_load_policy	components/video/awesome-youtube.js	/^            autoplay: 0,$/;"	p
+changeHandler	examples/awesome-iframe.html	/^            function changeHandler(e){$/;"	f
+class	components/icons/awesome-screen-icon.js	/^            text: '',$/;"	p
+clickHandler	examples/awesome-print.html	/^            function clickHandler(e){$/;"	f
+clickHandler	examples/awesome-timer.html	/^            function clickHandler(el){$/;"	f
+color	components/video/awesome-vimeo.js	/^            byline: 0,$/;"	p
+color	components/video/awesome-youtube.js	/^            controls: 1,$/;"	p
+component.create	components/ball/awesome-ball.js	/^        component.extends='BaseComponent';$/;"	c
+component.create	components/baseComponent/base.js	/^        component.tagName='awesome-base-component';$/;"	c
+component.create	components/buttons/awesome-buttonset.js	/^        component.tagName='awesome-buttonset';$/;"	c
+component.create	components/dialog/awesome-dialog.js	/^        component.tagName='awesome-dialog';$/;"	c
+component.create	components/dialog/awesome-expandable-dialog.js	/^        component.extends='AwesomeDialog';$/;"	c
+component.create	components/files/awesome-file-info.js	/^        component.extends= 'BaseComponent';$/;"	c
+component.create	components/files/awesome-file-loader.js	/^        component.extends = 'BaseComponent';$/;"	c
+component.create	components/footer/awesome-footer.js	/^        component.extends='BaseComponent';$/;"	c
+component.create	components/header/awesome-header.js	/^        component.tagName='awesome-header';$/;"	c
+component.create	components/icons/awesome-screen-icon.js	/^        component.tagName='awesome-screen-icon';$/;"	c
+component.create	components/iframe/awesome-iframe.js	/^        component.extends='BaseComponent';$/;"	c
+component.create	components/inputs/awesome-input-button-combo.js	/^        component.extends = 'BaseComponent';$/;"	c
+component.create	components/list/awesome-list.js	/^        component.extends='BaseComponent';$/;"	c
+component.create	components/localization/awesome-languages.js	/^        component.extends='AwesomeButtonSet';$/;"	c
+component.create	components/modal/awesome-error-modal.js	/^        component.extends='AwesomeModal';$/;"	c
+component.create	components/modal/awesome-modal.js	/^        component.extends='BaseComponent';$/;"	c
+component.create	components/modal/awesome-navigation-modal.js	/^        component.extends='AwesomeModal';$/;"	c
+component.create	components/modal/awesome-notification-modal.js	/^        component.extends='AwesomeModal';$/;"	c
+component.create	components/options/awesome-options-dropdown.js	/^        component.extends = 'BaseComponent';$/;"	c
+component.create	components/range/awesome-range.js	/^        component.extends= 'BaseComponent';$/;"	c
+component.create	components/title/awesome-title.js	/^        component.extends = 'BaseComponent';$/;"	c
+component.create	components/video/awesome-vimeo.js	/^        component.extends='AwesomeIFrame';$/;"	c
+component.create	components/video/awesome-youtube.js	/^        component.extends='AwesomeIFrame';$/;"	c
+component.create	components/widgets/awesome-meter.js	/^        component.extends='BaseComponent';$/;"	c
+component.create	components/widgets/awesome-plus-minus.js	/^        component.extends='AwesomeBall';$/;"	c
+component.create	components/widgets/awesome-print.js	/^        component.extends='BaseComponent';$/;"	c
+component.create	components/widgets/awesome-sidebar.js	/^        component.extends='BaseComponent';$/;"	c
+component.create	components/widgets/awesome-timer.js	/^        component.extends='BaseComponent';$/;"	c
+component.create	screens/baseScreen/base.js	/^        component.tagName='awesome-base-screen';$/;"	c
+component.create	screens/login/awesome-login-screen.js	/^        component.extends='BaseScreen';$/;"	f
+component.create	screens/screenList/awesome-screen-list.js	/^        };$/;"	c
+const.action_path	screens/login/awesome-login-screen.js	/^                title:'login',$/;"	p
+const.codes	components/localization/awesome-languages.js	/^            const defaults={$/;"	p
+const.icon	screens/screenList/awesome-screen-list.js	/^            screen:'app-list',$/;"	p
+const.id	components/files/awesome-file-loader.js	/^                    const loadedInfo = {$/;"	p
+const.label	components/options/awesome-nav-dropdown.js	/^        const defaults={$/;"	p
+const.link_text	screens/screenList/awesome-screen-list.js	/^            icon:'flaticon-show-apps-button',$/;"	p
+const.screen	actions/router/route.js	/^            const data={$/;"	p
+const.screen	screens/login/awesome-login-screen.js	/^            const defaults = {$/;"	p
+const.screen	screens/screenList/awesome-screen-list.js	/^        const defaults={$/;"	p
+const.show_all	screens/screenList/awesome-screen-list.js	/^            link_text:'home',$/;"	p
+const.title	screens/login/awesome-login-screen.js	/^                screen:'login',$/;"	p
+controls	components/video/awesome-youtube.js	/^            cc_load_policy: 0,$/;"	p
+count	components/buttons/awesome-buttonset.js	/^            index:'',$/;"	p
+creatAwesomePlusMinus	components/widgets/awesome-plus-minus.js	/^        component.create=function creatAwesomePlusMinus(){$/;"	f
+createAwesomeBall	components/ball/awesome-ball.js	/^        component.create=function createAwesomeBall(){$/;"	f
+createAwesomeButtonSet	components/buttons/awesome-buttonset.js	/^        component.create=function createAwesomeButtonSet() {$/;"	f
+createAwesomeDialog	components/dialog/awesome-dialog.js	/^        component.create=function createAwesomeDialog() {$/;"	f
+createAwesomeErrorModal	components/modal/awesome-error-modal.js	/^        component.create=function createAwesomeErrorModal() {$/;"	f
+createAwesomeFileInfo	components/files/awesome-file-info.js	/^        component.create=function createAwesomeFileInfo(){$/;"	f
+createAwesomeFileLoader	components/files/awesome-file-loader.js	/^        component.create=function createAwesomeFileLoader(){$/;"	f
+createAwesomeFooter	components/footer/awesome-footer.js	/^        component.create=function createAwesomeFooter(){$/;"	f
+createAwesomeHeader	components/header/awesome-header.js	/^        component.create=function createAwesomeHeader(e){$/;"	f
+createAwesomeIFrame	components/iframe/awesome-iframe.js	/^        component.create=function createAwesomeIFrame() {$/;"	f
+createAwesomeInputButtonCombo	components/inputs/awesome-input-button-combo.js	/^        component.create=function createAwesomeInputButtonCombo(){$/;"	f
+createAwesomeLanguages	components/localization/awesome-languages.js	/^        component.create=function createAwesomeLanguages(e){$/;"	f
+createAwesomeList	components/dialog/awesome-expandable-dialog.js	/^        component.create=function createAwesomeList(){$/;"	f
+createAwesomeList	components/list/awesome-list.js	/^        component.create=function createAwesomeList(){$/;"	f
+createAwesomeLoginScreen	screens/login/awesome-login-screen.js	/^        component.create=function createAwesomeLoginScreen() {$/;"	f
+createAwesomeMeter	components/widgets/awesome-meter.js	/^        component.create=function createAwesomeMeter(){$/;"	f
+createAwesomeModal	components/modal/awesome-modal.js	/^        component.create=function createAwesomeModal() {$/;"	f
+createAwesomeNavigationModal	components/modal/awesome-navigation-modal.js	/^        component.create=function createAwesomeNavigationModal() {$/;"	f
+createAwesomeNotificationModal	components/modal/awesome-notification-modal.js	/^        component.create=function createAwesomeNotificationModal() {$/;"	f
+createAwesomeOptionsDropdown	components/options/awesome-options-dropdown.js	/^        component.create=function createAwesomeOptionsDropdown(){$/;"	f
+createAwesomePrint	components/widgets/awesome-print.js	/^        component.create=function createAwesomePrint() {$/;"	f
+createAwesomeRange	components/range/awesome-range.js	/^        component.create=function createAwesomeRange() {$/;"	f
+createAwesomeScreenIcon	components/icons/awesome-screen-icon.js	/^        component.create=function createAwesomeScreenIcon(){$/;"	f
+createAwesomeScreenList	screens/screenList/awesome-screen-list.js	/^        component.create = function createAwesomeScreenList(){$/;"	f
+createAwesomeSidebar	components/widgets/awesome-sidebar.js	/^        component.create=function createAwesomeSidebar(){$/;"	f
+createAwesomeTimer	components/widgets/awesome-timer.js	/^        component.create=function createAwesomeTimer(){$/;"	f
+createAwesomeTitle	components/title/awesome-title.js	/^        component.create=function createAwesomeTitle(){$/;"	f
+createAwesomeVimeo	components/video/awesome-vimeo.js	/^        component.create=function createAwesomeVimeo() {$/;"	f
+createAwesomeYouTube	components/video/awesome-youtube.js	/^        component.create=function createAwesomeYouTube() {$/;"	f
+createBaseComponent	components/baseComponent/base.js	/^        component.create=function createBaseComponent(){$/;"	f
+createBaseScreen	screens/baseScreen/base.js	/^        component.create=function createBaseScreen(){$/;"	f
+current_time	components/widgets/awesome-timer.js	/^            initial_time:60000,$/;"	p
+data.screen	actions/router/route.js	/^                data={$/;"	p
+decrementHandler	examples/awesome-ball.html	/^            function decrementHandler(e){$/;"	f
+delay	components/widgets/awesome-timer.js	/^            current_time: 0,$/;"	p
+dependencies	bower.json	/^  "dependencies": {$/;"	f
+description	bower.json	/^  "description": "awesome native js web components",$/;"	f
+description	package.json	/^  "description": "awesome native js web components",$/;"	f
+description	tutorials/001-awesome-hello-world/bower.json	/^  "description": "",$/;"	f
+devDependencies	package.json	/^  "devDependencies": {$/;"	f
+directories	package.json	/^  "directories": {$/;"	f
+disabled	components/buttons/awesome-buttonset.js	/^            count:3,$/;"	p
+disabled	components/range/awesome-range.js	/^            value: 0,$/;"	p
+disabled	components/video/awesome-youtube.js	/^            color: 'white',$/;"	p
+divisions	components/widgets/awesome-meter.js	/^            text: '',$/;"	p
+docs	package.json	/^    "docs": "jsdoc2md -h&& jsdoc2md -l javascript -g none -m none awesome.js dispatchers\/*.js actions\/*.js stores\/*.js components\/*.js   > docs\/jsDocs\/README.md"$/;"	f
+document-register-element	bower.json	/^    "document-register-element": "latest"$/;"	f
+enablejsapi	components/video/awesome-youtube.js	/^            disabled: 0,$/;"	p
+end	components/video/awesome-youtube.js	/^            enablejsapi: 1,$/;"	p
+event	components/inputs/awesome-input-button-combo.js	/^            type:'text',$/;"	p
+event-pubsub	bower.json	/^    "event-pubsub": "latest",$/;"	f
+example	package.json	/^    "example": "examples"$/;"	f
+expose	stores/store.js	/^                function expose(instance,name){$/;"	f
+fileLoaded	actions/file/loader.js	/^        function fileLoaded(list){$/;"	f
+fileRead	actions/fileReader/FileReader.js	/^function fileRead(message, index, e) {$/;"	f
+file_id	components/files/awesome-file-info.js	/^        const defaults={$/;"	p
+getScreens	actions/router/route.js	/^        function getScreens(){$/;"	f
+getState	stores/store.js	/^                function getState(){$/;"	f
+handleAuthChange	stores/router/route.js	/^                function handleAuthChange(){$/;"	f
+handleBoilerplate	actions/_a_boilerplate/boilerplate.js	/^        function handleBoilerplate(){$/;"	f
+handleBoilerplate	stores/_a_boilerplate/boilerplate.js	/^                function handleBoilerplate(){$/;"	f
+handleChangeRequest	actions/router/route.js	/^        function handleChangeRequest(req){$/;"	f
+handlePopstate	actions/router/route.js	/^        function handlePopstate(e){$/;"	f
+handleScreenChange	stores/router/route.js	/^                function handleScreenChange(data){$/;"	f
+header	components/dialog/awesome-dialog.js	/^            title:'',$/;"	p
+homepage	bower.json	/^  "homepage": "https:\/\/github.com\/RIAEvangelist\/awesome-webcomponents",$/;"	f
+homepage	package.json	/^  "homepage": "https:\/\/github.com\/RIAEvangelist\/awesome-webcomponents#readme",$/;"	f
+homepage	tutorials/001-awesome-hello-world/bower.json	/^  "homepage": "https:\/\/github.com\/RIAEvangelist\/awesome-webcomponents",$/;"	f
+icon	components/dialog/awesome-dialog.js	/^        const defaults={$/;"	p
+icon	components/header/awesome-header.js	/^        const defaults={$/;"	p
+icon	components/icons/awesome-screen-icon.js	/^        const defaults={$/;"	p
+id	components/files/awesome-file-loader.js	/^            multiple:false,$/;"	p
+ignore	bower.json	/^  "ignore": [$/;"	f
+ignore	tutorials/001-awesome-hello-world/bower.json	/^  "ignore": [$/;"	f
+incrementHandler	examples/awesome-ball.html	/^            function incrementHandler(e){$/;"	f
+index	components/buttons/awesome-buttonset.js	/^        const defaults={$/;"	p
+init	components/options/awesome-nav-dropdown.js	/^        function init(){$/;"	f
+init	dispatchers/action.js	/^        function init(e){$/;"	f
+init	dispatchers/component.js	/^        function init(e){$/;"	f
+init	examples/awesome-ball.html	/^            function init(){$/;"	f
+init	examples/awesome-error-modal.html	/^            function init(){$/;"	f
+init	examples/awesome-iframe.html	/^            function init(){$/;"	f
+init	examples/awesome-meter.html	/^            function init(){$/;"	f
+init	examples/awesome-modal.html	/^            function init(){$/;"	f
+init	examples/awesome-navigation-modal.html	/^            function init(){$/;"	f
+init	examples/awesome-notification-modal.html	/^            function init(){$/;"	f
+init	examples/awesome-plus-minus.html	/^            function init(){$/;"	f
+init	examples/awesome-print.html	/^            function init(){$/;"	f
+init	examples/awesome-timer.html	/^            function init(){$/;"	f
+init	screens/form/awesome-form-screen.js	/^        function init(e){$/;"	f
+initAuth	stores/router/route.js	/^                function initAuth(){$/;"	f
+initial_time	components/widgets/awesome-timer.js	/^        const defaults={$/;"	p
+js-message	bower.json	/^    "js-message": "latest",$/;"	f
+js-queue	bower.json	/^    "js-queue": "latest",$/;"	f
+jsdoc-to-markdown	package.json	/^      "jsdoc-to-markdown": "^1.3.3"$/;"	f
+keywords	bower.json	/^  "keywords": [$/;"	f
+keywords	package.json	/^  "keywords": [$/;"	f
+label	components/options/awesome-options-dropdown.js	/^        const defaults={$/;"	p
+license	bower.json	/^  "license": "SEE LICENSE IN LICENSE.md",$/;"	f
+license	package.json	/^  "license": "SEE LICENSE IN LICENSE.md",$/;"	f
+license	tutorials/001-awesome-hello-world/bower.json	/^  "license": "DBAD",$/;"	f
+login	actions/user/auth.js	/^        function login(data){$/;"	f
+loginError	stores/user/auth.js	/^                function loginError(data){$/;"	f
+loginSuccess	stores/user/auth.js	/^                function loginSuccess(data){$/;"	f
+logout	actions/user/auth.js	/^        function logout(data){$/;"	f
+logoutError	stores/user/auth.js	/^                function logoutError(data){$/;"	f
+logoutSuccess	stores/user/auth.js	/^                function logoutSuccess(data){$/;"	f
+loop	components/video/awesome-vimeo.js	/^            color: 'cccccc',$/;"	p
+main	bower.json	/^  "main": "awesome.js",$/;"	f
+main	package.json	/^  "main": "awesome.js",$/;"	f
+main	tutorials/001-awesome-hello-world/bower.json	/^  "main": "",$/;"	f
+max	components/range/awesome-range.js	/^            min: 0,$/;"	p
+min	components/range/awesome-range.js	/^        const defaults={$/;"	p
+moduleType	bower.json	/^  "moduleType": [$/;"	f
+moduleType	tutorials/001-awesome-hello-world/bower.json	/^  "moduleType": [],$/;"	f
+multi_select	components/buttons/awesome-buttonset.js	/^            disabled:false,$/;"	p
+multiple	components/files/awesome-file-loader.js	/^        const defaults = {$/;"	p
+name	bower.json	/^  "name": "awesome-webcomponents",$/;"	f
+name	package.json	/^  "name": "awesome-webcomponents",$/;"	f
+name	tutorials/001-awesome-hello-world/bower.json	/^  "name": "001-awesome-hello-world",$/;"	f
+openErrorModal	examples/awesome-error-modal.html	/^            function openErrorModal(){$/;"	f
+openModal	examples/awesome-modal.html	/^            function openModal(){$/;"	f
+openModal	examples/awesome-navigation-modal.html	/^            function openModal(){$/;"	f
+openNotificationModal	examples/awesome-notification-modal.html	/^            function openNotificationModal(){$/;"	f
+placeholder	components/inputs/awesome-input-button-combo.js	/^        const defaults = {$/;"	p
+plusMinusChanged	examples/awesome-plus-minus.html	/^            function plusMinusChanged(e){$/;"	f
+portrait	components/video/awesome-vimeo.js	/^            loop: 0,$/;"	p
+position	components/inputs/awesome-input-button-combo.js	/^            button_text:'',$/;"	p
+private	tutorials/001-awesome-hello-world/bower.json	/^  "private": true,$/;"	f
+reader.onload	components/files/awesome-file-loader.js	/^                        const reader = new FileReader;$/;"	c
+receivedFiles	stores/file/info.js	/^                function receivedFiles(list){$/;"	f
+repository	package.json	/^  "repository": {$/;"	f
+resetState	stores/store.js	/^                function resetState(events){$/;"	f
+reset_action	components/widgets/awesome-plus-minus.js	/^            set_action: '',$/;"	p
+screen	screens/baseScreen/base.js	/^        const defaults={$/;"	p
+screen_name	components/icons/awesome-screen-icon.js	/^            class:'',$/;"	p
+screen_name	components/modal/awesome-navigation-modal.js	/^            title:'',$/;"	p
+scripts	package.json	/^  "scripts": {$/;"	f
+setState	stores/store.js	/^                 function setState(newState){$/;"	f
+set_action	components/widgets/awesome-plus-minus.js	/^        const defaults = {$/;"	p
+shared	actions/fileReader/FileReader.js	/^var shared=require('..\/shared.js');$/;"	v
+something	components/_a_boilerplate/awesome-boilerplate.js	/^        const defaults={$/;"	p
+source	components/iframe/awesome-iframe.js	/^        const defaults={$/;"	p
+step	components/range/awesome-range.js	/^            max: 0,$/;"	p
+store.defaultState.authenticated	stores/user/auth.js	/^                    failedAttempts:0,$/;"	p
+store.defaultState.boilerplate	stores/_a_boilerplate/boilerplate.js	/^                store.defaultState={$/;"	p
+store.defaultState.failedAttempts	stores/user/auth.js	/^                    token:'',$/;"	p
+store.defaultState.screens	stores/router/route.js	/^                store.defaultState={$/;"	p
+store.defaultState.token	stores/user/auth.js	/^                    username:'',$/;"	p
+store.defaultState.username	stores/user/auth.js	/^                store.defaultState={$/;"	p
+store.state.authenticated	stores/user/auth.js	/^                    store.state={$/;"	p
+store.state.boilerplate	stores/_a_boilerplate/boilerplate.js	/^                    store.state={$/;"	p
+store.state.failedAttempts	stores/user/auth.js	/^                    store.state={$/;"	p
+store.state.screen	stores/router/route.js	/^                    store.state={$/;"	p
+store.state.screens	stores/router/route.js	/^                    store.state={$/;"	p
+store.state.token	stores/user/auth.js	/^                        authenticated:true,$/;"	p
+test	package.json	/^    "test": "echo \\"Error: no test specified\\" && exit 1",$/;"	f
+text	components/icons/awesome-screen-icon.js	/^            icon:'data:image\/gif;base64,R0lGODlhAQABAIAAAAAAAP\/\/\/yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',$/;"	p
+text	components/widgets/awesome-meter.js	/^            value:'50',$/;"	p
+title	components/dialog/awesome-dialog.js	/^            icon:'',$/;"	p
+title	components/header/awesome-header.js	/^            icon:'',$/;"	p
+title	components/modal/awesome-error-modal.js	/^        const defaults={$/;"	p
+title	components/modal/awesome-navigation-modal.js	/^        const defaults={$/;"	p
+title	components/modal/awesome-notification-modal.js	/^        const defaults={$/;"	p
+title	components/title/awesome-title.js	/^        const defaults={$/;"	p
+title	components/video/awesome-vimeo.js	/^            portrait: 0,$/;"	p
+type	components/inputs/awesome-input-button-combo.js	/^            position:'left',$/;"	p
+type	package.json	/^    "type": "git",$/;"	f
+units	components/ball/awesome-ball.js	/^            value : '0',$/;"	p
+update	examples/awesome-meter.html	/^            function update(){$/;"	f
+updateDragAndDropDrop	actions/fileReader/FileReader.js	/^function updateDragAndDropDrop(message) {$/;"	f
+updateScreens	stores/router/route.js	/^                function updateScreens(screens){$/;"	f
+url	package.json	/^    "url": "git+https:\/\/github.com\/RIAEvangelist\/awesome-webcomponents.git"$/;"	f
+url	package.json	/^    "url": "https:\/\/github.com\/RIAEvangelist\/awesome-webcomponents\/issues"$/;"	f
+value	components/ball/awesome-ball.js	/^        const defaults={$/;"	p
+value	components/range/awesome-range.js	/^            step: 0,$/;"	p
+value	components/widgets/awesome-meter.js	/^        const defaults={$/;"	p
+version	package.json	/^  "version": "0.0.59",$/;"	f
+video_id	components/video/awesome-vimeo.js	/^        const defaults={$/;"	p
+video_id	components/video/awesome-youtube.js	/^        const defaults={$/;"	p

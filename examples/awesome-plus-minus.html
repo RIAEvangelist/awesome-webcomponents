@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
+            awesome.requireScript(`${awesome.path}components/widgets/awesome-plus-minus.js`);
+            awesome.requireLanguage(`${awesome.path}languages/default.js`);
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            function init(){
+                window.off(
+                    'awesome-ready',
+                    init
+                );
+
+                const plusMinus = document.body.querySelector('awesome-plus-minus');
+
+                plusMinus.addEventListener(
+                    'change',
+                    plusMinusChanged
+                );
+            }
+
+            function plusMinusChanged(e){
+                console.info(`awesome-plus-minus changed and dispatched 'change'! the value is ${e.target.dataset.value}`);
+            }
+
+        </script>
+        <style>
+            body section{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body data-start_screen='example'>
+        <awesome-header
+            data-title='awesome-plus-minus'
+        ></awesome-header>
+        <section data-screen='example'>
+            <awesome-plus-minus>
+            </awesome-plus-minus>
+        </section>
+    </body>
+</html>

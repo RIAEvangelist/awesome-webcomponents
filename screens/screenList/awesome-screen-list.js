@@ -1,103 +1,136 @@
 'use strict';
 
 awesome.requireCSS(`${awesome.path}screens/screenList/awesome-screen-list.css`);
-
+awesome.requireScript(`${awesome.path}stores/router/route.js`);
+awesome.requireScript(`${awesome.path}components/icons/awesome-screen-icon.js`);
 
 (
     function(){
-        let state=null;
-        let dispatcher=null;
-        let constants = null;
-        let action = null;
-        let defaults={
+        const component = new AwesomeComponent;
+        component.tagName = 'awesome-screen-list';
+        component.extends = 'BaseScreen';
+
+        const defaults={
+            screen:'app-list',
+            icon:'flaticon-show-apps-button',
+            link_text:'home',
+            show_all:true
         };
 
-        function init(e){
-            dispatcher=awesome.dispatchers.component;
-            constants = awesome.constants.component;
-            action = awesome.constants.action;
+        component.create = function createAwesomeScreenList(){
+            return class AwesomeScreenList extends awesome.component.BaseScreen{
+                createdCallback(){
+                    this.mergeDataset(defaults);
+                    super.createdCallback();
 
-            window.off(
-                'awesome-ready',
-                init
-            );
+                    this.careAbout(
+                        'data-icon',
+                        'data-link_text',
+                        'data-show_all'
+                    );
 
-            document.registerElement(
-                'awesome-screen-list',
-                Component
-            );
-        }
+                    this.classList.add(AwesomeScreenList.elementTagName);
+                    this.route = awesome.stores.route.state;
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+                    if(!this.screens && !this.dataset.show_all){
+                        return;
+                    }
 
-                this.innerHTML=`
-                    <div class='screensList-container'>
-                        ${content.content}
-                    </div>
-                    ${content.template}
-                `;
+                    if(this.route.screens.length<2){
+                        return;
+                    }
 
-                const appCount=this.querySelector('awesome-screen-icon').length;
-                //do something
-            }
+                    let content='';
 
-            attachedCallback(){
-                this.addEventListener(
-                    'change',
-                    this.clicked
-                );
+                    for (let i = 0; i < this.route.screens.length; i++) {
+                        const screen = this.route.screens[i];
+                        if(
+                            (
+                                this.screens
+                                && !this.screens.includes(screen.dataset.screen)
+                            )||this.dataset.screen===screen.dataset.screen
+                        ){
+                            continue;
+                        }
 
-                window.addEventListener(
-                    'resize',
-                    this.resize.bind(this)
-                );
+                        if(!screen.dataset.icon){
+                            continue;
+                        }
 
-                setTimeout(
-                    function(){
-                        const container=this.querySelector('.screensList-container');
-                        container.style.top=`calc(50% - ${container.offsetHeight/2}px)`;
-                    }.bind(this),
-                    1
-                );
-            }
-
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                if(key==='style'){
-                    return;
+                        content = `
+                            ${content}
+                            <awesome-screen-icon
+                                ${
+                                    (!screen.dataset.icon.includes('.'))
+                                    ? `data-class= '${screen.dataset.icon}'`
+                                    : `data-icon = '${screen.dataset.icon}'`
+                                }
+                                data-text= '${screen.dataset.link_text}'
+                                data-screen_name= '${screen.dataset.screen}'
+                            >
+                            </awesome-screen-icon>
+                        `;
+                    }
+                    this.innerHTML=`
+                        <div class='screensList-container'>
+                            ${content}
+                        </div>
+                    `;
                 }
-                this.createdCallback();
-            }
 
+                attachedCallback(){
+                    super.attachedCallback();
 
-            clicked(e){
-                dispatcher.trigger(
-                    action.ROUTE_REQUEST,
-                    e.target.dataset.screen_name
-                );
-            }
+                    this.addEventListener(
+                        'screen-selected',
+                        this.clicked
+                    );
 
-            resize(e){
-                const container=this.querySelector('.screensList-container');
-                container.style.top=`calc(50% - ${container.offsetHeight/2}px)`;
+                    this.screenCount=this.route.screens.length;
+                    this.route.on(
+                        'change',
+                        this.checkScreens.bind(this)
+                    );
+                }
+
+                detachedCallback(){
+                    super.detachedCallback();
+
+                    this.removeEventListener(
+                        'change',
+                        this.clicked
+                    );
+
+                    this.route.off(
+                        'change',
+                        this.checkScreens.bind(this)
+                    );
+                }
+
+                checkScreens(){
+                    if(this.screenCount==this.route.screens.length){
+                        return;
+                    }
+                    this.screenCount=this.route.screens.length;
+                    this.createdCallback();
+                }
+
+                load(screens){
+                    if(!screens){
+                        return;
+                    }
+                    this.screens = screens;
+                    this.createdCallback();
+                }
+
+                clicked(e){
+                    this.dispatcher.trigger(
+                        this.actions.ROUTE_REQUEST,
+                        e.detail.screen
+                    );
+                }
             }
         }
-
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )();

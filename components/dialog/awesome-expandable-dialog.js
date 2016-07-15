@@ -5,60 +5,32 @@ awesome.requireScript(`${awesome.path}components/dialog/awesome-dialog.js`);
 
 (
     function(){
-        const defaults={
-            icon:'',
-            title:'',
-            header:true
-        };
+        const component=new AwesomeComponent;
+        component.tagName='awesome-expandable-dialog';
+        component.extends='AwesomeDialog';
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
-                this.innerHTML=`
-                    <awesome-dialog
-                        data-header=${this.dataset.header}
-                        ${
-                            (this.dataset.icon)
-                            ? `data-icon=${this.dataset.icon}`
-                            : ''
-                        }
-                        data-title='${this.dataset.title}'
-                    >
-                        ${content.template}
-                    </awesome-dialog>
-                    ${content.template}
-                `;
-            }
-
-
-
-            attachedCallback(){
-                this.addEventListener(
-                    'click',
-                    this.change
-                );
-            }
-
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                if(key==='class'){
-                    return;
+        component.create=function createAwesomeList(){
+            return class AwesomeExpandableDialog extends awesome.component.AwesomeDialog{
+                createdCallback(){
+                    super.createdCallback();
+                    this.classList.add(AwesomeExpandableDialog.elementTagName);
+                    this.careAbout('class');
                 }
-                this.createdCallback();
-            }
 
-            change(e){
-                this.classList.toggle('fullScreenView');
+                attachedCallback(){
+                    super.attachedCallback();
+                    this.addEventListener(
+                        'click',
+                        this.change
+                    );
+                }
+
+                change(e){
+                    this.classList.toggle('fullScreenView');
+                }
             }
         }
 
-        document.registerElement(
-            'awesome-expandable-dialog',
-            Component
-        );
+        component.init();
     }
 )();

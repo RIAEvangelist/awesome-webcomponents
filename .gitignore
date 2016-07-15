@@ -1,4 +1,6 @@
 node_modules/
 bower_components/
 nmp-debug.log
-tags
+.tags
+.tags1
+.tags_swap

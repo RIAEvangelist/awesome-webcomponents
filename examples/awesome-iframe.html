@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/iframe/awesome-iframe.js`);
+            awesome.requireLanguage(`${awesome.path}languages/default.js`);
+
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            function init(){
+                const input = document.querySelector('input');
+                input.addEventListener(
+                    'change',
+                    changeHandler
+                );
+            }
+
+            function changeHandler(e){
+                const iframe = document.querySelector('awesome-iframe');
+                iframe.dataset.source = this.value;
+            }
+        </script>
+        <style>
+            body{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                background: rgb(115, 115, 115);
+            }
+
+        </style>
+    </head>
+    <body class='overflow'>
+        <awesome-iframe
+            data-source = 'https://www.google.com/maps/embed/v1/place?q=hummingbird+trail&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU'
+        >
+
+        </awesome-iframe>
+        <input
+            placeholder='Put a different source here!'
+        >
+        </input>
+        <button>
+            Use this URL
+        </button>
+    </body>
+</html>

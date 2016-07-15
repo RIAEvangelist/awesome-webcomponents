@@ -1,4 +1,4 @@
-awesome-footer{
+.awesome-footer{
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -8,7 +8,7 @@ awesome-footer{
     z-index: 2;
 }
 
-awesome-footer footer{
+.awesome-footer footer{
     font-size: 0.8em;
     margin:0 .5em;
     min-height:1.5em;

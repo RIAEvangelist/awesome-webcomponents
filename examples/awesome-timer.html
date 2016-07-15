@@ -4,9 +4,8 @@
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
         <script type='application/javascript' src='../awesome.js'></script>
         <script type='application/javascript'>
-            awesome.requireScript(`${awesome.path}components/timer/awesome-timer.js`);
-        </script>
-        <script>
+            awesome.requireScript(`${awesome.path}components/widgets/awesome-timer.js`);
+
             window.on(
                 'DOMContentLoaded',
                 init
@@ -44,7 +43,7 @@
             }
         </style>
     </head>
-    <body>
+    <body class='overflow'>
         <awesome-timer
 
         >
