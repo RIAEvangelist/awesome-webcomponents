@@ -5,7 +5,9 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
 (
     function(){
         const defaults={
-            label:''
+            label:'',
+            name:'',
+            required:false
         }
 
         const component = new AwesomeComponent;
@@ -19,7 +21,9 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
                     super.createdCallback();
                     this.classList.add(AwesomeOptionsDropdown.elementTagName)
                     this.careAbout(
-                        'data-label'
+                        'data-label',
+                        'data-name',
+                        'data-required'
                     );
                     this.localize(
                         this.dataset.label
@@ -27,7 +31,10 @@ awesome.requireCSS(`${awesome.path}components/options/awesome-options-dropdown.c
 
                     this.innerHTML=`
                         <label>${this.local[this.dataset.label]} :</label>
-                        <select name='${this.dataset.label}'>
+                        <select name='${this.dataset.name}'
+                            ${(this.dataset.required === 'true')
+                                ? 'required'
+                            : ''}>
                             ${this.content.content}
                         </select>
                         ${this.content.template}
