@@ -1212,6 +1212,10 @@ class AwesomeComponent{
     }
 
     register(e){
+        if(awesome.component[e.detail] && e.detail !== null){
+            return;
+        }
+
         if(!this.extendsNative && !awesome.component[this.extends]){
             return;
         }
