@@ -11,46 +11,40 @@ awesome.requireScript(`${awesome.path}components/header/awesome-header.js`);
             header:true
         }
 
-        class Component extends HTMLElement{
-            createdCallback(){
-                awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
-                let header='';
+        const component=new AwesomeComponent;
+        component.tagName='awesome-dialog';
 
-                if(this.dataset.header==='true'){
-                    header=`
-                        <awesome-header
-                            data-icon='${this.dataset.icon}'
-                            data-title='${this.dataset.title}'
-                        ></awesome-header>
+        component.create=function createAwesomeDialog() {
+            return class AwesomeDialog extends awesome.component.BaseComponent{
+                createdCallback(){
+                    this.mergeDataset(defaults);
+                    super.createdCallback();
+                    this.localize(
+                        this.dataset.title
+                    );
+                    this.classList.add(AwesomeDialog.elementTagName);
+                    let header='';
+
+                    if(this.dataset.header==='true'){
+                        header=`
+                            <awesome-header
+                                data-icon='${this.dataset.icon}'
+                                data-title='${this.local[this.dataset.title]}'
+                            ></awesome-header>
+                        `;
+                    }
+
+                    this.innerHTML=`
+                        ${header}
+                        <div class='content'>
+                            ${this.content.content}
+                        </div>
+                        ${this.content.template}
                     `;
                 }
-
-                this.innerHTML=`
-                    ${header}
-                    <div class='content'>
-                        ${content.content}
-                    </div>
-                    ${content.template}
-                `;
-            }
-
-            attachedCallback(){
-
-            }
-
-            detachedCallback(){
-
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
             }
         }
 
-        document.registerElement(
-            'awesome-dialog',
-            Component
-        );
+        component.init();
     }
 )();

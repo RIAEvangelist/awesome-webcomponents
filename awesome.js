@@ -92,6 +92,19 @@ class Awesome{
                     value:false
                 },
                 /**
+                 * component classes scope, basically a list of the available components
+                 *
+                 * @member awesome.components
+                 *
+                 * @type {Object}
+                 *
+                 */
+                component:{
+                    enumerable:true,
+                    writable:false,
+                    value:{}
+                },
+                /**
                  * extensible/overwriteable constansts used in awesome apps
                  *
                  * @member awesome.constants
@@ -198,20 +211,15 @@ class Awesome{
                     writable:false,
                     value:requireCSS
                 },
+                register:{
+                    enumerable:true,
+                    writable:false,
+                    value:registerComponent
+                },
                 uniqueEntries:{
                     enumerable:true,
                     writable:false,
                     value:uniqueEntries
-                },
-                mergeDataset:{
-                    enumerable:true,
-                    writable:false,
-                    value:mergeDataset
-                },
-                updateAttributesFromData:{
-                    enumerable:true,
-                    writable:false,
-                    value:updateAttributesFromData
                 }
             }
         );
@@ -877,6 +885,55 @@ class Awesome{
             );
         }
 
+        /**
+         * register creates component Class in the awesome.component object and registers the element with the DOM
+         *
+         * @example
+         *
+         * //here we require the dispatcher to action and the constants to stores and actions
+         * awesome.register(MyComponent, 'my-awesome-component');
+         *
+         * @method awesome.register
+         * @protected
+         * @param  {Class} Component Class
+         * @param  {String} Component Element Name
+         * @return {Boolean}      true
+         */
+        function registerComponent(componentClass){
+            if(!componentClass.elementTagName){
+                console.warn(componentClass.name);
+                console.trace('awesome.register requires elementTagName property to be defined');
+            }
+
+            const component=awesome.component[componentClass.name];
+
+            if(
+                component
+                &&component!==componentClass
+            ){
+                // console.warn(componentClass.name);
+                console.trace('awesome.register requested registration of previously existing component');
+                return;
+            }
+
+            awesome.component[componentClass.name]=componentClass;
+
+            const e=new CustomEvent(
+                'awesome-component-registered',
+                {
+                    detail:componentClass.name
+                }
+            );
+
+            window.dispatchEvent(e);
+
+            document.registerElement(
+                componentClass.elementTagName,
+                componentClass
+            );
+
+        }
+
         function awesomeReady(){
             if(!this.ready){
                 return;
@@ -903,7 +960,11 @@ class Awesome{
             }
 
             // if language is geographically specific like 'en-US' and not present try the non-specific version like 'en'
-            if(!this.language[lang] && lang.length>2){
+            if(
+                lang!='default'
+                && !this.language[lang]
+                && lang.length>2
+            ){
                 lang=lang.slice(0,2);
                 localStorage.setItem('language',lang);
             }
@@ -990,87 +1051,6 @@ class Awesome{
         }
 
         /**
-         * mergeDataset merges element's dataset to current default dataset of document
-         *
-         * @example
-         *
-         * defaultElementDataset = {
-         *  	property1: 'one',
-         *  	property2: 'two'
-         * }
-         *
-         * function componentCreatedCallback(componentDataset){
-         * 		mergeDataset(myElement, componentDataset);
-         * }
-         *
-         * //after the component is created it will contain
-         * //ElementDataset
-         *  {
-         *  	property1 : 'newProp1',
-         *  	property2 : 'newProp2'
-         *  }
-         *
-         * @method awesome.mergeDataset
-         * @param {HTMLElement} el         element with dataset to be merged
-         * @param {Object} defaults        default dataset
-         */
-        function mergeDataset(el,defaults){
-            const data={};
-            Object.assign(
-                data,
-                defaults,
-                el.dataset
-            );
-
-            Object.assign(
-                el.dataset,
-                data
-            );
-        }
-
-        /**
-         * updateAttributesFromData updates an element's attributes
-         *
-         * @example
-         * //orginal element attributes
-         * {
-         *  	attribute1 : 'green',
-         *  	attribute2 : 'red',
-         *  	attribute3 : 'white'
-         * }
-         *
-         * yourElementAttributeUpdater(element, attribute3, black);
-         *
-         * function yourElementAttributeUpdater(element, elementKey,newValue){
-         *  	awesome.updateAttributesFromData(element, elementKey, newValue);
-         * }
-         *
-         * //resulting element attributes
-         * {
-         *  	attribute1 : 'green',
-         *  	attribute2 : 'red',
-         *  	attribute3 : 'black'
-         * }
-         *
-         * @method awesome.updateAttributesFromData
-         * @param  {HTMLElement}    el      element object
-         * @param  {String}         key     key of element
-         * @param  {String}         value   value to update data to
-         * @return {HTMLElement}            updated element object
-         */
-        function updateAttributesFromData(el,key,value){
-            if(key.indexOf('data-')!==0){
-                return el;
-            }
-
-            el[
-                key.replace('data-','')
-            ]=value;
-
-            return el;
-        }
-
-        /**
          * uniqueEntries ensures that keys and values of data array are unique
          *
          * @example
@@ -1102,7 +1082,9 @@ class Awesome{
                     key
                 ];
                 const duplicateKeyIndex=duplicateKeyArray.indexOf(key);
-                const duplicateIndex=duplicateCheckArray.indexOf(entry);
+                const duplicateIndex=(typeof entry=='string')
+                    ?duplicateCheckArray.indexOf(entry)
+                    :-1;
 
                 if(duplicateKeyIndex>-1){
                     const error=[
@@ -1141,11 +1123,19 @@ const awesome=new Awesome;
 //bootstrap css
 awesome.requireCSS(`${awesome.path}css/component.css`);
 
+//Font Icons
+awesome.requireCSS(`${awesome.path}fonts/flatIcon/flaticon.css`);
+
 //libs
 awesome.requireScript(`${awesome.bower}document-register-element/build/document-register-element.js`);
 awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
 awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
 awesome.requireScript(`${awesome.bower}browser-error-classes/Errors.js`);
+
+//base components
+awesome.requireScript(`${awesome.path}components/baseComponent/base.js`);
+awesome.requireScript(`${awesome.path}screens/baseScreen/base.js`);
+
 
 //default language file
 awesome.requireScript(`${awesome.path}languages/default.js`);
@@ -1172,8 +1162,6 @@ awesome.requireScript(`${awesome.path}stores/router/route.js`);
 
 //default actions
 awesome.requireScript(`${awesome.path}actions/router/route.js`);
-
-
 
 
 //polyfills
@@ -1213,4 +1201,68 @@ if (!Array.prototype.includes) {
         }
         return false;
     };
+}
+
+class AwesomeComponent{
+    constructor(){
+        this.extends='BaseComponent';
+        this.tagName=null;
+        this.extendsNative=false;
+        this.create=null;
+    }
+
+    register(e){
+        if(awesome.component[e.detail] && e.detail !== null){
+            return;
+        }
+
+        if(!this.extendsNative && !awesome.component[this.extends]){
+            return;
+        }
+
+        window.off(
+            'awesome-component-registered',
+            this.registerHandler
+        );
+
+        window.off(
+            'awesome-ready',
+            this.registerHandler
+        );
+
+        const componentClass=this.create();
+
+        componentClass.elementTagName=this.tagName;
+        this.extends=null;
+        this.tagName=null;
+        this.extendsNative=null;
+        this.create=null;
+        awesome.register(componentClass);
+    }
+
+
+
+    init(){
+        let isReady=awesome.component[this.extends];
+        if(!isReady){
+            this.registerHandler=this.register.bind(this);
+            window.on(
+                'awesome-component-registered',
+                this.registerHandler
+            );
+
+            window.on(
+                'awesome-ready',
+                this.registerHandler
+            );
+
+            return;
+        }
+
+        this.register(
+            {
+                detail:this.extends
+            }
+        );
+    }
 }

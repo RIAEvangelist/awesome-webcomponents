@@ -1,7 +1,6 @@
 'use strict';
 
-awesome.requireCSS(`${awesome.path}components/_a_boilerplate/awesome-boilerplate.css`);
-awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
+awesome.requireCSS(`${awesome.path}components/options/awesome-nav-dropdown.css`);
 
 (
     function(){
@@ -9,12 +8,12 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
         let dispatcher=null;
         let constants = null;
         let action = null;
+
         const defaults={
-            something:'Boilerplate'
+            label:''
         }
 
-
-        function init(e){
+        function init(){
             window.off(
                 'awesome-ready',
                 init
@@ -24,10 +23,8 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
             constants=awesome.constants.component;
             action=awesome.constants.action;
 
-            store=awesome.store.boilerplate;
-
             document.registerElement(
-                'awesome-boilerplate-advanced',
+                'awesome-nav-dropdown',
                 Component
             );
         }
@@ -35,36 +32,29 @@ awesome.requireCSS(`${awesome.path}stores/_a_boilerplate/boilerplate.js`);
         class Component extends HTMLElement{
             createdCallback(){
                 awesome.mergeDataset(this,defaults);
-                const content=awesome.loadTemplate(this);
+                const content = awesome.loadTemplate(this);
 
                 this.innerHTML=`
-                    <p>${this.dataset.something}</p>
-                    <p>store.state.boilerplate=${store.state.boilerplate}</p>
-                    <div>${content.content}</div>
+                    <button class='navButton'>
+                        ${this.dataset.label}
 
-                    <!-- preserve content template so it isn't lost on re-render -->
-                    ${content.template}
+                        <span class='flaticon-icons-arrows'>
+                        </span>
+                    </button>
+
+                    <div class='content'>
+                        ${content.content}
+                    </div>
                 `;
             }
 
             attachedCallback(){
-                this.store.on(
-                    'change',
-                    update.bind(this)
-                )
             }
 
             detachedCallback(){
-
             }
 
             attributeChangedCallback(key,oldValue,newValue){
-                //just re-render for this simple example
-                this.createdCallback();
-            }
-
-            update(){
-                //just re render this simple example
                 this.createdCallback();
             }
         }

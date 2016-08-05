@@ -1,10 +1,10 @@
-awesome-meter{
+.awesome-meter{
     height: 23em;
     width: 10em;
     display: block;
 }
 
-awesome-meter > div > p{
+.awesome-meter > div > p{
     height: 10%;
     color: rgb(255,255,255);
     text-align: center;
@@ -12,13 +12,13 @@ awesome-meter > div > p{
     line-height: 2em;
 }
 
-awesome-meter .bottomWrapper{
+.awesome-meter .bottomWrapper{
     display: flex;
     height: 90%;
     width: 100%
 }
 
-awesome-meter .bottomWrapper > ul{
+.awesome-meter .bottomWrapper > ul{
     margin: 0.5em 0 0.5em 0;
     padding: 0;
     width: 15%;
@@ -26,7 +26,7 @@ awesome-meter .bottomWrapper > ul{
     display: table;
 }
 
-awesome-meter .bottomWrapper > ul > li{
+.awesome-meter .bottomWrapper > ul > li{
     width: 25%;
     margin: 0 0 0 50%;
     list-style: none;
@@ -34,30 +34,30 @@ awesome-meter .bottomWrapper > ul > li{
     border-bottom: .15em solid rgb(255 ,255, 255);
 }
 
-awesome-meter .bottomWrapper > ul > li:first-child{
+.awesome-meter .bottomWrapper > ul > li:first-child{
     border-top: .15em solid rgb(255, 255, 255);
 }
 
-awesome-meter .signalColor{
+.awesome-meter .signalColor{
     background: linear-gradient(rgb(13, 255, 0),rgb(146, 247, 0), yellow, orange, red);
     width: 85%;
     margin: 0.5em 1em 0.5em 0.5em;
     height: 96%;
+    overflow: hidden;
 }
 
-awesome-meter .colorBlocker{
+.awesome-meter .colorBlocker{
     background-color: rgb(125, 125, 125);
+    height:0%;
+    transition: height 500ms;
 }
 
-awesome-meter .percent{
+.awesome-meter .percent{
+    width: 100%;
     text-align: center;
     font-size: 1.5em;
-}
-
-awesome-meter  .percent.belowTenPercent{
     position: absolute;
-    top: 11em;
-    left: 1.5em;
+    bottom: 0;
 }
 
 /*******************************\

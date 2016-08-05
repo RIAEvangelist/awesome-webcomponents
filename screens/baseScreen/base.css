@@ -1,0 +1,9 @@
+.awesome-base-screen{
+    position:fixed;
+    top:0;
+    height:100%;
+    width:100%;
+    z-index:1;
+    left:120%;
+    transition:left 400ms ease-in;
+}

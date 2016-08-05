@@ -1,14 +1,14 @@
-awesome-footer{
+.awesome-footer{
     position: fixed;
     width: 100%;
     bottom: 0;
     display:block;
     padding:.5em 0;
     background:rgb(230,230,230);
-    z-index: 19900;
+    z-index: 2;
 }
 
-awesome-footer footer{
+.awesome-footer footer{
     font-size: 0.8em;
     margin:0 .5em;
     min-height:1.5em;

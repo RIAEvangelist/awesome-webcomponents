@@ -5,6 +5,7 @@ awesome.language={
         logout:'Выйти',
         username:'Логин',
         password:'Пароль',
+        error:'ошибка',
         chooseFile:'добавить файл',
         chooseFiles:'добавить файлы',
         'filesSelectedCount':'${count} выбран',
@@ -17,10 +18,17 @@ awesome.language={
 
         ok:'Хорошо',
         cancel:'Отмена',
+        next:'дальше',
+        set:'сет',
+        reset:'сброс',
+        home:'главное',
+        yes:'да',
+        no:'нет',
+
+        min:'ми',
+        max:'макс',
 
         languages:'Языки',
-        timeleft:'Время вышло',
-
-        'awesome-login-screen-header':'Вход'
+        timeleft:'Время вышло'
     }
 };

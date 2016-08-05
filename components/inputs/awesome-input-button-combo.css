@@ -1,0 +1,46 @@
+.awesome-input-button-combo {
+    display: flex;
+    flex-direction: row;
+}
+
+.awesome-input-button-combo.right {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.awesome-input-button-combo.left > button{
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
+}
+
+.awesome-input-button-combo.right > button{
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+}
+
+.awesome-input-button-combo.left > input[type='text']{
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+}
+
+.awesome-input-button-combo.right > input[type='text']{
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
+}
+
+.awesome-input-button-combo > button{
+    padding:.5em 1em;
+}
+
+.awesome-input-button-combo > button,
+.awesome-input-button-combo > input[type='text']{
+    line-height: 1.4em;
+    font-size: 1.4em;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}

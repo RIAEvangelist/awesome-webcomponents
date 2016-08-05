@@ -1,4 +1,4 @@
-awesome-timer{
+.awesome-timer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -6,15 +6,15 @@ awesome-timer{
     width: 12.5em;
 }
 
-awesome-timer > *{
+.awesome-timer > *{
     width: 100%;
 }
 
-awesome-timer > div{
+.awesome-timer > div{
     margin: 0 0 0 0.5em;
 }
 
-awesome-timer > p{
+.awesome-timer > p{
     font-size: 4.5em;
     margin: 0 0 0 0.15em;
 }

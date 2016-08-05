@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/ball/awesome-ball.js`);
+            awesome.requireLanguage(`${awesome.path}languages/default.js`);
+            let ball = null;
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            function init(){
+                ball = document.querySelector('awesome-ball');
+                document.querySelector('#increment').addEventListener(
+                    'click',
+                    incrementHandler
+                );
+
+                document.querySelector('#decrement').addEventListener(
+                    'click',
+                    decrementHandler
+                );
+            }
+
+            function incrementHandler(e){
+                ball.increment();
+            }
+
+            function decrementHandler(e){
+                ball.decrement();
+            }
+        </script>
+        <style>
+            body{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                background-color: rgb(80, 80, 80);
+            }
+        </style>
+    </head>
+    <body class='overflow'>
+        <awesome-ball>
+
+        </awesome-ball>
+
+        <section>
+            <button
+                id = 'increment'
+            >
+                Increment!
+            </button>
+
+            <button
+                id = 'decrement'
+            >
+                Decrement!
+            </button>
+        </section>
+    </body>
+</html>

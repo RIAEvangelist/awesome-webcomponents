@@ -1,0 +1,22 @@
+.awesome-navigation-modal{
+    display:block;
+    pointer-events: none;
+}
+
+.awesome-navigation-modal .modalButtonControls{
+    width: 15em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.awesome-navigation-modal .modalButtonControls button{
+    min-width: 5em;
+    pointer-events: all;
+}
+
+/*******************************\
+Small desktop windows and mobile
+\*******************************/
+@media (max-width:800px), (max-height:700px){
+
+}
