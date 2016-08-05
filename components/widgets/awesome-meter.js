@@ -64,14 +64,9 @@ awesome.requireCSS(`${awesome.path}components/widgets/awesome-meter.css`);
                 }
 
                 attributeChangedCallback(key,oldValue,newValue){
+                    super.attributeChangedCallback();
                     this.changePercentage();
                     this.sizeListElements();
-                    super.attributeChangedCallback();
-                }
-
-                attributeChangedCallback(){
-                    super.attributeChangedCallback();
-                    this.changePercentage();
                 }
 
                 changePercentage(){
