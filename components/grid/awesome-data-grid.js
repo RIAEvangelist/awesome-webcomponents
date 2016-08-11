@@ -4,223 +4,99 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
 
 (
     function(){
-        let dispatcher=null;
-        let constants = null;
-        let action = null;
-        let ascending = false;
-        const defaults={};
 
-        function init(e){
-            window.off(
-                'awesome-ready',
-                init
-            );
+        const component = new AwesomeComponent;
+        component.tagName='awesome-data-grid';
 
-            dispatcher=awesome.dispatchers.component;
-            constants=awesome.constants.component;
-            action=awesome.constants.action;
-
-            document.registerElement(
-                'awesome-data-grid',
-                Component
-            );
-        }
-
-        class Component extends HTMLElement{
-            createdCallback(){
-            }
-
-            attachedCallback(){
-                this.addEventListener(
-                    'click',
-                    this.clicked
-                );
-            }
-
-            detachedCallback(){
-            }
-
-            attributeChangedCallback(key,oldValue,newValue){
-                this.createdCallback();
-            }
-
-            clicked(e){
-                if(!(e.target.classList.contains('arrow'))){
-                    return;
+        component.create=function createAwesomeDataGrid(){
+            return class AwesomeDataGrid extends awesome.component.BaseComponent{
+                createdCallback(){
+                    super.createdCallback();
+                    this.classList.add(AwesomeDataGrid.elementTagName);
                 }
 
-                if(e.target.classList.contains('arrow')){
-                    this.sort(e.target);
-                    const a = this.querySelectorAll('.arrow');
-                    for(let i=0; i<a.length; i++){
-                        if(a[i].classList.contains(e.target.id)){
-                            a[i].classList.toggle('arrowUp');
-                        }
-                    }
-                }
-            }
+                attachedCallback(){
+                    super.attachedCallback();
 
-            generate(gridData, newObj){
-                this.data = gridData;
-                if(newObj){
-                    const oldTable = this.querySelector('table');
-                    const oldTitle = this.querySelector('h1');
-                    this.removeChild(oldTable);
-                    this.removeChild(oldTitle);
-                    this.data = gridData;
+                    this.addEventListener(
+                        'click',
+                        this.clicked
+                    );
                 }
 
-                const myTable = document.createElement('table');
-                const title = document.createElement('h1');
-                title.innerHTML = gridData.gridDefinition.title;
-                this.appendChild(title);
-                let tableHeaders = `<tr>`;
-                let tableData = `<tr>`
-                for(const i in gridData.keys){
-                    tableHeaders += `<th>${gridData.keys[i].label}<span class='arrow ${i}' id='${i}'></span></th>`;
+                detachedCallback(){
+                    super.detachedCallback();
+
+                    this.removeEventListener(
+                        'click',
+                        this.clicked
+                    );
                 }
 
-                for(const i in gridData.data){
-                    for(const j in gridData.keys){
-                        if(gridData.data[i][j]){
-                            tableData += `<td>${gridData.data[i][j]}</td>`;
-                            continue;
-                        }
-                        tableData +=`<td></td>`;
-                    }
-                    tableData += `</tr><tr>`;
-                }
-
-                tableHeaders += `</tr>`;
-                tableData += `</tr>`;
-                myTable.innerHTML = tableHeaders + tableData;
-
-                this.appendChild(myTable);
-            }
-
-            sort(key){
-                // For loop adds empty string to any missing property
-                for(const i in this.data.data){
-                    for(const j in this.data.keys){
-                        if(!(this.data.keys[j] in this.data.data[i])){
-                            if(this.data.data[i][j] == undefined){
-                                this.data.data[i][j] = '';
-                            }
-                        }
-                    }
-                }
-
-                const ascendingData = this.data.data.slice(0);
-                const descendingData = this.data.data.slice(0);
-                const typeSort = this.data.keys[key.id].type;
-                switch(typeSort){
-                case 'string':
-                    if(ascending){
-                        descendingData.sort(
-                            function(a,b){
-                                const x = b[key.id].toLowerCase();
-                                const y = a[key.id].toLowerCase();
-
-                                return x < y ? -1 : x > y ? 1 : 0;
-                            }
-                        );
-
-                        this.data.data = descendingData;
-                        const numSortObj = this.data;
-                        this.generate(this.data, numSortObj);
-                        ascending = false;
+                /**
+                 * generate function creates data grid based off object
+                 * @param  {obj} grid data
+                 * @return {null}
+                 */
+                generate(gridData){
+                    if(this.querySelector('table')){
                         return;
                     }
-                    ascendingData.sort(
-                        function(a,b){
-                            const x = a[key.id].toLowerCase();
-                            const y = b[key.id].toLowerCase();
+                    const myTable = document.createElement('table');
 
-                            return x < y ? -1 : x > y ? 1 : 0;
-                        }
-                    );
+                    if(gridData.info && gridData.info.title){
+                        const title = document.createElement('h1');
+                        title.innerHTML = gridData.info.title;
+                        this.appendChild(title);
+                    }
 
-                    this.data.data = ascendingData;
+                    let tableHeaders = '<tr>';
+                    let tableData = '<tr>'
+                    for(const i in gridData.columnHeaders){
+                        tableHeaders += `<th>${gridData.columnHeaders[i].label}<span class='arrow ${i}' id='${i}'></span></th>`;
+                    }
 
-                    const stringSortObj = this.data;
-                    this.generate(this.data, stringSortObj);
-                    ascending = true;
-                    break;
-                case 'number':
-                    if(ascending){
-                        descendingData.sort(
-                            function(a,b){
-                                return b[key.id]-a[key.id];
+                    for(const i in gridData.data){
+                        for(const j in gridData.columnHeaders){
+                            if(gridData.data[i][j]){
+                                tableData += `<td>${gridData.data[i][j]}</td>`;
+                                continue;
                             }
-                        );
+                            tableData +=`<td></td>`;
+                        }
+                        tableData += `</tr><tr>`;
+                    }
 
-                        this.data.data = descendingData;
-                        const numSortObj = this.data;
-                        this.generate(this.data, numSortObj);
-                        ascending = false;
+                    tableHeaders += `</tr>`;
+                    tableData += `</tr>`;
+                    myTable.innerHTML = tableHeaders + tableData;
+
+                    this.appendChild(myTable);
+                }
+
+                clicked(e){
+                    if(!(e.target.classList.contains('arrow'))){
                         return;
                     }
 
-                    ascendingData.sort(
-                        function(a,b){
-                            return a[key.id]-b[key.id];
-                        }
-                    );
+                    if(e.target.classList.contains('arrow')){
+                        e.target.classList.toggle('arrowUp');
 
-                    this.data.data = ascendingData;
-                    const numSortObj = this.data;
-                    this.generate(this.data, numSortObj);
-                    ascending = true;
-                    break;
-                case 'date':
-                    if(ascending){
-                        descendingData.sort(
-                            function(a,b){
-                                return new Date(b[key.id]).getTime() - new Date(a[key.id]).getTime();
+                        this.value=e.target.id;
+                        const change = new Event(
+                            'change',
+                            {
+                                'bubbles':true,
+                                'cancelable':false
                             }
                         );
 
-                        this.data.data = descendingData;
-                        const dateSortObj = this.data;
-                        this.generate(this.data, dateSortObj);
-                        // console.log('descending', this.data.data);
-                        ascending = false;
-                        return;
+                        this.dispatchEvent(change);
                     }
-                    ascendingData.sort(
-                        function(a,b){
-
-                            if((isNaN(new Date(a[key.id])) === true)){
-                                a[key.id] = 0;
-                            }
-
-                            if((isNaN(new Date(b[key.id])) === true)){
-                                b[key.id] = 0;
-                            }
-
-                            return new Date(a[key.id]).getTime() - new Date(b[key.id]).getTime();
-                        }
-                    );
-
-                    this.data.data = ascendingData;
-                    const dateSortObj = this.data;
-                    this.generate(this.data, dateSortObj);
-                    // console.log('ascending',this.data.data)
-                    ascending = true;
-                    break;
                 }
-            }
-        }
+            };
+        };
 
-        if(!awesome.ready){
-            window.on(
-                'awesome-ready',
-                init
-            );
-
-            return;
-        }
-
-        init();
+        component.init();
     }
 )();

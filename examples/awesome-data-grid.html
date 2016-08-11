@@ -7,17 +7,17 @@
             awesome.requireScript(`${awesome.path}components/grid/awesome-data-grid.js`);
 
             window.on(
-                'DOMContentLoaded',
+                'awesome-ready',
                 init
             );
 
             function init(){
                 const grid = document.querySelector('awesome-data-grid');
                 const test = {
-                    gridDefinition: {
+                    info: {
                         title:'My Grid'
                     },
-                    keys:{
+                    columnHeaders:{
                         firstName:{
                             label: 'First Name',
                             sortable: true,

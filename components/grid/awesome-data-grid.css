@@ -1,4 +1,4 @@
-awesome-data-grid {
+.awesome-data-grid {
     display: flex;
     width: 60em;
     height: 35em;
@@ -9,16 +9,16 @@ awesome-data-grid {
     overflow: auto;
 }
 
-awesome-data-grid > * {
+.awesome-data-grid > * {
     width:100%;
 }
 
-awesome-data-grid h1{
+.awesome-data-grid h1{
     text-align: center;
     bottom:0.5em;
 }
 
-awesome-data-grid table{
+.awesome-data-grid table{
     position: absolute;
     left: 0;
     top: 5em;
@@ -26,11 +26,11 @@ awesome-data-grid table{
     padding: 0;
 }
 
-awesome-data-grid tr:first-child{
+.awesome-data-grid tr:first-child{
     background: rgba(95, 98, 103, 0.3);
 }
 
-awesome-data-grid table .arrow{
+.awesome-data-grid table .arrow{
     position: absolute;
     top: 8px;
     right:0.4em;
@@ -42,18 +42,18 @@ awesome-data-grid table .arrow{
     border-top: 8px solid rgba(136, 135, 135, 0.6);
 }
 
-awesome-data-grid .arrow.arrowUp{
+.awesome-data-grid .arrow.arrowUp{
     border-top: none;
     border-bottom: 8px solid rgba(136, 135, 135, 0.6);
 }
 
-awesome-data-grid td{
+.awesome-data-grid td{
     height: 2em;
     cursor:pointer;
     box-shadow: 0 0 .2em rgba(0, 0, 0, 1);
 }
 
-awesome-data-grid th{
+.awesome-data-grid th{
     font-weight: normal;
     background-color: transparent;
 }
