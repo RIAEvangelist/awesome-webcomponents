@@ -10,11 +10,25 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
 
         component.create=function createAwesomeDataGrid(){
             return class AwesomeDataGrid extends awesome.component.BaseComponent{
+
+                /**
+                 * createdCallback initiates new component
+                 and innerHTML content
+                 * @return {null}
+                 */
                 createdCallback(){
                     super.createdCallback();
                     this.classList.add(AwesomeDataGrid.elementTagName);
+
+                    this.localize(
+                        this.dataset.title
+                    );
                 }
 
+                /**
+                 * attachedCallback adds any initial callbacks needed for component
+                 * @return {null}
+                 */
                 attachedCallback(){
                     super.attachedCallback();
 
@@ -24,6 +38,10 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                     );
                 }
 
+                /**
+                 * detachedCallback removes any initial callbacks used for component
+                 * @return {null}
+                 */
                 detachedCallback(){
                     super.detachedCallback();
 
@@ -53,7 +71,7 @@ awesome.requireCSS(`${awesome.path}components/grid/awesome-data-grid.css`);
                     let tableHeaders = '<tr>';
                     let tableData = '<tr>'
                     for(const i in gridData.columnHeaders){
-                        tableHeaders += `<th>${gridData.columnHeaders[i].label}<span class='arrow ${i}' id='${i}'></span></th>`;
+                        tableHeaders += `<th>${gridData.columnHeaders[i]}<span class='arrow ${i}' id='${i}'></span></th>`;
                     }
 
                     for(const i in gridData.data){

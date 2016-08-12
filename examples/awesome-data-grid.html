@@ -12,27 +12,22 @@
             );
 
             function init(){
+                window.off(
+                    'awesome-ready',
+                    init
+                );
+
                 const grid = document.querySelector('awesome-data-grid');
                 const test = {
                     info: {
                         title:'Awesome Grid'
                     },
                     columnHeaders:{
-                        firstName:{
-                            label: 'First Name'
-                        },
-                        lastName :{
-                            label: 'Last Name'
-                        },
-                        age: {
-                            label: 'Age'
-                        },
-                        id: {
-                            label: 'ID'
-                        },
-                        birthday: {
-                            label: 'DOB'
-                        }
+                        firstName:'First Name',
+                        lastName:'Last Name',
+                        age: 'Age',
+                        id: 'ID',
+                        birthday: 'DOB'
                     },
                     data:[
                         {

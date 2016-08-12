@@ -32,19 +32,19 @@
 
 .awesome-data-grid table .arrow{
     position: absolute;
-    top: 8px;
+    top:0.5em;
     right:0.4em;
     width: 0;
     height: 0;
     cursor:pointer;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-top: 8px solid rgba(136, 135, 135, 0.6);
+    border-left:0.5em solid rgba(0,0,0,0);
+    border-right:0.5em solid rgba(0,0,0,0);
+    border-top:0.5em solid rgba(136, 135, 135, 0.6);
 }
 
 .awesome-data-grid .arrow.arrowUp{
     border-top: none;
-    border-bottom: 8px solid rgba(136, 135, 135, 0.6);
+    border-bottom:0.5em solid rgba(136, 135, 135, 0.6);
 }
 
 .awesome-data-grid td{
@@ -55,12 +55,5 @@
 
 .awesome-data-grid th{
     font-weight: normal;
-    background-color: transparent;
-}
-
-/*******************************\
-Small desktop windows and mobile
-\*******************************/
-@media (max-width:800px), (max-height:700px){
-
+    background-color: rgba(0,0,0,0);
 }
