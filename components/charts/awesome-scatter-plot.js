@@ -25,16 +25,11 @@ awesome.requireCSS(`${awesome.path}components/charts/awesome-scatter-plot.css`);
                     super.createdCallback();
                     this.classList.add(AwesomeScatterPlot.elementTagName);
 
-                    this.innerHTML=`
-                        <section class = 'chartArea'>
-                        </section>
-                    `;
-                    this.chartArea = this.querySelector('.chartArea');
                     this.chart = null;
 
                     this.chartData = {
                         chart:{
-                            renderTo: this.chartArea,
+                            renderTo: this,
                             type: 'scatter'
                         },
                         title:{
@@ -67,14 +62,14 @@ awesome.requireCSS(`${awesome.path}components/charts/awesome-scatter-plot.css`);
                 load(data){
                     this.chartData.series = [];
 
-                    for(const dataset in data){
+                    for(const dataName in data){
                         this.chartData.series.push(
                             {
-                                data:data[dataset].coordinates,
-                                name:dataset,
-                                color:data[dataset].color,
+                                data:data[dataName].coordinates,
+                                name:dataName,
+                                color:data[dataName].color,
                                 marker:{
-                                    symbol:data[dataset].symbol
+                                    symbol:data[dataName].symbol
                                 }
                             }
                         );
