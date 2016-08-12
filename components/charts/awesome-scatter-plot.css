@@ -1,0 +1,10 @@
+.awesome-scatter-plot{
+    display: flex;
+    height: 40em;
+    width: 100%;
+}
+
+.awesome-scatter-plot section{
+    height: 100%;
+    width: 100%;
+}
