@@ -7,11 +7,7 @@ awesome.requireCSS(`${awesome.path}components/charts/awesome-scatter-plot.css`);
     function(){
         const defaults={
             chartTitle:'awesome-scatter-plot',
-            legendTitle:'Data!',
-            xMin:-100,
-            xMax:100,
-            yMin:-100,
-            yMax:100,
+            legendTitle:'Data!'
         }
 
         const component=new AwesomeComponent;
@@ -27,6 +23,7 @@ awesome.requireCSS(`${awesome.path}components/charts/awesome-scatter-plot.css`);
 
                     this.chart = null;
 
+                    //setting up defaults
                     this.chartData = {
                         chart:{
                             renderTo: this,
@@ -49,12 +46,12 @@ awesome.requireCSS(`${awesome.path}components/charts/awesome-scatter-plot.css`);
                         },
                         series:[],
                         xAxis:{
-                            min: this.dataset.xMin,
-                            max: this.dataset.xMax
+                            min:-100,
+                            max:100
                         },
                         yAxis:{
-                            min: this.dataset.yMin,
-                            max: this.dataset.yMax
+                            min:-100,
+                            max:100
                         }
                     }
                 }
@@ -74,6 +71,15 @@ awesome.requireCSS(`${awesome.path}components/charts/awesome-scatter-plot.css`);
                             }
                         );
                     }
+
+                    this.chartData.title.aling = data.titleAlign || this.chartData.title.aling;
+                    this.chartData.legend.aling = data.legendAlign || this.chartData.legend.aling;
+                    this.chartData.legend.verticalAlign = data.legendVerticalAlign || this.chartData.legend.verticalAlign;
+                    this.chartData.plotOptions.allowPointSelect = data.allowPointSelect || this.chartData.plotOptions.allowPointSelect;
+                    this.chartData.xAxis.min = data.xAxisMin || this.chartData.xAxis.min;
+                    this.chartData.xAxis.max = data.xAxisMax || this.chartData.xAxis.max;
+                    this.chartData.yAxis.min = data.yAxisMin || this.chartData.yAxis.min;
+                    this.chartData.yAxis.max = data.yAxisMax || this.chartData.yAxis.max;
 
                     this.chart = new Highcharts.chart(
                         this.chartData
