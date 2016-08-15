@@ -57,32 +57,15 @@ awesome.requireCSS(`${awesome.path}components/charts/awesome-scatter-plot.css`);
                 }
 
                 load(data){
-                    this.chartData.series = [];
-
-                    for(const dataName in data){
-                        this.chartData.series.push(
-                            {
-                                data:data[dataName].coordinates,
-                                name:dataName,
-                                color:data[dataName].color,
-                                marker:{
-                                    symbol:data[dataName].symbol
-                                }
-                            }
-                        );
-                    }
-
-                    this.chartData.title.align = data.titleAlign || this.chartData.title.align;
-                    this.chartData.legend.align = data.legendAlign || this.chartData.legend.align;
-                    this.chartData.legend.verticalAlign = data.legendVerticalAlign || this.chartData.legend.verticalAlign;
-                    this.chartData.plotOptions.allowPointSelect = data.allowPointSelect || this.chartData.plotOptions.allowPointSelect;
-                    this.chartData.xAxis.min = data.xAxisMin || this.chartData.xAxis.min;
-                    this.chartData.xAxis.max = data.xAxisMax || this.chartData.xAxis.max;
-                    this.chartData.yAxis.min = data.yAxisMin || this.chartData.yAxis.min;
-                    this.chartData.yAxis.max = data.yAxisMax || this.chartData.yAxis.max;
+                    data.chart = this.chartData.chart;
+                    const chart = Object.assign(
+                        {},
+                        this.chartData,
+                        data
+                    );
 
                     this.chart = new Highcharts.chart(
-                        this.chartData
+                        chart
                     );
                 }
 
