@@ -47,11 +47,19 @@ awesome.requireCSS(`${awesome.path}components/charts/awesome-scatter-plot.css`);
                         series:[],
                         xAxis:{
                             min:-100,
-                            max:100
+                            max:100,
+                            gridLineWidth:1,
+                            title:{
+                                text: 'X'
+                            }
                         },
                         yAxis:{
                             min:-100,
-                            max:100
+                            max:100,
+                            gridLineWidth:1,
+                            title:{
+                                text: 'Y'
+                            }
                         }
                     }
                 }
