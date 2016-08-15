@@ -69,6 +69,13 @@ awesome.requireCSS(`${awesome.path}components/charts/awesome-scatter-plot.css`);
                     );
                 }
 
+                addSeries(data){
+                    console.log(data);
+                    this.chart.addSeries(
+                        data
+                    );
+                }
+
                 destroy(){
                     this.chart.destroy();
                 }
