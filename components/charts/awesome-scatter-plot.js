@@ -85,6 +85,10 @@ awesome.requireCSS(`${awesome.path}components/charts/awesome-scatter-plot.css`);
                         this.chartData
                     );
                 }
+
+                destroy(){
+                    this.chart.destroy();
+                }
             }
         }
 
