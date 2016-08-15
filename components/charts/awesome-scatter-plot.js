@@ -72,8 +72,8 @@ awesome.requireCSS(`${awesome.path}components/charts/awesome-scatter-plot.css`);
                         );
                     }
 
-                    this.chartData.title.aling = data.titleAlign || this.chartData.title.aling;
-                    this.chartData.legend.aling = data.legendAlign || this.chartData.legend.aling;
+                    this.chartData.title.align = data.titleAlign || this.chartData.title.align;
+                    this.chartData.legend.align = data.legendAlign || this.chartData.legend.align;
                     this.chartData.legend.verticalAlign = data.legendVerticalAlign || this.chartData.legend.verticalAlign;
                     this.chartData.plotOptions.allowPointSelect = data.allowPointSelect || this.chartData.plotOptions.allowPointSelect;
                     this.chartData.xAxis.min = data.xAxisMin || this.chartData.xAxis.min;
