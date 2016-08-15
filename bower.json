@@ -28,6 +28,7 @@
     "js-message": "latest",
     "event-pubsub": "latest",
     "browser-error-classes": "latest",
-    "document-register-element": "latest"
+    "document-register-element": "latest",
+    "highcharts": "^4.2.6"
   }
 }
