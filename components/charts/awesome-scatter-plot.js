@@ -7,7 +7,7 @@ awesome.requireCSS(`${awesome.path}components/charts/awesome-scatter-plot.css`);
     function(){
         const defaults={
             chartTitle:'awesome-scatter-plot',
-            legendTitle:'Data!'
+            legendTitle:'Your Legend Title'
         }
 
         const component=new AwesomeComponent;
