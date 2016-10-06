@@ -1,11 +1,16 @@
 'use strict';
+/**
+ * @module action
+ */
+
+
 awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
 awesome.requireScript(`${awesome.path}dispatchers/store.js`);
 
 (
     function(){
-        const events=new pubsub;
-        let store=null;
+        const events = new window.EventPubSub();
+        let store = null;
 
         function init(e){
             if(e && e.detail!==`${awesome.path}dispatchers/store.js`){
