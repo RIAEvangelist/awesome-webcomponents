@@ -42,12 +42,12 @@ awesome.requireScript(`${awesome.path}stores/constants.js`);
                 let screen=null;
 
                 if(screenName){
-                    screen=document.querySelector(`[data-screen=${screenName}`);
+                    screen=document.querySelector(`[data-screen="${screenName}"`);
                 }
 
                 if(!screen){
                     screen=document.querySelector(
-                        `[data-screen=${startScreen}]`
+                        `[data-screen="${startScreen}"]`
                     );
                 }
 
