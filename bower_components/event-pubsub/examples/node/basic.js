@@ -1,11 +1,6 @@
-var events = new require('../../event-pubsub.js')();
+const Events = new require('../../event-pubsub.js');
 
-/************************************\
- * 
- * The events var was instantiated
- * as it's own scope
- * 
- * **********************************/
+const events=new Events;
 
 events.on(
     'hello',
@@ -18,12 +13,12 @@ events.on(
     'hello',
     function(data){
         console.log('Second handler listening to hello event got',data);
-        events.trigger(
+        events.emit(
             'world',
             {
                 type:'myObject',
                 data:{
-                    x:'YAY, Objects!'   
+                    x:'YAY, Objects!'
                 }
             }
         )
@@ -34,17 +29,17 @@ events.on(
     'world',
     function(data){
         console.log('World event got',data);
-        events.off('*');
+        events.off('*','*');
         console.log('Removed all events');
     }
 );
 
 /**********************************\
- * 
+ *
  * Demonstrate * event (on all events)
  * remove this for less verbose
  * example
- * 
+ *
  * ********************************/
 events.on(
     '*',
@@ -54,9 +49,9 @@ events.on(
 );
 
 /************************************\
- * trigger events for testing
+ * emit events for testing
  * **********************************/
-events.trigger(
+events.emit(
     'hello',
     'world'
 );

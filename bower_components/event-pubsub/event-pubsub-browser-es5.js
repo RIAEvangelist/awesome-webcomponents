@@ -1,14 +1,13 @@
 'use strict';
 
-window.EventPubSub=class EventPubSub {
-    constructor(scope){
-        this._events_={};
-        this.publish=this.trigger=this.emit;
-        this.subscribe=this.on;
-        this.unSubscribe=this.off;
-    }
+window.EventPubSub=function EventPubSub() {
+    this._events_={};
+    this.publish=this.trigger=this.emit=emit;
+    this.subscribe=this.on=on;
+    this.unSubscribe=this.off=off;
+    this.emit$=emit$;
 
-    on(type,handler){
+    function on(type,handler){
         if(!handler){
             const err=new ReferenceError('handler not defined.');
             throw(err);
@@ -22,7 +21,7 @@ window.EventPubSub=class EventPubSub {
         return this;
     }
 
-    off(type,handler){
+    function off(type,handler){
         if(!this._events_[type]){
             return this;
         }
@@ -53,33 +52,42 @@ window.EventPubSub=class EventPubSub {
         return this;
     }
 
-    emit(type,...args){
+    function emit(type){
+        this.emit$.apply(this, arguments);
         if(!this._events_[type]){
-            return this.emit$(type,...args);
+            return this;
         }
+
+        arguments.splice=Array.prototype.splice;
+        arguments.splice(0,1);
 
         const handlers=this._events_[type];
 
         for(let handler of handlers){
-            handler.apply(this, args);
+            handler.apply(this, arguments);
         }
 
-        return this.emit$(type,...args);
+        return this;
     }
 
-    emit$(type,...args){
+    function emit$(type, args){
         if(!this._events_['*']){
             return this;
         }
 
         const catchAll=this._events_['*'];
 
+        args.shift=Array.prototype.shift;
+        args.shift(type);
+
         for(let handler of catchAll){
-            handler.call(this, type, args);
+            handler.apply(this, args);
         }
 
         return this;
     }
+
+    return this;
 }
 
 if (!Array.prototype.includes) {
