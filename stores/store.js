@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * @module store
+ */
+
 awesome.requireScript(`${awesome.path}dispatchers/store.js`);
 awesome.requireScript(`${awesome.path}stores/constants.js`);
 awesome.requireScript(`${awesome.bower}event-pubsub/event-pubsub-browser.js`);
@@ -20,8 +24,8 @@ awesome.requireScript(`${awesome.bower}js-message/js-message-vanilla.js`);
          */
         class Store{
             constructor(){
-                const events=new pubsub;
-                this._events=events;
+                const events = new window.EventPubSub();
+                this._events = events;
                 Object.defineProperties(
                     this,
                     {

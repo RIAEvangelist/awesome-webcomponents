@@ -1,0 +1,249 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <title>awesome.js awesome-dialog | with header</title>
+
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/charts/awesome-scatter-plot.js`);
+            let scatterPlot = null;
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            function init(){
+                window.off(
+                    'awesome-ready',
+                    init
+                );
+
+                scatterPlot = document.querySelector('awesome-scatter-plot');
+                const button = document.querySelector('button');
+
+                button.addEventListener(
+                    'click',
+                    updateChart
+                );
+
+                const data = {
+                    series:[
+                        {
+                            data:[
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },{
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },{
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                }
+                            ],
+                            color:'red',
+                            name:'Trial 1',
+                            marker:{
+                                symbol:'circle'
+                            }
+                        },
+                        {
+                            data:[
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },{
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },{
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                }
+                            ],
+                            color:'blue',
+                            name:'Trial 2',
+                            marker:{
+                                symbol:'diamond'
+                            }
+                        },
+                        {
+                            data:[
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },{
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },
+                                {
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                },{
+                                    x:Math.floor(Math.random() * 200) - 100,
+                                    y:Math.floor(Math.random() * 200) - 100
+                                }
+                            ],
+                            color:'green',
+                            name:'Trial 3',
+                            marker:{
+                                symbol:'square'
+                            }
+                        }
+                    ]
+                }
+
+
+                setTimeout(
+                    function(){
+                        scatterPlot.load(data);
+                    },
+                    10
+                );
+            }
+
+            function updateChart(e){
+                const data = {
+                    data:[
+                        {
+                            x:Math.floor(Math.random() * 200) - 100,
+                            y:Math.floor(Math.random() * 200) - 100
+                        },
+                        {
+                            x:Math.floor(Math.random() * 200) - 100,
+                            y:Math.floor(Math.random() * 200) - 100
+                        },
+                        {
+                            x:Math.floor(Math.random() * 200) - 100,
+                            y:Math.floor(Math.random() * 200) - 100
+                        },
+                        {
+                            x:Math.floor(Math.random() * 200) - 100,
+                            y:Math.floor(Math.random() * 200) - 100
+                        },{
+                            x:Math.floor(Math.random() * 200) - 100,
+                            y:Math.floor(Math.random() * 200) - 100
+                        },
+                        {
+                            x:Math.floor(Math.random() * 200) - 100,
+                            y:Math.floor(Math.random() * 200) - 100
+                        },
+                        {
+                            x:Math.floor(Math.random() * 200) - 100,
+                            y:Math.floor(Math.random() * 200) - 100
+                        },
+                        {
+                            x:Math.floor(Math.random() * 200) - 100,
+                            y:Math.floor(Math.random() * 200) - 100
+                        },
+                        {
+                            x:Math.floor(Math.random() * 200) - 100,
+                            y:Math.floor(Math.random() * 200) - 100
+                        },{
+                            x:Math.floor(Math.random() * 200) - 100,
+                            y:Math.floor(Math.random() * 200) - 100
+                        }
+                    ]
+                }
+
+                scatterPlot.add(data);
+            }
+
+        </script>
+        <style>
+            body{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <awesome-scatter-plot>
+        </awesome-scatter-plot>
+        <button>
+            Add Series
+        </button>
+    </body>
+</html>

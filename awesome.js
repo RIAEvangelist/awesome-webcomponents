@@ -410,7 +410,7 @@ class Awesome{
         /**
          * Merge a specific language and the default languages. If the languageCode has not been populated on the awesome.language object, the awesome.language.default will be used.
          * @method setLanguage
-         * @param  {String}    languageCode like 'en', 'en-US', 'es' or 'zh' etc.
+         * @param  {String}    languageCode lowecase language code like 'en', 'en-us', 'es' or 'zh' etc.
          *
          * @example
          *
@@ -441,6 +441,8 @@ class Awesome{
             if(!languageCode){
                 languageCode='default';
             }
+
+            languageCode=languageCode.toLowerCase();
 
             let desiredLanguage=this.language[languageCode];
 
