@@ -398,6 +398,7 @@ class Awesome{
 
         function setLanguageKey(newLanguage){
             for(let code in newLanguage){
+                code=code.toLowerCase();
                 if(!language[code]){
                     language[code]={};
                 }
