@@ -871,7 +871,7 @@ class Awesome{
             );
 
             this.setLanguage(
-                localStorage.getItem('language')
+                localStorage.getItem('language').toLowerCase()
             );
 
             remainingScriptCount--;
@@ -952,7 +952,7 @@ class Awesome{
             );
 
             //detect or determine language
-            let lang=localStorage.getItem('language');
+            let lang=localStorage.getItem('language').toLowerCase();
             if(!lang){
                 lang=window.navigator.language;
                 localStorage.setItem('language',lang);
