@@ -952,11 +952,13 @@ class Awesome{
             );
 
             //detect or determine language
-            let lang=localStorage.getItem('language').toLowerCase();
+            let lang=localStorage.getItem('language');
             if(!lang){
-                lang=window.navigator.language;
+                lang=window.navigator.language.toLowerCase();
                 localStorage.setItem('language',lang);
             }
+
+            lang=lang.toLowerCase();
 
             if(!hasLang(lang)){
                 return;
@@ -1003,6 +1005,7 @@ class Awesome{
         }
 
         function hasLang(lang){
+            lang=lang.toLowerCase();
             const hasLang=(document.head.querySelector(`[src$='/${lang}.js']`))?
                 true:false;
 
