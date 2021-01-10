@@ -1,3 +1,6 @@
+# Depricated
+This framework was created back in the very earliest of days for web-components support. It is no longer needed and I feel, much like other frameworks of the day like React, is overly complex with too much boilerplate. This is good for a historical view on work I have done, but not so useful for production in todays world where webcomponents are natively supported by all major browsers with a total of 95-97% global support of all installed and used webbrowsers.
+
 # Awesome-Webcomponents
 
 Awesome ES6 compliant web componants for use in your app or website.
