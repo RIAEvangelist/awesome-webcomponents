@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/grid/awesome-data-grid.js`);
+
+            window.on(
+                'awesome-ready',
+                init
+            );
+
+            function init(){
+                window.off(
+                    'awesome-ready',
+                    init
+                );
+
+                const grid = document.querySelector('awesome-data-grid');
+                const test = {
+                    info: {
+                        title:'Awesome Grid'
+                    },
+                    columnHeaders:{
+                        firstName:'First Name',
+                        lastName:'Last Name',
+                        age: 'Age',
+                        id: 'ID',
+                        birthday: 'DOB'
+                    },
+                    data:[
+                        {
+                            firstName:'Walter',
+                            lastName:'White',
+                            birthday:'04/19/92',
+                            id:11,
+                            age:58
+                        },
+                        {
+                            firstName:'Jessie',
+                            lastName:'Pinkman',
+                            id:666,
+                            age:28
+                        },
+                        {
+                            firstName:'Peter',
+                            lastName:'Piper',
+                            birthday:'08/14/91',
+                            id:100,
+                            age:10
+                        },
+                        {
+                            firstName:'Joe',
+                            age:500,
+                            lastName:'Dirt'
+                        },
+                        {
+                            firstName:'John',
+                            lastName:'Snow',
+                            birthday:'12/21/80',
+                            age:23
+                        },
+                        {
+                            firstName:'Robert',
+                            lastName:'Stark',
+                            birthday:'01/11/40',
+                            age:88,
+                            id:300
+                        },
+                        {
+                            firstName:'Khaleesi',
+                            lastName:'Targaryen',
+                            id:8,
+                            age:98
+                        },
+                        {
+                            firstName:'Peter',
+                            lastName:'Dinklage',
+                            age:18
+                        },
+                        {
+                            firstName:'Jamie',
+                            birthday:'03/18/92',
+                            lastName:'S',
+                            age:23,
+                            id:24
+                        }
+                    ]
+                }
+
+                setTimeout(
+                    function(){
+                        grid.generate(test);
+                    },
+                    100
+                );
+            }
+        </script>
+    </head>
+    <body>
+        <awesome-data-grid>
+
+        </awesome-data-grid>
+    </body>
+</html>

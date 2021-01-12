@@ -1,0 +1,59 @@
+.awesome-data-grid {
+    display: flex;
+    width: 60em;
+    height: 35em;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content:flex-start;
+    justify-content:flex-start;
+    overflow: auto;
+}
+
+.awesome-data-grid > * {
+    width:100%;
+}
+
+.awesome-data-grid h1{
+    text-align: center;
+    bottom:0.5em;
+}
+
+.awesome-data-grid table{
+    position: absolute;
+    left: 0;
+    top: 5em;
+    margin: 0;
+    padding: 0;
+}
+
+.awesome-data-grid tr:first-child{
+    background: rgba(95, 98, 103, 0.3);
+}
+
+.awesome-data-grid table .arrow{
+    position: absolute;
+    top:0.5em;
+    right:0.4em;
+    width: 0;
+    height: 0;
+    cursor:pointer;
+    border-left:0.5em solid rgba(0,0,0,0);
+    border-right:0.5em solid rgba(0,0,0,0);
+    border-top:0.5em solid rgba(136, 135, 135, 0.6);
+}
+
+.awesome-data-grid .arrow.arrowUp{
+    border-top: none;
+    border-bottom:0.5em solid rgba(136, 135, 135, 0.6);
+}
+
+.awesome-data-grid td{
+    height: 2em;
+    cursor:pointer;
+    box-shadow: 0 0 .2em rgba(0, 0, 0, 1);
+}
+
+.awesome-data-grid th{
+    font-weight: normal;
+    background-color: rgba(0,0,0,0);
+}
