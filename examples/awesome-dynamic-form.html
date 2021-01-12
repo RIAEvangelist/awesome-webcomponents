@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type='application/javascript' src='../awesome.js'></script>
+        <script type='application/javascript'>
+            awesome.requireScript(`${awesome.path}components/form/awesome-dynamic-form.js`);
+
+            window.addEventListener(
+                'DOMContentLoaded',
+                init
+            );
+
+            function init(){
+                let firstName = 'First Name';
+                let lastName = 'Last Name';
+                let phoneNumber = '###-###-####';
+                let info = 'Youre awesome (;'
+                const qStrings = window.location.href.split('?')[1];
+                if(qStrings){
+                    if(qStrings.includes('=')){
+                        const params = qStrings.split('&');
+                        let userInfo = '';
+                        for (var i = 0; i < params.length; i++) {
+                            const param = params[i].split('=')[0]
+                            const value = params[i].split('=')[1];
+                            userInfo = `${userInfo}\n${param}: ${atob(value)}\n`;
+                        }
+                        alert(userInfo);
+                    }
+                }
+
+                const form = document.querySelector('awesome-dynamic-form');
+                const formConfig = {
+                    formAttributes:{
+                        method:'post'
+                    },
+                    formEventHandlers:[
+                        {
+                            event:'submit',
+                            callback:function(){
+                                console.log('yooo');
+
+                                const firstName = btoa(document.querySelector('#firstName').value);
+                                const lastName = btoa(document.querySelector('#lastName').value);
+                                const phoneNumber = btoa(document.querySelector('#phoneNumber').value);
+                                const info = btoa(document.querySelector('#info').value);
+
+                                const form = document.querySelector('form');
+                                form.action = `${awesome.path}examples/awesome-dynamic-form.html?firstName=${firstName}&lastName=${lastName}&phoneNumber=${phoneNumber}&info=${info}`;
+                            }
+                        }
+                    ],
+                    formElements:[
+                        {
+                            //Header
+                            config:{
+                                element:'h1'
+                            },
+                            properties:{
+                                innerText:'User Info'
+                            }
+                        },
+                        {
+                            //First Name
+                            config:{
+                                label:'First Name'
+                            },
+                            attributes:{
+                                placeholder: firstName,
+                                id:'firstName',
+                                required:'true'
+                            }
+                        },
+                        {
+                            //Last Name
+                            config:{
+                                label:'Last Name'
+                            },
+                            attributes:{
+                                placeholder:lastName,
+                                id:'lastName',
+                                required:'true'
+                            }
+                        },
+                        {
+                            //Phone Number
+                            config:{
+                                label:'Phone Number'
+                            },
+                            attributes:{
+                                type:'tel',
+                                id:'phoneNumber',
+                                placeholder:phoneNumber,
+                                required:'true'
+                            }
+                        },
+                        {
+                            //Extra information input
+                            config:{
+                                element:'textarea',
+                                label:'Extra Info'
+                            },
+                            attributes:{
+                                cols:'50',
+                                rows:'25',
+                                autocomplete:'on',
+                                id:'info',
+                                placeholder:info,
+                                required:'true'
+                            }
+                        },
+                        {
+                            attributes:{
+                                type:'submit'
+                            }
+                        }
+                    ]
+                }
+
+                setTimeout(
+                    function(){
+                        form.generate(formConfig);
+                    },
+                    200
+                );
+            }
+        </script>
+        <style>
+            awesome-dynamic-form h1{
+                margin: 0 0 0 0;
+                padding: 0 0 0 0;
+            }
+        </style>
+        <style>
+            body{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                overflow: auto;
+            }
+
+            .wrapper{
+                width: 40em;
+                height: 100%;
+                background: rgb(215, 215, 215);
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                box-shadow: 0 0 1em rgba(0,0,0,.7);
+            }
+
+            .wrapper > *{
+                margin: 0 1em 0 1em;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class='wrapper'>
+            <awesome-dynamic-form>
+
+            </awesome-dynamic-form>
+        </div>
+    </body>
+</html>
